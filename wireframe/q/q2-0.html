@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Moonkage – Quản lý người bán (Q2.0)</title>
+  <link rel="stylesheet" href="../assets/wf.css">
+</head>
+<body data-zone="Q" data-page="Q2.0">
+  <main id="content">
+    <div class="t1-header">
+      <div>
+        <h1>Quản lý người bán (Q2.0)</h1>
+        <small style="color: #666;">Kiểm duyệt hồ sơ đăng ký mở gian hàng và quản lý tài khoản người bán trên sàn</small>
+      </div>
+      <div>
+        <span class="meta-tag">Hồ sơ chờ duyệt: <strong>1 mới</strong></span>
+      </div>
+    </div>
+
+    <!-- 5 Tab theo đặc tả: Chờ duyệt · Cần bổ sung · Đã duyệt · Bị khóa · Bị từ chối -->
+    <div class="t1-tabs">
+      <a href="q2-0.html" class="t1-tab active">Chờ duyệt (1)</a>
+      <a href="q2-0.html?tab=supplement" class="t1-tab">Cần bổ sung (1)</a>
+      <a href="q2-0.html?tab=approved" class="t1-tab">Đã duyệt (8)</a>
+      <a href="q2-0.html?tab=locked" class="t1-tab">Bị khóa (1)</a>
+      <a href="q2-0.html?tab=rejected" class="t1-tab">Bị từ chối (1)</a>
+    </div>
+
+    <!-- Bảng danh sách hồ sơ người bán (Khuôn T1 Danh sách) -->
+    <table>
+      <thead>
+        <tr>
+          <th>Mã hồ sơ</th>
+          <th>Tên cơ sở / Xưởng</th>
+          <th>Người đại diện & CCCD</th>
+          <th>Mã số ĐKKD</th>
+          <th>Ngày nộp</th>
+          <th>Trạng thái đối chiếu</th>
+          <th style="width: 160px;">Thao tác</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>#SELLER-DOC-9912</strong></td>
+          <td>
+            <strong>Cơ Sở Bánh Nghệ Nhân Hoa Mai</strong><br>
+            <small style="color: #666;">Hà Nội · Bán lẻ & Nhận đặt hàng</small>
+          </td>
+          <td>
+            Vũ Thị Mai Hoa<br>
+            <small style="color: #555;">CCCD: 001188009922 (NFC hợp lệ)</small>
+          </td>
+          <td><code>01J8001928</code></td>
+          <td>23/10/2026</td>
+          <td>
+            <span class="t2-status" style="background:#fff;">Trùng khớp 100%</span>
+          </td>
+          <td>
+            <a href="q2-1.html" class="btn btn-primary">Xem hồ sơ & Duyệt (Q2.1) ›</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="t1-pagination">
+      <span>Hiển thị 1 trong 1 hồ sơ đang chờ xét duyệt</span>
+      <div>
+        <button class="btn btn-disabled" disabled>‹ Trang trước</button>
+        <button class="btn btn-disabled" disabled>Trang sau ›</button>
+      </div>
+    </div>
+  </main>
+
+  <aside class="wf-note" data-ref="FR-45">
+    Quản lý người bán (Q2.0). 5 Tab: Chờ duyệt · Cần bổ sung · Đã duyệt · Bị khóa · Bị từ chối. Hiển thị số lượng hồ sơ đang chờ duyệt ở thanh tiêu đề (FR-45, FR-46).
+  </aside>
+
+  <script src="../assets/data.js"></script>
+  <script src="../assets/wf.js"></script>
+</body>
+</html>

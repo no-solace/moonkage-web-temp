@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Moonkage – Tổng quan Kênh người bán (B1.0)</title>
+  <link rel="stylesheet" href="../assets/wf.css">
+</head>
+<body data-zone="B" data-page="B1.0">
+  <main id="content">
+    <h1>Tổng quan Kênh người bán</h1>
+    <p style="color: #444; margin-bottom: 20px;">Xưởng: <strong>Cơ Sở Bánh Nghệ Nhân Hoa Mai</strong></p>
+
+    <!-- TRƯỜNG HỢP 1: TRƯỚC KHI MỞ BÁN (seller-pending) -->
+    <div data-show="seller-pending guest buyer buyer-nfc" style="border: 2px solid #000; padding: 20px; background: #fafafa; margin-bottom: 24px;">
+      <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px;">
+        <div>
+          <h2>Trạng thái hồ sơ đăng ký người bán: <span class="t2-status">Đang chờ xét duyệt</span></h2>
+          <small style="color: #666;">Hồ sơ nộp ngày 23/10/2026 · Mã hồ sơ: <strong>#SELLER-DOC-9912</strong></small>
+        </div>
+        <div>
+          <!-- Lối tắt giả lập cho người review -->
+          <a href="../q/q2-0.html" class="btn" style="border: 1px dashed #000;">
+            [Reviewer]: Sang Admin duyệt hồ sơ (Q2.0) ›
+          </a>
+        </div>
+      </div>
+
+      <p style="color: #444; font-size: 13px; line-height: 1.6; margin-bottom: 16px;">
+        Hồ sơ đăng ký của bạn đang được Ban quản trị Moonkage đối chiếu thông tin ĐKKD và chứng nhận ATTP. Quá trình xét duyệt thường diễn ra trong vòng 12–24 giờ làm việc. Sau khi hồ sơ được duyệt, bạn sẽ thanh toán <strong>phí mở bán 200.000đ</strong> để kích hoạt gian hàng chính thức.
+      </p>
+
+      <div style="border-top: 1px solid #ccc; padding-top: 14px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px;">
+        <span>Nếu hồ sơ đã được duyệt:</span>
+        <a href="b1-1.html" class="btn btn-primary" style="padding: 10px 18px;">
+          Đóng phí mở bán 200.000đ (B1.1) ›
+        </a>
+      </div>
+    </div>
+
+    <!-- TRƯỜNG HỢP 2: SAU KHI ĐÃ MỞ BÁN (seller-open) -->
+    <div data-show="seller-open admin" style="display: flex; flex-direction: column; gap: 24px;">
+      <!-- Khối Việc cần làm -->
+      <div>
+        <h2 style="margin-bottom: 8px;">Việc cần bạn xử lý ngay</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px;">
+          <div style="border: 1px solid #000; padding: 12px; background: #fff;">
+            <strong>Đơn hàng Shop mới: 1</strong><br>
+            <small style="color: #666;">Đơn #MK-ORD-9921 cần chuẩn bị hàng và giao bưu tá</small><br>
+            <a href="b2-0.html" class="btn" style="margin-top: 6px;">Vào xử lý đơn ›</a>
+          </div>
+          <div style="border: 1px solid #000; padding: 12px; background: #fff;">
+            <strong>Yêu cầu báo giá mới: 1</strong><br>
+            <small style="color: #666;">Yêu cầu #RFQ-104 (150 hộp quà gỗ) đang chờ báo giá</small><br>
+            <a href="b3-0.html" class="btn" style="margin-top: 6px;">Soạn báo giá ›</a>
+          </div>
+          <div style="border: 1px solid #ccc; padding: 12px; background: #fafafa;">
+            <strong>Đơn chưa có hóa đơn VAT: 0</strong><br>
+            <small style="color: #666;">Tất cả đơn đã giao đều đã phát hành hóa đơn</small>
+          </div>
+        </div>
+      </div>
+
+      <!-- Thống kê nhanh -->
+      <div>
+        <h2 style="margin-bottom: 8px;">Thống kê hoạt động</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px;">
+          <div style="border: 1px solid #ccc; padding: 12px;">
+            <small style="color: #666;">Doanh số tạm giữ</small>
+            <div style="font-size: 20px; font-weight: 700;">51.000.000đ</div>
+          </div>
+          <div style="border: 1px solid #ccc; padding: 12px;">
+            <small style="color: #666;">Sản phẩm đang bán</small>
+            <div style="font-size: 20px; font-weight: 700;">3 dòng hộp</div>
+          </div>
+          <div style="border: 1px solid #ccc; padding: 12px;">
+            <small style="color: #666;">Hợp đồng đang nướng bánh</small>
+            <div style="font-size: 20px; font-weight: 700;">1 đơn</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <aside class="wf-note" data-ref="FR-27">
+    Tổng quan Kênh người bán (B1.0). Trước khi mở bán: chỉ hiện trạng thái hồ sơ (Chờ duyệt / Đã duyệt / Cần bổ sung) và phí (FR-27). Sau khi mở bán: hiển thị việc cần làm (đơn mới, yêu cầu mới, maket bị sửa, đơn chưa có hóa đơn).
+  </aside>
+
+  <script src="../assets/data.js"></script>
+  <script src="../assets/wf.js"></script>
+</body>
+</html>

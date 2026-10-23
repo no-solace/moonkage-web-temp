@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Moonkage – Yêu cầu và báo giá (M6.2)</title>
+  <link rel="stylesheet" href="../assets/wf.css">
+</head>
+<body data-zone="M" data-page="M6.2">
+  <main id="content">
+    <div class="t1-header">
+      <div>
+        <h1>Yêu cầu và báo giá</h1>
+        <small style="color: #666;">Theo dõi các yêu cầu đặt bánh riêng và so sánh báo giá từ các xưởng sản xuất</small>
+      </div>
+      <div>
+        <a href="m3-1.html" class="btn btn-primary" data-needs-nfc="true">+ Tạo yêu cầu mới (M3.1)</a>
+      </div>
+    </div>
+
+    <!-- Thanh chip lọc trạng thái -->
+    <div class="t1-chips">
+      <a href="#" class="chip active">Tất cả yêu cầu (2)</a>
+      <a href="#" class="chip">Đã có báo giá mới (1)</a>
+      <a href="#" class="chip">Đang chờ xưởng phản hồi (1)</a>
+      <a href="#" class="chip">Đã chốt hợp đồng (0)</a>
+    </div>
+
+    <!-- Bảng danh sách yêu cầu và báo giá (Khuôn T1 Danh sách) -->
+    <table>
+      <thead>
+        <tr>
+          <th>Mã yêu cầu</th>
+          <th>Hình thức gửi</th>
+          <th>Quy cách & Số lượng</th>
+          <th>Số xưởng mời / Báo giá nhận</th>
+          <th>Trạng thái</th>
+          <th style="width: 140px;">Hành động</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <strong>#RFQ-2026-104</strong><br>
+            <small style="color: #666;">Tạo ngày 20/10/2026</small>
+          </td>
+          <td>
+            <strong>Gửi nhiều nơi</strong><br>
+            <small style="color: #666;">(Yêu cầu mở)</small>
+          </td>
+          <td>150 hộp quà gỗ khắc laser logo DN</td>
+          <td>
+            Đã mời 3 xưởng / <strong>2 báo giá đã gửi</strong>
+          </td>
+          <td>
+            <span class="t2-status" style="background:#fff;">Có báo giá mới</span>
+          </td>
+          <td>
+            <a href="m6-2-1.html" class="btn btn-primary">So sánh giá (M6.2.1) ›</a>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <strong>#RFQ-2026-098</strong><br>
+            <small style="color: #666;">Tạo ngày 15/10/2026</small>
+          </td>
+          <td>
+            <strong>Gửi riêng Xưởng Nghệ Nhân Hà Nội</strong><br>
+            <small style="color: #666;">(Yêu cầu trực tiếp)</small>
+          </td>
+          <td>80 hộp 4 bánh cao cấp ép kim</td>
+          <td>
+            Gửi riêng 1 xưởng / <strong>1 báo giá</strong>
+          </td>
+          <td>
+            <span class="t2-status">Đang trao đổi maket</span>
+          </td>
+          <td>
+            <a href="m6-2-1.html" class="btn">Xem chi tiết ›</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="t1-pagination">
+      <span>Hiển thị 2 trong 2 yêu cầu</span>
+      <div>
+        <button class="btn btn-disabled" disabled>‹ Trang trước</button>
+        <button class="btn btn-disabled" disabled>Trang sau ›</button>
+      </div>
+    </div>
+  </main>
+
+  <aside class="wf-note" data-ref="AC-16.3">
+    Nhãn menu tài khoản: 'Yêu cầu và báo giá' (không dùng chữ 'Yêu cầu'). Cột loại: 'Gửi nhiều nơi' / 'Gửi riêng [đơn vị]'; số người bán được mời, số báo giá đã nhận.
+  </aside>
+
+  <script src="../assets/data.js"></script>
+  <script src="../assets/wf.js"></script>
+</body>
+</html>

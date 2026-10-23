@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Moonkage – Đăng / Sửa sản phẩm (B4.1)</title>
+  <link rel="stylesheet" href="../assets/wf.css">
+</head>
+<body data-zone="B" data-page="B4.1">
+  <main id="content">
+    <h1>Đăng / Sửa thông tin sản phẩm (B4.1)</h1>
+    <p style="color: #444; margin-bottom: 20px;">
+      Khai báo đầy đủ tên bánh, giá bán, chọn vỏ và nhân từ danh mục hệ thống để người mua dễ dàng lọc sản phẩm.
+    </p>
+
+    <form class="t3-form" action="b4-0.html" method="GET">
+      <fieldset>
+        <legend>1. Thông tin chung về dòng bánh hộp</legend>
+
+        <div class="form-group">
+          <label for="p-name">Tên sản phẩm bánh hộp *</label>
+          <input type="text" id="p-name" value="Hộp Hoàng Kim Thượng Hạng" required>
+        </div>
+
+        <div class="form-group">
+          <label for="p-brand">Thương hiệu hiển thị</label>
+          <input type="text" id="p-brand" placeholder="Để trống hệ thống sẽ tự lấy tên đơn vị: Cơ Sở Bánh Nghệ Nhân Hoa Mai">
+          <small style="color: #666;">(Chỉ đại lý bán lại mới cần nhập tên thương hiệu gốc khác)</small>
+        </div>
+
+        <div class="form-group">
+          <label for="p-price">Giá niêm yết (VNĐ) *</label>
+          <input type="number" id="p-price" value="680000" step="10000" required>
+        </div>
+
+        <div class="form-group">
+          <label for="p-stock">Số lượng tồn kho sẵn có *</label>
+          <input type="number" id="p-stock" value="42" min="1" required>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>2. Vỏ bánh & Nhân bánh (Chọn từ danh mục FR-54) *</legend>
+
+        <div class="form-group">
+          <label>Vỏ bánh (chọn ít nhất 1 loại) *</label>
+          <div>
+            <label><input type="checkbox" checked> Vỏ nướng truyền thống</label><br>
+            <label><input type="checkbox"> Vỏ dẻo hạt sen</label><br>
+            <label><input type="checkbox"> Vỏ than tre hiện đại</label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Nhân bánh (chọn ít nhất 1 loại) *</label>
+          <div>
+            <label><input type="checkbox" checked> Thập cẩm jambon bát bửu</label><br>
+            <label><input type="checkbox" checked> Hạt sen xá xíu hoàng kim</label><br>
+            <label><input type="checkbox"> Đậu xanh sầu riêng trứng muối</label><br>
+            <label><input type="checkbox"> Trà xanh matcha</label>
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>3. Hình ảnh hộp bánh</legend>
+
+        <div class="form-group">
+          <label>Ảnh chụp hộp bánh thật *</label>
+          <div class="wf-img" style="height: 100px;">
+            <span>[Ảnh_Hop_HoangKim_MatTruoc.jpg (Đã tải lên)]</span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label><input type="checkbox" checked disabled> Cam kết sản phẩm đạt tiêu chuẩn vệ sinh an toàn thực phẩm đã công bố</label>
+        </div>
+      </fieldset>
+
+      <div style="display: flex; gap: 10px; margin-top: 10px;">
+        <button type="submit" class="btn btn-primary" style="padding: 10px 20px;">
+          Lưu thông tin & Đăng bán (B4.0) ›
+        </button>
+        <a href="b4-0.html" class="btn">Hủy & Quay lại</a>
+      </div>
+    </form>
+  </main>
+
+  <aside class="wf-note" data-ref="FR-29">
+    Thêm/sửa sản phẩm (B4.1). Bắt buộc chọn ít nhất một vỏ bánh, một nhân bánh từ danh mục FR-54. Để trống thương hiệu thì tự động lấy tên đơn vị (trừ người bán thuần bán lại). Sản phẩm bị Quản trị gỡ thì chỉ được xem, không được sửa (FR-29, FR-31, FR-33).
+  </aside>
+
+  <script src="../assets/data.js"></script>
+  <script src="../assets/wf.js"></script>
+</body>
+</html>

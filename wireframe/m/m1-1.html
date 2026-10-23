@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Moonkage – Chọn khu vực giao (M1.1)</title>
+  <link rel="stylesheet" href="../assets/wf.css">
+</head>
+<body data-zone="M" data-page="M1.1">
+  <!-- Trang nền mờ phía sau -->
+  <main id="content" style="opacity: 0.3; pointer-events: none;">
+    <h1>Trang chủ Moonkage</h1>
+    <p>Nội dung trang chủ phía sau hộp thoại chọn khu vực...</p>
+  </main>
+
+  <!-- Lớp phủ Hộp thoại (Khuôn T6) -->
+  <div class="t6-overlay">
+    <div class="t6-dialog" role="dialog" aria-labelledby="dialog-title">
+      <h2 id="dialog-title">Chọn khu vực giao hàng</h2>
+      <p style="color: #555; margin-bottom: 14px; font-size: 13px;">
+        Hệ thống Moonkage lọc và hiển thị chính xác các dòng bánh có sẵn, giao ngay tới địa phương của bạn.
+      </p>
+
+      <!-- Trường hợp 1: Người mua đã đăng nhập (chọn từ địa chỉ đã lưu) -->
+      <div style="border: 1px solid #ccc; padding: 10px; margin-bottom: 12px; background: #fafafa;">
+        <strong style="font-size: 13px; display: block; margin-bottom: 6px;">Địa chỉ bạn đã lưu:</strong>
+        <div style="display: flex; flex-direction: column; gap: 6px;">
+          <label style="display: flex; align-items: flex-start; gap: 6px;">
+            <input type="radio" name="saved-addr" checked>
+            <span><strong>Số 18 Hoàng Diệu</strong>, Phường Điện Biên, Quận Ba Đình, Hà Nội (Mặc định)</span>
+          </label>
+          <label style="display: flex; align-items: flex-start; gap: 6px;">
+            <input type="radio" name="saved-addr">
+            <span><strong>124 Nguyễn Huệ</strong>, Phường Bến Nghé, Quận 1, TP. Hồ Chí Minh</span>
+          </label>
+        </div>
+      </div>
+
+      <!-- Trường hợp 2: Khách vãng lai chọn Tỉnh / Thành -->
+      <div class="form-group">
+        <label for="city-select">Hoặc chọn Tỉnh / Thành phố khác:</label>
+        <select id="city-select">
+          <option value="HN" selected>Hà Nội (Có hàng giao ngay 24h)</option>
+          <option value="HCM">TP. Hồ Chí Minh (Có hàng giao ngay 24h)</option>
+          <option value="DN">Đà Nẵng (Giao liên tỉnh)</option>
+          <option value="HP">Hải Phòng</option>
+          <option value="CT">Cần Thơ</option>
+        </select>
+      </div>
+
+      <!-- 2 nút hành động của khuôn T6 -->
+      <div class="t6-actions">
+        <a href="m1-0.html" class="btn">Đóng / Bỏ qua</a>
+        <a href="m2-0.html" class="btn btn-primary" id="btn-confirm-area">
+          Xác nhận khu vực & Xem bánh ›
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <aside class="wf-note" data-ref="AC-05.3">
+    Mở trước khi hiện sản phẩm nếu khách chưa có khu vực. Người đã đăng nhập chọn từ danh sách địa chỉ đã lưu; khách chọn Tỉnh/Thành phố (FR-03, FR-05).
+  </aside>
+
+  <script src="../assets/data.js"></script>
+  <script src="../assets/wf.js"></script>
+</body>
+</html>

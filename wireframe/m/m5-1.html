@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Moonkage – Đăng nhập (M5.1)</title>
+  <link rel="stylesheet" href="../assets/wf.css">
+</head>
+<body data-zone="M" data-page="M5.1">
+  <main id="content">
+    <div style="max-width: 440px; margin: 32px auto; border: 2px solid #000; padding: 24px; background: #fafafa;">
+      <h1>Đăng nhập Moonkage</h1>
+      <p style="color: #555; margin-bottom: 20px; font-size: 13px;">
+        Cổng xác thực tài khoản phục vụ mua hàng, tạo yêu cầu báo giá và quản lý đơn hàng.
+      </p>
+
+      <!-- Thông báo trang sẽ quay lại nếu đi qua Cổng đăng nhập (AC-02.3) -->
+      <div id="next-return-info" style="border: 1px dashed #888; padding: 8px 12px; margin-bottom: 16px; background: #fff; font-size: 12px; display: none;">
+        <strong>Chuyển hướng:</strong> Sau khi đăng nhập, hệ thống sẽ tự động đưa bạn quay lại trang: <code id="next-target-label"></code>
+      </div>
+
+      <form class="t3-form" id="login-form">
+        <div class="form-group">
+          <label for="l-email">Địa chỉ Email / Tên tài khoản *</label>
+          <input type="email" id="l-email" value="anh.minh@congty.com" required>
+        </div>
+
+        <div class="form-group">
+          <label for="l-pass">Mật khẩu *</label>
+          <input type="password" id="l-pass" value="••••••••" required>
+        </div>
+
+        <div style="display: flex; justify-content: space-between; align-items: center; font-size: 12px; margin: 6px 0 16px;">
+          <label><input type="checkbox" checked> Ghi nhớ đăng nhập</label>
+          <a href="m5-4.html">Quên mật khẩu?</a>
+        </div>
+
+        <div style="display: flex; flex-direction: column; gap: 8px;">
+          <button type="button" class="btn btn-primary" id="btn-login-sim" style="padding: 10px; font-size: 15px;">
+            Đăng nhập (giả lập vai Người mua) ›
+          </button>
+        </div>
+      </form>
+
+      <div style="margin-top: 20px; border-top: 1px solid #ccc; padding-top: 14px; text-align: center; font-size: 13px;">
+        Chưa có tài khoản Moonkage? <a href="m5-2.html"><strong>Đăng ký tài khoản mới</strong></a>
+      </div>
+    </div>
+  </main>
+
+  <aside class="wf-note" data-ref="AC-02.3">
+    Cổng đăng nhập (AC-02.3): nhận trang quay về qua tham số ?next=...; sau khi đăng nhập xong tự động đặt vai Người mua và chuyển hướng quay lại thao tác đang thực hiện.
+  </aside>
+
+  <script src="../assets/data.js"></script>
+  <script src="../assets/wf.js"></script>
+  <script>
+    // Logic giả lập đăng nhập và quay về trang 'next'
+    (function() {
+      var urlParams = new URLSearchParams(window.location.search);
+      var nextTarget = urlParams.get('next');
+      
+      // Các trang yêu cầu xác minh danh tính NFC (BR-23)
+      var nfcRequiredPages = ['m3-1.html', 'm3-4.html', 'm7-1.html'];
+      var isTargetRequiringNfc = nfcRequiredPages.some(function(p) {
+        return nextTarget && nextTarget.indexOf(p) !== -1;
+      });
+
+      if (nextTarget) {
+        var infoBox = document.getElementById('next-return-info');
+        var targetLabel = document.getElementById('next-target-label');
+        if (infoBox && targetLabel) {
+          infoBox.style.display = 'block';
+          if (isTargetRequiringNfc) {
+            infoBox.innerHTML = '<strong>Yêu cầu đăng nhập & xác thực NFC:</strong> Chức năng này yêu cầu xác minh danh tính. Sau khi đăng nhập, hệ thống sẽ đưa bạn qua bước quét thẻ NFC (M6.4) trước khi đến: <code>' + nextTarget + '</code>';
+          } else {
+            targetLabel.textContent = nextTarget;
+          }
+        }
+      }
+
+      var loginBtn = document.getElementById('btn-login-sim');
+      if (loginBtn) {
+        loginBtn.addEventListener('click', function() {
+          // Lưu vai trò mới là 'buyer' (Người mua đã đăng nhập nhưng chưa xác minh NFC)
+          try {
+            localStorage.setItem('wf_role', 'buyer');
+          } catch(e) {}
+          
+          if (isTargetRequiringNfc) {
+            // Chuyển tiếp sang bước xác minh danh tính NFC
+            window.location.href = 'm6-4.html?next=' + encodeURIComponent(nextTarget);
+          } else if (nextTarget) {
+            window.location.href = nextTarget;
+          } else {
+            window.location.href = 'm1-0.html';
+          }
+        });
+      }
+    })();
+  </script>
+</body>
+</html>

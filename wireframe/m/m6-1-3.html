@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Moonkage – Khiếu nại của đơn (M6.1.3)</title>
+  <link rel="stylesheet" href="../assets/wf.css">
+</head>
+<body data-zone="M" data-page="M6.1.3">
+  <main id="content">
+    <div class="t2-header">
+      <div>
+        <h1>Báo vấn đề với đơn #MK-ORD-8810 (M6.1.3)</h1>
+        <small style="color: #666;">Đơn vị cung cấp: Bánh Cổ Truyền Trăng Vàng · Đã giao ngày 19/10/2026</small>
+      </div>
+      <div>
+        <span class="t2-status">Thời hạn khiếu nại: Còn 2 ngày</span>
+      </div>
+    </div>
+
+    <form class="t3-form" action="m6-1-1.html" method="GET">
+      <fieldset>
+        <legend>Thông tin khiếu nại & Yêu cầu bồi hoàn</legend>
+        <div class="form-group">
+          <label for="d-reason">Lý do khiếu nại *</label>
+          <select id="d-reason" required>
+            <option>Hộp bánh bị móp méo / vỡ nát trong quá trình vận chuyển</option>
+            <option>Bánh bị mốc hoặc có mùi lạ trước hạn sử dụng</option>
+            <option>Giao sai quy cách / thiếu số lượng bánh so với đơn</option>
+            <option>Giao trễ hạn cam kết gây ảnh hưởng sự kiện</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="d-desc">Mô tả chi tiết vấn đề gặp phải *</label>
+          <textarea id="d-desc" rows="4" placeholder="Mô tả cụ thể tình trạng hộp bánh khi nhận từ bưu tá..." required>Hộp bánh khi mở ra bị rách mép nắp hộp, 1 bánh nhân thập cẩm bị dập nát góc.</textarea>
+        </div>
+        <div class="form-group">
+          <label>Hình ảnh hoặc video bằng chứng rõ nét *</label>
+          <div class="wf-img" style="height: 100px;">
+            <span>[Bằng_chứng_móp_hộp_01.jpg (Đã tải lên)]</span>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="d-amount">Số tiền đề xuất bồi hoàn (VNĐ):</label>
+          <input type="number" id="d-amount" value="420000" max="840000">
+          <small style="color: #666;">Tối đa không vượt quá giá trị đơn hàng đang được sàn tạm giữ.</small>
+        </div>
+      </fieldset>
+
+      <div style="border: 1px solid #000; padding: 12px; background: #eee; font-size: 13px; margin: 12px 0;">
+        <strong>Cơ chế bảo vệ Moonkage:</strong> Tiền đơn hàng đang được sàn tạm giữ. Khi gửi yêu cầu, số tiền tương ứng sẽ bị khóa cho đến khi Người bán phản hồi hoặc Ban quản trị ra quyết định (FR-49).
+      </div>
+
+      <div style="display: flex; gap: 10px;">
+        <button type="submit" class="btn btn-primary" style="padding: 10px 20px;">
+          Gửi yêu cầu giải quyết khiếu nại ›
+        </button>
+        <a href="m6-1-1.html" class="btn">Hủy & Quay lại đơn hàng</a>
+      </div>
+    </form>
+  </main>
+
+  <aside class="wf-note" data-ref="FR-12">
+    Khiếu nại của đơn (M6.1.3). Nút 'Báo vấn đề với đơn' chỉ hiện khi đơn đã giao và còn hạn (3 ngày nội thành, 7 ngày liên tỉnh/đặt hàng, Q-10 tạm). Chưa có khiếu nại: form lý do, mô tả, ảnh. Đã có: trạng thái, quyết định, số tiền hoàn.
+  </aside>
+
+  <script src="../assets/data.js"></script>
+  <script src="../assets/wf.js"></script>
+</body>
+</html>

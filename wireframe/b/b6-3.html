@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Moonkage – Điều kiện nhận đặt hàng (B6.3)</title>
+  <link rel="stylesheet" href="../assets/wf.css">
+</head>
+<body data-zone="B" data-page="B6.3">
+  <main id="content">
+    <h1>Điều kiện nhận đặt hàng theo yêu cầu (B6.3)</h1>
+    <p style="color: #444; margin-bottom: 20px;">
+      Thiết lập năng lực nhận đơn sỉ B2B và custom hộp riêng của xưởng (US-35). Thông tin này sẽ được hiển thị công khai trên danh bạ Đơn vị cung cấp (M3.2).
+    </p>
+
+    <form class="t3-form" action="b6-0.html" method="GET">
+      <fieldset>
+        <legend>1. Năng lực & Quy mô nhận đơn</legend>
+
+        <div class="form-group">
+          <label for="c-min-order">Số lượng đặt tối thiểu cho một đơn custom *</label>
+          <input type="number" id="c-min-order" value="20" min="5" required>
+          <small style="color: #666;">Số hộp ít nhất xưởng có thể nhận làm riêng hoặc in logo.</small>
+        </div>
+
+        <div class="form-group">
+          <label for="c-lead-time">Thời gian làm mẫu maket & gửi khách duyệt *</label>
+          <select id="c-lead-time" required>
+            <option value="24" selected>Trong vòng 24 giờ</option>
+            <option value="48">Trong vòng 48 giờ</option>
+            <option value="72">Trong vòng 72 giờ</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="c-max-capacity">Công suất sản xuất tối đa / ngày *</label>
+          <input type="number" id="c-max-capacity" value="5000" step="500" required>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>2. Vỏ bánh & Nhân bánh xưởng có thể nhận làm (Danh mục FR-54)</legend>
+
+        <div class="form-group">
+          <label>Vỏ bánh có thể làm theo yêu cầu:</label>
+          <div>
+            <label><input type="checkbox" checked> Vỏ nướng truyền thống</label><br>
+            <label><input type="checkbox" checked> Vỏ dẻo thơm hạt sen</label><br>
+            <label><input type="checkbox" checked> Vỏ than tre hiện đại</label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Nhân bánh có thể làm theo yêu cầu:</label>
+          <div>
+            <label><input type="checkbox" checked> Thập cẩm jambon bát bửu</label><br>
+            <label><input type="checkbox" checked> Hạt sen xá xíu hoàng kim</label><br>
+            <label><input type="checkbox" checked> Đậu xanh sầu riêng trứng muối</label><br>
+            <label><input type="checkbox" checked> Trà xanh matcha</label><br>
+            <label><input type="checkbox"> Nhân nấm đông cô chay</label>
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>3. Năng lực gia công hộp & Logo</legend>
+
+        <div class="form-group">
+          <label>Hình thức gia công nhận làm:</label>
+          <div>
+            <label><input type="checkbox" checked> Khắc laser tên riêng / logo lên nắp hộp gỗ</label><br>
+            <label><input type="checkbox" checked> Ép kim vàng 24K</label><br>
+            <label><input type="checkbox" checked> In thiệp chúc mừng riêng từng người nhận</label>
+          </div>
+        </div>
+      </fieldset>
+
+      <div style="display: flex; gap: 10px; margin-top: 10px;">
+        <button type="submit" class="btn btn-primary" style="padding: 10px 20px;">
+          Lưu điều kiện nhận đặt hàng (B6.3) ›
+        </button>
+        <a href="b6-0.html" class="btn">Hủy & Quay lại</a>
+      </div>
+    </form>
+  </main>
+
+  <aside class="wf-note" data-ref="FR-35">
+    Điều kiện nhận đặt hàng (B6.3). Lời của US-35: 'khai điều kiện nhận đặt hàng'. Vỏ và nhân làm được chọn từ cùng danh mục FR-54.
+  </aside>
+
+  <script src="../assets/data.js"></script>
+  <script src="../assets/wf.js"></script>
+</body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Moonkage – Quản lý sản phẩm (B4.0)</title>
+  <link rel="stylesheet" href="../assets/wf.css">
+</head>
+<body data-zone="B" data-page="B4.0">
+  <main id="content">
+    <div class="t1-header">
+      <div>
+        <h1>Quản lý sản phẩm (B4.0)</h1>
+        <small style="color: #666;">Danh sách các dòng bánh hộp đóng sẵn của Shop bày bán trên sàn Moonkage</small>
+      </div>
+      <div>
+        <a href="b4-1.html" class="btn btn-primary">+ Đăng sản phẩm mới (B4.1)</a>
+      </div>
+    </div>
+
+    <!-- 3 Tab theo đặc tả: Đang bán · Đang ẩn · Bị gỡ -->
+    <div class="t1-tabs">
+      <a href="b4-0.html" class="t1-tab active">Đang bán (2)</a>
+      <a href="b4-0.html?tab=hidden" class="t1-tab">Đang ẩn (1)</a>
+      <a href="b4-0.html?tab=removed" class="t1-tab">Bị gỡ bởi Quản trị (1)</a>
+    </div>
+
+    <!-- Bảng danh sách sản phẩm (Khuôn T1 Danh sách) -->
+    <table>
+      <thead>
+        <tr>
+          <th style="width: 80px;">Hình ảnh</th>
+          <th>Tên sản phẩm & Quy cách</th>
+          <th style="width: 100px;">Giá bán</th>
+          <th style="width: 80px;">Tồn kho</th>
+          <th style="width: 120px;">Trạng thái</th>
+          <th style="width: 180px;">Thao tác</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <div class="wf-img" style="width: 60px; height: 50px;">
+              <span>[Ảnh]</span>
+            </div>
+          </td>
+          <td>
+            <strong>Hộp Hoàng Kim Thượng Hạng</strong><br>
+            <small style="color: #666;">Vỏ: Nướng truyền thống · Nhân: Thập cẩm jambon, Hạt sen</small>
+          </td>
+          <td><strong>680.000đ</strong></td>
+          <td>42 hộp</td>
+          <td><span class="t2-status">Đang bán</span></td>
+          <td>
+            <a href="b4-1.html" class="btn">Sửa</a>
+            <button type="button" class="btn">[Ẩn bán]</button>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="wf-img" style="width: 60px; height: 50px;">
+              <span>[Ảnh]</span>
+            </div>
+          </td>
+          <td>
+            <strong>Hộp Trăng Rằm Đoàn Viên</strong><br>
+            <small style="color: #666;">Vỏ: Nướng & Dẻo · Nhân: Đậu xanh, Trà xanh matcha</small>
+          </td>
+          <td><strong>420.000đ</strong></td>
+          <td>18 hộp</td>
+          <td><span class="t2-status">Đang bán</span></td>
+          <td>
+            <a href="b4-1.html" class="btn">Sửa</a>
+            <button type="button" class="btn">[Ẩn bán]</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="t1-pagination">
+      <span>Hiển thị 2 trong 2 sản phẩm đang mở bán</span>
+      <div>
+        <button class="btn btn-disabled" disabled>‹ Trang trước</button>
+        <button class="btn btn-disabled" disabled>Trang sau ›</button>
+      </div>
+    </div>
+  </main>
+
+  <aside class="wf-note" data-ref="FR-30">
+    Quản lý sản phẩm (B4.0). Tab: Đang bán · Đang ẩn · Bị gỡ. Không có thao tác xóa sản phẩm để bảo đảm toàn vẹn lịch sử đơn hàng (FR-30, FR-34).
+  </aside>
+
+  <script src="../assets/data.js"></script>
+  <script src="../assets/wf.js"></script>
+</body>
+</html>

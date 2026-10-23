@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Moonkage – Thêm / sửa địa chỉ (M6.3.1)</title>
+  <link rel="stylesheet" href="../assets/wf.css">
+</head>
+<body data-zone="M" data-page="M6.3.1">
+  <main id="content">
+    <h1>Thêm / Sửa địa chỉ nhận hàng (M6.3.1)</h1>
+    <p style="color: #444; margin-bottom: 20px;">Cập nhật thông tin nhận bánh chính xác để hệ thống tính phí vận chuyển.</p>
+    <form class="t3-form" action="m6-3.html" method="GET">
+      <fieldset>
+        <legend>Thông tin người nhận</legend>
+        <div class="form-group">
+          <label for="a-name">Họ và tên người nhận *</label>
+          <input type="text" id="a-name" value="Anh Minh" required>
+        </div>
+        <div class="form-group">
+          <label for="a-phone">Số điện thoại *</label>
+          <input type="text" id="a-phone" value="0912.345.678" required>
+        </div>
+        <div class="form-group">
+          <label for="a-city">Tỉnh / Thành phố *</label>
+          <select id="a-city" required>
+            <option value="HN" selected>Hà Nội</option>
+            <option value="HCM">TP. Hồ Chí Minh</option>
+            <option value="DN">Đà Nẵng</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="a-detail">Địa chỉ chi tiết (Số nhà, đường, phường/xã) *</label>
+          <input type="text" id="a-detail" value="Số 18 Hoàng Diệu, Ba Đình" required>
+        </div>
+        <div class="form-group">
+          <label><input type="checkbox" checked> Đặt làm địa chỉ mặc định</label>
+        </div>
+      </fieldset>
+      <div style="display: flex; gap: 10px; margin-top: 10px;">
+        <button type="submit" class="btn btn-primary" style="padding: 10px 20px;">Lưu địa chỉ (M6.3) ›</button>
+        <a href="m6-3.html" class="btn">Hủy</a>
+      </div>
+    </form>
+  </main>
+
+  <aside class="wf-note" data-ref="FR-03">
+    Thêm / sửa địa chỉ (M6.3.1). Form khuôn T3 để thêm hoặc chỉnh sửa địa chỉ nhận hàng (FR-03).
+  </aside>
+
+  <script src="../assets/data.js"></script>
+  <script src="../assets/wf.js"></script>
+</body>
+</html>

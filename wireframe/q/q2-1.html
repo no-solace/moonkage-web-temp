@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Moonkage – Duyệt hồ sơ người bán (Q2.1)</title>
+  <link rel="stylesheet" href="../assets/wf.css">
+</head>
+<body data-zone="Q" data-page="Q2.1">
+  <main id="content">
+    <div class="t2-header">
+      <div>
+        <h1>Duyệt hồ sơ: Cơ Sở Bánh Nghệ Nhân Hoa Mai (Q2.1)</h1>
+        <small style="color: #666;">Mã hồ sơ: #SELLER-DOC-9912 · Nộp ngày 23/10/2026</small>
+      </div>
+      <div>
+        <span class="t2-status">Trạng thái: Đang chờ quyết định</span>
+      </div>
+    </div>
+
+    <!-- Kết quả so định danh tự động (AC-45.4) -->
+    <div style="border: 2px solid #000; padding: 14px; background: #eee; margin-bottom: 20px;">
+      <strong>Kết quả so khớp tự động dữ liệu CCCD gắn chip & ĐKKD:</strong>
+      <div style="margin-top: 6px; font-size: 13px;">
+        • Họ tên chủ cơ sở trên ĐKKD: <strong>Vũ Thị Mai Hoa</strong> — Khớp 100% với tên trên CCCD qua xác minh NFC.<br>
+        • Số định danh cá nhân: <strong>001188009922</strong> — Đã kiểm tra tính hợp lệ qua cơ sở dữ liệu quốc gia.<br>
+        • Mã số thuế / ĐKKD: <strong>01J8001928</strong> — Hộ kinh doanh đang hoạt động tại Chi cục Thuế Hoàn Kiếm.
+      </div>
+    </div>
+
+    <div class="t2-layout">
+      <!-- Cột trái: Chi tiết tài liệu nộp & Tab Lịch sử -->
+      <div>
+        <h2>Tài liệu pháp lý đính kèm</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Loại giấy tờ</th>
+              <th>Tệp đính kèm</th>
+              <th>Hành động</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Giấy chứng nhận đăng ký hộ kinh doanh</td>
+              <td><code>GiayPhep_DKKD_HoaMai.pdf</code></td>
+              <td><button class="btn">[Xem tài liệu gốc]</button></td>
+            </tr>
+            <tr>
+              <td>Giấy chứng nhận cơ sở đủ điều kiện ATTP</td>
+              <td><code>GiayChungNhan_ATTP_2026.pdf</code></td>
+              <td><button class="btn">[Xem tài liệu gốc]</button></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <!-- Tab Lịch sử trong trang đối tượng (Đ5) -->
+        <div class="t2-history" style="margin-top: 24px;">
+          <h2>Lịch sử xét duyệt & Xử lý hồ sơ (Đ5)</h2>
+          <table style="margin-top: 8px;">
+            <thead>
+              <tr>
+                <th>Thời gian</th>
+                <th>Người duyệt</th>
+                <th>Hành động</th>
+                <th>Ghi chú</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>23/10/2026 15:00</td>
+                <td>Hệ thống tự động</td>
+                <td>So khớp NFC & ĐKKD</td>
+                <td>Trùng khớp 100% họ tên và số định danh</td>
+              </tr>
+              <tr>
+                <td>23/10/2026 14:30</td>
+                <td>Người bán</td>
+                <td>Nộp hồ sơ lần 1</td>
+                <td>Khởi tạo hồ sơ mở bán</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Cột phải: Khối ra quyết định của Quản trị viên -->
+      <div>
+        <div class="t2-actions">
+          <h2>Quyết định duyệt</h2>
+
+          <div style="font-size: 13px; margin-bottom: 8px;">
+            <label style="display: block; margin-bottom: 6px;">
+              <input type="checkbox" id="chk-verify" checked> Tôi đã đối chiếu chữ ký số và con dấu trên tệp ĐKKD gốc.
+            </label>
+          </div>
+
+          <!-- Nút Duyệt hồ sơ -> Sang B1.1 đóng phí mở bán -->
+          <a href="../b/b1-1.html" class="btn btn-primary" style="text-align: center; padding: 10px;">
+            [✓] Duyệt hồ sơ & Cho phép đóng phí mở bán (B1.1) ›
+          </a>
+
+          <button type="button" class="btn" style="text-align: center; margin-top: 4px;">
+            Yêu cầu nộp bổ sung giấy tờ
+          </button>
+
+          <button type="button" class="btn" style="text-align: center; margin-top: 4px; color: #000; border-color: #888;">
+            Từ chối hồ sơ
+          </button>
+
+          <button type="button" class="btn btn-disabled" disabled style="text-align: center; margin-top: 8px;" title="Chỉ khóa khi có vi phạm sau khi mở bán">
+            Khóa tài khoản người bán
+          </button>
+
+          <a href="q2-0.html" class="btn" style="text-align: center; margin-top: 12px;">
+            ‹ Về danh sách hồ sơ
+          </a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <aside class="wf-note" data-ref="AC-45.4">
+    Hồ sơ người bán (Q2.1). Kết quả so định danh, ô xác nhận đối chiếu, duyệt / bổ sung / từ chối; khóa. Tab Lịch sử: các lần nộp, kết quả so chủ, quyết định và người duyệt (Đ5, AC-45.4). Sau khi duyệt, người bán chuyển sang bước đóng phí B1.1.
+  </aside>
+
+  <script src="../assets/data.js"></script>
+  <script src="../assets/wf.js"></script>
+</body>
+</html>

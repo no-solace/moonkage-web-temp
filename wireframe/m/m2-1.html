@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Moonkage – Chi tiết sản phẩm (M2.1)</title>
+  <link rel="stylesheet" href="../assets/wf.css">
+  <style>
+    .product-detail-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+    }
+    @media (max-width: 480px) {
+      .product-detail-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body data-zone="M" data-page="M2.1">
+  <main id="content">
+    <div class="product-detail-grid">
+      <!-- Cột trái: Bộ ảnh gạch chéo & chứng nhận -->
+      <div>
+        <div class="wf-img" style="height: 300px; margin-bottom: 12px;">
+          <span>[Ảnh chính: Hộp Hoàng Kim Thượng Hạng]</span>
+        </div>
+        <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px;">
+          <div class="wf-img" style="height: 60px;"><span>[Ảnh 1]</span></div>
+          <div class="wf-img" style="height: 60px;"><span>[Ảnh 2]</span></div>
+          <div class="wf-img" style="height: 60px;"><span>[Ảnh 4]</span></div>
+        </div>
+      </div>
+
+      <!-- Cột phải: Thông số, giá và các nút hành động -->
+      <div>
+        <!-- Nhãn kiểm tra BR-22 (Chủ Shop xem sản phẩm của mình) -->
+        <div id="seller-own-product-badge" data-show="seller-open" style="border: 2px dashed #000; padding: 8px 12px; margin-bottom: 12px; background: #eee;">
+          <strong>[Sản phẩm của bạn]:</strong> Bạn là chủ Shop sản xuất sản phẩm này. Nút mua hàng bị vô hiệu hóa theo quy định kiểm soát giao dịch nội bộ (BR-22).
+        </div>
+
+        <h1>Hộp Hoàng Kim Thượng Hạng</h1>
+        <div style="margin: 8px 0; color: #555; font-size: 13px;">
+          Đơn vị: <strong>Xưởng Bánh Nghệ Nhân Hà Nội</strong> · Đánh giá: <strong>4.9 ★</strong> (184 lượt mua)
+        </div>
+
+        <div style="font-size: 24px; font-weight: 700; margin: 16px 0; border-bottom: 1px solid #ccc; padding-bottom: 12px;">
+          680.000đ <small style="font-size: 13px; font-weight: normal; color: #666;">(Đã bao gồm thuế GTGT)</small>
+        </div>
+
+        <div style="margin-bottom: 16px;">
+          <strong>Quy cách hộp bánh:</strong>
+          <ul style="padding-left: 20px; margin-top: 6px; font-size: 13px; color: #333;">
+            <li>01 Bánh nướng Thập cẩm jambon bát bửu (200g, 2 trứng muối)</li>
+            <li>01 Bánh nướng Hạt sen xá xíu hoàng kim (200g, 2 trứng muối)</li>
+            <li>01 Bánh dẻo Trà xanh hạt dưa matcha (200g, 1 trứng muối)</li>
+            <li>01 Bánh nướng Đậu xanh sầu riêng (200g, 1 trứng muối)</li>
+            <li>Hộp gỗ cao cấp kèm dao cắt bánh và thiệp lời chúc Moonkage</li>
+          </ul>
+        </div>
+
+        <div style="margin-bottom: 16px;">
+          <strong>Tồn kho tại Hà Nội:</strong> <span>42 hộp có sẵn giao ngay</span>
+        </div>
+
+        <!-- Khối Mua Hàng (cho Khách và Người mua) -->
+        <div id="buyer-actions-block" style="display: flex; flex-direction: column; gap: 10px; margin-top: 20px;">
+          <div style="display: flex; gap: 10px; align-items: center;">
+            <label for="p-qty">Số lượng:</label>
+            <input type="number" id="p-qty" value="1" min="1" max="15" style="width: 60px; padding: 6px;">
+          </div>
+
+          <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+            <a href="m4-0.html" class="btn btn-primary" data-needs-login="true" style="padding: 10px 20px;">
+              Thêm vào giỏ & Đặt hàng (M4.0) ›
+            </a>
+            <a href="m3-4.html" class="btn" style="padding: 10px 16px;">
+              Gửi yêu cầu đặt làm riêng cho Shop này (M3.4) ›
+            </a>
+          </div>
+        </div>
+
+        <div style="margin-top: 24px; border-top: 1px solid #ccc; padding-top: 12px; font-size: 12px; color: #666;">
+          Phí vận chuyển nội thành Hà Nội: <strong>25.000đ</strong> · Hỗ trợ xuất hóa đơn điện tử cho doanh nghiệp tại bước thanh toán.
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <aside class="wf-note" data-ref="BR-22">
+    Chủ của Shop thấy nhãn 'Sản phẩm của bạn', không có nút mua (BR-22). Có lối 'Gửi yêu cầu cho Shop này' nếu người bán nhận đặt hàng. Thao tác 'Thêm vào giỏ' yêu cầu đăng nhập: khách bấm → M5.1 rồi tự quay về giỏ (AC-02.3).
+  </aside>
+
+  <script src="../assets/data.js"></script>
+  <script src="../assets/wf.js"></script>
+</body>
+</html>

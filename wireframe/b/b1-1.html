@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Moonkage – Đóng phí mở bán (B1.1)</title>
+  <link rel="stylesheet" href="../assets/wf.css">
+</head>
+<body data-zone="B" data-page="B1.1">
+  <main id="content">
+    <h1>Đóng phí đăng ký mở bán (B1.1)</h1>
+
+    <!-- Thanh bước (Khuôn T5) -->
+    <div class="t5-steps">
+      <div class="t5-step-item">1. Khai hồ sơ (M7.1)</div>
+      <div class="t5-step-item">2. Admin xét duyệt (Q2.1)</div>
+      <div class="t5-step-item active">3. Đóng phí mở bán</div>
+      <div class="t5-step-item">4. Cài đặt gian hàng & Bán</div>
+    </div>
+
+    <div class="t5-layout">
+      <!-- Cột trái: Thông báo hồ sơ đã duyệt & xác nhận đóng phí -->
+      <div>
+        <div style="border: 2px solid #000; padding: 16px; background: #fafafa; margin-bottom: 20px;">
+          <h2 style="margin-bottom: 8px;">[✓] Chúc mừng! Hồ sơ của bạn đã được phê duyệt</h2>
+          <p style="font-size: 13px; color: #333; line-height: 1.6;">
+            Hồ sơ người bán của <strong>Cơ Sở Bánh Nghệ Nhân Hoa Mai</strong> đã được Ban quản trị đối chiếu thông tin pháp lý hợp lệ. Bước cuối cùng để kích hoạt Kênh người bán chính thức là đóng <strong>phí mở bán 200.000đ</strong> (chỉ đóng 01 lần duy nhất).
+          </p>
+        </div>
+
+        <div style="border: 1px solid #ccc; padding: 16px; background: #fff;">
+          <h3>Quyền lợi sau khi kích hoạt mở bán:</h3>
+          <ul style="padding-left: 20px; font-size: 13px; color: #444; line-height: 1.6; margin-top: 8px;">
+            <li>Đăng bán không giới hạn các dòng bánh đóng hộp sẵn có lên sàn.</li>
+            <li>Xuất hiện trên danh bạ Đơn vị cung cấp (M3.2) để nhận hợp đồng sỉ B2B.</li>
+            <li>Nhận và phản hồi các yêu cầu báo giá đặt hàng theo yêu cầu.</li>
+            <li>Không thu chiết khấu phần trăm trên doanh số bán hàng.</li>
+          </ul>
+        </div>
+
+        <div style="margin-top: 20px; display: flex; gap: 10px;">
+          <a href="../m/m4-2.html" class="btn btn-primary" id="btn-pay-fee" style="padding: 12px 24px; font-size: 15px;">
+            Thanh toán phí 200.000đ qua Cổng VNPay (M4.2) ›
+          </a>
+          <a href="b1-0.html" class="btn" style="padding: 12px 18px;">‹ Để sau</a>
+        </div>
+      </div>
+
+      <!-- Cột phải: Hóa đơn phí -->
+      <div>
+        <div class="t5-summary-box">
+          <h2>Chi tiết khoản phí</h2>
+          <div style="display: flex; justify-content: space-between; border-bottom: 1px solid #eee; padding: 8px 0;">
+            <span>Khoản mục:</span>
+            <strong>Phí đăng ký mở bán</strong>
+          </div>
+          <div style="display: flex; justify-content: space-between; border-bottom: 1px solid #eee; padding: 8px 0;">
+            <span>Chu kỳ:</span>
+            <strong>Thu 1 lần duy nhất</strong>
+          </div>
+          <div style="display: flex; justify-content: space-between; border-bottom: 1px solid #eee; padding: 8px 0;">
+            <span>Phí duy trì định kỳ:</span>
+            <strong>0đ</strong>
+          </div>
+          <div style="display: flex; justify-content: space-between; padding: 12px 0; font-size: 16px; border-top: 2px solid #000;">
+            <strong>Tổng số tiền:</strong>
+            <strong style="font-size: 18px;">200.000đ</strong>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <aside class="wf-note" data-ref="FR-27">
+    Đóng phí mở bán (B1.1). Hồ sơ đã duyệt, chưa đóng phí (FR-27, AC-27.4, 27.5, FR-53). Bấm thanh toán sẽ chuyển sang Cổng VNPay (M4.2); sau khi thanh toán thành công, vai trò chuyển thành 'seller-open' (đã mở bán).
+  </aside>
+
+  <script src="../assets/data.js"></script>
+  <script src="../assets/wf.js"></script>
+  <script>
+    document.getElementById('btn-pay-fee').addEventListener('click', function() {
+      try {
+        localStorage.setItem('wf_role', 'seller-open');
+      } catch(e) {}
+    });
+  </script>
+</body>
+</html>

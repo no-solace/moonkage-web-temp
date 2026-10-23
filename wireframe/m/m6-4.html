@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Moonkage – Xác minh danh tính (M6.4)</title>
+  <link rel="stylesheet" href="../assets/wf.css">
+</head>
+<body data-zone="M" data-page="M6.4">
+  <main id="content">
+    <div style="max-width: 520px; margin: 32px auto; border: 2px solid #000; padding: 24px; background: #fafafa;">
+      <h1>Xác minh danh tính qua thẻ NFC (M6.4)</h1>
+      <p style="color: #444; margin-bottom: 16px; font-size: 13px;">
+        Bước bắt buộc trước khi tạo yêu cầu báo giá doanh nghiệp hoặc đăng ký bán hàng (BR-23). Nhằm đảm bảo cam kết trách nhiệm và chống gian lận thương mại.
+      </p>
+
+      <div id="nfc-return-notice" style="border: 1px dashed #888; padding: 8px 12px; margin-bottom: 16px; background: #fff; font-size: 12px; display: none;">
+        <strong>Phiên làm việc chen:</strong> Sau khi hoàn tất xác minh NFC, bạn sẽ tự động được đưa quay lại: <code id="nfc-target-page"></code>
+      </div>
+
+      <div style="text-align: center; border: 1px solid #ccc; padding: 20px; background: #fff; margin-bottom: 16px;">
+        <strong style="display: block; margin-bottom: 8px;">Quét mã QR bằng App Moonkage Verify trên điện thoại</strong>
+        <!-- Khung ảnh QR gạch chéo -->
+        <div class="wf-img" style="width: 160px; height: 160px; margin: 0 auto 12px;">
+          <span>[QR Code Phiên #VERIFY-8821]</span>
+        </div>
+        <small style="color: #666; display: block;">Mã phiên: <strong>#SESS-NFC-99120</strong> · Hiệu lực trong: 15 phút</small>
+      </div>
+
+      <div style="border-left: 4px solid #000; background: #eee; padding: 10px 14px; margin-bottom: 16px; font-size: 13px;">
+        <strong>Quy trình trên điện thoại:</strong> Mở app Verify → Quét mã QR trên màn hình → Chạm thẻ NFC CCCD/Doanh nghiệp vào lưng điện thoại → Xác thực hoàn tất.
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 8px;">
+        <button type="button" class="btn btn-primary" id="btn-nfc-sim" style="padding: 10px; font-size: 14px;">
+          [GIẢ LẬP]: Đã chạm thẻ NFC xác minh thành công ›
+        </button>
+        <button type="button" class="btn" onclick="history.back()">Hủy bỏ và quay lại</button>
+      </div>
+    </div>
+  </main>
+
+  <aside class="wf-note" data-ref="FR-04">
+    Xác minh danh tính NFC (M6.4): mở như bước chen từ M3.1, M3.4, M7.1. Mã QR phiên làm việc; App Moonkage Verify (V1-V5) đã xong, tại đây đặt nút giả lập hoàn thành để cập nhật trạng thái đã xác minh NFC và quay lại trang xuất phát.
+  </aside>
+
+  <script src="../assets/data.js"></script>
+  <script src="../assets/wf.js"></script>
+  <script>
+    (function() {
+      var urlParams = new URLSearchParams(window.location.search);
+      var nextPage = urlParams.get('next');
+      
+      // Trạng thái đã xác minh đối với vai buyer-nfc
+      var currentRole = localStorage.getItem('wf_role') || 'guest';
+      if (currentRole === 'buyer-nfc') {
+        var box = document.getElementById('btn-nfc-sim');
+        if (box) {
+          box.textContent = '[✓] Tài khoản đã hoàn tất xác minh danh tính NFC';
+          box.disabled = true;
+          box.style.background = '#eee';
+          box.style.color = '#000';
+        }
+      }
+
+      if (nextPage) {
+        var notice = document.getElementById('nfc-return-notice');
+        var label = document.getElementById('nfc-target-page');
+        if (notice && label) {
+          notice.style.display = 'block';
+          label.textContent = nextPage;
+        }
+      }
+
+      var simBtn = document.getElementById('btn-nfc-sim');
+      if (simBtn) {
+        simBtn.addEventListener('click', function() {
+          // Lưu vai trò mới là 'buyer-nfc' (Người mua đã xác minh NFC)
+          try {
+            localStorage.setItem('wf_role', 'buyer-nfc');
+          } catch(e) {}
+          
+          if (nextPage) {
+            window.location.href = nextPage;
+          } else {
+            window.location.href = 'm6-2.html';
+          }
+        });
+      }
+    })();
+  </script>
+</body>
+</html>

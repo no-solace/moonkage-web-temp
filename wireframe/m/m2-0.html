@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Moonkage – Mua hàng có sẵn (M2.0)</title>
+  <link rel="stylesheet" href="../assets/wf.css">
+  <style>
+    .catalog-layout {
+      display: grid;
+      grid-template-columns: 240px 1fr;
+      gap: 20px;
+    }
+    @media (max-width: 480px) {
+      .catalog-layout { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body data-zone="M" data-page="M2.0">
+  <main id="content">
+    <div class="t1-header">
+      <div>
+        <h1>Mua hàng có sẵn</h1>
+        <small style="color: #666;">
+          Bánh đóng hộp sẵn có, giao ngay tới: <strong>Hà Nội</strong> (Bộ lọc ngầm theo khu vực)
+        </small>
+      </div>
+      <div>
+        <a href="m1-1.html" class="btn">[Đổi khu vực giao]</a>
+      </div>
+    </div>
+
+    <!-- KHỐI ĐẶC BIỆT: Khối Đơn vị cung cấp khớp từ khóa tìm kiếm (AC-14.5, Đ2) -->
+    <div id="supplier-match-block" style="border: 2px solid #000; padding: 12px; background: #eee; margin-bottom: 20px;">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+        <strong>Đơn vị cung cấp nhận đặt theo yêu cầu khớp từ khóa:</strong>
+        <small style="color: #666;">(Tách khỏi danh sách sản phẩm, không lọc theo vùng giao — AC-14.5)</small>
+      </div>
+      <div style="background: #fff; border: 1px solid #888; padding: 10px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px;">
+        <div>
+          <strong>Xưởng Bánh Nghệ Nhân Hà Nội</strong> — Nhận làm hộp riêng, in logo, công suất 5.000 hộp/ngày
+        </div>
+        <div style="display: flex; gap: 6px;">
+          <a href="m3-3.html" class="btn">Xem trang đơn vị (M3.3)</a>
+          <a href="m3-4.html" class="btn btn-primary" data-needs-login="true" data-needs-nfc="true">Gửi yêu cầu riêng (M3.4)</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="catalog-layout">
+      <!-- Cột trái: Bộ lọc đa tiêu chí -->
+      <div>
+        <div style="border: 1px solid #ccc; padding: 14px; background: #fafafa; display: flex; flex-direction: column; gap: 14px;">
+          <div>
+            <strong>Khoảng giá</strong>
+            <div style="display: flex; flex-direction: column; gap: 4px; margin-top: 6px; font-size: 13px;">
+              <label><input type="checkbox" checked> Dưới 300.000đ</label>
+              <label><input type="checkbox" checked> 300.000đ – 600.000đ</label>
+              <label><input type="checkbox" checked> 600.000đ – 1.000.000đ</label>
+              <label><input type="checkbox"> Trên 1.000.000đ</label>
+            </div>
+          </div>
+
+          <div>
+            <strong>Thương hiệu / Shop</strong>
+            <div style="display: flex; flex-direction: column; gap: 4px; margin-top: 6px; font-size: 13px;">
+              <label><input type="checkbox" checked> Xưởng Bánh Nghệ Nhân Hà Nội</label>
+              <label><input type="checkbox" checked> Cơ Sở Bánh Cổ Truyền Trăng Vàng</label>
+              <label><input type="checkbox"> Bánh Thu Hương</label>
+            </div>
+          </div>
+
+          <div>
+            <strong>Vỏ bánh</strong>
+            <div style="display: flex; flex-direction: column; gap: 4px; margin-top: 6px; font-size: 13px;">
+              <label><input type="checkbox" checked> Vỏ nướng truyền thống</label>
+              <label><input type="checkbox"> Vỏ dẻo hạt sen</label>
+              <label><input type="checkbox"> Vỏ than tre hiện đại</label>
+            </div>
+          </div>
+
+          <div>
+            <strong>Nhân bánh</strong>
+            <div style="display: flex; flex-direction: column; gap: 4px; margin-top: 6px; font-size: 13px;">
+              <label><input type="checkbox" checked> Thập cẩm jambon bát bửu</label>
+              <label><input type="checkbox" checked> Hạt sen trứng muối</label>
+              <label><input type="checkbox"> Trà xanh matcha</label>
+              <label><input type="checkbox"> Đậu xanh sầu riêng</label>
+            </div>
+          </div>
+
+          <div style="border-top: 1px solid #ccc; padding-top: 10px;">
+            <a href="m2-0.html" class="btn" style="width: 100%; text-align: center;">Đặt lại bộ lọc</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Cột phải: Lưới danh sách sản phẩm -->
+      <div>
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; flex-wrap: wrap; gap: 8px;">
+          <span>Hiển thị <strong>3</strong> sản phẩm phù hợp</span>
+          <div style="display: flex; align-items: center; gap: 6px;">
+            <label for="sort-select">Sắp xếp:</label>
+            <select id="sort-select">
+              <option>Đánh giá cao nhất</option>
+              <option>Giá: Thấp đến cao</option>
+              <option>Giá: Cao đến thấp</option>
+            </select>
+          </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px;">
+          <!-- Card 1 -->
+          <div style="border: 1px solid #000; padding: 12px; background: #fff; display: flex; flex-direction: column; justify-content: space-between;">
+            <div>
+              <div class="wf-img" style="height: 130px; margin-bottom: 8px;">
+                <span>[Ảnh: Hộp Hoàng Kim Thượng Hạng]</span>
+              </div>
+              <strong style="display: block;">Hộp Hoàng Kim Thượng Hạng</strong>
+              <small style="color: #666; display: block; margin-bottom: 4px;">Xưởng Bánh Nghệ Nhân Hà Nội · Đánh giá: 4.9 ★</small>
+              <p style="font-size: 12px; color: #444; margin-bottom: 8px;">Vỏ nướng · Nhân thập cẩm jambon bát bửu & hạt sen trứng muối.</p>
+            </div>
+            <div>
+              <div style="font-weight: 700; font-size: 16px; margin-bottom: 8px;">680.000đ</div>
+              <a href="m2-1.html" class="btn btn-primary" style="width: 100%; text-align: center;">Xem chi tiết & Đặt mua (M2.1)</a>
+            </div>
+          </div>
+
+          <!-- Card 2 -->
+          <div style="border: 1px solid #ccc; padding: 12px; background: #fff; display: flex; flex-direction: column; justify-content: space-between;">
+            <div>
+              <div class="wf-img" style="height: 130px; margin-bottom: 8px;">
+                <span>[Ảnh: Hộp Trăng Rằm Đoàn Viên]</span>
+              </div>
+              <strong style="display: block;">Hộp Trăng Rằm Đoàn Viên</strong>
+              <small style="color: #666; display: block; margin-bottom: 4px;">Bánh Cổ Truyền Trăng Vàng · Đánh giá: 4.8 ★</small>
+              <p style="font-size: 12px; color: #444; margin-bottom: 8px;">Vỏ nướng & dẻo · Đậu xanh hạt dưa, hạt sen.</p>
+            </div>
+            <div>
+              <div style="font-weight: 700; font-size: 16px; margin-bottom: 8px;">420.000đ</div>
+              <a href="m2-1.html" class="btn btn-primary" style="width: 100%; text-align: center;">Xem chi tiết & Đặt mua (M2.1)</a>
+            </div>
+          </div>
+
+          <!-- Card 3 -->
+          <div style="border: 1px solid #ccc; padding: 12px; background: #fff; display: flex; flex-direction: column; justify-content: space-between;">
+            <div>
+              <div class="wf-img" style="height: 130px; margin-bottom: 8px;">
+                <span>[Ảnh: Hộp Thu Sắc Ngũ Phúc]</span>
+              </div>
+              <strong style="display: block;">Hộp Thu Sắc Ngũ Phúc</strong>
+              <small style="color: #666; display: block; margin-bottom: 4px;">Đại lý Thu Hương · Đánh giá: 4.7 ★</small>
+              <p style="font-size: 12px; color: #444; margin-bottom: 8px;">Hộp 5 bánh mini · Khoai môn, đậu đỏ, mè đen.</p>
+            </div>
+            <div>
+              <div style="font-weight: 700; font-size: 16px; margin-bottom: 8px;">360.000đ</div>
+              <a href="m2-1.html" class="btn btn-primary" style="width: 100%; text-align: center;">Xem chi tiết & Đặt mua (M2.1)</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Trạng thái khi không có kết quả -->
+        <div class="t1-empty" style="margin-top: 24px;">
+          <strong>Không tìm thấy dòng bánh phù hợp với bộ lọc hiện tại?</strong>
+          <p style="color: #666; font-size: 13px; margin: 8px 0 12px;">
+            Bạn có thể thử bỏ các bộ lọc hoặc gửi yêu cầu để các xưởng làm bánh riêng theo mong muốn của bạn.
+          </p>
+          <a href="m3-1.html" class="btn btn-primary" data-needs-login="true" data-needs-nfc="true">
+            Tạo yêu cầu báo giá theo yêu cầu (M3.1) ›
+          </a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <aside class="wf-note" data-ref="AC-14.5">
+    Nhãn chốt theo tree test (Đ1, cây B). Lọc giá, thương hiệu, vỏ bánh, nhân bánh, Shop (nhiều trong 1 bộ lọc = HOẶC; giữa các bộ lọc = VÀ). Từ khóa khớp tên đơn vị nhận đặt hàng → khối 'Đơn vị cung cấp' tách khỏi danh sách sản phẩm, không lọc vùng giao (AC-14.5).
+  </aside>
+
+  <script src="../assets/data.js"></script>
+  <script src="../assets/wf.js"></script>
+</body>
+</html>

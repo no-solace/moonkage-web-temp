@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Moonkage – Đơn hàng (Kênh người bán) (B2.0)</title>
+  <link rel="stylesheet" href="../assets/wf.css">
+</head>
+<body data-zone="B" data-page="B2.0">
+  <main id="content">
+    <div class="t1-header">
+      <div>
+        <h1>Quản lý đơn hàng (B2.0)</h1>
+        <small style="color: #666;">Đơn hàng bánh có sẵn và đơn đặt theo yêu cầu của xưởng</small>
+      </div>
+    </div>
+
+    <!-- 2 Tab: Đơn Shop · Đơn đặt hàng -->
+    <div class="t1-tabs">
+      <a href="b2-0.html" class="t1-tab active">Đơn Shop có sẵn (2)</a>
+      <a href="b2-0.html?tab=custom" class="t1-tab">Đơn đặt theo yêu cầu (1)</a>
+    </div>
+
+    <div class="t1-chips">
+      <a href="#" class="chip active">Tất cả</a>
+      <a href="#" class="chip">Chờ xác nhận (1)</a>
+      <a href="#" class="chip">Đang giao (1)</a>
+      <a href="#" class="chip">Chưa có hóa đơn (1)</a>
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Mã đơn</th>
+          <th>Khách hàng & Địa chỉ</th>
+          <th>Sản phẩm</th>
+          <th>Tổng tiền</th>
+          <th>Trạng thái</th>
+          <th style="width: 140px;">Thao tác</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>#MK-ORD-9921</strong></td>
+          <td>Anh Minh (Ba Đình, Hà Nội)</td>
+          <td>Hộp Hoàng Kim Thượng Hạng (x1)</td>
+          <td><strong>705.000đ</strong></td>
+          <td><span class="t2-status">Chờ đóng gói</span></td>
+          <td><a href="b2-1.html" class="btn btn-primary">Xử lý đơn (B2.1) ›</a></td>
+        </tr>
+        <tr>
+          <td>
+            <strong>#MK-ORD-8810</strong><br>
+            <span class="t2-status" style="border: 1px solid #000; background:#eee;">Đang khiếu nại</span>
+          </td>
+          <td>Chị Lan (Hà Nội)</td>
+          <td>Hộp Trăng Rằm Đoàn Viên (x2)</td>
+          <td><strong>840.000đ</strong></td>
+          <td><span class="t2-status">Khách báo móp hộp</span></td>
+          <td><a href="b2-1.html" class="btn">Phản hồi khiếu nại ›</a></td>
+        </tr>
+      </tbody>
+    </table>
+  </main>
+
+  <aside class="wf-note" data-ref="FR-32">
+    Đơn hàng Kênh người bán (B2.0). Tab: Đơn Shop · Đơn đặt hàng. Lọc 'Chưa có hóa đơn'. Nhãn 'Đang khiếu nại' trên dòng đơn khi có khiếu nại mở (FR-32, FR-44).
+  </aside>
+
+  <script src="../assets/data.js"></script>
+  <script src="../assets/wf.js"></script>
+</body>
+</html>

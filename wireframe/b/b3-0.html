@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Moonkage – Yêu cầu báo giá Kênh người bán (B3.0)</title>
+  <link rel="stylesheet" href="../assets/wf.css">
+</head>
+<body data-zone="B" data-page="B3.0">
+  <main id="content">
+    <div class="t1-header">
+      <div>
+        <h1>Yêu cầu báo giá (Kênh người bán)</h1>
+        <small style="color: #666;">Quản lý các yêu cầu đặt hàng sỉ từ doanh nghiệp và khách đặt làm hộp riêng</small>
+      </div>
+      <div>
+        <span class="meta-tag">Trạng thái nhận đơn: <strong>Đang mở nhận đặt hàng</strong></span>
+      </div>
+    </div>
+
+    <!-- 3 Tab theo đặc tả: Mới · Đã báo giá · Đã đóng -->
+    <div class="t1-tabs">
+      <a href="b3-0.html" class="t1-tab active">Mới (Chờ báo giá - 1)</a>
+      <a href="b3-0.html?tab=quoted" class="t1-tab">Đã báo giá (2)</a>
+      <a href="b3-0.html?tab=closed" class="t1-tab">Đã đóng / Hết hạn (5)</a>
+    </div>
+
+    <!-- Bảng danh sách yêu cầu (Khuôn T1 Danh sách) -->
+    <table>
+      <thead>
+        <tr>
+          <th>Mã yêu cầu</th>
+          <th>Khách hàng & Nhu cầu</th>
+          <th>Quy cách & Số lượng</th>
+          <th>Hạn nhận hàng</th>
+          <th>Thời hạn gửi báo giá</th>
+          <th style="width: 220px;">Thao tác</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <strong>#RFQ-2026-104</strong><br>
+            <span class="t2-status">Lời mời yêu cầu mở</span>
+          </td>
+          <td>
+            <strong>Công ty TNHH Giải Pháp Mặt Trời</strong><br>
+            <small style="color: #666;">Liên hệ: Chị Lan (Hà Nội)</small>
+          </td>
+          <td>
+            150 hộp gỗ khắc laser logo doanh nghiệp<br>
+            <small style="color: #555;">Nhân: Thập cẩm jambon bát bửu & Hạt sen</small>
+          </td>
+          <td><strong>10/09/2026</strong></td>
+          <td>
+            <strong style="color: #000;">Còn 18 giờ</strong>
+          </td>
+          <td>
+            <a href="b3-1.html" class="btn">Xem chi tiết (B3.1)</a>
+            <a href="b3-2.html" class="btn btn-primary" style="margin-top: 4px;">Soạn báo giá (B3.2) ›</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="t1-pagination">
+      <span>Hiển thị 1 trong 1 yêu cầu mới chờ phản hồi</span>
+      <div>
+        <button class="btn btn-disabled" disabled>‹ Trang trước</button>
+        <button class="btn btn-disabled" disabled>Trang sau ›</button>
+      </div>
+    </div>
+  </main>
+
+  <aside class="wf-note" data-ref="FR-36">
+    Yêu cầu báo giá phía Người bán (B3.0). Ba tab: Mới · Đã báo giá · Đã đóng. Gộp cả yêu cầu gửi riêng cho xưởng và lời mời từ các yêu cầu mở (FR-36).
+  </aside>
+
+  <script src="../assets/data.js"></script>
+  <script src="../assets/wf.js"></script>
+</body>
+</html>

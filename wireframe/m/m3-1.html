@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Moonkage – Tạo yêu cầu báo giá (M3.1)</title>
+  <link rel="stylesheet" href="../assets/wf.css">
+</head>
+<body data-zone="M" data-page="M3.1">
+  <main id="content">
+    <h1>Tạo yêu cầu báo giá</h1>
+    <p style="color: #444; margin-bottom: 16px;">
+      Số lượng lớn, in logo hoặc hàng phải làm riêng, dù ít hộp. Yêu cầu của bạn sẽ được gửi tới các đơn vị cung cấp phù hợp.
+    </p>
+
+    <!-- Thanh bước (Form nhiều bước) -->
+    <div class="form-steps">
+      <div class="form-step-item active">1. Quy cách bánh & Yêu cầu in</div>
+      <div class="form-step-item">2. Thời gian & Địa điểm giao</div>
+      <div class="form-step-item">3. Xác nhận gửi</div>
+    </div>
+
+    <form class="t3-form" action="m6-2.html" method="GET">
+      <fieldset>
+        <legend>1. Quy cách bánh & Hộp quà</legend>
+
+        <div class="form-group">
+          <label for="f-box-type">Quy cách đóng hộp *</label>
+          <select id="f-box-type" required>
+            <option value="4">Hộp 4 bánh cao cấp (200g/bánh)</option>
+            <option value="6">Hộp 6 bánh thượng hạng (150g/bánh)</option>
+            <option value="2">Hộp 2 bánh truyền thống</option>
+            <option value="other">Quy cách riêng theo thiết kế</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="f-qty">Số lượng hộp dự kiến *</label>
+          <input type="number" id="f-qty" value="150" min="20" required>
+          <span class="field-error" style="display:none;" id="err-qty">Vui lòng nhập số lượng từ 20 hộp trở lên</span>
+        </div>
+
+        <div class="form-group">
+          <label>Nhân bánh mong muốn (chọn một hoặc nhiều)</label>
+          <div>
+            <label><input type="checkbox" checked> Thập cẩm jambon bát bửu</label> &nbsp;
+            <label><input type="checkbox" checked> Hạt sen trứng muối</label> &nbsp;
+            <label><input type="checkbox"> Trà xanh matcha</label> &nbsp;
+            <label><input type="checkbox"> Đậu xanh sầu riêng</label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="f-custom">Yêu cầu in ấn logo & Thiệp chúc mừng</label>
+          <select id="f-custom">
+            <option>Ép kim logo doanh nghiệp lên nắp hộp</option>
+            <option>Khắc laser lên hộp gỗ</option>
+            <option>In thiệp chúc mừng riêng từng người nhận</option>
+            <option>Không in logo (chỉ đóng hộp tiêu chuẩn)</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>File logo hoặc mẫu thiết kế (nếu có)</label>
+          <div class="wf-img" style="height: 80px;">
+            <span>[Kéo thả file vector logo (AI/PDF/PNG) hoặc bấm để chọn]</span>
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>2. Hạn nhận hàng & Địa điểm</legend>
+
+        <div class="form-group">
+          <label for="f-deadline">Hạn chót mong muốn nhận hàng *</label>
+          <input type="text" id="f-deadline" value="10/09/2026" placeholder="DD/MM/YYYY" required>
+        </div>
+
+        <div class="form-group">
+          <label for="f-area">Tỉnh / Thành phố giao hàng *</label>
+          <select id="f-area" required>
+            <option value="Hà Nội" selected>Hà Nội</option>
+            <option value="TP. Hồ Chí Minh">TP. Hồ Chí Minh</option>
+            <option value="Đà Nẵng">Đà Nẵng</option>
+            <option value="Khác">Tỉnh thành khác (liên tỉnh)</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="f-note">Ghi chú bổ sung cho xưởng sản xuất</label>
+          <textarea id="f-note" rows="3" placeholder="Ví dụ: Cần đóng gói hộp quà cẩn thận, xuất hóa đơn VAT cho công ty..."></textarea>
+        </div>
+      </fieldset>
+
+      <div style="display: flex; gap: 10px; align-items: center; margin-top: 10px;">
+        <button type="submit" class="btn btn-primary" data-needs-login="true" data-needs-nfc="true">
+          Gửi yêu cầu báo giá
+        </button>
+        <a href="m3-0.html" class="btn">Hủy & Quay lại</a>
+      </div>
+    </form>
+  </main>
+
+  <aside class="wf-note" data-ref="FR-16">
+    Tạo yêu cầu báo giá (yêu cầu gửi nhiều nơi). Người mua cần xác minh NFC (BR-23); nếu chưa xác minh → chuyển sang M6.4 trước rồi quay lại. Không có người bán phù hợp → gợi ý chỉnh số lượng, custom, hạn giao.
+  </aside>
+
+  <script src="../assets/data.js"></script>
+  <script src="../assets/wf.js"></script>
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Moonkage – Kết quả thanh toán (M4.3)</title>
+  <link rel="stylesheet" href="../assets/wf.css">
+</head>
+<body data-zone="M" data-page="M4.3">
+  <main id="content">
+    <h1>Kết quả thanh toán</h1>
+
+    <!-- Thanh bước (Khuôn T5) -->
+    <div class="t5-steps">
+      <div class="t5-step-item">1. Giỏ hàng</div>
+      <div class="t5-step-item">2. Địa chỉ & Hóa đơn</div>
+      <div class="t5-step-item">3. Cổng VNPay</div>
+      <div class="t5-step-item active">4. Kết quả đơn hàng</div>
+    </div>
+
+    <div style="border: 2px solid #000; padding: 24px; background: #fafafa; margin-bottom: 24px;">
+      <div style="font-size: 18px; font-weight: 700; margin-bottom: 8px;">
+        [✓] Thanh toán thành công!
+      </div>
+      <p style="color: #444; margin-bottom: 16px;">
+        Lần thanh toán <strong>#PAY-2026-99214</strong> đã được hệ thống ghi nhận. Tổng số tiền: <strong>1.145.000đ</strong>.
+      </p>
+
+      <p style="font-weight: 700; margin-bottom: 8px;">
+        Danh sách 02 đơn hàng vừa được khởi tạo:
+      </p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Mã đơn hàng con</th>
+            <th>Shop cung cấp</th>
+            <th>Sản phẩm</th>
+            <th>Số tiền</th>
+            <th>Trạng thái hiện tại</th>
+            <th>Chi tiết</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>#MK-ORD-9921</strong></td>
+            <td>Xưởng Bánh Nghệ Nhân Hà Nội</td>
+            <td>Hộp Hoàng Kim Thượng Hạng (x1)</td>
+            <td><strong>705.000đ</strong></td>
+            <td><span class="t2-status">Chờ người bán xác nhận</span></td>
+            <td><a href="m6-1-1.html" class="btn">Xem đơn ›</a></td>
+          </tr>
+          <tr>
+            <td><strong>#MK-ORD-9922</strong></td>
+            <td>Cơ Sở Bánh Cổ Truyền Trăng Vàng</td>
+            <td>Hộp Trăng Rằm Đoàn Viên (x1)</td>
+            <td><strong>440.000đ</strong></td>
+            <td><span class="t2-status">Chờ người bán xác nhận</span></td>
+            <td><a href="m6-1-1.html" class="btn">Xem đơn ›</a></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div style="margin-top: 20px; display: flex; gap: 12px;">
+        <a href="m6-1.html" class="btn btn-primary" style="padding: 10px 18px;">
+          Đến trang Quản lý đơn hàng (M6.1) ›
+        </a>
+        <a href="m1-0.html" class="btn" style="padding: 10px 18px;">
+          Về Trang chủ Moonkage (M1.0)
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <aside class="wf-note" data-ref="AC-09.7">
+    Hiện N đơn con vừa tạo, nhóm theo lần thanh toán duy nhất; trang này chỉ hiển thị kết quả xác nhận, không thay đổi trạng thái của đơn hàng (BR-25).
+  </aside>
+
+  <script src="../assets/data.js"></script>
+  <script src="../assets/wf.js"></script>
+</body>
+</html>

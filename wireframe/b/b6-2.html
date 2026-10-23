@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Moonkage – Vùng giao và phí giao (B6.2)</title>
+  <link rel="stylesheet" href="../assets/wf.css">
+</head>
+<body data-zone="B" data-page="B6.2">
+  <main id="content">
+    <h1>Vùng giao và phí giao hàng (B6.2)</h1>
+    <p style="color: #444; margin-bottom: 20px;">
+      Thiết lập các quận/huyện và tỉnh thành mà xưởng có thể giao hàng bánh có sẵn, kèm biểu phí vận chuyển tương ứng.
+    </p>
+
+    <form class="t3-form" action="b6-0.html" method="GET">
+      <fieldset>
+        <legend>1. Khu vực giao hàng nội thành (Hà Nội)</legend>
+
+        <div class="form-group">
+          <label>Các quận giao nhanh trong 24 giờ:</label>
+          <div style="font-size: 13px;">
+            <label><input type="checkbox" checked> Quận Ba Đình</label> &nbsp;
+            <label><input type="checkbox" checked> Quận Hoàn Kiếm</label> &nbsp;
+            <label><input type="checkbox" checked> Quận Cầu Giấy</label> &nbsp;
+            <label><input type="checkbox" checked> Quận Đống Đa</label> &nbsp;
+            <label><input type="checkbox" checked> Quận Tây Hồ</label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="fee-inner">Phí giao hàng đồng giá nội thành (VNĐ) *</label>
+          <input type="number" id="fee-inner" value="25000" step="5000" required>
+        </div>
+
+        <div class="form-group">
+          <label for="free-threshold">Miễn phí giao hàng cho đơn từ (VNĐ):</label>
+          <input type="number" id="free-threshold" value="1500000" step="100000">
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>2. Vận chuyển liên tỉnh (Toàn quốc)</legend>
+
+        <div class="form-group">
+          <label><input type="checkbox" checked id="c-intercity"> Xưởng có hỗ trợ nhận đơn giao liên tỉnh qua đơn vị vận chuyển đối tác</label>
+        </div>
+
+        <div class="form-group">
+          <label for="intercity-note">Thời gian đóng gói và gửi hàng liên tỉnh:</label>
+          <input type="text" id="intercity-note" value="Đóng thùng xốp bảo quản gửi bưu tá trong vòng 24 giờ từ khi nhận đơn">
+        </div>
+      </fieldset>
+
+      <div style="display: flex; gap: 10px; margin-top: 10px;">
+        <button type="submit" class="btn btn-primary" style="padding: 10px 20px;">
+          Lưu cài đặt vùng giao (B6.2) ›
+        </button>
+        <a href="b6-0.html" class="btn">Hủy & Quay lại</a>
+      </div>
+    </form>
+  </main>
+
+  <aside class="wf-note" data-ref="FR-28">
+    Vùng giao và phí giao (B6.2). Chỉ mở sau khi hồ sơ đã được duyệt (FR-28). Biểu phí này sẽ được tự động cộng vào tóm tắt giỏ hàng M4.0 khi người mua chọn địa chỉ tương ứng.
+  </aside>
+
+  <script src="../assets/data.js"></script>
+  <script src="../assets/wf.js"></script>
+</body>
+</html>

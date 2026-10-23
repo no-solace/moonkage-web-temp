@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Moonkage – Đơn vị cung cấp (M3.2)</title>
+  <link rel="stylesheet" href="../assets/wf.css">
+</head>
+<body data-zone="M" data-page="M3.2">
+  <main id="content">
+    <div class="t1-header">
+      <div>
+        <h1>Đơn vị cung cấp</h1>
+        <small style="color: #666;">Danh bạ các xưởng sản xuất, cơ sở thủ công nhận đặt bánh theo yêu cầu trên Moonkage</small>
+      </div>
+      <div>
+        <a href="m3-1.html" class="btn btn-primary" data-needs-login="true" data-needs-nfc="true">+ Tạo yêu cầu báo giá mở</a>
+      </div>
+    </div>
+
+    <!-- Ô tìm kiếm theo tên đơn vị (AC-14.6) -->
+    <div style="margin-bottom: 16px;">
+      <form action="m3-2.html" method="GET" style="display: flex; max-width: 420px;">
+        <input type="text" name="name" class="wf-search-input" placeholder="Tìm theo tên xưởng, cơ sở sản xuất..." value="Kinh Đô">
+        <button type="submit" class="wf-search-btn">[Tìm]</button>
+      </form>
+    </div>
+
+    <!-- Thanh lọc chip năng lực -->
+    <div class="t1-chips">
+      <a href="#" class="chip active">Tất cả đơn vị (3)</a>
+      <a href="#" class="chip">Có Shop bánh có sẵn</a>
+      <a href="#" class="chip">Chỉ nhận đặt hàng</a>
+      <a href="#" class="chip">Hỗ trợ in logo / khắc laser</a>
+    </div>
+
+    <!-- Bảng danh sách đơn vị cung cấp (Khuôn T1 Danh sách) -->
+    <table>
+      <thead>
+        <tr>
+          <th>Tên đơn vị & Địa chỉ</th>
+          <th>Hình thức phục vụ</th>
+          <th>Năng lực sản xuất</th>
+          <th>Thời gian làm mẫu</th>
+          <th style="width: 220px;">Thao tác</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <strong>Xưởng Bánh Nghệ Nhân Hà Nội</strong><br>
+            <small style="color: #666;">Quận Ba Đình, Hà Nội · Đánh giá: 4.9 ★ (42 hợp đồng)</small>
+          </td>
+          <td>
+            <span class="t2-status">Có Shop & Nhận đặt hàng</span>
+          </td>
+          <td>5.000 hộp/ngày · Khắc laser, ép kim vàng 24K, nhân tùy chọn</td>
+          <td>24 giờ</td>
+          <td>
+            <a href="m3-3.html" class="btn">Xem trang đơn vị (M3.3)</a>
+            <a href="m3-4.html" class="btn btn-primary" data-needs-login="true" data-needs-nfc="true" style="margin-top: 4px;">Gửi yêu cầu riêng (M3.4)</a>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <strong>Cơ Sở Bánh Cổ Truyền Trăng Vàng</strong><br>
+            <small style="color: #666;">Quận Hoàn Kiếm, Hà Nội · Đánh giá: 4.8 ★ (28 hợp đồng)</small>
+          </td>
+          <td>
+            <span class="t2-status">Có Shop & Nhận đặt hàng</span>
+          </td>
+          <td>2.000 hộp/ngày · Hộp sơn mài thủ công, công thức gia truyền</td>
+          <td>48 giờ</td>
+          <td>
+            <a href="m3-3.html" class="btn">Xem trang đơn vị (M3.3)</a>
+            <a href="m3-4.html" class="btn btn-primary" data-needs-login="true" data-needs-nfc="true" style="margin-top: 4px;">Gửi yêu cầu riêng (M3.4)</a>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <strong>Xưởng Bánh Mộc An Gourmet</strong><br>
+            <small style="color: #666;">Quận Cầu Giấy, Hà Nội · Đánh giá: 4.7 ★ (15 hợp đồng)</small>
+          </td>
+          <td>
+            <span class="t2-status" style="border-style:dashed;">Chỉ nhận đặt hàng</span>
+          </td>
+          <td>1.000 hộp/ngày · Bánh chay thực dưỡng, hộp mây tre đan</td>
+          <td>48 giờ</td>
+          <td>
+            <a href="m3-3.html" class="btn">Xem trang đơn vị (M3.3)</a>
+            <a href="m3-4.html" class="btn btn-primary" data-needs-login="true" data-needs-nfc="true" style="margin-top: 4px;">Gửi yêu cầu riêng (M3.4)</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="t1-pagination">
+      <span>Hiển thị 3 trong 3 đơn vị cung cấp</span>
+      <div>
+        <button class="btn btn-disabled" disabled>‹ Trang trước</button>
+        <button class="btn btn-disabled" disabled>Trang sau ›</button>
+      </div>
+    </div>
+  </main>
+
+  <aside class="wf-note" data-ref="AC-14.6">
+    Ô tìm theo tên (AC-14.6). Danh sách gồm cả người bán chỉ nhận đặt hàng (nhãn 'Chỉ nhận đặt hàng'). Người dùng có thể bấm vào xem trang đơn vị hoặc gửi yêu cầu trực tiếp.
+  </aside>
+
+  <script src="../assets/data.js"></script>
+  <script src="../assets/wf.js"></script>
+</body>
+</html>

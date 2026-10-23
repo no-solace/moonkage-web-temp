@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Moonkage – Đơn hàng (M6.1)</title>
+  <link rel="stylesheet" href="../assets/wf.css">
+</head>
+<body data-zone="M" data-page="M6.1">
+  <main id="content">
+    <div class="t1-header">
+      <div>
+        <h1>Đơn hàng</h1>
+        <small style="color: #666;">Quản lý toàn bộ đơn mua hàng có sẵn và đơn đặt theo yêu cầu của bạn</small>
+      </div>
+      <div>
+        <a href="m2-0.html" class="btn btn-primary">+ Mua thêm bánh</a>
+      </div>
+    </div>
+
+    <!-- Thanh tab 2 loại đơn -->
+    <div class="t1-tabs">
+      <a href="m6-1.html" class="t1-tab active">Mua hàng có sẵn (nhóm theo lần thanh toán)</a>
+      <a href="m6-1.html?tab=custom" class="t1-tab">Đặt theo yêu cầu</a>
+    </div>
+
+    <!-- Thanh lọc chip trạng thái -->
+    <div class="t1-chips">
+      <a href="#" class="chip active">Tất cả (3)</a>
+      <a href="#" class="chip">Chờ xác nhận (1)</a>
+      <a href="#" class="chip">Đang giao (1)</a>
+      <a href="#" class="chip">Đã giao (1)</a>
+      <a href="#" class="chip">Đã hủy (0)</a>
+    </div>
+
+    <!-- Bảng danh sách đơn hàng -->
+    <table>
+      <thead>
+        <tr>
+          <th style="width: 130px;">Mã đơn / Lần TT</th>
+          <th>Sản phẩm & Shop</th>
+          <th style="width: 100px;">Tổng tiền</th>
+          <th style="width: 130px;">Trạng thái</th>
+          <th style="width: 140px;">Hành động</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <strong>#MK-ORD-9921</strong><br>
+            <small style="color: #666;">23/10/2026</small>
+          </td>
+          <td>
+            <strong>Hộp Hoàng Kim Thượng Hạng</strong> (x1)<br>
+            <small style="color: #555;">Shop: Xưởng Bánh Nghệ Nhân Hà Nội · Giao tới: Hà Nội</small>
+          </td>
+          <td><strong>680.000đ</strong></td>
+          <td>
+            <span class="t2-status">Đang giao hàng</span><br>
+            <small>Giao trước 14:00 ngày mai</small>
+          </td>
+          <td>
+            <a href="m6-1-1.html" class="btn">Xem chi tiết</a>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <strong>#MK-ORD-8810</strong><br>
+            <small style="color: #666;">18/10/2026</small>
+          </td>
+          <td>
+            <strong>Hộp Trăng Rằm Đoàn Viên</strong> (x2)<br>
+            <small style="color: #555;">Shop: Bánh Cổ Truyền Trăng Vàng</small>
+          </td>
+          <td><strong>840.000đ</strong></td>
+          <td>
+            <span class="t2-status" style="background:#fff;">Đã giao</span><br>
+            <small>19/10/2026</small>
+          </td>
+          <td>
+            <a href="m6-1-1.html" class="btn">Xem chi tiết</a>
+            <div style="margin-top: 4px;">
+              <a href="m6-1-3.html" class="btn" style="font-size:12px;">Báo vấn đề với đơn</a>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- Phân trang -->
+    <div class="t1-pagination">
+      <span>Hiển thị 1–2 trong 2 đơn hàng</span>
+      <div>
+        <button class="btn btn-disabled" disabled>‹ Trang trước</button>
+        <button class="btn btn-disabled" disabled>Trang sau ›</button>
+      </div>
+    </div>
+  </main>
+
+  <aside class="wf-note" data-ref="AC-10.3">
+    Hai tab: Mua hàng có sẵn (nhóm theo lần thanh toán) · Đặt theo yêu cầu. Nút khiếu nại dùng chữ 'Báo vấn đề với đơn', chỉ hiện khi còn hạn khiếu nại.
+  </aside>
+
+  <script src="../assets/data.js"></script>
+  <script src="../assets/wf.js"></script>
+</body>
+</html>
