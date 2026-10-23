@@ -22,14 +22,15 @@ npm run build
 
 ## Cấu trúc `src/`
 
+Phụ thuộc một chiều: `app` → `pages` → `features` → `shared`. Bên ngoài một feature chỉ import qua `index.ts` của nó; `shared` không biết gì về nghiệp vụ.
+
 | Thư mục / file | Nội dung |
 | --- | --- |
-| `config.ts` | Đọc biến `VITE_*` |
-| `strings.ts` | Mọi câu chữ hiển thị |
-| `routes.ts` | Đường dẫn các trang |
-| `api/` | axios client (gắn Bearer, 401 → đăng xuất, `ApiError`), endpoint, gọi identity-service |
-| `auth/` | `AuthProvider`, `useAuth`, `RequireAuth` |
-| `realtime/` | Kết nối STOMP tới orchestrator-service (gateway `/ws`, token trong CONNECT), `useRealtime().subscribe` |
-| `features/nfc/` | Xác minh CCCD (FR-04): `useNfcSession`, panel QR, thẻ trạng thái |
-| `pages/` | Trang gắn vào router |
-| `styles/` | Token và component của DS (chép từ DS, không sửa tay), `app.css` cho bố cục |
+| `app/` | `main.tsx`, `App.tsx` (kiểm tra cấu hình, `AuthProvider`), `router.tsx`, `theme.ts`, `layout/AppShell.tsx` (header + `RealtimeProvider` theo token), `styles/` (token và component của DS chép từ DS, không sửa tay; `app.css` cho bố cục) |
+| `pages/` | Mỗi route một thư mục, chỉ lắp ghép feature: `login/`, `verify-nfc/`, `not-found/`, `config-error/` |
+| `features/auth/` | `api/` gọi đăng nhập, `model/` (`AuthProvider`, `useAuth`), `ui/` (`LoginForm`, `RequireAuth`), `strings.ts` |
+| `features/nfc/` | Xác minh CCCD (FR-04): `api/` (endpoint, kiểu dữ liệu, kênh STOMP), `model/` (`useNfcSession`, `useNfcStatus`, `qrPayload`), `ui/` (panel QR, thẻ trạng thái), `strings.ts` |
+| `shared/api/` | axios client (gắn Bearer, 401 → đăng xuất, `ApiError`), `httpStatus.ts`, `gateway.ts` (prefix service, `/ws`, `websocketUrl`), `realtime/` (kết nối STOMP tới orchestrator-service, nhận token qua prop, `useRealtime().subscribe`) |
+| `shared/config/` | `env.ts` (biến `VITE_*`), `routes.ts`, `strings.ts` (câu chữ dùng chung) |
+| `shared/ui/` | Component UI thuần (Button, Input…) khi có cái dùng lại thật |
+| `shared/utils/` | `format.ts` |
