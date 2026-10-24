@@ -539,6 +539,8 @@ summary { cursor: pointer; min-height: var(--control-h-sm); display: flex; align
 .seg label:has(input:checked) { background: var(--ink); color: var(--paper); border-color: var(--ink); }
 .seg input { width: 16px; height: 16px; }
 /* Chốt trong ô bảng: khung bảng cuộn ngang sẽ cắt phần lồi ra ngoài, nên đặt chốt trong ô */
+/* Chốt nằm ngoài mép trái khối (trong rãnh / lề) để không đè chữ; điện thoại lề hẹp thì giữ ở góc */
+@media (min-width: 768px) { .wf-pin { top: 0; left: -28px; } }
 td > .wf-pin, th > .wf-pin { top: 2px; left: 0; width: 20px; height: 20px; }
 /* Đường nếp gấp vẽ đè lên mép trên thanh vai để vẫn thấy khi chưa cuộn */
 body.show-fold::after { z-index: 1001; }
@@ -553,5 +555,4 @@ body.show-fold::after { z-index: 1001; }
 .wf-why-close { position: absolute; top: var(--s3); right: var(--s3); }
 @media (max-width: 767px) { .wf-role-bar-left, .wf-role-bar-right { flex-wrap: wrap; } .wf-why { visibility: hidden; } body.why-open .wf-why { visibility: visible; } }
 
-/* Cửa sổ ≥1860px (1440 khung + 420 bảng): bảng thuyết minh nằm cạnh trang, không che nội dung */
-@media (min-width: 1860px) { body.why-open { padding-right: var(--why-w); } }
+/* Khung 1440 luôn căn giữa như UI thật; bảng thuyết minh là ngăn kéo phủ, không đẩy trang */
