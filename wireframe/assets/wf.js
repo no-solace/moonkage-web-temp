@@ -24,7 +24,7 @@
   var NOTES_ON = load('wf_notes_visible', 'true') !== 'false';
   var GRID_ON = load('wf_grid', 'false') === 'true';
   var FOLD_ON = load('wf_fold', 'false') === 'true';
-  var WHY_OPEN = load('wf_why_open', 'false') === 'true';
+  var WHY_OPEN = load('wf_why_open', 'true') === 'true';
 
   var isSeller = ROLE === 'seller-pending' || ROLE === 'seller-open';
   var isNfc = ROLE === 'buyer-nfc' || ROLE === 'seller-open' || ROLE === 'admin';
