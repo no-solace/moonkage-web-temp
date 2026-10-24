@@ -463,8 +463,16 @@ body.hide-notes .wf-note, body.hide-notes .wf-pin, body.hide-notes .wf-why { dis
 .ix-legend { display: flex; gap: var(--s6); flex-wrap: wrap; margin-top: var(--s4); font: var(--t-sm); color: var(--ink-2); }
 .flow { padding: var(--s4) 0; border-top: 1px solid var(--line); }
 .flow-steps { display: flex; flex-wrap: wrap; gap: var(--s2); align-items: center; margin-top: var(--s2); }
-.flow-steps a { display: inline-flex; align-items: center; min-height: var(--control-h-sm); padding: 0 var(--s3); border: 1px solid var(--line-strong); border-radius: var(--r-md); font: var(--t-sm); text-decoration: none; }
+.flow-lane { display: grid; grid-template-columns: 160px 1fr; gap: var(--s4); align-items: start; margin-top: var(--s3); }
+.flow-lane-label { font: var(--t-caption); font-weight: 700; color: var(--ink-2); padding-top: 10px; }
+.flow-lane .flow-steps { margin-top: 0; }
+.flow-steps a { display: inline-flex; flex-direction: column; justify-content: center; min-height: var(--control-h); padding: 4px var(--s3); border: 1px solid var(--line-strong); border-radius: var(--r-md); font: var(--t-sm); text-decoration: none; }
+.flow-steps a.opt { border-style: dashed; }
 .flow-steps a:hover { background: var(--ink); color: var(--paper); }
+.flow-role { font: var(--t-caption); color: var(--ink-3); }
+.flow-steps a:hover .flow-role { color: inherit; }
+.flow-handoff { font: var(--t-caption); font-weight: 700; padding: 2px 6px; border-radius: var(--r-sm); background: var(--ink); color: var(--paper); }
+@media (max-width: 767px) { .flow-lane { grid-template-columns: 1fr; gap: var(--s1); } .flow-lane-label { padding-top: 0; } }
 .flow-steps .arr { color: var(--ink-3); }
 
 /* 22. TRANG XÁC THỰC: login__form DS rộng 400px ------------------------------ */

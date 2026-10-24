@@ -27,7 +27,10 @@
   var WHY_OPEN = load('wf_why', 'false') === 'true';
 
   var isSeller = ROLE === 'seller-pending' || ROLE === 'seller-open';
-  var isNfc = ROLE === 'buyer-nfc' || ROLE === 'seller-open' || ROLE === 'admin';
+  // Khai hồ sơ người bán (M7.1) bắt buộc xác minh trước, nên mọi chủ người bán đều đã xác minh
+  var isNfc = ROLE === 'buyer-nfc' || isSeller;
+  // Người đang đăng nhập theo vai: người mua là anh Minh, chủ người bán là cô Hoa (F4), quản trị là chị Hà
+  var USER = isSeller ? { name: 'Cô Hoa', ini: 'MH' } : ROLE === 'admin' ? { name: 'Trần Hà', ini: 'TH' } : { name: 'Anh Minh', ini: 'AM' };
 
   function esc(s) {
     return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) {
@@ -75,12 +78,16 @@
       '<button type="submit" class="wf-search-btn">Tìm</button></form>';
     top += '<div class="wf-header-actions">';
     top += link('m/m1-1.html', '<span class="k">Giao tới</span> <strong>Hà Nội ▾</strong>', 'wf-hbtn');
+    if (ROLE === 'admin') {
+      // Tài khoản quản trị là tài khoản nội bộ: xem được trang công khai, không có giỏ, đơn, tài khoản mua
+      return { top: top + link('q/q1-0.html', 'Về Quản trị ›', 'btn btn-sm') + '</div>', nav: headerMNav() };
+    }
     top += link('m/m4-0.html', '<span class="wf-icon" aria-hidden="true">GH</span><span class="lbl">Giỏ hàng</span> <span class="count">2</span>', 'wf-hbtn', ' data-needs-login="true" aria-label="Giỏ hàng, 2 món"');
     if (ROLE === 'guest') {
       top += link('m/m5-1.html', 'Đăng nhập', 'btn btn-primary btn-sm');
     } else {
       top += link('m/m6-6.html', '<span class="wf-icon" aria-hidden="true">TB</span> <span class="count">3</span>', 'wf-hbtn', ' aria-label="Thông báo, 3 chưa đọc"');
-      top += '<div class="wf-dd">' + link('m/m6-0.html', '<span class="avatar" style="width:28px;height:28px">AM</span><span class="lbl">Tài khoản ▾</span>', 'wf-hbtn', ' aria-haspopup="true"') +
+      top += '<div class="wf-dd">' + link('m/m6-0.html', '<span class="avatar" style="width:28px;height:28px">' + USER.ini + '</span><span class="lbl">Tài khoản ▾</span>', 'wf-hbtn', ' aria-haspopup="true"') +
         '<div class="wf-dd-menu right">' +
         link('m/m6-0.html', 'Tổng quan', 'wf-dd-item') +
         link('m/m6-1.html', 'Đơn hàng', 'wf-dd-item') +
@@ -96,21 +103,24 @@
     }
     top += '</div>';
 
+    return { top: top, nav: headerMNav() };
+  }
+  function headerMNav() {
     var nav = link('m/m2-0.html', 'Mua hàng có sẵn', 'wf-nav-item' + (starts('M2.') ? ' active' : ''));
     nav += '<div class="wf-dd">' + link('m/m3-0.html', 'Đặt theo yêu cầu ▾', 'wf-nav-item' + (starts('M3.') ? ' active' : ''), ' aria-haspopup="true"') +
       '<div class="wf-dd-menu">' +
       '<div class="wf-dd-desc">Số lượng lớn, in logo hoặc hàng phải làm riêng, dù ít hộp.</div>' +
-      link('m/m3-1.html', 'Tạo yêu cầu báo giá <small>gửi nhiều nơi</small>', 'wf-dd-item') +
+      link('m/m3-1.html', 'Tạo yêu cầu báo giá <small>gửi nhiều nơi</small>', 'wf-dd-item', ' data-needs-login="true" data-needs-nfc="true"') +
       link('m/m3-2.html', 'Đơn vị cung cấp <small>chọn một nơi</small>', 'wf-dd-item') +
       '</div></div>';
-    return { top: top, nav: nav };
+    return nav;
   }
 
   function headerB() {
-    var open = ROLE === 'seller-open' || ROLE === 'admin';
+    var open = ROLE === 'seller-open';
     var top = link('b/b1-0.html', LOGO_MARK + 'MOONKAGE<span class="zone">Kênh người bán</span>', 'wf-logo');
     top += '<div class="wf-header-actions">' +
-      '<span class="badge ' + (open ? 'badge-soft' : 'badge-dash') + '">Bánh Nghệ Nhân Hoa Mai · ' + (open ? 'Đang mở bán' : 'Hồ sơ chờ duyệt') + '</span>' +
+      '<span class="badge ' + (open ? 'badge-soft' : 'badge-dash') + '">Xưởng Bánh Nghệ Nhân · ' + (open ? 'Đang mở bán' : 'Hồ sơ chờ duyệt') + '</span>' +
       '</div>';
     var nav = link('b/b1-0.html', 'Tổng quan', 'wf-nav-item' + (PAGE_ID === 'B1.0' || PAGE_ID === 'B1.1' ? ' active' : ''));
     if (open) {
@@ -153,7 +163,7 @@
     return '<footer class="wf-footer"><div class="wf-footer-in">' +
       '<div><strong>MOONKAGE</strong> · Wireframe low-fi, không phải giao diện cuối</div>' +
       '<div class="wf-footer-links">' +
-      link('m/m7-0.html', 'Bán hàng trên Moonkage') +
+      (isSeller ? link('b/b1-0.html', 'Kênh người bán') : link('m/m7-0.html', 'Bán hàng trên Moonkage')) +
       link('m/m8-0.html', 'Chính sách mua bán') +
       link('index.html', 'Mục lục wireframe') +
       '</div></div></footer>';
@@ -186,29 +196,44 @@
       back: 'm/m1-0.html', backText: 'Về trang chủ'
     };
     if (ZONE === 'B') {
-      if (/^B[2-5]\./.test(p)) return {
-        allow: ['seller-open', 'admin'], suggest: 'seller-open',
-        reason: 'Đơn hàng, yêu cầu báo giá, sản phẩm và tiền chỉ mở sau khi hồ sơ được duyệt và đã đóng phí mở bán (FR-27).',
+      if (p === 'B1.1' && ROLE === 'seller-open') return {
+        allow: ['seller-pending'], suggest: 'seller-pending',
+        reason: 'Phí mở bán đã đóng nên trang này không còn trong menu. Hóa đơn phí mở bán tải ở Thông tin pháp lý (B6.1).',
+        back: 'b/b6-1.html', backText: 'Mở Thông tin pháp lý'
+      };
+      if (/^B[2-5]\.|^B6\.[23]/.test(p)) return {
+        allow: ['seller-open'], suggest: 'seller-open',
+        reason: 'Đơn hàng, yêu cầu báo giá, sản phẩm, tiền, vùng giao và điều kiện nhận đặt hàng chỉ mở sau khi hồ sơ được duyệt và đã đóng phí mở bán (FR-27).',
         back: 'b/b1-0.html', backText: 'Về Tổng quan Kênh người bán'
       };
       return {
-        allow: ['seller-pending', 'seller-open', 'admin'], suggest: 'seller-pending',
+        allow: ['seller-pending', 'seller-open'], suggest: 'seller-pending',
         reason: 'Kênh người bán chỉ dành cho tài khoản đã khai hồ sơ người bán.',
         back: 'm/m7-0.html', backText: 'Xem Bán hàng trên Moonkage'
       };
     }
+    if ((p === 'M7.0' || p === 'M7.1') && isSeller) return {
+      allow: ['guest', 'buyer', 'buyer-nfc'], suggest: 'buyer',
+      reason: 'Tài khoản đã là chủ người bán nên lối "Bán hàng trên Moonkage" được thay bằng "Kênh người bán". Hồ sơ đã nộp xem và nộp lại ở Thông tin pháp lý (B6.1).',
+      back: 'b/b1-0.html', backText: 'Vào Kênh người bán'
+    };
+    if (p === 'M7.0' && ROLE === 'admin') return {
+      allow: ['guest', 'buyer', 'buyer-nfc'], suggest: 'buyer',
+      reason: 'Tài khoản quản trị không khai hồ sơ người bán.',
+      back: 'q/q1-0.html', backText: 'Về Quản trị'
+    };
     if (['M3.1', 'M3.4', 'M7.1'].indexOf(p) !== -1) return {
-      allow: ['buyer-nfc', 'seller-open', 'admin'], suggest: 'buyer-nfc',
+      allow: p === 'M7.1' ? ['buyer-nfc'] : ['buyer-nfc', 'seller-pending', 'seller-open'], suggest: 'buyer-nfc',
       reason: 'Thao tác này cần xác minh danh tính bằng CCCD gắn chip trước (BR-23).',
       back: 'm/m6-4.html?next=' + p.toLowerCase().replace(/\./g, '-') + '.html', backText: 'Đi tới Xác minh danh tính'
     };
-    if (p === 'M7.0') return {
-      allow: ['guest', 'buyer', 'buyer-nfc', 'admin'], suggest: 'buyer',
-      reason: 'Tài khoản đã là chủ người bán nên lối "Bán hàng trên Moonkage" được thay bằng "Kênh người bán".',
-      back: 'b/b1-0.html', backText: 'Vào Kênh người bán'
+    if (/^M5\.[123]$/.test(p) && ROLE !== 'guest') return {
+      allow: ['guest'], suggest: 'guest',
+      reason: 'Bạn đang đăng nhập nên không cần đăng nhập, đăng ký hay xác nhận tài khoản lại. Đổi mật khẩu vẫn mở được từ Thông tin cá nhân.',
+      back: 'm/m1-0.html', backText: 'Về trang chủ'
     };
     if (/^M4\.|^M6\./.test(p)) return {
-      allow: ['buyer', 'buyer-nfc', 'seller-pending', 'seller-open', 'admin'], suggest: 'buyer',
+      allow: ['buyer', 'buyer-nfc', 'seller-pending', 'seller-open'], suggest: 'buyer',
       reason: 'Trang này cần đăng nhập (AC-02.3). Khách không có giỏ hàng.',
       back: 'm/m5-1.html?next=' + p.toLowerCase().replace(/\./g, '-') + '.html', backText: 'Đăng nhập'
     };
@@ -241,7 +266,7 @@
       return link(href, label + (right ? ' <small class="faint">' + right + '</small>' : ''), 'wf-account-nav-link' + (on ? ' active' : ''));
     }
     var status = { 'buyer-nfc': 'Đã xác minh danh tính', 'seller-open': 'Chủ người bán · đã mở bán', 'seller-pending': 'Chủ người bán · chờ duyệt', 'admin': 'Quản trị' }[ROLE] || 'Chưa xác minh danh tính';
-    var html = '<div class="wf-account-user-card"><span class="avatar">AM</span><div><strong>Anh Minh</strong><br><small class="muted">' + status + '</small></div></div>' +
+    var html = '<div class="wf-account-user-card"><span class="avatar">' + USER.ini + '</span><div><strong>' + USER.name + '</strong><br><small class="muted">' + status + '</small></div></div>' +
       '<nav class="wf-account-nav-list" aria-label="Tài khoản">' +
       item('m/m6-0.html', 'Tổng quan', PAGE_ID === 'M6.0') +
       item('m/m6-1.html', 'Đơn hàng', starts('M6.1')) +
@@ -294,6 +319,11 @@
     document.querySelectorAll('[data-hide]').forEach(function (el) {
       if (el.getAttribute('data-hide').split(/\s+/).indexOf(ROLE) !== -1) el.style.display = 'none';
     });
+    // Trạng thái trang theo tham số: data-if-query="hs=more" chỉ hiện khi URL có ?hs=more; data-unless-query ngược lại
+    var qs = new URLSearchParams(location.search);
+    function hit(el, attr) { var kv = el.getAttribute(attr).split('='); return qs.get(kv[0]) === kv[1]; }
+    document.querySelectorAll('[data-if-query]').forEach(function (el) { if (!hit(el, 'data-if-query')) el.style.display = 'none'; });
+    document.querySelectorAll('[data-unless-query]').forEach(function (el) { if (hit(el, 'data-unless-query')) el.style.display = 'none'; });
   }
 
   // 8. Bảng "Thuyết minh bố cục" ----------------------------------------------
@@ -455,17 +485,27 @@
   function renderIndex() {
     var root = document.getElementById('ix-root');
     if (!root || typeof PAGES === 'undefined') return;
+    // Mỗi bước là link đặt sẵn vai của bước đó; "đổi người" đánh dấu chỗ người khác cầm máy (người mua → người bán → quản trị)
     var html = '<section class="section"><div class="section-head"><h2>Luồng bấm xuyên suốt</h2>' +
-      '<p>Chọn đúng vai ở thanh dưới rồi bấm lần lượt từng bước.</p></div>';
+      '<p>Bấm một bước thì vai ở thanh dưới tự đổi theo bước đó. Trong cùng một nhánh, các bước liền nhau đi được bằng link / nút trên trang; ' +
+      '<span class="badge badge-dash">[ ]</span> là bước có điều kiện, <span class="flow-handoff">đổi người</span> là chỗ người khác tiếp tục; vai đổi mà không có nhãn là cùng người đổi trạng thái (đăng nhập, xác minh xong, nộp hồ sơ, đóng phí).</p></div>';
     FLOWS.forEach(function (f) {
-      html += '<div class="flow"><div class="row-between"><div><strong>' + f.id + ' · ' + esc(f.name) + '</strong> <span class="muted sm">— ' + esc(f.persona) + '</span></div></div>' +
-        '<div class="flow-steps">';
-      f.steps.forEach(function (id, i) {
-        var p = findPage(id);
-        if (i) html += '<span class="arr">→</span>';
-        html += p ? '<a href="' + p.file + '" title="' + esc(p.name) + '">' + id + ' ' + esc(p.name) + '</a>' : '<span class="badge badge-dash">' + id + '</span>';
+      html += '<div class="flow"><div><strong>' + f.id + ' · ' + esc(f.name) + '</strong> <span class="muted sm">— ' + esc(f.persona) + '</span></div>';
+      f.lanes.forEach(function (lane) {
+        html += '<div class="flow-lane"><span class="flow-lane-label">' + esc(lane.label) + '</span><div class="flow-steps">';
+        lane.steps.forEach(function (st, i) {
+          var id = st[0], role = st[1], opt = st[2] === 'opt';
+          var p = findPage(id.split('?')[0]);
+          var q = id.indexOf('?') !== -1 ? '?' + id.split('?')[1] : '';
+          if (i) html += '<span class="arr">→</span>';
+          if (st[2] === 'handoff') html += '<span class="flow-handoff">đổi người</span>';
+          html += p ? '<a href="' + p.file + q + '" data-set-role="' + role + '" class="flow-step' + (opt ? ' opt' : '') + '" title="' + esc(p.name) + ' · vai ' + esc(roleName(role)) + '">' +
+            (opt ? '[' : '') + id.split('?')[0] + ' ' + esc(p.name) + (q ? ' <small>' + esc(q.slice(1)) + '</small>' : '') + (opt ? ']' : '') +
+            '<span class="flow-role">' + esc(roleName(role)) + '</span></a>' : '<span class="badge badge-dash">' + id + '</span>';
+        });
+        html += '</div></div>';
       });
-      html += '</div>' + (f.exceptions ? '<p class="sm muted mt-1">Nhánh / ngoại lệ: ' + esc(f.exceptions) + '</p>' : '') + '</div>';
+      html += (f.exceptions ? '<p class="sm muted mt-1">Nhánh / ngoại lệ: ' + esc(f.exceptions) + '</p>' : '') + '</div>';
     });
     html += '</section>';
 

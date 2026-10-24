@@ -49,7 +49,7 @@
       var next = new URLSearchParams(location.search).get('next');
       var role = 'buyer';
       try { role = localStorage.getItem('wf_role') || 'buyer'; } catch (e) {}
-      var verified = role === 'buyer-nfc' || role === 'seller-open' || role === 'admin';
+      var verified = role === 'buyer-nfc' || role === 'seller-pending' || role === 'seller-open';
       if (next) { document.getElementById('ret').hidden = false; document.getElementById('ret-label').textContent = next; }
       document.getElementById('todo').hidden = verified;
       document.getElementById('done').hidden = !verified;

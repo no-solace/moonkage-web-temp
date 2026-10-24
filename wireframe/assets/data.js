@@ -26,109 +26,68 @@ const ROLES = [
   }
 ];
 
+// Luồng bấm xuyên suốt (WIREFRAME_PLAN mục 7). Mỗi bước: [mã trang (kèm ?trạng thái), vai đang bấm, cờ].
+// Cờ "opt" = bước có điều kiện; "handoff" = người khác tiếp tục (người mua → người bán → quản trị).
+// Vai đổi mà không có "handoff" là cùng một người đổi trạng thái (đăng nhập, xác minh xong, nộp hồ sơ, đóng phí).
 const FLOWS = [
   {
-    "id": "F1",
-    "name": "Mua hàng có sẵn",
-    "persona": "Anh Minh; chị Lan buổi tối",
-    "steps": [
-      "M1.0",
-      "M1.1",
-      "M2.0",
-      "M2.1",
-      "M5.1",
-      "M4.0",
-      "M4.1",
-      "M4.2",
-      "M4.3",
-      "M6.1",
-      "M6.1.1"
+    "id": "F1", "name": "Mua hàng có sẵn", "persona": "Anh Minh; chị Lan buổi tối",
+    "lanes": [
+      { "label": "Chính", "steps": [["M1.0", "guest"], ["M1.1", "guest"], ["M2.0", "guest"], ["M2.1", "guest"], ["M5.1", "guest", "opt"], ["M4.0", "buyer"], ["M4.1", "buyer"], ["M4.2", "buyer"], ["M4.3", "buyer"], ["M6.1", "buyer"], ["M6.1.1", "buyer"]] },
+      { "label": "Vượt tồn kho / ngưỡng → F3", "steps": [["M4.0", "buyer-nfc"], ["M3.4", "buyer-nfc"]] }
     ],
-    "exceptions": "Vượt tồn kho/ngưỡng ở M4.0 → F3 (M3.4)"
+    "exceptions": "Khách bấm Thêm vào giỏ → M5.1, đăng nhập xong tự quay về và thêm vào giỏ (AC-02.3). Vượt tồn kho/ngưỡng ở M4.0 → F3 (M3.4)"
   },
   {
-    "id": "F2",
-    "name": "Yêu cầu báo giá có in logo",
-    "persona": "Chị Lan",
-    "steps": [
-      "M1.0",
-      "M3.0",
-      "M3.1",
-      "M6.4",
-      "M6.2",
-      "M6.2.1",
-      "M6.2.2",
-      "M4.2",
-      "M6.1.2"
+    "id": "F2", "name": "Yêu cầu báo giá có in logo", "persona": "Chị Lan",
+    "lanes": [
+      { "label": "Người mua", "steps": [["M1.0", "buyer"], ["M3.0", "buyer"], ["M6.4", "buyer", "opt"], ["M3.1", "buyer-nfc"], ["M6.2", "buyer-nfc"], ["M6.2.1", "buyer-nfc"], ["M6.2.2", "buyer-nfc"], ["M4.2?for=coc", "buyer-nfc"], ["M6.1.2", "buyer-nfc"], ["M6.1.2?state=da-giao", "buyer-nfc"], ["M4.2?for=con-lai", "buyer-nfc"]] },
+      { "label": "Người bán báo giá", "steps": [["B3.0", "seller-open"], ["B3.1", "seller-open"], ["B3.2", "seller-open"], ["B3.0", "seller-open"]] },
+      { "label": "Người bán làm đơn", "steps": [["B2.0?tab=dh", "seller-open"], ["B2.2", "seller-open"], ["B5.2", "seller-open"]] },
+      { "label": "Quản trị", "steps": [["Q4.0", "admin"], ["Q4.1", "admin"]] }
     ],
-    "exceptions": "Phía người bán: B3.0 → B3.1 → B3.2; B2.2; B5.2. Quản trị: Q4.1"
+    "exceptions": "Thứ tự thật: người mua gửi (M3.1) → người bán báo giá (B3.0–B3.2) → người mua so sánh, đặt cọc (M6.2.1–M4.2) → người bán làm maket, xin giải ngân (B2.2, B5.2) → quản trị duyệt giải ngân (Q4.1)"
   },
   {
-    "id": "F3",
-    "name": "Gửi yêu cầu cho một đơn vị",
-    "persona": "Chị Thảo; anh Quân; bạn Vy",
-    "steps": [
-      "M2.0",
-      "M3.3",
-      "M3.4",
-      "M6.4",
-      "M6.2",
-      "M6.2.1",
-      "M6.2.2"
+    "id": "F3", "name": "Gửi yêu cầu cho một đơn vị", "persona": "Chị Thảo; anh Quân; bạn Vy",
+    "lanes": [
+      { "label": "Chính", "steps": [["M3.0", "buyer"], ["M3.2", "buyer"], ["M3.3", "buyer"], ["M6.4", "buyer", "opt"], ["M3.4", "buyer-nfc"], ["M6.2", "buyer-nfc"], ["M6.2.1", "buyer-nfc"], ["M6.2.2", "buyer-nfc"]] },
+      { "label": "Từ ô tìm kiếm (AC-14.5)", "steps": [["M2.0?q=Nghệ+Nhân", "buyer-nfc"], ["M3.3", "buyer-nfc"]] },
+      { "label": "Từ chi tiết sản phẩm", "steps": [["M2.1", "buyer-nfc"], ["M3.4", "buyer-nfc"]] }
     ],
-    "exceptions": "Không custom → bỏ tab Maket"
+    "exceptions": "Từ M6.2.2 nối tiếp F2. Không custom → bỏ tab Maket"
   },
   {
-    "id": "F4",
-    "name": "Trở thành người bán",
-    "persona": "Cô Hoa; chị Thảo; anh Quân",
-    "steps": [
-      "M7.0",
-      "M6.4",
-      "M7.1",
-      "B1.0",
-      "Q2.0",
-      "Q2.1",
-      "B1.1",
-      "M4.2",
-      "B6.2",
-      "B4.1"
+    "id": "F4", "name": "Trở thành người bán", "persona": "Cô Hoa; chị Thảo; anh Quân",
+    "lanes": [
+      { "label": "Chính", "steps": [["M7.0", "buyer"], ["M6.4", "buyer", "opt"], ["M7.1", "buyer-nfc"], ["B1.0", "seller-pending"], ["Q2.0", "admin", "handoff"], ["Q2.1", "admin"], ["B1.0?hs=ok", "seller-pending", "handoff"], ["B1.1", "seller-pending"], ["M4.2?for=phi", "seller-pending"], ["B6.2", "seller-open"], ["B6.0", "seller-open"], ["B6.3", "seller-open"]] },
+      { "label": "Cần bổ sung", "steps": [["Q2.1", "admin"], ["B1.0?hs=more", "seller-pending", "handoff"], ["B6.1?hs=more", "seller-pending"], ["B1.0", "seller-pending"]] }
     ],
-    "exceptions": "Cần bổ sung → B6.1 nộp lại"
+    "exceptions": "Sau khi mở bán: đăng sản phẩm (B4.1, xem F7) và/hoặc khai điều kiện nhận đặt hàng (B6.3)"
   },
   {
-    "id": "F5",
-    "name": "Khiếu nại",
-    "persona": "Người mua; người bán; quản trị",
-    "steps": [
-      "M6.1.1",
-      "M6.1.3",
-      "B2.1",
-      "Q5.0",
-      "Q5.1",
-      "M6.6",
-      "Q4.2"
+    "id": "F5", "name": "Khiếu nại", "persona": "Người mua; người bán; quản trị",
+    "lanes": [
+      { "label": "Chính", "steps": [["M6.1", "buyer"], ["M6.1.1", "buyer"], ["M6.1.3", "buyer"], ["B2.0", "seller-open", "handoff"], ["B2.1", "seller-open"], ["Q5.0", "admin", "handoff"], ["Q5.1", "admin"], ["M6.6", "buyer", "handoff"], ["M6.1.3?state=done", "buyer"], ["Q4.2", "admin", "handoff"]] },
+      { "label": "Đơn đặt hàng", "steps": [["M6.1.2", "buyer"], ["M6.1.3", "buyer"], ["B2.2", "seller-open", "handoff"]] }
     ],
     "exceptions": "Quá hạn: nút ẩn. VNPay lỗi → tab Cần xử lý tay (Q5.0). Số hoàn > đang giữ: Q-01"
   },
   {
-    "id": "F6",
-    "name": "Xác minh NFC",
-    "persona": "Mọi người dùng cần đặt hàng hoặc bán",
-    "steps": [
-      "M3.1",
-      "M6.4"
+    "id": "F6", "name": "Xác minh NFC", "persona": "Mọi người dùng cần đặt hàng hoặc bán",
+    "lanes": [
+      { "label": "Từ Tạo yêu cầu báo giá", "steps": [["M3.1", "buyer"], ["M6.4", "buyer"], ["M3.1", "buyer-nfc"]] },
+      { "label": "Từ Gửi yêu cầu cho đơn vị", "steps": [["M3.4", "buyer"], ["M6.4", "buyer"], ["M3.4", "buyer-nfc"]] },
+      { "label": "Từ Khai hồ sơ người bán", "steps": [["M7.1", "buyer"], ["M6.4", "buyer"], ["M7.1", "buyer-nfc"]] }
     ],
-    "exceptions": "Mở app Verify (giả lập) → M6.4 tự cập nhật"
+    "exceptions": "App Verify V1–V5 đã xong, ở đây giả lập bằng một nút; sai thẻ → V3; khóa sau 5 lần (Q-30 tạm)"
   },
   {
-    "id": "F7",
-    "name": "Quản lý sản phẩm",
-    "persona": "Anh Quân",
-    "steps": [
-      "B4.0",
-      "B4.1",
-      "Q3.0"
+    "id": "F7", "name": "Quản lý sản phẩm", "persona": "Anh Quân",
+    "lanes": [
+      { "label": "Người bán", "steps": [["B4.0", "seller-open"], ["B4.1", "seller-open"], ["B4.0", "seller-open"]] },
+      { "label": "Quản trị gỡ", "steps": [["Q3.0", "admin"]] },
+      { "label": "Bị gỡ", "steps": [["B4.0", "seller-open"], ["B4.1?removed=1", "seller-open"]] }
     ],
     "exceptions": "Bị gỡ → B4.1 chỉ xem"
   }
