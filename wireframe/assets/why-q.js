@@ -145,7 +145,7 @@ WHY['Q5.1'] = {
       'Viền đậm; các phần cách 12px.',
       '4/12, dính.'
     ], 4),
-    B('Ba lựa chọn dạng chip', 'act', true, ['Thao tác chọn một trong ba quyết định.', '3 nhãn ≤ 8 ký tự.', 'Chip đặc = đang chọn; chưa chọn thì nút Gửi mờ.', 'Chip cách nhau 8px (cùng nhóm), cách ô số tiền 12px.', 'Trong hộp 267px (315 trừ đệm) ba chip chiếm 2 hàng; mỗi chip vẫn cao 36px nên đủ vùng bấm. Gọn hơn 3 thẻ chọn 56px (tiết kiệm ~100px chiều cao).'])
+    B('Ba lựa chọn dạng chip', 'act', true, ['Thao tác chọn một trong ba quyết định.', '3 nhãn ≤ 8 ký tự.', 'Chip đặc = đang chọn; chưa chọn thì nút Gửi mờ.', 'Chip cách nhau 8px (cùng nhóm), cách ô số tiền 12px.', 'Trong hộp 347px (315 trừ đệm) ba chip chiếm 2 hàng; mỗi chip vẫn cao 36px nên đủ vùng bấm. Gọn hơn 3 thẻ chọn 56px (tiết kiệm ~100px chiều cao).'])
   ],
   rejected: ['Ba nút quyết định ngang hàng: một cú bấm là ra quyết định, không có lý do.', 'Thẻ chọn cao 56px cho 3 lựa chọn: đẩy nút Gửi xuống dưới nếp gấp.']
 };
@@ -161,7 +161,7 @@ WHY['Q6.1'] = {
   points: [
     B('Dải "còn thiếu"', 'act', true, ['Thao tác tới ô trống.', '1 câu + nút.', 'Nút viền.', 'Viền đậm.', '8/12.'], 8),
     B('Lọc + áp hàng loạt', 'act', false, ['Thao tác cho nhiều tỉnh cùng mức.', 'Ô lọc + nút.', 'Nút viền nhỏ.', 'Một hàng.', '8/12.'], 8),
-    B('Bảng 63 tỉnh', 'act', true, ['Thao tác nhập tại chỗ.', '63 dòng; ô phí 200px.', 'Ô thiếu viền 2px + lỗi.', 'Kẻ ngang.', '8/12 (653px) thay cho 760px tự do.'], 8)
+    B('Bảng 63 tỉnh', 'act', true, ['Thao tác nhập tại chỗ.', '63 dòng; ô phí 200px.', 'Ô thiếu viền 2px + lỗi.', 'Kẻ ngang.', '8/12 (813px) thay cho 760px tự do.'], 8)
   ],
   rejected: ['Ba mức theo miền: đặc tả cần phí theo từng tỉnh.']
 };

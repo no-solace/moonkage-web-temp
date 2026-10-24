@@ -5,7 +5,7 @@
 //   q[2] Phân cấp   – mỏ neo · bổ trợ · hành động
 //   q[3] Khoảng cách – nhóm gần (4–8px) / nhóm xa (16–32px); có cần viền hay nền không
 //   q[4] Lưới       – số cột trên lưới 12; cố định hay co giãn; lên điện thoại ra sao
-// a: 'act' | 'read'; core: khối cốt lõi (phải nằm trên nếp gấp); span: số cột dự kiến ở 1440px.
+// a: 'act' | 'read'; core: khối cốt lõi (phải nằm trên nếp gấp); span: số cột dự kiến ở màn 1920px.
 // Số cột, kích thước px và vị trí so với nếp gấp do wf.js đo trực tiếp trên trang.
 var WHY = window.WHY || {};
 window.WHY = WHY;
@@ -23,7 +23,7 @@ WHY['M1.0'] = {
     ], 12),
     B('Hai thẻ lối vào', 'act', true, [
       'Thao tác: đây chính là nhiệm vụ của trang. Không thể bỏ, nên nằm trên nếp gấp ngay dưới header.',
-      'Mỗi thẻ 4 điểm: tên lối, khi nào chọn, điều kiện (2 dòng), nút. Mô tả dài nhất ~70 ký tự = 2 dòng ở 16px trong 484px; nút luôn dính đáy thẻ nên hai nút thẳng hàng dù mô tả dài ngắn.',
+      'Mỗi thẻ 4 điểm: tên lối, khi nào chọn, điều kiện (2 dòng), nút. Mô tả dài nhất ~70 ký tự = 2 dòng ở 16px trong 604px; nút luôn dính đáy thẻ nên hai nút thẳng hàng dù mô tả dài ngắn.',
       'Mỏ neo: tên lối 21px · Bổ trợ: "khi nào chọn" 16px xám, điều kiện 14px trên nền xám · Hành động: nút đặc (chính), nút viền (phụ).',
       'Trong thẻ: nhóm tên–mô tả cách 12px, điều kiện tách bằng nền xám. Hai thẻ đặt sát nhau trên lưới nên cần viền để thấy ranh giới.',
       '6 + 6 cột, co giãn; chiều cao bằng nhau. <768px: xếp chồng, thẻ "có sẵn" trước.'
@@ -44,7 +44,7 @@ WHY['M1.0'] = {
     ], 12),
     B('Nhận đặt theo yêu cầu', 'act', false, [
       'Thao tác phụ cho nhóm ít người: bỏ đi vẫn vào được qua thẻ lối 2. Đặt cuối trang.',
-      'Mỗi thẻ 4 điểm: tên, khu vực, nhận làm gì, số hộp tối thiểu (riêng từng đơn vị, không có ngưỡng chung). Tên dài 40 ký tự vẫn 1 dòng ở 315px; dài hơn thì xuống 2 dòng.',
+      'Mỗi thẻ 4 điểm: tên, khu vực, nhận làm gì, số hộp tối thiểu (riêng từng đơn vị, không có ngưỡng chung). Tên dài 40 ký tự vẫn 1 dòng ở 395px; dài hơn thì xuống 2 dòng.',
       'Mỏ neo: tên đơn vị đậm · Bổ trợ: khu vực, nhận làm, tối thiểu · Hành động: "Gửi yêu cầu cho [tên]" đặc, "Xem đơn vị" viền.',
       'Thẻ sát nhau trên lưới nên có viền. Bên trong: danh tính (avatar + tên) gần nhau 8px; nút tách 16px ở đáy.',
       '3 thẻ × 4 cột. <768: xếp chồng 1 cột vì nút dài.'
@@ -103,10 +103,10 @@ WHY['M2.0'] = {
     ], 12),
     B('Cột bộ lọc', 'act', true, [
       'Thao tác lặp lại nhiều lần; bỏ đi thì không thu hẹp được. Đặt trái, bắt đầu trên nếp gấp.',
-      '5 nhóm (giá, thương hiệu, vỏ, nhân, Shop) × 3–4 lựa chọn. Tên Shop dài 30 ký tự xuống 2 dòng trong 230px. Nhóm hơn 6 lựa chọn → "Xem thêm".',
+      '5 nhóm (giá, thương hiệu, vỏ, nhân, Shop) × 3–4 lựa chọn. Tên Shop dài 30 ký tự xuống 2 dòng trong 290px. Nhóm hơn 6 lựa chọn → "Xem thêm".',
       'Mỏ neo: tên nhóm 14px đậm · Bổ trợ: lựa chọn 16px · chú thích HOẶC/VÀ 14px xám ở cuối.',
       'Trong nhóm: lựa chọn cách 4px; giữa nhóm 20px + đường kẻ mảnh. Cả cột có viền vì đứng sát lưới sản phẩm.',
-      '3/12 cột (230px, cố định theo lưới). <1024: gập thành nút "Bộ lọc" phía trên lưới.'
+      '3/12 cột (290px, cố định theo lưới). <1024: gập thành nút "Bộ lọc" phía trên lưới.'
     ], 3),
     B('Chip lọc đang bật + sắp xếp', 'act', false, [
       'Thao tác: gỡ nhanh từng điều kiện. Không bắt buộc (cột lọc làm được) nên chỉ một dòng.',
@@ -449,7 +449,7 @@ WHY['M4.2'] = {
       'Nội dung, số tiền, QR, 2 nút. Nội dung đổi theo loại tiền (mua, cọc, phần còn lại, phí mở bán).',
       'Mỏ neo: số tiền 30px · Bổ trợ: nhãn "Giả lập" viền đứt.',
       'Viền đứt cả thẻ = quy ước "ngoài hệ thống" của wireframe.',
-      '6/12 cột căn giữa (cột 4–9, 484px), neo vào lưới thay cho 560px tự do. QR cố định 240px như .nfc-qr của DS.'
+      '6/12 cột căn giữa (cột 4–9, 604px), neo vào lưới thay cho 560px tự do. QR cố định 240px như .nfc-qr của DS.'
     ], 6),
     B('Nội dung thanh toán', 'read', true, [
       'Đọc để kiểm trước khi trả.',
@@ -477,7 +477,7 @@ WHY['M4.3'] = {
       'Dấu ✓, câu kết quả, mã lần thanh toán · số tiền · ngày.',
       'Mỏ neo: tiêu đề 30px · Bổ trợ: mã và ngày 16px xám.',
       'Không viền; căn giữa tạo một trục đọc từ ✓ xuống danh sách đơn.',
-      '8/12 căn giữa (cột 3–10, 653px) thay cho 720px tự do.'
+      '8/12 căn giữa (cột 3–10, 813px) thay cho 720px tự do.'
     ], 8),
     B('Các đơn vừa tạo', 'read', true, [
       'Đọc (AC-09.7); không đổi trạng thái gì.',
@@ -512,7 +512,7 @@ WHY['M5.1'] = {
       'Email (tới 64 ký tự), mật khẩu, nút. Lỗi đăng nhập hiện trên nút, trong thẻ.',
       'Mỏ neo: tiêu đề · Hành động: nút đặc rộng hết thẻ, ngay dưới ô cuối (đường di chuyển ngắn nhất).',
       'Trường cách 20px; "Quên mật khẩu?" cùng hàng với nhãn mật khẩu (cùng nhóm nghĩa). Thẻ có viền vì đứng một mình giữa nền trống.',
-      '400px cố định đúng .login__form của DS (≈5/12 cột), căn giữa. Điện thoại: rộng hết trừ lề 16px.'
+      '400px cố định đúng .login__form của DS (≈4/12 cột), căn giữa. Điện thoại: rộng hết trừ lề 16px.'
     ]),
     B('Lối Đăng ký', 'act', false, [
       'Thao tác phụ.',
@@ -620,9 +620,9 @@ WHY['M6.1.1'] = {
     B('Sản phẩm và tiền', 'read', false, ['Đọc như hóa đơn.', '1–n món + phí + tổng.', 'Mỏ neo: tổng.', 'Vách ngăn dòng.', '8/12; tiền canh phải.'], 8),
     B('Giao tới / Hóa đơn', 'read', false, ['Đọc tham khảo.', '2 khối × 2–3 dòng.', 'Tiêu đề 16px đậm.', 'Không viền: khoảng 24px giữa hai khối đủ tách.', '2 × 4 cột trong 8. <768: xếp chồng.'], 8),
     B('Lịch sử', 'read', false, ['Đọc.', 'Mỗi mốc 2 điểm: sự kiện, thời gian. Mới nhất trên.', 'Mỏ neo: sự kiện 16px đậm.', 'Chấm và đường nối thay viền.', '8/12.'], 8),
-    B('Hộp hành động', 'act', true, ['Thao tác; trên nếp gấp, dính.', '3–4 nút theo trạng thái + lối báo vấn đề + hạn.', 'Nút chính đặc; nút chưa dùng được mờ; "Báo vấn đề" chữ, tách bằng đường kẻ.', 'Viền đậm.', '4/12; nút rộng hết hộp (315px).'], 4)
+    B('Hộp hành động', 'act', true, ['Thao tác; trên nếp gấp, dính.', '3–4 nút theo trạng thái + lối báo vấn đề + hạn.', 'Nút chính đặc; nút chưa dùng được mờ; "Báo vấn đề" chữ, tách bằng đường kẻ.', 'Viền đậm.', '4/12; nút rộng hết hộp (395px).'], 4)
   ],
-  rejected: ['Giữ cột menu tài khoản: hộp hành động chỉ còn 230px, nút dài bị cắt.']
+  rejected: ['Giữ cột menu tài khoản: hộp hành động chỉ còn 290px, nút dài bị cắt.']
 };
 
 WHY['M6.1.2'] = {
@@ -872,7 +872,7 @@ WHY['M6.5'] = {
       '3 cặp: tên hiển thị, email (tới 64 ký tự), mật khẩu.',
       'Nhãn 14px xám · giá trị 16px đậm · nút "Sửa" viền nhỏ ở góc.',
       'Không viền: khoảng 32px giữa hai nhóm đủ tách.',
-      '8/12 (653px), không kéo hết 9 cột để dòng không quá dài.'
+      '8/12 (813px), không kéo hết 9 cột để dòng không quá dài.'
     ], 8),
     B('Danh tính đã xác minh', 'read', false, [
       'Đọc.',
