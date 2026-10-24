@@ -10,7 +10,7 @@
   <main id="content">
     <!-- Trước khi mở bán: chỉ trạng thái hồ sơ và phí -->
     <div data-show="seller-pending">
-      <div class="page-head"><div><h1>Tổng quan</h1><p class="lead">Bánh Nghệ Nhân Hoa Mai · hồ sơ nộp 23/10/2026</p></div>
+      <div class="page-head"><div><h1>Tổng quan</h1><p class="lead">Xưởng Bánh Nghệ Nhân · hồ sơ nộp 23/10/2026</p></div>
         <div class="row sm"><a href="b1-0.html">Chờ duyệt</a> · <a href="b1-0.html?hs=ok">Đã duyệt</a> · <a href="b1-0.html?hs=more">Cần bổ sung</a></div></div>
       <div class="split">
         <section class="card card-strong stack" data-why="1">
@@ -27,14 +27,14 @@
         </section>
         <aside class="stack" data-why="3">
           <div class="card card-fill sm stack-sm"><strong>Trong lúc chờ</strong><a href="b6-1.html">Xem hồ sơ đã nộp</a><a href="b6-0.html">Cài đặt bán hàng</a></div>
-          <a href="../q/q2-0.html" class="btn btn-sm btn-danger">Người review: sang Quản trị duyệt ›</a>
+          <a href="../q/q2-0.html" class="btn btn-sm btn-danger" data-set-role="admin">Người review: sang Quản trị duyệt ›</a>
         </aside>
       </div>
     </div>
 
     <!-- Đã mở bán -->
-    <div data-show="seller-open admin">
-      <div class="page-head"><div><h1>Tổng quan</h1><p class="lead">Bánh Nghệ Nhân Hoa Mai · đang mở bán</p></div></div>
+    <div data-show="seller-open">
+      <div class="page-head"><div><h1>Tổng quan</h1><p class="lead">Xưởng Bánh Nghệ Nhân · đang mở bán</p></div></div>
       <section class="section" data-why="4">
         <div class="section-head"><h2>Việc cần làm</h2></div>
         <div class="grid-4">
@@ -66,7 +66,7 @@
         a.innerHTML = '<a href="b1-1.html" class="btn btn-primary">Đóng phí mở bán</a>';
       } else if (hs === 'more') {
         t.textContent = 'Cần bổ sung'; x.innerHTML = '<strong>Moonkage cần:</strong> ảnh giấy đăng ký rõ hơn, thấy đủ 4 góc.';
-        a.innerHTML = '<a href="b6-1.html" class="btn btn-primary">Bổ sung hồ sơ</a>';
+        a.innerHTML = '<a href="b6-1.html?hs=more" class="btn btn-primary">Bổ sung hồ sơ</a>';
       }
     })();
   </script>

@@ -14,6 +14,7 @@
         <h1>Đơn MK-C088 <span class="badge badge-solid" style="vertical-align:middle">Chờ bạn duyệt maket</span></h1>
         <p class="lead">Xưởng Bánh Nghệ Nhân · 150 hộp gỗ khắc logo · từ yêu cầu <a href="m6-2-1.html">YC-104</a></p>
       </div>
+      <div class="row sm"><a href="m6-1-2.html">Chờ duyệt maket</a> · <a href="m6-1-2.html?state=da-giao">Ví dụ: đã giao</a></div>
     </div>
 
     <section class="card mb-3" data-why="2">
@@ -71,11 +72,17 @@
 
       <aside class="actions-box sticky" data-why="5">
         <h2>Việc của bạn bây giờ</h2>
-        <p class="sm muted">Duyệt maket lần 2 để đơn vị bắt đầu sản xuất.</p>
-        <button type="button" class="btn btn-primary btn-block">Duyệt maket</button>
-        <button type="button" class="btn btn-block">Yêu cầu sửa</button>
-        <hr style="margin: var(--s2) 0">
-        <a href="m4-2.html?for=con-lai" class="btn btn-block" disabled aria-disabled="true">Trả phần còn lại (sau khi giao)</a>
+        <div class="stack-sm" data-unless-query="state=da-giao">
+          <p class="sm muted">Duyệt maket lần 2 để đơn vị bắt đầu sản xuất.</p>
+          <button type="button" class="btn btn-primary btn-block">Duyệt maket</button>
+          <button type="button" class="btn btn-block">Yêu cầu sửa</button>
+          <hr style="margin: var(--s2) 0">
+          <span class="btn btn-block" aria-disabled="true">Trả phần còn lại (sau khi giao)</span>
+        </div>
+        <div class="stack-sm" data-if-query="state=da-giao">
+          <p class="sm muted">Đơn đã giao 22/10/2026. Trả phần còn lại 9.000.000đ để hoàn tất đơn.</p>
+          <a href="m4-2.html?for=con-lai" class="btn btn-primary btn-block">Trả phần còn lại 9.000.000đ</a>
+        </div>
         <a href="m6-1-3.html" class="btn btn-ghost btn-block">Báo vấn đề với đơn</a>
       </aside>
     </div>
