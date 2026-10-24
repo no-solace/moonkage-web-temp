@@ -8,40 +8,18 @@
 </head>
 <body data-zone="B" data-page="B5.2">
   <main id="content">
-    <div class="t1-header">
-      <div>
-        <h1>Giải ngân tiền cọc hợp đồng (B5.2)</h1>
-        <small style="color: #666;">Danh sách các đợt giải ngân tiền cọc đơn đặt hàng theo yêu cầu (FR-41)</small>
-      </div>
-    </div>
-
-    <table>
-      <thead>
-        <tr>
-          <th>Mã đơn đặt hàng</th>
-          <th>Khách hàng</th>
-          <th>Số tiền cọc đề xuất</th>
-          <th>Bằng chứng tiến độ</th>
-          <th>Trạng thái xét duyệt</th>
-        </tr>
-      </thead>
+    <div class="page-head" data-why="1"><div><h1>Giải ngân cọc</h1></div><button type="button" class="btn btn-primary">Tạo yêu cầu giải ngân</button></div>
+    <div class="table-wrap" data-why="2"><table class="cards">
+      <thead><tr><th>Đơn</th><th>Mốc tiến độ</th><th class="num">Xin giải ngân</th><th class="num">Còn giữ sau đó</th><th>Trạng thái</th></tr></thead>
       <tbody>
-        <tr>
-          <td><strong>#MK-CUS-088</strong></td>
-          <td>Công ty Giải Pháp Mặt Trời</td>
-          <td><strong>51.000.000đ</strong> (50% cọc)</td>
-          <td>Bản vẽ maket đã duyệt + ảnh xưởng nướng bánh</td>
-          <td><span class="t2-status">Chờ Admin duyệt (Q4.1)</span></td>
-        </tr>
-      </tbody>
-    </table>
+        <tr><td data-label="Đơn"><a href="b2-2.html">MK-C071</a></td><td data-label="Mốc">Đã duyệt maket, mua nguyên liệu</td><td class="num" data-label="Xin">3.000.000đ</td><td class="num" data-label="Còn giữ">3.000.000đ</td><td data-label="Trạng thái"><span class="badge badge-dash">Đã giải ngân 21/10/2026</span></td></tr>
+        <tr><td data-label="Đơn"><a href="b2-2.html">MK-C088</a></td><td data-label="Mốc">Chưa duyệt maket</td><td class="num" data-label="Xin">—</td><td class="num" data-label="Còn giữ">9.000.000đ</td><td data-label="Trạng thái"><span class="badge">Chưa xin được</span></td></tr>
+      </tbody></table></div>
   </main>
 
-  <aside class="wf-note" data-ref="FR-41">
-    Giải ngân cọc (B5.2). Danh sách và trạng thái các yêu cầu giải ngân cọc; tạo mới từ B2.2 hoặc tại đây (FR-41).
-  </aside>
-
+  <aside class="wf-note" data-ref="FR-41">Danh sách + trạng thái; tạo mới từ B2.2 hoặc tại đây. Quản trị duyệt ở Q4.1.</aside>
   <script src="../assets/data.js"></script>
+  <script src="../assets/why-b.js"></script>
   <script src="../assets/wf.js"></script>
 </body>
 </html>

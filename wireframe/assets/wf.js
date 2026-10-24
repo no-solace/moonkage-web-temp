@@ -107,7 +107,7 @@
     var open = ROLE === 'seller-open' || ROLE === 'admin';
     var top = link('b/b1-0.html', LOGO_MARK + 'MOONKAGE<span class="zone">Kênh người bán</span>', 'wf-logo');
     top += '<div class="wf-header-actions">' +
-      '<span class="badge ' + (open ? 'badge-soft' : 'badge-dash') + '">Xưởng Bánh Nghệ Nhân · ' + (open ? 'Đang mở bán' : 'Hồ sơ chờ duyệt') + '</span>' +
+      '<span class="badge ' + (open ? 'badge-soft' : 'badge-dash') + '">Bánh Nghệ Nhân Hoa Mai · ' + (open ? 'Đang mở bán' : 'Hồ sơ chờ duyệt') + '</span>' +
       '</div>';
     var nav = link('b/b1-0.html', 'Tổng quan', 'wf-nav-item' + (PAGE_ID === 'B1.0' || PAGE_ID === 'B1.1' ? ' active' : ''));
     if (open) {

@@ -3,71 +3,41 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Moonkage – Đơn hàng (Kênh người bán) (B2.0)</title>
+  <title>Moonkage – Đơn hàng (B2.0)</title>
   <link rel="stylesheet" href="../assets/wf.css">
 </head>
 <body data-zone="B" data-page="B2.0">
   <main id="content">
-    <div class="t1-header">
-      <div>
-        <h1>Quản lý đơn hàng (B2.0)</h1>
-        <small style="color: #666;">Đơn hàng bánh có sẵn và đơn đặt theo yêu cầu của xưởng</small>
-      </div>
+    <div class="page-head"><div><h1>Đơn hàng</h1></div></div>
+    <div class="tabs" data-why="1">
+      <a href="b2-0.html" class="tab active" id="t1">Đơn Shop <span class="count">2</span></a>
+      <a href="b2-0.html?tab=dh" class="tab" id="t2">Đơn đặt hàng <span class="count">1</span></a>
     </div>
-
-    <!-- 2 Tab: Đơn Shop · Đơn đặt hàng -->
-    <div class="t1-tabs">
-      <a href="b2-0.html" class="t1-tab active">Đơn Shop có sẵn (2)</a>
-      <a href="b2-0.html?tab=custom" class="t1-tab">Đơn đặt theo yêu cầu (1)</a>
+    <div class="toolbar" data-why="2">
+      <div class="chips"><a href="#" class="chip active">Cần làm</a><a href="#" class="chip">Đang giao</a><a href="#" class="chip">Đã giao</a><a href="#" class="chip">Chưa có hóa đơn</a><a href="#" class="chip">Đang khiếu nại</a></div>
     </div>
-
-    <div class="t1-chips">
-      <a href="#" class="chip active">Tất cả</a>
-      <a href="#" class="chip">Chờ xác nhận (1)</a>
-      <a href="#" class="chip">Đang giao (1)</a>
-      <a href="#" class="chip">Chưa có hóa đơn (1)</a>
-    </div>
-
-    <table>
-      <thead>
-        <tr>
-          <th>Mã đơn</th>
-          <th>Khách hàng & Địa chỉ</th>
-          <th>Sản phẩm</th>
-          <th>Tổng tiền</th>
-          <th>Trạng thái</th>
-          <th style="width: 140px;">Thao tác</th>
-        </tr>
-      </thead>
+    <div class="table-wrap" id="shop" data-why="3"><table class="cards">
+      <thead><tr><th>Đơn</th><th>Người mua · giao tới</th><th>Trạng thái</th><th class="num">Tiền hàng</th><th></th></tr></thead>
       <tbody>
-        <tr>
-          <td><strong>#MK-ORD-9921</strong></td>
-          <td>Anh Minh (Ba Đình, Hà Nội)</td>
-          <td>Hộp Hoàng Kim Thượng Hạng (x1)</td>
-          <td><strong>705.000đ</strong></td>
-          <td><span class="t2-status">Chờ đóng gói</span></td>
-          <td><a href="b2-1.html" class="btn btn-primary">Xử lý đơn (B2.1) ›</a></td>
-        </tr>
-        <tr>
-          <td>
-            <strong>#MK-ORD-8810</strong><br>
-            <span class="t2-status" style="border: 1px solid #000; background:#eee;">Đang khiếu nại</span>
-          </td>
-          <td>Chị Lan (Hà Nội)</td>
-          <td>Hộp Trăng Rằm Đoàn Viên (x2)</td>
-          <td><strong>840.000đ</strong></td>
-          <td><span class="t2-status">Khách báo móp hộp</span></td>
-          <td><a href="b2-1.html" class="btn">Phản hồi khiếu nại ›</a></td>
-        </tr>
-      </tbody>
-    </table>
+        <tr><td data-label="Đơn"><strong>MK-9930</strong><br><small class="muted">24/10/2026 · 2 món</small></td><td data-label="Giao tới">Anh Tuấn · Cầu Giấy, Hà Nội</td><td data-label="Trạng thái"><span class="badge badge-solid">Chờ xác nhận</span></td><td class="num" data-label="Tiền">1.360.000đ</td><td><a href="b2-1.html" class="btn btn-sm btn-primary">Xử lý</a></td></tr>
+        <tr><td data-label="Đơn"><strong>MK-9921</strong><br><small class="muted">23/10/2026 · 1 món</small></td><td data-label="Giao tới">Anh Minh · Ba Đình, Hà Nội</td><td data-label="Trạng thái"><span class="badge badge-soft">Đang giao</span></td><td class="num" data-label="Tiền">680.000đ</td><td><a href="b2-1.html" class="btn btn-sm">Xem</a></td></tr>
+        <tr><td data-label="Đơn"><strong>MK-8810</strong><br><small class="muted">18/10/2026 · 2 món</small></td><td data-label="Giao tới">Chị Lan · Quận 1, TP. HCM</td><td data-label="Trạng thái"><span class="badge badge-dash">Đã giao</span> <span class="badge badge-solid" data-why="4">Đang khiếu nại</span></td><td class="num" data-label="Tiền">840.000đ</td><td><a href="b2-1.html" class="btn btn-sm">Phản hồi</a></td></tr>
+      </tbody></table></div>
+    <div class="table-wrap" id="dh" hidden><table class="cards">
+      <thead><tr><th>Đơn</th><th>Người mua</th><th>Đang ở bước</th><th class="num">Giá trị</th><th></th></tr></thead>
+      <tbody><tr><td data-label="Đơn"><strong>MK-C088</strong><br><small class="muted">150 hộp in logo</small></td><td data-label="Người mua">Công ty TNHH Mặt Trời</td><td data-label="Bước"><span class="badge badge-solid">Sửa maket theo góp ý</span></td><td class="num" data-label="Giá trị">18.000.000đ</td><td><a href="b2-2.html" class="btn btn-sm btn-primary">Xử lý</a></td></tr></tbody></table></div>
   </main>
 
-  <aside class="wf-note" data-ref="FR-32">
-    Đơn hàng Kênh người bán (B2.0). Tab: Đơn Shop · Đơn đặt hàng. Lọc 'Chưa có hóa đơn'. Nhãn 'Đang khiếu nại' trên dòng đơn khi có khiếu nại mở (FR-32, FR-44).
-  </aside>
-
+  <aside class="wf-note" data-ref="FR-32">Tab: Đơn Shop · Đơn đặt hàng (theo cách bán đã bật). Lọc "Chưa có hóa đơn". Nhãn "Đang khiếu nại" trên dòng đơn (FR-44).</aside>
+  <script>
+    (function () {
+      var dh = new URLSearchParams(location.search).get('tab') === 'dh';
+      document.getElementById('shop').hidden = dh; document.getElementById('dh').hidden = !dh;
+      document.getElementById('t1').classList.toggle('active', !dh); document.getElementById('t2').classList.toggle('active', dh);
+    })();
+  </script>
   <script src="../assets/data.js"></script>
+  <script src="../assets/why-b.js"></script>
   <script src="../assets/wf.js"></script>
 </body>
 </html>

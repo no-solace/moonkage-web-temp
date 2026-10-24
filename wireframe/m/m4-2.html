@@ -13,13 +13,13 @@
       <h1>Cổng VNPay</h1>
       <dl class="kv" style="text-align:left" data-why="2">
         <dt>Thanh toán cho</dt><dd>Moonkage</dd>
-        <dt>Nội dung</dt><dd>Mua hàng có sẵn · 2 đơn</dd>
-        <dt>Số tiền</dt><dd class="price-lg">1.145.000đ</dd>
+        <dt>Nội dung</dt><dd id="what">Mua hàng có sẵn · 2 đơn</dd>
+        <dt>Số tiền</dt><dd class="price-lg" id="amt">1.145.000đ</dd>
       </dl>
       <div class="wf-img ratio-1" style="width:200px;margin:0 auto"><span>Mã QR</span></div>
       <div class="stack-sm" data-why="3">
-        <a href="m4-3.html" class="btn btn-primary btn-lg btn-block">Giả lập: thanh toán thành công</a>
-        <a href="m4-1.html" class="btn btn-block">Giả lập: hủy, quay về Moonkage</a>
+        <a href="m4-3.html" class="btn btn-primary btn-lg btn-block" id="ok">Giả lập: thanh toán thành công</a>
+        <a href="m4-1.html" class="btn btn-block" id="cancel">Giả lập: hủy, quay về Moonkage</a>
       </div>
       <small class="muted">Dùng chung cho: mua hàng có sẵn · đặt cọc · phần còn lại · phí mở bán.</small>
     </div>
@@ -27,6 +27,24 @@
 
   <aside class="wf-note" data-ref="FR-09">Cổng VNPay sandbox dùng chung (FR-09, FR-19, FR-22, FR-27).</aside>
 
+  <script>
+    // Cổng dùng chung: ?for=coc|con-lai|phi đổi nội dung và trang quay về
+    (function () {
+      var kind = new URLSearchParams(location.search).get('for');
+      var map = {
+        'coc': ['Đặt cọc đơn đặt hàng YC-104', '9.000.000đ', 'm6-1-2.html', 'm6-2-2.html', null],
+        'con-lai': ['Phần còn lại đơn MK-C071', '6.000.000đ', 'm6-1-2.html#thanh-toan', 'm6-1-2.html', null],
+        'phi': ['Phí mở bán Kênh người bán', '200.000đ', '../b/b6-2.html', '../b/b1-1.html', 'seller-open']
+      }[kind];
+      if (!map) return;
+      document.getElementById('what').textContent = map[0];
+      document.getElementById('amt').textContent = map[1];
+      var ok = document.getElementById('ok');
+      ok.href = map[2];
+      document.getElementById('cancel').href = map[3];
+      if (map[4]) ok.addEventListener('click', function () { try { localStorage.setItem('wf_role', map[4]); } catch (e) {} });
+    })();
+  </script>
   <script src="../assets/data.js"></script>
   <script src="../assets/why-m.js"></script>
   <script src="../assets/wf.js"></script>

@@ -8,41 +8,59 @@
 </head>
 <body data-zone="B" data-page="B2.2">
   <main id="content">
-    <div class="t2-header">
-      <div>
-        <h1>Chi tiết đơn đặt hàng #MK-CUS-088 (B2.2)</h1>
-        <small style="color: #666;">Khách hàng: Chị Lan (Công ty Giải Pháp Mặt Trời) · Đã cọc 50%</small>
-      </div>
-      <div>
-        <span class="t2-status">Trạng thái: Đang nướng bánh & ép kim</span>
-      </div>
+    <div class="page-head" data-why="1">
+      <div><span class="eyebrow">Đơn đặt hàng</span>
+        <h1>Đơn MK-C088 <span class="badge badge-solid" style="vertical-align:middle">Sửa maket theo góp ý</span></h1>
+        <p class="lead">Công ty TNHH Mặt Trời · 150 hộp gỗ khắc logo · giao trước 10/11/2026</p></div>
     </div>
-
-    <div class="t1-tabs">
-      <a href="#tab-maket" class="t1-tab active">Maket thiết kế</a>
-      <a href="#tab-progress" class="t1-tab">Tiến độ sản xuất</a>
-      <a href="#tab-disburse" class="t1-tab">Giải ngân cọc</a>
-      <a href="#tab-invoice" class="t1-tab">Hóa đơn VAT</a>
-    </div>
-
-    <div style="border: 1px solid #ccc; padding: 16px; background: #fafafa; margin-bottom: 20px;">
-      <h2>Quy cách hợp đồng 150 hộp quà gỗ</h2>
-      <p style="font-size: 13px; color: #333; line-height: 1.6; margin-top: 6px;">
-        • Tổng tiền: <strong>102.000.000đ</strong> · Tiền cọc đã giữ trên sàn: <strong>51.000.000đ</strong>.<br>
-        • Bản vẽ maket nắp trượt khắc laser v2 đã được khách phê duyệt.<br>
-        • Hạn giao bánh bắt buộc: trước <strong>08/09/2026</strong>.
-      </p>
-      <div style="margin-top: 12px;">
-        <a href="b5-2.html" class="btn btn-primary">Tạo yêu cầu giải ngân cọc (B5.2) ›</a>
+    <section class="card mb-3" data-why="2"><ol class="steps" style="margin:0">
+      <li class="done"><span class="lbl">Nhận cọc</span></li><li class="active"><span class="lbl">Maket</span></li><li><span class="lbl">Sản xuất</span></li><li><span class="lbl">Giao hàng</span></li><li><span class="lbl">Người mua trả phần còn lại</span></li>
+    </ol></section>
+    <div class="split">
+      <div>
+        <nav class="tabs" data-why="3">
+          <a href="#maket" class="tab">Maket <span class="count">1</span></a><a href="#tien-do" class="tab">Tiến độ</a><a href="#giai-ngan" class="tab">Giải ngân</a><a href="#hoa-don" class="tab">Hóa đơn</a>
+        </nav>
+        <section id="maket" data-tab class="stack">
+          <div class="callout callout-soft sm"><strong>Góp ý của người mua:</strong>&nbsp;"Dời logo xuống giữa nắp." · 22/10/2026</div>
+          <div class="grid-2">
+            <div class="wf-img ratio-43"><span>Maket lần 2 (đã gửi)</span></div>
+            <div class="upload">Tải maket lần 3<br><small>PDF, PNG</small></div>
+          </div>
+          <button type="button" class="btn btn-primary" style="align-self:flex-start">Gửi maket lần 3</button>
+        </section>
+        <section id="tien-do" data-tab hidden><ol class="timeline"><li class="done"><strong>Nhận cọc 9.000.000đ</strong><span class="when">20/10/2026</span></li><li class="done"><strong>Gửi maket lần 1, 2</strong><span class="when">21–22/10/2026</span></li><li class="todo"><strong>Cập nhật sản xuất</strong></li></ol><button type="button" class="btn btn-sm mt-1">+ Cập nhật tiến độ</button></section>
+        <section id="giai-ngan" data-tab hidden>
+          <ul class="list"><li><span class="grow">Đang giữ (cọc)</span><span class="price">9.000.000đ</span></li><li><span class="grow">Đã giải ngân</span><span>0đ</span></li></ul>
+          <a href="b5-2.html" class="btn mt-2">Tạo yêu cầu giải ngân</a>
+        </section>
+        <section id="hoa-don" data-tab hidden><div class="empty"><strong>Chưa gắn hóa đơn</strong><button type="button" class="btn btn-sm">Gắn hóa đơn</button></div></section>
       </div>
+      <aside class="actions-box sticky" data-why="4">
+        <h2>Việc của bạn bây giờ</h2>
+        <p class="sm muted">Gửi maket lần 3 theo góp ý. Sản xuất bắt đầu khi người mua duyệt.</p>
+        <a href="#maket" class="btn btn-primary btn-block">Gửi maket mới</a>
+        <hr style="margin:var(--s2) 0">
+        <dl class="kv sm"><dt>Giá trị</dt><dd>18.000.000đ</dd><dt>Đang giữ</dt><dd>9.000.000đ</dd></dl>
+      </aside>
     </div>
   </main>
 
-  <aside class="wf-note" data-ref="FR-39">
-    Chi tiết đơn đặt hàng Kênh người bán (B2.2). Tab: Maket · Tiến độ · Giải ngân · Hóa đơn; khối Khiếu nại khi có. Cùng đường dẫn với B2.1 (Đ6, FR-39, FR-40, FR-41, FR-42).
-  </aside>
-
+  <aside class="wf-note" data-ref="FR-39">Tab: Maket · Tiến độ · Giải ngân · Hóa đơn; khối Khiếu nại khi có. Cùng đường dẫn với B2.1 (Đ6). FR-40, FR-41, FR-42, FR-44.</aside>
+  <script>
+    // Chuyển tab giả lập: mỗi .tab trỏ #id của một <section data-tab>
+    (function () {
+      var tabs = document.querySelectorAll('.tabs .tab');
+      function show(id) {
+        document.querySelectorAll('[data-tab]').forEach(function (s) { s.hidden = s.id !== id; });
+        tabs.forEach(function (t) { t.classList.toggle('active', t.getAttribute('href') === '#' + id); });
+      }
+      tabs.forEach(function (t) { t.addEventListener('click', function (e) { e.preventDefault(); show(t.getAttribute('href').slice(1)); }); });
+      show(location.hash ? location.hash.slice(1) : tabs[0].getAttribute('href').slice(1));
+    })();
+  </script>
   <script src="../assets/data.js"></script>
+  <script src="../assets/why-b.js"></script>
   <script src="../assets/wf.js"></script>
 </body>
 </html>

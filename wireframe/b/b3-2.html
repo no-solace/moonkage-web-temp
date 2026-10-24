@@ -3,85 +3,44 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Moonkage – Soạn báo giá cho Yêu cầu #RFQ-104 (B3.2)</title>
+  <title>Moonkage – Soạn báo giá (B3.2)</title>
   <link rel="stylesheet" href="../assets/wf.css">
 </head>
 <body data-zone="B" data-page="B3.2">
   <main id="content">
-    <h1>Soạn báo giá & Gửi maket mẫu (B3.2)</h1>
-    <p style="color: #444; margin-bottom: 20px;">
-      Gửi bảng báo giá chi tiết và thiết kế maket nắp hộp cho Yêu cầu <strong>#RFQ-2026-104</strong> (Khách hàng: Chị Lan).
-    </p>
-
-    <form class="t3-form" action="b3-0.html" method="GET">
-      <fieldset>
-        <legend>1. Định giá & Bậc giá gợi ý (FR-38)</legend>
-
-        <div style="background: #eee; border: 1px solid #ccc; padding: 10px; margin-bottom: 12px; font-size: 13px;">
-          <strong>Bậc giá gợi ý theo quy mô đơn hàng của xưởng:</strong><br>
-          • 50 – 99 hộp: 720.000đ / hộp<br>
-          • <strong>100 – 199 hộp (Đơn này: 150 hộp): Gợi ý 680.000đ / hộp</strong><br>
-          • Từ 200 hộp trở lên: 650.000đ / hộp
-        </div>
-
-        <div class="form-group">
-          <label for="b-unit-price">Đơn giá báo cho mỗi hộp (VNĐ) *</label>
-          <input type="number" id="b-unit-price" value="680000" step="10000" required>
-        </div>
-
-        <div class="form-group">
-          <label>Tổng giá trị hợp đồng (150 hộp):</label>
-          <div style="font-size: 18px; font-weight: 700; color: #000; padding: 6px 0;">
-            102.000.000đ <small style="font-size: 12px; font-weight: normal; color: #555;">(Số tiền cọc 50%: 51.000.000đ)</small>
+    <div class="page-head"><div><h1>Báo giá cho YC-104</h1><p class="lead">150 hộp × 4 bánh · in logo · giao trước 15/11/2026</p></div></div>
+    <div class="split">
+      <form class="form" action="b3-0.html" method="get">
+        <fieldset data-why="1"><legend>1. Giá</legend>
+          <div class="field-row">
+            <div class="field"><label for="u" class="req">Đơn giá mỗi hộp</label><input id="u" type="text" value="120.000đ"><span class="hint">Gợi ý theo bậc giá của bạn (100–199 hộp): 120.000đ</span></div>
+            <div class="field"><label for="c" class="req">Đặt cọc</label><select id="c"><option>50%</option><option>30%</option></select></div>
           </div>
-        </div>
-
-        <div class="form-group">
-          <label for="b-deliver-date">Cam kết hoàn thành và giao hàng trước ngày *</label>
-          <input type="text" id="b-deliver-date" value="08/09/2026" placeholder="DD/MM/YYYY" required>
-          <small style="color: #666;">Khách hàng yêu cầu trước 10/09/2026. Xưởng cam kết sớm hơn 2 ngày.</small>
-        </div>
-      </fieldset>
-
-      <fieldset>
-        <legend>2. Mẫu maket thiết kế & Điều khoản</legend>
-
-        <div class="form-group">
-          <label>Tải lên bản vẽ maket nắp hộp (PDF/Ảnh) *</label>
-          <div class="wf-img" style="height: 90px;">
-            <span>[Maket_HopGo_Laser_MatTroi_v2.pdf (Đã tải lên)]</span>
+        </fieldset>
+        <fieldset><legend>2. Làm và giao</legend>
+          <div class="field-row">
+            <div class="field"><label for="d" class="req">Giao trước ngày</label><input id="d" type="text" value="10/11/2026"></div>
+            <div class="field"><label for="h">Báo giá hiệu lực tới</label><input id="h" type="text" value="27/10/2026"></div>
           </div>
+          <div class="field"><label>Maket mẫu (không bắt buộc)</label><div class="upload">Kéo tệp vào đây hoặc <a href="#">chọn tệp</a></div></div>
+          <div class="field"><label for="n">Ghi chú cho người mua</label><textarea id="n">Khắc laser logo trên nắp gỗ, gửi maket trong 24 giờ sau khi nhận cọc.</textarea></div>
+        </fieldset>
+        <div class="form-actions"><a href="b3-1.html" class="btn btn-ghost">Hủy</a><button type="submit" class="btn btn-primary btn-lg">Gửi báo giá</button></div>
+      </form>
+      <aside class="sticky" data-why="2">
+        <div class="summary">
+          <h2 style="font-size:var(--fs-md)">Người mua sẽ thấy</h2>
+          <div class="line"><span>150 × 120.000đ</span><span>18.000.000đ</span></div>
+          <div class="total"><span>Tổng</span><span class="price">18.000.000đ</span></div>
+          <div class="line sm"><span>Cọc 50%</span><span>9.000.000đ</span></div>
         </div>
-
-        <div class="form-group">
-          <label for="b-scope">Mô tả cam kết kỹ thuật & Chất lượng:</label>
-          <textarea id="b-scope" rows="3">Xưởng cam kết sử dụng 100% nguyên liệu hạt sen và thịt jambon tươi, có giấy chứng nhận ATTP đầy đủ. Miễn phí vận chuyển nội thành Hà Nội.</textarea>
-        </div>
-
-        <div class="form-group">
-          <label for="b-expire">Thời hạn hiệu lực của báo giá này:</label>
-          <select id="b-expire">
-            <option>Trong vòng 48 giờ</option>
-            <option>Trong vòng 72 giờ</option>
-            <option>Trong vòng 7 ngày</option>
-          </select>
-        </div>
-      </fieldset>
-
-      <div style="display: flex; gap: 10px; margin-top: 10px;">
-        <button type="submit" class="btn btn-primary" style="padding: 10px 20px;">
-          Gửi báo giá tới khách hàng (Chị Lan) ›
-        </button>
-        <a href="b3-1.html" class="btn">Hủy & Xem lại</a>
-      </div>
-    </form>
+      </aside>
+    </div>
   </main>
 
-  <aside class="wf-note" data-ref="FR-38">
-    Soạn báo giá phía Người bán (B3.2). Đơn giá gợi ý theo bậc giá (FR-38). Cảnh báo công suất tạm hoãn (FR-37). Báo giá sau khi gửi sẽ xuất hiện trong màn hình so sánh giá M6.2.1 của Người mua.
-  </aside>
-
+  <aside class="wf-note" data-ref="FR-38">Đơn giá gợi ý theo bậc giá. Cảnh báo công suất hoãn (FR-37). Báo giá xuất hiện ở M6.2.1.</aside>
   <script src="../assets/data.js"></script>
+  <script src="../assets/why-b.js"></script>
   <script src="../assets/wf.js"></script>
 </body>
 </html>
