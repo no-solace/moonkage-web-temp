@@ -2,7 +2,7 @@
    Moonkage – Wireframe low-fi (wf.css)
    Màu: chỉ thang xám (luật low-fi). KÍCH THƯỚC: lấy đúng số đo của DS thật
    (src/app/styles/tokens.css, app.css) để wireframe có cùng tỷ lệ với UI sẽ code:
-   khung 1040px, lưới 12 cột rãnh 24px, control 44/36px, thang chữ DS, khoảng cách DS.
+   khung 1280px (màn chuẩn 1920×1080), lưới 12 cột rãnh 24px, control 44/36px, thang chữ DS, khoảng cách DS.
    ========================================================================== */
 
 /* 0. TOKEN ----------------------------------------------------------------- */
@@ -39,8 +39,8 @@
   /* Tên cũ dùng trong vài thuộc tính style của trang */
   --fs-sm: 14px; --fs-md: 16px; --fs-lg: 21px; --fs-xl: 30px;
 
-  /* Khung và lưới: app-main 1040px, lề 24px → nội dung 992px, 12 cột, rãnh 24px */
-  --page: 1040px;
+  /* Khung và lưới: màn chuẩn 1920×1080 → khung 1280px, lề 24px → nội dung 1232px, 12 cột, rãnh 24px */
+  --page: 1280px;
   --pad: 24px;
   --gutter: 24px;
   --why-w: 380px;
@@ -91,10 +91,10 @@ ul, ol { padding-left: var(--s6); }
 .span-3 { grid-column: span 3; } .span-4 { grid-column: span 4; } .span-5 { grid-column: span 5; }
 .span-6 { grid-column: span 6; } .span-7 { grid-column: span 7; } .span-8 { grid-column: span 8; }
 .span-9 { grid-column: span 9; } .span-12 { grid-column: span 12; }
-.split > :nth-child(1) { grid-column: span 8; }          /* nội dung 8/12 = 653px */
-.split > :nth-child(2) { grid-column: span 4; }          /* cột phụ 4/12 = 315px */
-.split-left > :nth-child(1), .wf-account-layout > :nth-child(1) { grid-column: span 3; }  /* 230px */
-.split-left > :nth-child(2), .wf-account-layout > :nth-child(2) { grid-column: span 9; }  /* 738px */
+.split > :nth-child(1) { grid-column: span 8; }          /* nội dung 8/12 = 813px */
+.split > :nth-child(2) { grid-column: span 4; }          /* cột phụ 4/12 = 395px */
+.split-left > :nth-child(1), .wf-account-layout > :nth-child(1) { grid-column: span 3; }  /* 290px */
+.split-left > :nth-child(2), .wf-account-layout > :nth-child(2) { grid-column: span 9; }  /* 918px */
 .grid-2 > * { grid-column: span 6; }
 .grid-3 > * { grid-column: span 4; }
 .grid-4 > * { grid-column: span 3; }
@@ -233,7 +233,7 @@ tbody tr:hover td { background: #fafafa; }
 
 /* 9. FORM (mk-field: nhãn 14/600, cách ô 8; trường cách nhau 20; nhóm cách nhau 32) */
 .form, .t3-form { display: flex; flex-direction: column; gap: var(--s8); }
-.form:not(.split > *) { max-width: 653px; }              /* 8/12 cột khi đứng một mình */
+.form:not(.split > *) { max-width: 813px; }              /* 8/12 cột khi đứng một mình */
 fieldset { border: 0; padding: 0; min-width: 0; }
 legend { font: var(--t-heading); padding: 0; margin-bottom: var(--s4); }
 .field, .form-group { display: flex; flex-direction: column; gap: var(--s2); margin-top: var(--s5); }
@@ -330,7 +330,7 @@ select.w-auto { width: auto; min-width: 160px; }
 .backdrop-page { opacity: .45; pointer-events: none; }
 #content:has(.overlay) { min-height: 640px; }
 
-/* 16. KHUNG TOÀN CỤC (app-header DS: nền đêm, đệm 12/24, khung 1040) -------- */
+/* 16. KHUNG TOÀN CỤC (app-header DS: nền đêm, đệm 12/24, khung 1280) -------- */
 .wf-header { background: var(--ink); color: var(--paper); }
 .wf-header a, .wf-header .wf-hbtn { color: var(--paper); }
 .wf-header-top { max-width: var(--page); margin: 0 auto; display: flex; align-items: center; gap: var(--s6); padding: var(--s3) var(--pad); }
@@ -338,7 +338,7 @@ select.w-auto { width: auto; min-width: 160px; }
 .wf-logo .mark { width: 28px; height: 28px; border-radius: 50%; border: 2px solid currentColor; position: relative; overflow: hidden; }
 .wf-logo .mark::after { content: ""; position: absolute; inset: 3px 3px 3px 10px; border-radius: 50%; background: currentColor; }
 .wf-logo .zone { font: var(--t-label); padding-left: var(--s3); margin-left: var(--s1); border-left: 1px solid #666; }
-.wf-search-form { flex: 1; max-width: 480px; display: flex; }
+.wf-search-form { flex: 1; max-width: 560px; display: flex; }
 .wf-search-input { border-radius: var(--r-sm) 0 0 var(--r-sm) !important; border-right: 0 !important; }
 .wf-search-btn { border-radius: 0 var(--r-sm) var(--r-sm) 0; padding-inline: var(--s4); }
 .wf-header .wf-search-btn { background: var(--fill-2); border-color: var(--fill-2); color: var(--ink); }
@@ -375,7 +375,7 @@ select.w-auto { width: auto; min-width: 160px; }
 .wf-breadcrumb .sep { margin: 0 6px; }
 .wf-breadcrumb .id { margin-left: 6px; }
 
-/* app-main DS: 1040px, đệm 32 trên, 24 hai bên */
+/* Khung chuẩn 1280px, đệm 24 hai bên */
 #content { position: relative; max-width: var(--page); margin: 0 auto; padding: var(--s6) var(--pad) var(--s12); }
 
 .wf-footer { background: var(--fill); margin-top: var(--s8); }
@@ -392,7 +392,7 @@ select.w-auto { width: auto; min-width: 160px; }
 .wf-account-main-content { min-width: 0; }
 
 /* 18. RÀO CHẮN THEO VAI --------------------------------------------------- */
-.wf-role-boundary { max-width: 653px; margin: var(--s8) auto; }
+.wf-role-boundary { max-width: 813px; margin: var(--s8) auto; }
 .wf-boundary-box { display: flex; flex-direction: column; gap: var(--s4); padding: var(--s6); border: 1px dashed var(--ink); border-radius: var(--r-lg); }
 .wf-boundary-box h1 { font: var(--t-heading); }
 .wf-boundary-actions { display: flex; gap: var(--s2); flex-wrap: wrap; }
@@ -414,7 +414,7 @@ body.show-grid #content::before {
   top: 0; bottom: 0; left: var(--pad); right: var(--pad);
   background: repeating-linear-gradient(to right, rgba(220, 0, 0, .07) 0 calc((100% - 11 * var(--gutter)) / 12), transparent calc((100% - 11 * var(--gutter)) / 12) calc((100% - 11 * var(--gutter)) / 12 + var(--gutter)));
 }
-body.show-fold::after { content: "Nếp gấp màn 1440×900"; position: absolute; left: 0; right: var(--why-w); top: var(--fold, 856px); border-top: 2px dashed rgba(220, 0, 0, .6); font: var(--t-caption); color: rgba(200, 0, 0, .8); padding-left: var(--s2); z-index: 30; pointer-events: none; }
+body.show-fold::after { content: "Nếp gấp màn 1920×1080"; position: absolute; left: 0; right: var(--why-w); top: var(--fold, 1036px); border-top: 2px dashed rgba(220, 0, 0, .6); font: var(--t-caption); color: rgba(200, 0, 0, .8); padding-left: var(--s2); z-index: 30; pointer-events: none; }
 
 .wf-why { position: fixed; top: 0; right: 0; bottom: 44px; width: var(--why-w); z-index: 800; display: flex; flex-direction: column; background: var(--paper); border-left: 1px solid var(--ink); font: var(--t-sm); }
 .wf-why-head { padding: var(--s4); border-bottom: 1px solid var(--line); background: var(--fill); }
@@ -475,7 +475,8 @@ body.hide-notes.has-why { padding-right: 0; }
 [hidden] { display: none !important; }
 summary { cursor: pointer; min-height: var(--control-h-sm); display: flex; align-items: center; gap: var(--s2); }
 
-@media (max-width: 1279px) {
+/* Dưới 1660px (1280 khung + 380 bảng thuyết minh) bảng thuyết minh xuống cuối trang */
+@media (max-width: 1659px) {
   body.has-why { padding-right: 0; }
   .wf-why { position: static; width: auto; max-width: var(--page); margin: 0 auto var(--s6); border: 1px solid var(--ink); border-radius: var(--r-lg); }
   .wf-why-body { overflow: visible; }

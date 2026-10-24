@@ -25,15 +25,15 @@
       <div class="table-wrap"><table>
         <thead><tr><th>Thứ</th><th>Giá trị dùng trong wireframe</th><th>Nguồn DS</th></tr></thead>
         <tbody>
-          <tr><td>Khung nội dung</td><td>1040px, lề 24px (≥768) / 16px → nội dung 992px</td><td><code>.app-main</code></td></tr>
-          <tr><td>Lưới</td><td>12 cột, rãnh 24px (điện thoại 16px): 1 cột ≈ 61px; 3 cột 230 · 4 cột 315 · 6 cột 484 · 8 cột 653 · 9 cột 738</td><td>từ khung 1040 + <code>--space-6</code></td></tr>
+          <tr><td>Khung nội dung</td><td>Màn chuẩn 1920×1080 · khung 1280px, lề 24px (≥768) / 16px → nội dung 1232px</td><td><code>.app-main</code> (DS hiện 1040px – cần nâng lên 1280px)</td></tr>
+          <tr><td>Lưới</td><td>12 cột, rãnh 24px (điện thoại 16px): 1 cột ≈ 81px; 3 cột 290 · 4 cột 395 · 6 cột 604 · 8 cột 813 · 9 cột 918</td><td>từ khung 1280 + <code>--space-6</code></td></tr>
           <tr><td>Nút, ô nhập</td><td>44px; nút nhỏ, chip 36px; nút chính lớn 52px</td><td><code>--control-h</code>, <code>--control-h-sm</code></td></tr>
           <tr><td>Chữ</td><td>tiêu đề trang 30/36 · tiêu đề khối 21/28 · tên thẻ 19/25 · đoạn 16/26 · phụ 14/22 · giá 20/26 · chú thích 12/16</td><td><code>--text-*</code></td></tr>
           <tr><td>Khoảng cách</td><td>4 · 8 · 12 · 16 · 20 (giữa trường) · 24 (đệm thẻ, rãnh) · 32 (giữa khối) · 48</td><td><code>--space-*</code></td></tr>
           <tr><td>Bo góc</td><td>ô nhập 6 · nút 10 · thẻ, ảnh, hộp thoại 18</td><td><code>--radius-*</code></td></tr>
           <tr><td>Khung riêng</td><td>form đăng nhập 400px · hộp thoại 480px · QR 240px</td><td><code>.login__form</code>, <code>.nfc-qr</code></td></tr>
         </tbody></table></div>
-      <p class="hint mt-1">Mở trang ở cửa sổ 1440×900: bảng thuyết minh chiếm 380px bên phải, phần còn lại đúng bằng khung 1040px. Nút "Lưới 12 cột" và "Nếp gấp" ở thanh dưới để soát.</p>
+      <p class="hint mt-1">Mở trang ở cửa sổ 1920×1080: bảng thuyết minh chiếm 380px bên phải, phần còn lại (1540px) đủ chứa khung 1280px. Cửa sổ dưới 1660px thì bảng thuyết minh xuống cuối trang. Nút "Lưới 12 cột" và "Nếp gấp" ở thanh dưới để soát.</p>
     </section>
 
     <section class="section">

@@ -297,7 +297,7 @@
   // 8. Bảng "Thuyết minh bố cục" ----------------------------------------------
   // Mỗi khối có chốt số trả lời 5 bước câu hỏi: 1 Mục đích, 2 Dữ liệu, 3 Phân cấp,
   // 4 Khoảng cách, 5 Lưới & đáp ứng. Số đo (cột, px, nếp gấp) do wf.js tự đo trên trang.
-  var FOLD = 900 - 44;              // nếp gấp của màn 1440×900, trừ thanh vai 44px
+  var FOLD = 1080 - 44;             // nếp gấp của màn chuẩn 1920×1080, trừ thanh vai 44px
   var Q_LABEL = ['Mục đích', 'Dữ liệu', 'Phân cấp', 'Khoảng cách', 'Lưới'];
 
   function measure(el) {
@@ -366,8 +366,8 @@
           if (m) {
             tags += '<span class="badge badge-soft">' + m.span + '/12 cột · ' + m.w + '×' + m.h + 'px</span>';
             tags += '<span class="badge badge-soft">' + (m.above ? 'Trên nếp gấp' : 'Dưới nếp gấp') + ' · y=' + m.top + '</span>';
-            if (pt.core && !m.above && window.innerWidth >= 1280) warn = '⚠ Khối cốt lõi nhưng đang nằm dưới nếp gấp.';
-            if (pt.span && window.innerWidth >= 1280 && pt.span !== m.span) warn += (warn ? ' ' : '') + '⚠ Dự kiến ' + pt.span + '/12 cột, đo được ' + m.span + '/12.';
+            if (pt.core && !m.above && window.innerWidth >= 1660) warn = '⚠ Khối cốt lõi nhưng đang nằm dưới nếp gấp.';
+            if (pt.span && window.innerWidth >= 1660 && pt.span !== m.span) warn += (warn ? ' ' : '') + '⚠ Dự kiến ' + pt.span + '/12 cột, đo được ' + m.span + '/12.';
           } else {
             tags += '<span class="badge badge-dash">Không hiện ở vai / trạng thái này</span>';
           }
