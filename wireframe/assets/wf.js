@@ -24,6 +24,7 @@
   var NOTES_ON = load('wf_notes_visible', 'true') !== 'false';
   var GRID_ON = load('wf_grid', 'false') === 'true';
   var FOLD_ON = load('wf_fold', 'false') === 'true';
+  var WHY_OPEN = load('wf_why_open', 'false') === 'true';
 
   var isSeller = ROLE === 'seller-pending' || ROLE === 'seller-open';
   var isNfc = ROLE === 'buyer-nfc' || ROLE === 'seller-open' || ROLE === 'admin';
@@ -168,6 +169,7 @@
       '<div class="wf-role-bar-left"><label for="wf-role-switcher"><strong>Vai thử</strong></label>' +
       '<select id="wf-role-switcher" class="wf-role-select">' + opts + '</select></div>' +
       '<div class="wf-role-bar-right">' +
+      '<button type="button" id="wf-why-toggle" aria-pressed="' + WHY_OPEN + '">Thuyết minh</button>' +
       '<button type="button" id="wf-grid-toggle" aria-pressed="' + GRID_ON + '">Lưới 12 cột</button>' +
       '<button type="button" id="wf-fold-toggle" aria-pressed="' + FOLD_ON + '">Nếp gấp</button>' +
       '<button type="button" id="wf-notes-toggle" aria-pressed="' + NOTES_ON + '">Ghi chú & thuyết minh: ' + (NOTES_ON ? 'BẬT' : 'TẮT') + '</button>' +
@@ -297,7 +299,7 @@
   // 8. Bảng "Thuyết minh bố cục" ----------------------------------------------
   // Mỗi khối có chốt số trả lời 5 bước câu hỏi: 1 Mục đích, 2 Dữ liệu, 3 Phân cấp,
   // 4 Khoảng cách, 5 Lưới & đáp ứng. Số đo (cột, px, nếp gấp) do wf.js tự đo trên trang.
-  var FOLD = 1080 - 44;             // nếp gấp của màn chuẩn 1920×1080, trừ thanh vai 44px
+  var FOLD = 1080 - 44;             // nếp gấp của màn chuẩn 1920×1080 (trang tràn hết màn), trừ thanh vai 44px
   var Q_LABEL = ['Mục đích', 'Dữ liệu', 'Phân cấp', 'Khoảng cách', 'Lưới'];
 
   function measure(el) {
@@ -332,6 +334,7 @@
       b.addEventListener('click', function (e) {
         e.preventDefault(); e.stopPropagation();
         var li = document.getElementById('wf-why-' + n);
+        setWhyOpen(true);
         if (li) { li.scrollIntoView({ block: 'nearest', behavior: 'smooth' }); flash(n); }
       });
       // Hàng bảng: đặt chốt trong ô đầu để không sinh thêm ô làm lệch bảng
@@ -366,8 +369,8 @@
           if (m) {
             tags += '<span class="badge badge-soft">' + m.span + '/12 cột · ' + m.w + '×' + m.h + 'px</span>';
             tags += '<span class="badge badge-soft">' + (m.above ? 'Trên nếp gấp' : 'Dưới nếp gấp') + ' · y=' + m.top + '</span>';
-            if (pt.core && !m.above && window.innerWidth >= 1660) warn = '⚠ Khối cốt lõi nhưng đang nằm dưới nếp gấp.';
-            if (pt.span && window.innerWidth >= 1660 && pt.span !== m.span) warn += (warn ? ' ' : '') + '⚠ Dự kiến ' + pt.span + '/12 cột, đo được ' + m.span + '/12.';
+            if (pt.core && !m.above && window.innerWidth >= 1900 && window.innerHeight >= 1000) warn = '⚠ Khối cốt lõi nhưng đang nằm dưới nếp gấp.';
+            if (pt.span && window.innerWidth >= 1280 && pt.span !== m.span) warn += (warn ? ' ' : '') + '⚠ Dự kiến ' + pt.span + '/12 cột, đo được ' + m.span + '/12.';
           } else {
             tags += '<span class="badge badge-dash">Không hiện ở vai / trạng thái này</span>';
           }
@@ -409,12 +412,23 @@
     notes.forEach(function (nt) { holder.appendChild(nt); });
     if (!notes.length) holder.parentNode.remove();
     body.classList.add('has-why');
+    var close = document.createElement('button');
+    close.type = 'button'; close.className = 'btn btn-sm wf-why-close'; close.textContent = 'Đóng ✕';
+    close.addEventListener('click', function () { setWhyOpen(false); });
+    panel.querySelector('.wf-why-head').appendChild(close);
 
     panel.querySelectorAll('.wf-why-list > li').forEach(function (li) {
       var n = li.getAttribute('data-n');
       li.addEventListener('mouseenter', function () { mark(n, true); });
       li.addEventListener('mouseleave', function () { mark(n, false); });
     });
+  }
+  function setWhyOpen(on) {
+    WHY_OPEN = on;
+    body.classList.toggle('why-open', on);
+    save('wf_why_open', on ? 'true' : 'false');
+    var t = document.getElementById('wf-why-toggle');
+    if (t) t.setAttribute('aria-pressed', String(on));
   }
   function mark(n, on) {
     document.querySelectorAll('[data-why="' + n + '"]').forEach(function (el) {
@@ -478,6 +492,7 @@
   document.addEventListener('DOMContentLoaded', function () {
     if (!NOTES_ON) body.classList.add('hide-notes');
     body.classList.toggle('show-grid', GRID_ON);
+    body.classList.toggle('why-open', WHY_OPEN);
     body.classList.toggle('show-fold', FOLD_ON);
     body.style.setProperty('--fold', FOLD + 'px');
 
@@ -509,6 +524,7 @@
       this.textContent = 'Ghi chú & thuyết minh: ' + (NOTES_ON ? 'BẬT' : 'TẮT');
       this.setAttribute('aria-pressed', String(NOTES_ON));
     });
+    document.getElementById('wf-why-toggle').addEventListener('click', function () { setWhyOpen(!WHY_OPEN); });
     [['wf-grid-toggle', 'show-grid', 'wf_grid'], ['wf-fold-toggle', 'show-fold', 'wf_fold']].forEach(function (cfg) {
       document.getElementById(cfg[0]).addEventListener('click', function () {
         var on = body.classList.toggle(cfg[1]);

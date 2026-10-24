@@ -57,17 +57,17 @@ WHY['Q2.1'] = {
       '2 hàng × 3 cột (trên giấy / từ chip / kết quả).',
       'Kết quả là nhãn.',
       'Viền đậm khung; kẻ ngang bên trong.',
-      '8/12.'
-    ], 8),
-    B('Giấy tờ', 'read', true, ['Đọc ảnh giấy tờ gốc.', '2–4 tệp.', 'Tên giấy tờ đậm trên ảnh.', 'Không viền; ảnh tự là khung.', '2 × 4 cột trong 8. <768: xếp chồng.'], 8),
+      '9/12.'
+    ], 9),
+    B('Giấy tờ', 'read', true, ['Đọc ảnh giấy tờ gốc.', '2–4 tệp.', 'Tên giấy tờ đậm trên ảnh.', 'Không viền; ảnh tự là khung.', '2 × 4 cột trong 8. <768: xếp chồng.'], 9),
     B('Tab Lịch sử', 'read', false, ['Đọc các lần nộp, quyết định, người duyệt (AC-45.4).', 'Mốc + thời gian.', 'Sự kiện đậm.', 'Chấm + đường nối.', '8/12.'], 8),
     B('Cột quyết định', 'act', true, [
       'Thao tác; trên nếp gấp.',
       'Ô xác nhận, Duyệt, Bổ sung (gập), Từ chối (gập), Khóa.',
       '"Duyệt" đặc, đặt sau ô xác nhận · hai quyết định cần lý do gập lại · Khóa chữ mờ.',
       'Viền đậm.',
-      '4/12, dính.'
-    ], 4)
+      '3/12, dính.'
+    ], 3)
   ],
   rejected: ['Ba nút quyết định ngang hàng: dễ bấm nhầm Từ chối, không có chỗ ghi lý do.']
 };
@@ -136,16 +136,16 @@ WHY['Q5.1'] = {
       'Nhãn bên (caption) · lý do đậm.',
       'Hai thẻ cùng cỡ, viền mảnh, không thiên bên nào.',
       '2 × 4 cột trong 8. <768: xếp chồng.'
-    ], 8),
-    B('Đơn và lịch sử', 'read', false, ['Đọc thêm khi cần.', 'Món, phí, mốc.', 'Tiền canh phải.', 'Vách ngăn.', '8/12.'], 8),
+    ], 9),
+    B('Đơn và lịch sử', 'read', false, ['Đọc thêm khi cần.', 'Món, phí, mốc.', 'Tiền canh phải.', 'Vách ngăn.', '9/12.'], 9),
     B('Hộp quyết định (gồm sổ tiền)', 'act', true, [
       'Thao tác chính. Bản trước tách "Sổ tiền" và "Quyết định" thành hai hộp; nút Gửi rơi xuống y≈1050 → gộp lại để nút nằm trên nếp gấp.',
       '3 số tiền, 3 lựa chọn, số tiền hoàn (200px), lý do, nút.',
       '"Tối đa hoàn" đứng ngay trên ô số tiền (chặn vượt số đang giữ, Q-01) · Gửi đặc.',
       'Viền đậm; các phần cách 12px.',
-      '4/12, dính.'
-    ], 4),
-    B('Ba lựa chọn dạng chip', 'act', true, ['Thao tác chọn một trong ba quyết định.', '3 nhãn ≤ 8 ký tự.', 'Chip đặc = đang chọn; chưa chọn thì nút Gửi mờ.', 'Chip cách nhau 8px (cùng nhóm), cách ô số tiền 12px.', 'Trong hộp 347px (315 trừ đệm) ba chip chiếm 2 hàng; mỗi chip vẫn cao 36px nên đủ vùng bấm. Gọn hơn 3 thẻ chọn 56px (tiết kiệm ~100px chiều cao).'])
+      '3/12, dính.'
+    ], 3),
+    B('Ba lựa chọn dạng chip', 'act', true, ['Thao tác chọn một trong ba quyết định.', '3 nhãn ≤ 8 ký tự.', 'Chip đặc = đang chọn; chưa chọn thì nút Gửi mờ.', 'Chip cách nhau 8px (cùng nhóm), cách ô số tiền 12px.', 'Trong hộp 390px (438 trừ đệm) ba chip nằm trên một hàng; mỗi chip cao 36px, đủ vùng bấm. Gọn hơn 3 thẻ chọn 56px (tiết kiệm ~100px chiều cao).'])
   ],
   rejected: ['Ba nút quyết định ngang hàng: một cú bấm là ra quyết định, không có lý do.', 'Thẻ chọn cao 56px cho 3 lựa chọn: đẩy nút Gửi xuống dưới nếp gấp.']
 };
@@ -159,22 +159,22 @@ WHY['Q6.0'] = {
 WHY['Q6.1'] = {
   goal: 'Nhập phí cho 63 tỉnh; không cho lưu khi thiếu (AC-52.3).',
   points: [
-    B('Dải "còn thiếu"', 'act', true, ['Thao tác tới ô trống.', '1 câu + nút.', 'Nút viền.', 'Viền đậm.', '8/12.'], 8),
-    B('Lọc + áp hàng loạt', 'act', false, ['Thao tác cho nhiều tỉnh cùng mức.', 'Ô lọc + nút.', 'Nút viền nhỏ.', 'Một hàng.', '8/12.'], 8),
-    B('Bảng 63 tỉnh', 'act', true, ['Thao tác nhập tại chỗ.', '63 dòng; ô phí 200px.', 'Ô thiếu viền 2px + lỗi.', 'Kẻ ngang.', '8/12 (813px) thay cho 760px tự do.'], 8)
+    B('Dải "còn thiếu"', 'act', true, ['Thao tác tới ô trống.', '1 câu + nút.', 'Nút viền.', 'Viền đậm.', '6/12.'], 6),
+    B('Lọc + áp hàng loạt', 'act', false, ['Thao tác cho nhiều tỉnh cùng mức.', 'Ô lọc + nút.', 'Nút viền nhỏ.', 'Một hàng.', '6/12.'], 6),
+    B('Bảng 63 tỉnh', 'act', true, ['Thao tác nhập tại chỗ.', '63 dòng; ô phí 200px.', 'Ô thiếu viền 2px + lỗi.', 'Kẻ ngang.', '6/12 (924px) thay cho 760px tự do.'], 6)
   ],
   rejected: ['Ba mức theo miền: đặc tả cần phí theo từng tỉnh.']
 };
 
 WHY['Q6.2'] = {
   goal: 'Một trường, một nút.',
-  points: [B('Mức phí', 'act', true, ['Thao tác.', '1 ô tiền (200px) + gợi ý phạm vi áp dụng.', 'Nhãn đậm.', 'Không viền.', '8/12.'], 8)],
+  points: [B('Mức phí', 'act', true, ['Thao tác.', '1 ô tiền (200px) + gợi ý phạm vi áp dụng.', 'Nhãn đậm.', 'Không viền.', '6/12.'], 6)],
   rejected: []
 };
 
 WHY['Q6.3'] = {
   goal: 'Trang hoãn.',
-  points: [B('Khung hoãn', 'read', false, ['Đọc.', '1 nhãn + 1 câu.', 'Nhãn viền đứt.', 'Viền đứt.', '6/12 căn giữa (cột 4–9).'], 6)],
+  points: [B('Khung hoãn', 'read', false, ['Đọc.', '1 nhãn + 1 câu.', 'Nhãn viền đứt.', 'Viền đứt.', '4/12 căn giữa (cột 5–8).'], 4)],
   rejected: []
 };
 
