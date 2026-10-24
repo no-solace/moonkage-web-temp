@@ -24,7 +24,7 @@
   var NOTES_ON = load('wf_notes_visible', 'true') !== 'false';
   var GRID_ON = load('wf_grid', 'false') === 'true';
   var FOLD_ON = load('wf_fold', 'false') === 'true';
-  var WHY_OPEN = load('wf_why_open', 'true') === 'true';
+  var WHY_OPEN = load('wf_why', 'false') === 'true';
 
   var isSeller = ROLE === 'seller-pending' || ROLE === 'seller-open';
   var isNfc = ROLE === 'buyer-nfc' || ROLE === 'seller-open' || ROLE === 'admin';
@@ -426,7 +426,7 @@
   function setWhyOpen(on) {
     WHY_OPEN = on;
     body.classList.toggle('why-open', on);
-    save('wf_why_open', on ? 'true' : 'false');
+    save('wf_why', on ? 'true' : 'false');
     var t = document.getElementById('wf-why-toggle');
     if (t) t.setAttribute('aria-pressed', String(on));
   }
