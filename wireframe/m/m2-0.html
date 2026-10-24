@@ -5,179 +5,132 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Moonkage – Mua hàng có sẵn (M2.0)</title>
   <link rel="stylesheet" href="../assets/wf.css">
-  <style>
-    .catalog-layout {
-      display: grid;
-      grid-template-columns: 240px 1fr;
-      gap: 20px;
-    }
-    @media (max-width: 480px) {
-      .catalog-layout { grid-template-columns: 1fr; }
-    }
-  </style>
 </head>
 <body data-zone="M" data-page="M2.0">
   <main id="content">
-    <div class="t1-header">
+    <div class="page-head" data-why="1">
       <div>
         <h1>Mua hàng có sẵn</h1>
-        <small style="color: #666;">
-          Bánh đóng hộp sẵn có, giao ngay tới: <strong>Hà Nội</strong> (Bộ lọc ngầm theo khu vực)
-        </small>
+        <p class="lead">Bánh đã đóng hộp, giao được tới <strong>Hà Nội</strong> · <a href="m1-1.html">Đổi khu vực</a></p>
       </div>
-      <div>
-        <a href="m1-1.html" class="btn">[Đổi khu vực giao]</a>
+      <div class="row sm muted">
+        <a href="m2-0.html?q=Nghệ+Nhân">Ví dụ: tìm "Nghệ Nhân"</a> · <a href="m2-0.html?empty=1">Ví dụ: không có kết quả</a>
       </div>
     </div>
 
-    <!-- KHỐI ĐẶC BIỆT: Khối Đơn vị cung cấp khớp từ khóa tìm kiếm (AC-14.5, Đ2) -->
-    <div id="supplier-match-block" style="border: 2px solid #000; padding: 12px; background: #eee; margin-bottom: 20px;">
-      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
-        <strong>Đơn vị cung cấp nhận đặt theo yêu cầu khớp từ khóa:</strong>
-        <small style="color: #666;">(Tách khỏi danh sách sản phẩm, không lọc theo vùng giao — AC-14.5)</small>
+    <!-- Khối Đơn vị cung cấp: chỉ khi từ khóa khớp tên đơn vị (AC-14.5) -->
+    <section class="card card-strong mb-3" id="supplier-block" hidden data-why="2">
+      <div class="card-head">
+        <h2 style="font-size: var(--fs-md)">Đơn vị cung cấp khớp "<span id="q-echo">Nghệ Nhân</span>"</h2>
+        <small class="muted">Nhận đặt theo yêu cầu · không lọc theo vùng giao</small>
       </div>
-      <div style="background: #fff; border: 1px solid #888; padding: 10px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px;">
-        <div>
-          <strong>Xưởng Bánh Nghệ Nhân Hà Nội</strong> — Nhận làm hộp riêng, in logo, công suất 5.000 hộp/ngày
-        </div>
-        <div style="display: flex; gap: 6px;">
-          <a href="m3-3.html" class="btn">Xem trang đơn vị (M3.3)</a>
-          <a href="m3-4.html" class="btn btn-primary" data-needs-login="true" data-needs-nfc="true">Gửi yêu cầu riêng (M3.4)</a>
+      <div class="row-between">
+        <div class="row"><span class="avatar">NN</span><div><strong>Xưởng Bánh Nghệ Nhân</strong><br><small class="muted">Ba Đình, Hà Nội · In logo, hộp riêng · nhận đặt từ 20 hộp</small></div></div>
+        <div class="row">
+          <a href="m3-3.html" class="btn btn-sm">Xem đơn vị</a>
+          <a href="m3-4.html" class="btn btn-sm btn-primary" data-needs-login="true" data-needs-nfc="true">Gửi yêu cầu cho Nghệ Nhân</a>
         </div>
       </div>
-    </div>
+    </section>
 
-    <div class="catalog-layout">
-      <!-- Cột trái: Bộ lọc đa tiêu chí -->
+    <div class="split-left">
+      <!-- Cột lọc -->
+      <aside data-why="3">
+        <details open class="card">
+          <summary class="strong">Bộ lọc</summary>
+          <div class="stack mt-2">
+            <fieldset><legend>Giá</legend>
+              <div class="field-row" style="gap: var(--s2)">
+                <div class="field" style="margin-top:0"><label class="sr-only" for="pmin">Từ</label><input id="pmin" type="text" placeholder="Từ 0đ"></div>
+                <div class="field" style="margin-top:0"><label class="sr-only" for="pmax">Đến</label><input id="pmax" type="text" placeholder="Đến 1.000.000đ"></div>
+              </div>
+            </fieldset>
+            <fieldset><legend>Thương hiệu</legend>
+              <label class="check"><input type="checkbox" checked> Nghệ Nhân</label>
+              <label class="check"><input type="checkbox"> Trăng Vàng</label>
+              <label class="check"><input type="checkbox"> Thu Hương</label>
+            </fieldset>
+            <fieldset><legend>Vỏ bánh</legend>
+              <label class="check"><input type="checkbox" checked> Nướng</label>
+              <label class="check"><input type="checkbox"> Dẻo</label>
+              <label class="check"><input type="checkbox"> Than tre</label>
+            </fieldset>
+            <fieldset><legend>Nhân bánh</legend>
+              <label class="check"><input type="checkbox"> Thập cẩm</label>
+              <label class="check"><input type="checkbox" checked> Hạt sen</label>
+              <label class="check"><input type="checkbox" checked> Đậu xanh</label>
+              <label class="check"><input type="checkbox"> Trà xanh</label>
+            </fieldset>
+            <fieldset><legend>Shop</legend>
+              <label class="check"><input type="checkbox"> Xưởng Bánh Nghệ Nhân</label>
+              <label class="check"><input type="checkbox"> Bánh Cổ Truyền Trăng Vàng</label>
+              <label class="check"><input type="checkbox"> Đại lý Thu Hương</label>
+            </fieldset>
+            <small class="faint">Nhiều lựa chọn trong một nhóm = HOẶC; giữa các nhóm = VÀ.</small>
+          </div>
+        </details>
+      </aside>
+
       <div>
-        <div style="border: 1px solid #ccc; padding: 14px; background: #fafafa; display: flex; flex-direction: column; gap: 14px;">
-          <div>
-            <strong>Khoảng giá</strong>
-            <div style="display: flex; flex-direction: column; gap: 4px; margin-top: 6px; font-size: 13px;">
-              <label><input type="checkbox" checked> Dưới 300.000đ</label>
-              <label><input type="checkbox" checked> 300.000đ – 600.000đ</label>
-              <label><input type="checkbox" checked> 600.000đ – 1.000.000đ</label>
-              <label><input type="checkbox"> Trên 1.000.000đ</label>
-            </div>
+        <!-- Thanh trạng thái lọc + sắp xếp -->
+        <div class="toolbar" data-why="4">
+          <div class="chips">
+            <span class="chip active">Nghệ Nhân ✕</span>
+            <span class="chip active">Vỏ nướng ✕</span>
+            <span class="chip active">Hạt sen, Đậu xanh ✕</span>
+            <a href="m2-0.html" class="btn btn-ghost btn-sm">Xóa lọc</a>
           </div>
-
-          <div>
-            <strong>Thương hiệu / Shop</strong>
-            <div style="display: flex; flex-direction: column; gap: 4px; margin-top: 6px; font-size: 13px;">
-              <label><input type="checkbox" checked> Xưởng Bánh Nghệ Nhân Hà Nội</label>
-              <label><input type="checkbox" checked> Cơ Sở Bánh Cổ Truyền Trăng Vàng</label>
-              <label><input type="checkbox"> Bánh Thu Hương</label>
-            </div>
-          </div>
-
-          <div>
-            <strong>Vỏ bánh</strong>
-            <div style="display: flex; flex-direction: column; gap: 4px; margin-top: 6px; font-size: 13px;">
-              <label><input type="checkbox" checked> Vỏ nướng truyền thống</label>
-              <label><input type="checkbox"> Vỏ dẻo hạt sen</label>
-              <label><input type="checkbox"> Vỏ than tre hiện đại</label>
-            </div>
-          </div>
-
-          <div>
-            <strong>Nhân bánh</strong>
-            <div style="display: flex; flex-direction: column; gap: 4px; margin-top: 6px; font-size: 13px;">
-              <label><input type="checkbox" checked> Thập cẩm jambon bát bửu</label>
-              <label><input type="checkbox" checked> Hạt sen trứng muối</label>
-              <label><input type="checkbox"> Trà xanh matcha</label>
-              <label><input type="checkbox"> Đậu xanh sầu riêng</label>
-            </div>
-          </div>
-
-          <div style="border-top: 1px solid #ccc; padding-top: 10px;">
-            <a href="m2-0.html" class="btn" style="width: 100%; text-align: center;">Đặt lại bộ lọc</a>
+          <div class="row">
+            <label for="sort" class="sm muted">Sắp xếp</label>
+            <select id="sort" style="width:auto"><option>Đánh giá cao</option><option>Giá thấp → cao</option><option>Giá cao → thấp</option></select>
           </div>
         </div>
-      </div>
+        <p class="sm muted mb-2" id="count-line">12 sản phẩm</p>
 
-      <!-- Cột phải: Lưới danh sách sản phẩm -->
-      <div>
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; flex-wrap: wrap; gap: 8px;">
-          <span>Hiển thị <strong>3</strong> sản phẩm phù hợp</span>
-          <div style="display: flex; align-items: center; gap: 6px;">
-            <label for="sort-select">Sắp xếp:</label>
-            <select id="sort-select">
-              <option>Đánh giá cao nhất</option>
-              <option>Giá: Thấp đến cao</option>
-              <option>Giá: Cao đến thấp</option>
-            </select>
+        <div class="grid-3 keep-2" id="grid" data-why="5">
+          <a class="product" href="m2-1.html"><div class="wf-img"><span>Ảnh sản phẩm</span></div><span class="name">Hộp Hoàng Kim 4 bánh</span><span class="meta">Nghệ Nhân · 4,8 ★ (32)</span><span class="price">680.000đ</span></a>
+          <a class="product" href="m2-1.html"><div class="wf-img"><span>Ảnh sản phẩm</span></div><span class="name">Hộp Hạt Sen 2 bánh</span><span class="meta">Nghệ Nhân · 4,7 ★ (14)</span><span class="price">320.000đ</span></a>
+          <a class="product" href="m2-1.html"><div class="wf-img"><span>Ảnh sản phẩm</span></div><span class="name">Bánh nướng đậu xanh 200g</span><span class="meta">Nghệ Nhân · 4,6 ★ (40)</span><span class="price">85.000đ</span></a>
+          <a class="product" href="m2-1.html"><div class="wf-img"><span>Ảnh sản phẩm</span></div><span class="name">Hộp Đoàn Viên 6 bánh</span><span class="meta">Nghệ Nhân · 4,9 ★ (11)</span><span class="price">890.000đ</span></a>
+          <a class="product" href="m2-1.html"><div class="wf-img"><span>Ảnh sản phẩm</span></div><span class="name">Bánh nướng hạt sen 150g</span><span class="meta">Nghệ Nhân · 4,5 ★ (8)</span><span class="price">70.000đ</span></a>
+          <a class="product" href="m2-1.html"><div class="wf-img"><span>Ảnh sản phẩm</span></div><span class="name">Hộp Thu Vàng 4 bánh</span><span class="meta">Nghệ Nhân · chưa có đánh giá</span><span class="price">450.000đ</span></a>
+        </div>
+
+        <div class="empty" id="empty" hidden data-why="6">
+          <strong>Không có sản phẩm giao tới Hà Nội khớp bộ lọc</strong>
+          <p>Thử bỏ bớt bộ lọc. Nếu cần hàng làm riêng, gửi yêu cầu để các đơn vị báo giá.</p>
+          <div class="row">
+            <a href="m2-0.html" class="btn">Bỏ hết bộ lọc</a>
+            <a href="m3-1.html" class="btn btn-primary" data-needs-login="true" data-needs-nfc="true">Tạo yêu cầu báo giá</a>
           </div>
         </div>
 
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px;">
-          <!-- Card 1 -->
-          <div style="border: 1px solid #000; padding: 12px; background: #fff; display: flex; flex-direction: column; justify-content: space-between;">
-            <div>
-              <div class="wf-img" style="height: 130px; margin-bottom: 8px;">
-                <span>[Ảnh: Hộp Hoàng Kim Thượng Hạng]</span>
-              </div>
-              <strong style="display: block;">Hộp Hoàng Kim Thượng Hạng</strong>
-              <small style="color: #666; display: block; margin-bottom: 4px;">Xưởng Bánh Nghệ Nhân Hà Nội · Đánh giá: 4.9 ★</small>
-              <p style="font-size: 12px; color: #444; margin-bottom: 8px;">Vỏ nướng · Nhân thập cẩm jambon bát bửu & hạt sen trứng muối.</p>
-            </div>
-            <div>
-              <div style="font-weight: 700; font-size: 16px; margin-bottom: 8px;">680.000đ</div>
-              <a href="m2-1.html" class="btn btn-primary" style="width: 100%; text-align: center;">Xem chi tiết & Đặt mua (M2.1)</a>
-            </div>
-          </div>
-
-          <!-- Card 2 -->
-          <div style="border: 1px solid #ccc; padding: 12px; background: #fff; display: flex; flex-direction: column; justify-content: space-between;">
-            <div>
-              <div class="wf-img" style="height: 130px; margin-bottom: 8px;">
-                <span>[Ảnh: Hộp Trăng Rằm Đoàn Viên]</span>
-              </div>
-              <strong style="display: block;">Hộp Trăng Rằm Đoàn Viên</strong>
-              <small style="color: #666; display: block; margin-bottom: 4px;">Bánh Cổ Truyền Trăng Vàng · Đánh giá: 4.8 ★</small>
-              <p style="font-size: 12px; color: #444; margin-bottom: 8px;">Vỏ nướng & dẻo · Đậu xanh hạt dưa, hạt sen.</p>
-            </div>
-            <div>
-              <div style="font-weight: 700; font-size: 16px; margin-bottom: 8px;">420.000đ</div>
-              <a href="m2-1.html" class="btn btn-primary" style="width: 100%; text-align: center;">Xem chi tiết & Đặt mua (M2.1)</a>
-            </div>
-          </div>
-
-          <!-- Card 3 -->
-          <div style="border: 1px solid #ccc; padding: 12px; background: #fff; display: flex; flex-direction: column; justify-content: space-between;">
-            <div>
-              <div class="wf-img" style="height: 130px; margin-bottom: 8px;">
-                <span>[Ảnh: Hộp Thu Sắc Ngũ Phúc]</span>
-              </div>
-              <strong style="display: block;">Hộp Thu Sắc Ngũ Phúc</strong>
-              <small style="color: #666; display: block; margin-bottom: 4px;">Đại lý Thu Hương · Đánh giá: 4.7 ★</small>
-              <p style="font-size: 12px; color: #444; margin-bottom: 8px;">Hộp 5 bánh mini · Khoai môn, đậu đỏ, mè đen.</p>
-            </div>
-            <div>
-              <div style="font-weight: 700; font-size: 16px; margin-bottom: 8px;">360.000đ</div>
-              <a href="m2-1.html" class="btn btn-primary" style="width: 100%; text-align: center;">Xem chi tiết & Đặt mua (M2.1)</a>
-            </div>
-          </div>
-        </div>
-
-        <!-- Trạng thái khi không có kết quả -->
-        <div class="t1-empty" style="margin-top: 24px;">
-          <strong>Không tìm thấy dòng bánh phù hợp với bộ lọc hiện tại?</strong>
-          <p style="color: #666; font-size: 13px; margin: 8px 0 12px;">
-            Bạn có thể thử bỏ các bộ lọc hoặc gửi yêu cầu để các xưởng làm bánh riêng theo mong muốn của bạn.
-          </p>
-          <a href="m3-1.html" class="btn btn-primary" data-needs-login="true" data-needs-nfc="true">
-            Tạo yêu cầu báo giá theo yêu cầu (M3.1) ›
-          </a>
-        </div>
+        <nav class="pager" aria-label="Phân trang">
+          <span>Trang 1 / 2</span>
+          <div class="pages"><span class="current">1</span><a href="m2-0.html">2</a><a href="m2-0.html">›</a></div>
+        </nav>
       </div>
     </div>
   </main>
 
-  <aside class="wf-note" data-ref="AC-14.5">
-    Nhãn chốt theo tree test (Đ1, cây B). Lọc giá, thương hiệu, vỏ bánh, nhân bánh, Shop (nhiều trong 1 bộ lọc = HOẶC; giữa các bộ lọc = VÀ). Từ khóa khớp tên đơn vị nhận đặt hàng → khối 'Đơn vị cung cấp' tách khỏi danh sách sản phẩm, không lọc vùng giao (AC-14.5).
-  </aside>
+  <aside class="wf-note" data-ref="AC-14.5">Từ khóa khớp tên đơn vị nhận đặt hàng → khối "Đơn vị cung cấp" tách khỏi danh sách sản phẩm, không lọc vùng giao (/api/suppliers?q=).</aside>
+  <aside class="wf-note" data-ref="FR-06">Lọc giá, thương hiệu, vỏ bánh, nhân bánh, Shop. Sắp xếp giá, đánh giá. Vùng giao là bộ lọc ngầm, luôn bật.</aside>
 
+  <script>
+    // Giả lập: ?q= hiện khối đơn vị; ?empty=1 hiện trạng thái rỗng
+    (function () {
+      var params = new URLSearchParams(location.search);
+      var q = params.get('q');
+      if (q) { document.getElementById('supplier-block').hidden = false; document.getElementById('q-echo').textContent = q; }
+      if (params.get('empty')) {
+        document.getElementById('grid').hidden = true;
+        document.getElementById('empty').hidden = false;
+        document.getElementById('count-line').textContent = '0 sản phẩm';
+      }
+    })();
+  </script>
   <script src="../assets/data.js"></script>
+  <script src="../assets/why-m.js"></script>
   <script src="../assets/wf.js"></script>
 </body>
 </html>

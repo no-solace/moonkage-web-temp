@@ -8,94 +8,34 @@
 </head>
 <body data-zone="M" data-page="M6.2">
   <main id="content">
-    <div class="t1-header">
-      <div>
-        <h1>Yêu cầu và báo giá</h1>
-        <small style="color: #666;">Theo dõi các yêu cầu đặt bánh riêng và so sánh báo giá từ các xưởng sản xuất</small>
-      </div>
-      <div>
-        <a href="m3-1.html" class="btn btn-primary" data-needs-nfc="true">+ Tạo yêu cầu mới (M3.1)</a>
-      </div>
+    <div class="page-head" data-why="1">
+      <div><h1>Yêu cầu và báo giá</h1></div>
+      <a href="m3-1.html" class="btn btn-primary" data-needs-nfc="true">Tạo yêu cầu báo giá</a>
     </div>
-
-    <!-- Thanh chip lọc trạng thái -->
-    <div class="t1-chips">
-      <a href="#" class="chip active">Tất cả yêu cầu (2)</a>
-      <a href="#" class="chip">Đã có báo giá mới (1)</a>
-      <a href="#" class="chip">Đang chờ xưởng phản hồi (1)</a>
-      <a href="#" class="chip">Đã chốt hợp đồng (0)</a>
+    <div class="chips mb-2">
+      <a href="#" class="chip active">Đang mở</a><a href="#" class="chip">Có báo giá mới</a><a href="#" class="chip">Đã chốt</a><a href="#" class="chip">Đã đóng</a>
     </div>
-
-    <!-- Bảng danh sách yêu cầu và báo giá (Khuôn T1 Danh sách) -->
-    <table>
-      <thead>
-        <tr>
-          <th>Mã yêu cầu</th>
-          <th>Hình thức gửi</th>
-          <th>Quy cách & Số lượng</th>
-          <th>Số xưởng mời / Báo giá nhận</th>
-          <th>Trạng thái</th>
-          <th style="width: 140px;">Hành động</th>
-        </tr>
-      </thead>
+    <div class="table-wrap" data-why="2"><table class="cards">
+      <thead><tr><th>Yêu cầu</th><th>Loại</th><th class="num">Mời / Báo giá</th><th>Trạng thái</th><th></th></tr></thead>
       <tbody>
-        <tr>
-          <td>
-            <strong>#RFQ-2026-104</strong><br>
-            <small style="color: #666;">Tạo ngày 20/10/2026</small>
-          </td>
-          <td>
-            <strong>Gửi nhiều nơi</strong><br>
-            <small style="color: #666;">(Yêu cầu mở)</small>
-          </td>
-          <td>150 hộp quà gỗ khắc laser logo DN</td>
-          <td>
-            Đã mời 3 xưởng / <strong>2 báo giá đã gửi</strong>
-          </td>
-          <td>
-            <span class="t2-status" style="background:#fff;">Có báo giá mới</span>
-          </td>
-          <td>
-            <a href="m6-2-1.html" class="btn btn-primary">So sánh giá (M6.2.1) ›</a>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <strong>#RFQ-2026-098</strong><br>
-            <small style="color: #666;">Tạo ngày 15/10/2026</small>
-          </td>
-          <td>
-            <strong>Gửi riêng Xưởng Nghệ Nhân Hà Nội</strong><br>
-            <small style="color: #666;">(Yêu cầu trực tiếp)</small>
-          </td>
-          <td>80 hộp 4 bánh cao cấp ép kim</td>
-          <td>
-            Gửi riêng 1 xưởng / <strong>1 báo giá</strong>
-          </td>
-          <td>
-            <span class="t2-status">Đang trao đổi maket</span>
-          </td>
-          <td>
-            <a href="m6-2-1.html" class="btn">Xem chi tiết ›</a>
-          </td>
-        </tr>
+        <tr><td data-label="Yêu cầu"><strong>YC-104</strong> · 150 hộp in logo<br><small class="muted">Tạo 20/10/2026</small></td>
+          <td data-label="Loại"><span class="badge">Gửi nhiều nơi</span></td>
+          <td class="num" data-label="Mời / Báo giá" data-why="3">3 / <strong>2</strong></td>
+          <td data-label="Trạng thái"><span class="badge badge-solid">Có báo giá mới</span></td>
+          <td><a href="m6-2-1.html" class="btn btn-sm btn-primary">So sánh</a></td></tr>
+        <tr><td data-label="Yêu cầu"><strong>YC-098</strong> · 120 hộp gỗ<br><small class="muted">Tạo 15/10/2026</small></td>
+          <td data-label="Loại"><span class="badge badge-dash">Gửi riêng Nghệ Nhân</span></td>
+          <td class="num" data-label="Mời / Báo giá">1 / 0</td>
+          <td data-label="Trạng thái"><span class="badge badge-soft">Chờ báo giá</span></td>
+          <td><a href="m6-2-1.html" class="btn btn-sm">Xem</a></td></tr>
       </tbody>
-    </table>
-
-    <div class="t1-pagination">
-      <span>Hiển thị 2 trong 2 yêu cầu</span>
-      <div>
-        <button class="btn btn-disabled" disabled>‹ Trang trước</button>
-        <button class="btn btn-disabled" disabled>Trang sau ›</button>
-      </div>
-    </div>
+    </table></div>
+    <nav class="pager"><span>2 yêu cầu</span><div class="pages"><span class="current">1</span></div></nav>
   </main>
 
-  <aside class="wf-note" data-ref="AC-16.3">
-    Nhãn menu tài khoản: 'Yêu cầu và báo giá' (không dùng chữ 'Yêu cầu'). Cột loại: 'Gửi nhiều nơi' / 'Gửi riêng [đơn vị]'; số người bán được mời, số báo giá đã nhận.
-  </aside>
-
+  <aside class="wf-note" data-ref="AC-16.3">Cột loại: "Gửi nhiều nơi" / "Gửi riêng [đơn vị]"; số người bán được mời, số báo giá.</aside>
   <script src="../assets/data.js"></script>
+  <script src="../assets/why-m.js"></script>
   <script src="../assets/wf.js"></script>
 </body>
 </html>

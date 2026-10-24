@@ -8,88 +8,84 @@
 </head>
 <body data-zone="M" data-page="M3.3">
   <main id="content">
-    <div class="t2-header">
-      <div>
-        <h1>Xưởng Bánh Nghệ Nhân Hà Nội</h1>
-        <small style="color: #666;">Địa chỉ: Số 28 Phan Đình Phùng, Quận Ba Đình, Hà Nội · Đánh giá: 4.9 ★ (184 lượt mua, 42 hợp đồng sỉ)</small>
-      </div>
-      <div>
-        <a href="m3-4.html" class="btn btn-primary" data-needs-login="true" data-needs-nfc="true">
-          Gửi yêu cầu cho đơn vị này (M3.4) ›
-        </a>
-      </div>
-    </div>
-
-    <!-- Tóm tắt hồ sơ xưởng -->
-    <div class="t2-summary">
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px;">
+    <!-- Đầu trang đơn vị: danh tính trái, hành động phải -->
+    <div class="card card-fill row-between mb-3" data-why="1">
+      <div class="row row-top">
+        <span class="avatar" style="width:64px;height:64px">NN</span>
         <div>
-          <small style="color: #666;">Loại hình kinh doanh:</small><br>
-          <strong>Hộ kinh doanh cá thể lâu năm</strong>
-        </div>
-        <div>
-          <small style="color: #666;">Năng lực làm mẫu:</small><br>
-          <strong>Gửi mẫu maket nắp hộp trong 24 giờ</strong>
-        </div>
-        <div>
-          <small style="color: #666;">Công suất tối đa:</small><br>
-          <strong>5.000 hộp / ngày</strong>
-        </div>
-        <div>
-          <small style="color: #666;">Chứng nhận nguồn gốc:</small><br>
-          <strong>Giấy chứng nhận ATTP đã kiểm duyệt</strong>
+          <h1>Xưởng Bánh Nghệ Nhân Hà Nội</h1>
+          <div class="sm muted">28 Phan Đình Phùng, Ba Đình, Hà Nội · 4,9 ★ (184 lượt mua)</div>
+          <div class="row mt-1"><span class="badge">Có Shop</span><span class="badge">Nhận đặt hàng</span></div>
         </div>
       </div>
+      <a href="m3-4.html" class="btn btn-primary" data-needs-login="true" data-needs-nfc="true" data-hide="seller-open">Gửi yêu cầu cho Nghệ Nhân</a>
     </div>
 
-    <!-- Hai tab theo AC-34.1: Hàng có sẵn · Nhận đặt hàng -->
-    <div class="t1-tabs">
-      <a href="#tab-ready" class="t1-tab active">Hàng có sẵn</a>
-      <a href="#tab-custom" class="t1-tab">Nhận đặt theo yêu cầu</a>
+    <div class="tabs" role="tablist" data-why="2">
+      <a href="#ready" class="tab active" id="t-ready">Hàng có sẵn <span class="count">6</span></a>
+      <a href="#custom" class="tab" id="t-custom">Nhận đặt hàng</a>
     </div>
 
-    <!-- Tab 1: Hàng có sẵn -->
-    <div id="tab-ready" style="margin-bottom: 24px;">
-      <h2 style="margin-bottom: 12px;">Các dòng bánh có sẵn tại kho giao ngay</h2>
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px;">
-        <div style="border: 1px solid #ccc; padding: 12px; background: #fff;">
-          <div class="wf-img" style="height: 120px; margin-bottom: 8px;">
-            <span>[Ảnh: Hộp Hoàng Kim]</span>
+    <section id="ready">
+      <div class="grid-4 keep-2" data-why="3">
+        <a class="product" href="m2-1.html"><div class="wf-img"><span>Ảnh sản phẩm</span></div><span class="name">Hộp Hoàng Kim 4 bánh</span><span class="meta">4,8 ★ (32)</span><span class="price">680.000đ</span></a>
+        <a class="product" href="m2-1.html"><div class="wf-img"><span>Ảnh sản phẩm</span></div><span class="name">Hộp Hạt Sen 2 bánh</span><span class="meta">4,7 ★ (14)</span><span class="price">320.000đ</span></a>
+        <a class="product" href="m2-1.html"><div class="wf-img"><span>Ảnh sản phẩm</span></div><span class="name">Bánh nướng đậu xanh 200g</span><span class="meta">4,6 ★ (40)</span><span class="price">85.000đ</span></a>
+        <a class="product" href="m2-1.html"><div class="wf-img"><span>Ảnh sản phẩm</span></div><span class="name">Hộp Đoàn Viên 6 bánh</span><span class="meta">4,9 ★ (11)</span><span class="price">890.000đ</span></a>
+      </div>
+    </section>
+
+    <section id="custom" hidden>
+      <div class="split">
+        <div class="stack" data-why="4">
+          <div class="card">
+            <h2 class="mb-1">Nhận làm</h2>
+            <dl class="kv">
+              <dt>Kiểu hộp</dt><dd>2, 4, 6 bánh; hộp gỗ, hộp giấy cứng</dd>
+              <dt>Làm riêng</dt><dd>Ép kim, dập nổi, khắc laser logo</dd>
+              <dt>Vỏ</dt><dd>Nướng, dẻo</dd>
+              <dt>Nhân</dt><dd>Thập cẩm, hạt sen, đậu xanh, trà xanh</dd>
+            </dl>
           </div>
-          <strong>Hộp Hoàng Kim Thượng Hạng</strong>
-          <div style="font-size: 16px; font-weight: 700; margin: 6px 0;">680.000đ</div>
-          <a href="m2-1.html" class="btn btn-primary" style="width: 100%; text-align: center;">Xem chi tiết (M2.1)</a>
+          <div class="card">
+            <h2 class="mb-1">Điều kiện</h2>
+            <dl class="kv">
+              <dt>Tối thiểu</dt><dd>20 hộp</dd>
+              <dt>Công suất</dt><dd>5.000 hộp/ngày</dd>
+              <dt>Maket</dt><dd>Gửi trong 24 giờ sau khi nhận cọc</dd>
+              <dt>Giao</dt><dd>Toàn quốc</dd>
+            </dl>
+          </div>
         </div>
+        <aside class="actions-box sticky" data-hide="seller-open" data-why="5">
+          <h2>Cần làm riêng với đơn vị này?</h2>
+          <p class="sm muted">Gửi yêu cầu, đơn vị trả báo giá trong Yêu cầu và báo giá của bạn.</p>
+          <a href="m3-4.html" class="btn btn-primary btn-block" data-needs-login="true" data-needs-nfc="true">Gửi yêu cầu cho Nghệ Nhân</a>
+        </aside>
       </div>
-    </div>
-
-    <!-- Tab 2: Năng lực nhận đặt theo yêu cầu -->
-    <div id="tab-custom" style="border: 1px solid #ccc; padding: 16px; background: #fafafa; margin-bottom: 24px;">
-      <h2>Hồ sơ năng lực nhận đặt hàng</h2>
-      <p style="color: #555; margin: 8px 0 14px; font-size: 13px;">
-        Xưởng nhận gia công hộp bánh trung thu số lượng lớn cho doanh nghiệp, cơ quan, đoàn thể:
-      </p>
-
-      <ul style="padding-left: 20px; font-size: 13px; color: #333; line-height: 1.6;">
-        <li><strong>Quy cách tùy biến:</strong> Hộp 2 bánh, 4 bánh, 6 bánh, hộp quà kết hợp trà sen Tây Hồ.</li>
-        <li><strong>Công nghệ in ấn:</strong> Ép kim vàng 24K, dập nổi logo, khắc laser nắp hộp gỗ nguyên khối.</li>
-        <li><strong>Nguyên liệu bánh:</strong> 100% nguyên liệu tự nhiên có đầy đủ chứng nhận kiểm định an toàn thực phẩm.</li>
-        <li><strong>Chính sách đặt cọc:</strong> Cọc 50% sau khi chốt mẫu maket qua Cổng thanh toán Moonkage.</li>
-      </ul>
-
-      <div style="margin-top: 16px;">
-        <a href="m3-4.html" class="btn btn-primary" data-needs-login="true" data-needs-nfc="true">
-          Gửi yêu cầu đặt làm riêng cho Xưởng Bánh Nghệ Nhân Hà Nội (M3.4) ›
-        </a>
-      </div>
-    </div>
+    </section>
   </main>
 
-  <aside class="wf-note" data-ref="AC-34.1">
-    Gộp 'trang Shop' và 'hồ sơ nhận đặt hàng' vào một trang hai tab (AC-34.1). Tab 'Hàng có sẵn' chỉ hiện khi đơn vị có mở Shop; tab 'Nhận đặt hàng' hiển thị năng lực và điều kiện làm hàng custom.
-  </aside>
+  <aside class="wf-note" data-ref="AC-34.1">Gộp "trang Shop" và "hồ sơ nhận đặt hàng" vào một trang hai tab. Tab "Hàng có sẵn" chỉ khi có Shop; tab "Nhận đặt hàng" chỉ khi nhận đặt hàng.</aside>
+  <aside class="wf-note" data-ref="BR-22">Chủ của đơn vị không thấy nút gửi yêu cầu cho chính mình.</aside>
 
+  <script>
+    // Chuyển tab giả lập
+    (function () {
+      function show(id) {
+        document.getElementById('ready').hidden = id !== 'ready';
+        document.getElementById('custom').hidden = id !== 'custom';
+        document.getElementById('t-ready').classList.toggle('active', id === 'ready');
+        document.getElementById('t-custom').classList.toggle('active', id === 'custom');
+      }
+      document.querySelectorAll('.tab').forEach(function (t) {
+        t.addEventListener('click', function (e) { e.preventDefault(); show(t.getAttribute('href').slice(1)); });
+      });
+      if (location.hash === '#custom') show('custom');
+    })();
+  </script>
   <script src="../assets/data.js"></script>
+  <script src="../assets/why-m.js"></script>
   <script src="../assets/wf.js"></script>
 </body>
 </html>

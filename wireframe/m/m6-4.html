@@ -8,86 +8,59 @@
 </head>
 <body data-zone="M" data-page="M6.4">
   <main id="content">
-    <div style="max-width: 520px; margin: 32px auto; border: 2px solid #000; padding: 24px; background: #fafafa;">
-      <h1>Xác minh danh tính qua thẻ NFC (M6.4)</h1>
-      <p style="color: #444; margin-bottom: 16px; font-size: 13px;">
-        Bước bắt buộc trước khi tạo yêu cầu báo giá doanh nghiệp hoặc đăng ký bán hàng (BR-23). Nhằm đảm bảo cam kết trách nhiệm và chống gian lận thương mại.
-      </p>
+    <div class="page-head"><div><h1>Xác minh danh tính</h1><p class="lead">Dùng CCCD gắn chip và app Moonkage Verify. Cần trước khi đặt theo yêu cầu hoặc bán hàng.</p></div></div>
 
-      <div id="nfc-return-notice" style="border: 1px dashed #888; padding: 8px 12px; margin-bottom: 16px; background: #fff; font-size: 12px; display: none;">
-        <strong>Phiên làm việc chen:</strong> Sau khi hoàn tất xác minh NFC, bạn sẽ tự động được đưa quay lại: <code id="nfc-target-page"></code>
-      </div>
-
-      <div style="text-align: center; border: 1px solid #ccc; padding: 20px; background: #fff; margin-bottom: 16px;">
-        <strong style="display: block; margin-bottom: 8px;">Quét mã QR bằng App Moonkage Verify trên điện thoại</strong>
-        <!-- Khung ảnh QR gạch chéo -->
-        <div class="wf-img" style="width: 160px; height: 160px; margin: 0 auto 12px;">
-          <span>[QR Code Phiên #VERIFY-8821]</span>
-        </div>
-        <small style="color: #666; display: block;">Mã phiên: <strong>#SESS-NFC-99120</strong> · Hiệu lực trong: 15 phút</small>
-      </div>
-
-      <div style="border-left: 4px solid #000; background: #eee; padding: 10px 14px; margin-bottom: 16px; font-size: 13px;">
-        <strong>Quy trình trên điện thoại:</strong> Mở app Verify → Quét mã QR trên màn hình → Chạm thẻ NFC CCCD/Doanh nghiệp vào lưng điện thoại → Xác thực hoàn tất.
-      </div>
-
-      <div style="display: flex; flex-direction: column; gap: 8px;">
-        <button type="button" class="btn btn-primary" id="btn-nfc-sim" style="padding: 10px; font-size: 14px;">
-          [GIẢ LẬP]: Đã chạm thẻ NFC xác minh thành công ›
-        </button>
-        <button type="button" class="btn" onclick="history.back()">Hủy bỏ và quay lại</button>
-      </div>
+    <div class="callout callout-soft mb-3" id="ret" hidden data-why="1">
+      <span class="grow">Xác minh xong, bạn sẽ quay lại <strong id="ret-label"></strong> để làm tiếp.</span>
     </div>
+
+    <div id="todo" class="split">
+      <section class="card card-strong" data-why="2">
+        <div class="grid-2" style="align-items:center">
+          <div class="center stack-sm">
+            <div class="wf-img ratio-1" style="max-width:220px;margin:0 auto"><span>Mã QR phiên</span></div>
+            <small class="muted">Hết hạn sau 14:52</small>
+            <span class="badge badge-soft" style="align-self:center" data-why="3">● Đang chờ điện thoại quét…</span>
+          </div>
+          <ol class="steps" style="flex-direction:column;margin:0">
+            <li class="active"><span class="lbl">Mở app Moonkage Verify, quét mã</span></li>
+            <li><span class="lbl">Chụp mặt trước CCCD</span></li>
+            <li><span class="lbl">Áp CCCD vào lưng điện thoại</span></li>
+            <li><span class="lbl">Xong – trang này tự cập nhật</span></li>
+          </ol>
+        </div>
+      </section>
+      <aside class="stack" data-why="4">
+        <div class="card card-fill sm stack-sm"><strong>Chưa có app?</strong><span>Tải Moonkage Verify trên điện thoại có NFC.</span></div>
+        <button type="button" class="btn btn-primary btn-block" id="sim">Giả lập: app báo xác minh xong</button>
+        <small class="hint">Sai thẻ: app báo lại ở bước 3. Khóa sau 5 lần sai (Q-30 tạm).</small>
+      </aside>
+    </div>
+
+    <section id="done" class="card stack-sm" hidden>
+      <span class="badge badge-solid" style="align-self:flex-start">Đã xác minh</span>
+      <dl class="kv"><dt>Họ tên</dt><dd>NGUYỄN VĂN MINH</dd><dt>Số định danh</dt><dd>0010******89</dd><dt>Ngày xác minh</dt><dd>24/10/2026</dd></dl>
+    </section>
   </main>
 
-  <aside class="wf-note" data-ref="FR-04">
-    Xác minh danh tính NFC (M6.4): mở như bước chen từ M3.1, M3.4, M7.1. Mã QR phiên làm việc; App Moonkage Verify (V1-V5) đã xong, tại đây đặt nút giả lập hoàn thành để cập nhật trạng thái đã xác minh NFC và quay lại trang xuất phát.
-  </aside>
-
-  <script src="../assets/data.js"></script>
-  <script src="../assets/wf.js"></script>
+  <aside class="wf-note" data-ref="FR-04">Mã QR, trạng thái phiên; xong tự quay về bước đang làm. Mở như bước chen từ M3.1, M3.4, M7.1. App Verify (V1–V5) đã xong, ở đây chỉ giả lập.</aside>
   <script>
-    (function() {
-      var urlParams = new URLSearchParams(window.location.search);
-      var nextPage = urlParams.get('next');
-      
-      // Trạng thái đã xác minh đối với vai buyer-nfc
-      var currentRole = localStorage.getItem('wf_role') || 'guest';
-      if (currentRole === 'buyer-nfc') {
-        var box = document.getElementById('btn-nfc-sim');
-        if (box) {
-          box.textContent = '[✓] Tài khoản đã hoàn tất xác minh danh tính NFC';
-          box.disabled = true;
-          box.style.background = '#eee';
-          box.style.color = '#000';
-        }
-      }
-
-      if (nextPage) {
-        var notice = document.getElementById('nfc-return-notice');
-        var label = document.getElementById('nfc-target-page');
-        if (notice && label) {
-          notice.style.display = 'block';
-          label.textContent = nextPage;
-        }
-      }
-
-      var simBtn = document.getElementById('btn-nfc-sim');
-      if (simBtn) {
-        simBtn.addEventListener('click', function() {
-          // Lưu vai trò mới là 'buyer-nfc' (Người mua đã xác minh NFC)
-          try {
-            localStorage.setItem('wf_role', 'buyer-nfc');
-          } catch(e) {}
-          
-          if (nextPage) {
-            window.location.href = nextPage;
-          } else {
-            window.location.href = 'm6-2.html';
-          }
-        });
-      }
+    (function () {
+      var next = new URLSearchParams(location.search).get('next');
+      var role = 'buyer';
+      try { role = localStorage.getItem('wf_role') || 'buyer'; } catch (e) {}
+      var verified = role === 'buyer-nfc' || role === 'seller-open' || role === 'admin';
+      if (next) { document.getElementById('ret').hidden = false; document.getElementById('ret-label').textContent = next; }
+      document.getElementById('todo').hidden = verified;
+      document.getElementById('done').hidden = !verified;
+      document.getElementById('sim').addEventListener('click', function () {
+        try { localStorage.setItem('wf_role', role === 'seller-pending' ? 'seller-pending' : 'buyer-nfc'); } catch (e) {}
+        location.href = next || 'm6-4.html';
+      });
     })();
   </script>
+  <script src="../assets/data.js"></script>
+  <script src="../assets/why-m.js"></script>
+  <script src="../assets/wf.js"></script>
 </body>
 </html>

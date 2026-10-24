@@ -5,92 +5,83 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Moonkage – Chi tiết sản phẩm (M2.1)</title>
   <link rel="stylesheet" href="../assets/wf.css">
-  <style>
-    .product-detail-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 28px;
-    }
-    @media (max-width: 480px) {
-      .product-detail-grid { grid-template-columns: 1fr; }
-    }
-  </style>
 </head>
 <body data-zone="M" data-page="M2.1">
   <main id="content">
-    <div class="product-detail-grid">
-      <!-- Cột trái: Bộ ảnh gạch chéo & chứng nhận -->
-      <div>
-        <div class="wf-img" style="height: 300px; margin-bottom: 12px;">
-          <span>[Ảnh chính: Hộp Hoàng Kim Thượng Hạng]</span>
-        </div>
-        <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px;">
-          <div class="wf-img" style="height: 60px;"><span>[Ảnh 1]</span></div>
-          <div class="wf-img" style="height: 60px;"><span>[Ảnh 2]</span></div>
-          <div class="wf-img" style="height: 60px;"><span>[Ảnh 4]</span></div>
+    <div class="grid-2" style="gap: var(--s6)">
+      <!-- Ảnh -->
+      <div class="stack-sm" data-why="1">
+        <div class="wf-img ratio-1"><span>Ảnh sản phẩm chính</span></div>
+        <div class="grid-4 keep-2">
+          <div class="wf-img ratio-1"><span>Ảnh 2</span></div>
+          <div class="wf-img ratio-1"><span>Ảnh 3</span></div>
+          <div class="wf-img ratio-1"><span>Ảnh 4</span></div>
+          <div class="wf-img ratio-1"><span>Ảnh 5</span></div>
         </div>
       </div>
 
-      <!-- Cột phải: Thông số, giá và các nút hành động -->
-      <div>
-        <!-- Nhãn kiểm tra BR-22 (Chủ Shop xem sản phẩm của mình) -->
-        <div id="seller-own-product-badge" data-show="seller-open" style="border: 2px dashed #000; padding: 8px 12px; margin-bottom: 12px; background: #eee;">
-          <strong>[Sản phẩm của bạn]:</strong> Bạn là chủ Shop sản xuất sản phẩm này. Nút mua hàng bị vô hiệu hóa theo quy định kiểm soát giao dịch nội bộ (BR-22).
+      <!-- Thông tin + mua -->
+      <div class="stack">
+        <div class="callout" data-show="seller-open" data-why="2">
+          <span class="badge badge-solid">Sản phẩm của bạn</span>
+          <span class="grow sm">Bạn là chủ Shop này nên không mua được (BR-22).</span>
+          <a href="../b/b4-1.html" class="btn btn-sm">Sửa sản phẩm</a>
         </div>
 
-        <h1>Hộp Hoàng Kim Thượng Hạng</h1>
-        <div style="margin: 8px 0; color: #555; font-size: 13px;">
-          Đơn vị: <strong>Xưởng Bánh Nghệ Nhân Hà Nội</strong> · Đánh giá: <strong>4.9 ★</strong> (184 lượt mua)
+        <div>
+          <a href="m3-3.html" class="sm muted">Xưởng Bánh Nghệ Nhân · Ba Đình, Hà Nội</a>
+          <h1>Hộp Hoàng Kim 4 bánh</h1>
+          <p class="sm muted mt-1">4,8 ★ · 32 đánh giá</p>
         </div>
 
-        <div style="font-size: 24px; font-weight: 700; margin: 16px 0; border-bottom: 1px solid #ccc; padding-bottom: 12px;">
-          680.000đ <small style="font-size: 13px; font-weight: normal; color: #666;">(Đã bao gồm thuế GTGT)</small>
-        </div>
+        <div class="price-lg" data-why="3">680.000đ</div>
 
-        <div style="margin-bottom: 16px;">
-          <strong>Quy cách hộp bánh:</strong>
-          <ul style="padding-left: 20px; margin-top: 6px; font-size: 13px; color: #333;">
-            <li>01 Bánh nướng Thập cẩm jambon bát bửu (200g, 2 trứng muối)</li>
-            <li>01 Bánh nướng Hạt sen xá xíu hoàng kim (200g, 2 trứng muối)</li>
-            <li>01 Bánh dẻo Trà xanh hạt dưa matcha (200g, 1 trứng muối)</li>
-            <li>01 Bánh nướng Đậu xanh sầu riêng (200g, 1 trứng muối)</li>
-            <li>Hộp gỗ cao cấp kèm dao cắt bánh và thiệp lời chúc Moonkage</li>
-          </ul>
-        </div>
-
-        <div style="margin-bottom: 16px;">
-          <strong>Tồn kho tại Hà Nội:</strong> <span>42 hộp có sẵn giao ngay</span>
-        </div>
-
-        <!-- Khối Mua Hàng (cho Khách và Người mua) -->
-        <div id="buyer-actions-block" style="display: flex; flex-direction: column; gap: 10px; margin-top: 20px;">
-          <div style="display: flex; gap: 10px; align-items: center;">
-            <label for="p-qty">Số lượng:</label>
-            <input type="number" id="p-qty" value="1" min="1" max="15" style="width: 60px; padding: 6px;">
+        <div class="card card-strong stack" data-hide="seller-open" data-why="4">
+          <div class="row-between">
+            <span class="badge badge-soft">Còn 42 hộp · giao tới Hà Nội</span>
+            <small class="muted">Phí giao từ 25.000đ, tính ở giỏ</small>
           </div>
-
-          <div style="display: flex; gap: 10px; flex-wrap: wrap;">
-            <a href="m4-0.html" class="btn btn-primary" data-needs-login="true" style="padding: 10px 20px;">
-              Thêm vào giỏ & Đặt hàng (M4.0) ›
-            </a>
-            <a href="m3-4.html" class="btn" style="padding: 10px 16px;">
-              Gửi yêu cầu đặt làm riêng cho Shop này (M3.4) ›
-            </a>
+          <div class="row">
+            <label for="qty" class="strong">Số lượng</label>
+            <input id="qty" type="number" value="1" min="1" style="width: 96px">
+            <a href="m4-0.html" class="btn btn-primary grow" data-needs-login="true">Thêm vào giỏ</a>
           </div>
         </div>
 
-        <div style="margin-top: 24px; border-top: 1px solid #ccc; padding-top: 12px; font-size: 12px; color: #666;">
-          Phí vận chuyển nội thành Hà Nội: <strong>25.000đ</strong> · Hỗ trợ xuất hóa đơn điện tử cho doanh nghiệp tại bước thanh toán.
+        <div class="callout callout-soft" data-hide="seller-open" data-why="5">
+          <div class="grow">
+            <strong>Cần số lượng lớn hoặc in logo?</strong>
+            <div class="sm muted">Shop này nhận đặt theo yêu cầu.</div>
+          </div>
+          <a href="m3-4.html" class="btn btn-sm" data-needs-login="true" data-needs-nfc="true">Gửi yêu cầu cho Shop này</a>
         </div>
+
+        <section data-why="6">
+          <h2 class="mb-1">Trong hộp</h2>
+          <dl class="kv">
+            <dt>Vỏ</dt><dd>Nướng</dd>
+            <dt>Nhân</dt><dd>Thập cẩm, hạt sen, đậu xanh, trà xanh</dd>
+            <dt>Quy cách</dt><dd>4 bánh × 200g, hộp giấy cứng</dd>
+            <dt>Thương hiệu</dt><dd>Nghệ Nhân</dd>
+          </dl>
+        </section>
       </div>
     </div>
+
+    <section class="section mt-3" data-why="7">
+      <div class="section-head"><h2>Đánh giá (32)</h2></div>
+      <ul class="list">
+        <li><span class="avatar">L</span><div class="grow"><strong>Chị Lan</strong> · 5 ★ <small class="faint">12/09/2026</small><br>Hộp đẹp, bánh mềm, giao đúng giờ.</div></li>
+        <li><span class="avatar">T</span><div class="grow"><strong>Anh Tuấn</strong> · 4 ★ <small class="faint">10/09/2026</small><br>Nhân hạt sen ngon, hơi ngọt.</div></li>
+      </ul>
+    </section>
   </main>
 
-  <aside class="wf-note" data-ref="BR-22">
-    Chủ của Shop thấy nhãn 'Sản phẩm của bạn', không có nút mua (BR-22). Có lối 'Gửi yêu cầu cho Shop này' nếu người bán nhận đặt hàng. Thao tác 'Thêm vào giỏ' yêu cầu đăng nhập: khách bấm → M5.1 rồi tự quay về giỏ (AC-02.3).
-  </aside>
+  <aside class="wf-note" data-ref="BR-22">Chủ của Shop thấy nhãn "Sản phẩm của bạn", không có nút mua.</aside>
+  <aside class="wf-note" data-ref="AC-02.3">Khách bấm "Thêm vào giỏ" → đăng nhập → tự thêm vào giỏ và quay về.</aside>
 
   <script src="../assets/data.js"></script>
+  <script src="../assets/why-m.js"></script>
   <script src="../assets/wf.js"></script>
 </body>
 </html>

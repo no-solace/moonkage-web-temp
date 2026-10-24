@@ -8,58 +8,54 @@
 </head>
 <body data-zone="M" data-page="M3.0">
   <main id="content">
-    <h1>Đặt theo yêu cầu</h1>
-    <p style="color: #444; margin-top: 4px; margin-bottom: 24px;">
-      Số lượng lớn, in logo hoặc hàng phải làm riêng, dù ít hộp. Chọn một trong hai hình thức dưới đây để bắt đầu:
-    </p>
-
-    <!-- Lưới 2 thẻ lối vào (Khuôn T4 Trung chuyển) -->
-    <div class="t4-grid">
-      <!-- Thẻ 1 -->
-      <div class="t4-card">
-        <div>
-          <h2>Tạo yêu cầu báo giá</h2>
-          <small style="color: #666; font-weight: 700; display: block; margin-bottom: 8px;">(Gửi tới nhiều đơn vị cùng lúc)</small>
-          <p>
-            <strong>Khi nào chọn:</strong> Khi bạn cần đặt làm hộp quà số lượng nhiều cho công ty, muốn so sánh giá và thời gian hoàn thành từ nhiều xưởng bánh nghệ nhân khác nhau.
-          </p>
-        </div>
-        <div>
-          <div class="t4-cond">
-            <strong>Điều kiện thật:</strong> Cần xác minh danh tính qua thẻ NFC trước khi gửi yêu cầu.
-          </div>
-          <a href="m3-1.html" class="btn btn-primary" data-needs-login="true" data-needs-nfc="true" style="width: 100%; text-align: center;">
-            Tạo yêu cầu báo giá ›
-          </a>
-        </div>
-      </div>
-
-      <!-- Thẻ 2 -->
-      <div class="t4-card">
-        <div>
-          <h2>Chọn đơn vị cung cấp cụ thể</h2>
-          <small style="color: #666; font-weight: 700; display: block; margin-bottom: 8px;">(Gửi riêng cho một đơn vị)</small>
-          <p>
-            <strong>Khi nào chọn:</strong> Khi bạn đã biết thương hiệu hoặc xưởng sản xuất quen thuộc và muốn đặt làm riêng trực tiếp với xưởng đó.
-          </p>
-        </div>
-        <div>
-          <div class="t4-cond">
-            <strong>Điều kiện thật:</strong> Xem danh sách tự do; gửi yêu cầu riêng cần xác minh NFC.
-          </div>
-          <a href="m3-2.html" class="btn" style="width: 100%; text-align: center;">
-            Xem danh mục Đơn vị cung cấp ›
-          </a>
-        </div>
+    <div class="page-head" data-why="1">
+      <div>
+        <h1>Đặt theo yêu cầu</h1>
+        <p class="lead">Số lượng lớn, in logo hoặc hàng phải làm riêng, dù ít hộp.</p>
       </div>
     </div>
+
+    <div class="grid-2" data-why="2">
+      <article class="entry">
+        <span class="eyebrow">Gửi nhiều nơi</span>
+        <h2>Tạo yêu cầu báo giá</h2>
+        <p class="when"><strong>Khi nào chọn:</strong> bạn chưa có đơn vị quen và muốn nhận vài báo giá để so sánh.</p>
+        <ul class="cond" data-why="3">
+          <li>Moonkage gửi yêu cầu tới các đơn vị khớp số lượng, kiểu hộp và vùng giao</li>
+          <li>Cần đăng nhập và xác minh danh tính bằng CCCD gắn chip</li>
+          <li>Đặt cọc khi chấp nhận một báo giá</li>
+        </ul>
+        <div class="actions"><a href="m3-1.html" class="btn btn-primary" data-needs-login="true" data-needs-nfc="true">Tạo yêu cầu báo giá</a></div>
+      </article>
+      <article class="entry">
+        <span class="eyebrow">Chọn một nơi</span>
+        <h2>Đơn vị cung cấp</h2>
+        <p class="when"><strong>Khi nào chọn:</strong> bạn đã biết đơn vị mình muốn, hoặc muốn xem năng lực từng nơi trước.</p>
+        <ul class="cond">
+          <li>Xem danh sách và trang đơn vị không cần đăng nhập</li>
+          <li>Gửi yêu cầu cho một đơn vị cần xác minh danh tính</li>
+          <li>Mỗi đơn vị có số hộp tối thiểu riêng</li>
+        </ul>
+        <div class="actions"><a href="m3-2.html" class="btn">Xem đơn vị cung cấp</a></div>
+      </article>
+    </div>
+
+    <section class="section mt-3" data-why="4">
+      <div class="section-head"><h2>Sau khi gửi, việc diễn ra thế nào</h2></div>
+      <ol class="steps">
+        <li><span class="lbl">Đơn vị gửi báo giá</span></li>
+        <li><span class="lbl">Bạn chấp nhận và đặt cọc</span></li>
+        <li><span class="lbl">Duyệt maket</span></li>
+        <li><span class="lbl">Đơn vị làm và giao</span></li>
+        <li><span class="lbl">Trả phần còn lại</span></li>
+      </ol>
+    </section>
   </main>
 
-  <aside class="wf-note" data-ref="Đ1">
-    Nhãn chốt theo tree test (cây B). Dòng mô tả dưới nhãn: 'Số lượng lớn, in logo hoặc hàng phải làm riêng, dù ít hộp.' Giải thích rõ 2 cách tiếp cận: gửi nhiều nơi (yêu cầu báo giá) hoặc chọn một đơn vị cụ thể.
-  </aside>
+  <aside class="wf-note" data-ref="Đ1">Nhãn chốt theo tree test (cây B). Giải thích hai cách: gửi nhiều nơi (yêu cầu báo giá) hoặc chọn một đơn vị.</aside>
 
   <script src="../assets/data.js"></script>
+  <script src="../assets/why-m.js"></script>
   <script src="../assets/wf.js"></script>
 </body>
 </html>

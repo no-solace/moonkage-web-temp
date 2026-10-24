@@ -8,142 +8,139 @@
 </head>
 <body data-zone="M" data-page="M1.0">
   <main id="content">
-    <!-- Section Hero -->
-    <section class="wf-hero">
-      <div>
-        <h1 style="font-size: 20px; line-height: 1.3; margin-bottom: 8px;">
-          Nền tảng kết nối trực tiếp xưởng bánh trung thu nghệ nhân & doanh nghiệp
-        </h1>
-        <p style="font-size: 14px; color: #444; line-height: 1.6; margin-bottom: 16px;">
-          Mua bánh hộp đóng sẵn giao ngay theo khu vực hoặc tạo yêu cầu báo giá đặt làm riêng (in logo, khắc laser nắp hộp gỗ, thiệp chúc mừng).
-        </p>
+    <h1 class="sr-only">Trang chủ</h1>
 
-        <div style="display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 16px;">
-          <a href="m2-0.html" class="btn btn-primary" style="padding: 10px 18px; font-weight: 700;">
-            Mua hàng có sẵn (M2.0) ›
-          </a>
-          <a href="m3-0.html" class="btn" style="padding: 10px 18px;">
-            Đặt theo yêu cầu (M3.0) ›
-          </a>
-        </div>
-
-        <div style="display: flex; gap: 16px; flex-wrap: wrap; font-size: 12px; color: #555; border-top: 1px solid #ccc; padding-top: 12px;">
-          <span>[✓] Tiền tạm giữ bảo đảm qua sàn</span>
-          <span>[✓] 100% chứng nhận an toàn thực phẩm</span>
-          <span>[✓] Xác thực danh tính người đặt</span>
-        </div>
+    <!-- Khối 1: chọn khu vực giao (chỉ khách chưa chọn) -->
+    <section class="callout callout-soft mb-3" data-show="guest" data-why="1">
+      <span class="wf-icon" aria-hidden="true">KV</span>
+      <div class="grow">
+        <strong>Bạn muốn giao tới đâu?</strong>
+        <div class="sm muted">Sản phẩm, giá và phí giao bên dưới sẽ tính theo tỉnh/thành bạn chọn.</div>
       </div>
+      <a href="m1-1.html" class="btn btn-primary">Chọn khu vực giao</a>
+    </section>
 
-      <div>
-        <div class="wf-img" style="height: 200px;">
-          <span>[Ảnh Hero: Bộ sưu tập hộp bánh nghệ nhân & Quà tặng doanh nghiệp]</span>
-        </div>
+    <!-- Khối 2: hai thẻ lối vào -->
+    <section class="section" data-why="2">
+      <div class="section-head">
+        <h2>Bạn cần bánh theo cách nào?</h2>
+      </div>
+      <div class="grid-2">
+        <article class="entry">
+          <span class="eyebrow">Lối 1</span>
+          <h2>Mua hàng có sẵn</h2>
+          <p class="when">Bánh đã đóng hộp, Shop giao tới khu vực của bạn. Chọn món, thanh toán và chờ giao.</p>
+          <ul class="cond">
+            <li>Chỉ hiện sản phẩm giao được tới <strong>Hà Nội</strong></li>
+            <li>Thanh toán VNPay ngay khi đặt; mỗi Shop tách một đơn</li>
+          </ul>
+          <div class="actions">
+            <a href="m2-0.html" class="btn btn-primary">Xem hàng có sẵn</a>
+          </div>
+        </article>
+        <article class="entry">
+          <span class="eyebrow">Lối 2</span>
+          <h2>Đặt theo yêu cầu</h2>
+          <p class="when">Số lượng lớn, in logo hoặc hàng phải làm riêng, dù ít hộp.</p>
+          <ul class="cond">
+            <li>Cần đăng nhập và xác minh danh tính bằng CCCD gắn chip</li>
+            <li>Đặt cọc khi chấp nhận báo giá; duyệt maket trước khi làm</li>
+          </ul>
+          <div class="actions">
+            <a href="m3-1.html" class="btn btn-primary" data-needs-login="true" data-needs-nfc="true">Tạo yêu cầu báo giá</a>
+            <a href="m3-2.html" class="btn">Chọn đơn vị cung cấp</a>
+          </div>
+        </article>
       </div>
     </section>
 
-    <!-- 'Có sẵn giao tới [tỉnh]' (lưới sản phẩm) -->
-    <div style="margin-bottom: 28px;">
-      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; border-bottom: 1px solid #ccc; padding-bottom: 6px;">
+    <!-- Khối 3: một dòng "Việc cần bạn" (đã đăng nhập, có việc chờ) -->
+    <section class="callout mb-3" data-show="buyer buyer-nfc seller-pending seller-open" data-why="3">
+      <strong>Việc cần bạn</strong>
+      <div class="grow row">
+        <a href="m6-1-2.html">1 maket chờ duyệt</a><span class="faint">·</span>
+        <a href="m6-2-1.html">2 báo giá mới</a>
+      </div>
+      <a href="m6-0.html" class="btn btn-sm">Xem tất cả</a>
+    </section>
+
+    <!-- Khối 4: Có sẵn giao tới [tỉnh] -->
+    <section class="section" data-why="4">
+      <div class="section-head">
         <h2>Có sẵn giao tới Hà Nội</h2>
-        <a href="m2-0.html">Xem tất cả bánh có sẵn ›</a>
+        <a href="m2-0.html">Xem tất cả hàng có sẵn ›</a>
       </div>
-
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px;">
-        <!-- Sản phẩm 1 -->
-        <div style="border: 1px solid #ccc; padding: 12px; background: #fff; display: flex; flex-direction: column; justify-content: space-between;">
-          <div>
-            <div class="wf-img" style="height: 120px; margin-bottom: 8px;">
-              <span>[Ảnh: Hộp Hoàng Kim]</span>
-            </div>
-            <strong style="display: block; margin-bottom: 4px;">Hộp Hoàng Kim Thượng Hạng</strong>
-            <small style="color: #666; display: block; margin-bottom: 6px;">Xưởng Bánh Nghệ Nhân Hà Nội</small>
-            <p style="font-size: 12px; color: #444; margin-bottom: 8px;">Hộp 4 bánh cao cấp (200g/bánh), nhân thập cẩm jambon & hạt sen xá xíu.</p>
-          </div>
-          <div>
-            <div style="font-weight: 700; font-size: 16px; margin-bottom: 8px;">680.000đ</div>
-            <a href="m2-1.html" class="btn btn-primary" style="width: 100%; text-align: center;">Xem chi tiết & Mua</a>
-          </div>
-        </div>
-
-        <!-- Sản phẩm 2 -->
-        <div style="border: 1px solid #ccc; padding: 12px; background: #fff; display: flex; flex-direction: column; justify-content: space-between;">
-          <div>
-            <div class="wf-img" style="height: 120px; margin-bottom: 8px;">
-              <span>[Ảnh: Hộp Trăng Rằm]</span>
-            </div>
-            <strong style="display: block; margin-bottom: 4px;">Hộp Trăng Rằm Đoàn Viên</strong>
-            <small style="color: #666; display: block; margin-bottom: 6px;">Bánh Cổ Truyền Trăng Vàng</small>
-            <p style="font-size: 12px; color: #444; margin-bottom: 8px;">Hộp 4 bánh truyền thống, đậu xanh hạt dưa & trà xanh matcha.</p>
-          </div>
-          <div>
-            <div style="font-weight: 700; font-size: 16px; margin-bottom: 8px;">420.000đ</div>
-            <a href="m2-1.html" class="btn btn-primary" style="width: 100%; text-align: center;">Xem chi tiết & Mua</a>
-          </div>
-        </div>
-
-        <!-- Sản phẩm 3 -->
-        <div style="border: 1px solid #ccc; padding: 12px; background: #fff; display: flex; flex-direction: column; justify-content: space-between;">
-          <div>
-            <div class="wf-img" style="height: 120px; margin-bottom: 8px;">
-              <span>[Ảnh: Hộp Thu Sắc]</span>
-            </div>
-            <strong style="display: block; margin-bottom: 4px;">Hộp Thu Sắc Ngũ Phúc</strong>
-            <small style="color: #666; display: block; margin-bottom: 6px;">Đại lý Thu Hương</small>
-            <p style="font-size: 12px; color: #444; margin-bottom: 8px;">Hộp 5 bánh mini, khoai môn, đậu đỏ, mè đen trứng muối.</p>
-          </div>
-          <div>
-            <div style="font-weight: 700; font-size: 16px; margin-bottom: 8px;">360.000đ</div>
-            <a href="m2-1.html" class="btn btn-primary" style="width: 100%; text-align: center;">Xem chi tiết & Mua</a>
-          </div>
-        </div>
+      <div class="grid-4 keep-2">
+        <a class="product" href="m2-1.html">
+          <div class="wf-img"><span>Ảnh sản phẩm</span></div>
+          <span class="name">Hộp Hoàng Kim 4 bánh</span>
+          <span class="meta">Xưởng Bánh Nghệ Nhân · 4,8 ★ (32)</span>
+          <span class="price">680.000đ</span>
+        </a>
+        <a class="product" href="m2-1.html">
+          <div class="wf-img"><span>Ảnh sản phẩm</span></div>
+          <span class="name">Hộp Trăng Rằm 4 bánh</span>
+          <span class="meta">Bánh Cổ Truyền Trăng Vàng · 4,6 ★ (18)</span>
+          <span class="price">420.000đ</span>
+        </a>
+        <a class="product" href="m2-1.html">
+          <div class="wf-img"><span>Ảnh sản phẩm</span></div>
+          <span class="name">Hộp Thu Sắc 5 bánh mini</span>
+          <span class="meta">Đại lý Thu Hương · 4,5 ★ (9)</span>
+          <span class="price">360.000đ</span>
+        </a>
+        <a class="product" href="m2-1.html">
+          <div class="wf-img"><span>Ảnh sản phẩm</span></div>
+          <span class="name">Bánh dẻo hạt sen 150g</span>
+          <span class="meta">Bánh Cổ Truyền Trăng Vàng · 4,7 ★ (21)</span>
+          <span class="price">65.000đ</span>
+        </a>
       </div>
-    </div>
+    </section>
 
-    <!-- Khối 5: 'Nhận đặt theo yêu cầu' (bảng vài đơn vị cung cấp) -->
-    <div style="margin-bottom: 28px;">
-      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; border-bottom: 1px solid #ccc; padding-bottom: 6px;">
-        <h2>Nhận đặt theo yêu cầu — Đơn vị cung cấp tiêu biểu</h2>
-        <a href="m3-2.html">Xem tất cả đơn vị ›</a>
+    <!-- Khối 5: Nhận đặt theo yêu cầu -->
+    <section class="section" data-why="5">
+      <div class="section-head">
+        <h2>Nhận đặt theo yêu cầu</h2>
+        <a href="m3-2.html">Xem tất cả đơn vị cung cấp ›</a>
       </div>
-
-      <table>
-        <thead>
-          <tr>
-            <th>Đơn vị cung cấp</th>
-            <th>Năng lực & Quy cách</th>
-            <th style="width: 140px;">Thời gian làm mẫu</th>
-            <th style="width: 160px;">Thao tác</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>
-              <strong>Xưởng Bánh Nghệ Nhân Hà Nội</strong><br>
-              <small style="color: #666;">Quận Ba Đình, Hà Nội</small>
-            </td>
-            <td>Khắc laser logo, ép kim hộp gỗ, bánh 150g–250g theo yêu cầu</td>
-            <td>24 giờ</td>
-            <td><a href="m3-4.html" class="btn">[Gửi yêu cầu riêng]</a></td>
-          </tr>
-          <tr>
-            <td>
-              <strong>Cơ Sở Bánh Cổ Truyền Trăng Vàng</strong><br>
-              <small style="color: #666;">Quận Hoàn Kiếm, Hà Nội</small>
-            </td>
-            <td>Hộp sơn mài thủ công, công suất 2.000 hộp/ngày</td>
-            <td>48 giờ</td>
-            <td><a href="m3-4.html" class="btn">[Gửi yêu cầu riêng]</a></td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+      <div class="grid-3">
+        <article class="card stack-sm">
+          <div class="row"><span class="avatar">NN</span><div><strong>Xưởng Bánh Nghệ Nhân</strong><br><small class="muted">Ba Đình, Hà Nội</small></div></div>
+          <div class="chips"><span class="chip">In logo</span><span class="chip">Hộp riêng</span></div>
+          <small class="muted">Nhận đặt từ 20 hộp · giao toàn quốc</small>
+          <div class="row mt-1">
+            <a href="m3-3.html" class="btn btn-sm">Xem đơn vị</a>
+            <a href="m3-4.html" class="btn btn-sm btn-primary" data-needs-login="true" data-needs-nfc="true">Gửi yêu cầu cho Nghệ Nhân</a>
+          </div>
+        </article>
+        <article class="card stack-sm">
+          <div class="row"><span class="avatar">TV</span><div><strong>Bánh Cổ Truyền Trăng Vàng</strong><br><small class="muted">Hoàn Kiếm, Hà Nội</small></div></div>
+          <div class="chips"><span class="chip">Hộp sơn mài</span><span class="chip">Nhân theo yêu cầu</span></div>
+          <small class="muted">Nhận đặt từ 10 hộp · giao Hà Nội</small>
+          <div class="row mt-1">
+            <a href="m3-3.html" class="btn btn-sm">Xem đơn vị</a>
+            <a href="m3-4.html" class="btn btn-sm btn-primary" data-needs-login="true" data-needs-nfc="true">Gửi yêu cầu cho Trăng Vàng</a>
+          </div>
+        </article>
+        <article class="card stack-sm">
+          <div class="row"><span class="avatar">MH</span><div><strong>Xưởng Minh Hòa</strong> <span class="badge badge-dash">Chỉ nhận đặt hàng</span><br><small class="muted">Đống Đa, Hà Nội</small></div></div>
+          <div class="chips"><span class="chip">In logo</span><span class="chip">Thiệp kèm</span></div>
+          <small class="muted">Nhận đặt từ 50 hộp · giao toàn quốc</small>
+          <div class="row mt-1">
+            <a href="m3-3.html" class="btn btn-sm">Xem đơn vị</a>
+            <a href="m3-4.html" class="btn btn-sm btn-primary" data-needs-login="true" data-needs-nfc="true">Gửi yêu cầu cho Minh Hòa</a>
+          </div>
+        </article>
+      </div>
+    </section>
   </main>
 
-  <aside class="wf-note" data-ref="Đ3">
-    Năm khối theo thứ tự chuẩn: 1 chọn khu vực (khách chưa có, AC-05.3) · 2 hai thẻ lối vào kèm điều kiện thật · 3 một dòng 'Việc cần bạn' (chỉ khi đã đăng nhập và có việc chờ) · 4 'Có sẵn giao tới [tỉnh]' · 5 'Nhận đặt theo yêu cầu' (bảng vài đơn vị). Không có: lịch mùa, hạn chót, số liệu không tính từ dữ liệu, ngưỡng chung '30 hộp'.
-  </aside>
+  <aside class="wf-note" data-ref="Đ3">Năm khối theo thứ tự: chọn khu vực (khách chưa có, AC-05.3) · hai thẻ lối vào kèm điều kiện thật · một dòng "Việc cần bạn" · "Có sẵn giao tới [tỉnh]" · "Nhận đặt theo yêu cầu". Không có lịch mùa, hạn chót, số liệu không tính từ dữ liệu, ngưỡng chung "30 hộp".</aside>
+  <aside class="wf-note" data-ref="Đ1">Nhãn "Mua hàng có sẵn" / "Đặt theo yêu cầu" chốt theo tree test, cây B.</aside>
 
   <script src="../assets/data.js"></script>
+  <script src="../assets/why-m.js"></script>
   <script src="../assets/wf.js"></script>
 </body>
 </html>

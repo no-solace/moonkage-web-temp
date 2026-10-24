@@ -8,131 +8,82 @@
 </head>
 <body data-zone="M" data-page="M7.1">
   <main id="content">
-    <h1>Khai hồ sơ người bán Moonkage (M7.1)</h1>
-    <p style="color: #444; margin-bottom: 16px;">
-      Cung cấp thông tin pháp lý của xưởng/cơ sở sản xuất để Ban quản trị đối chiếu và phê duyệt mở bán.
-    </p>
-
-    <!-- Thanh bước hồ sơ -->
-    <div class="form-steps">
-      <div class="form-step-item active">1. Loại hình & Đơn vị</div>
-      <div class="form-step-item">2. Người đại diện</div>
-      <div class="form-step-item">3. Giấy tờ pháp lý</div>
-      <div class="form-step-item">4. Nguồn hàng & Cách bán</div>
-      <div class="form-step-item">5. Xem lại & Nộp</div>
+    <div class="page-head"><div><h1>Khai hồ sơ người bán</h1><p class="lead">Bản nháp tự lưu sau mỗi bước.</p></div></div>
+    <ol class="steps" id="bar" data-why="1">
+      <li><span class="lbl">Loại hình</span></li><li><span class="lbl">Đơn vị</span></li><li><span class="lbl">Chủ hộ</span></li>
+      <li><span class="lbl">Giấy tờ</span></li><li><span class="lbl">Nguồn hàng, cách bán</span></li><li><span class="lbl">Xem lại</span></li>
+    </ol>
+    <div class="split">
+      <form class="form" id="f" action="../b/b1-0.html" method="get" data-why="2">
+        <fieldset data-step>
+          <legend>Bước 1 · Loại hình</legend>
+          <label class="choice"><input type="radio" name="t" checked><span><strong>Hộ kinh doanh</strong><br><small class="muted">Có giấy đăng ký hộ kinh doanh</small></span></label>
+          <label class="choice"><input type="radio" name="t"><span><strong>Doanh nghiệp tư nhân</strong><br><small class="muted">Có giấy đăng ký DNTN</small></span></label>
+          <p class="hint mt-2">Công ty TNHH, cổ phần: liên hệ đội vận hành (BR-33).</p>
+        </fieldset>
+        <fieldset data-step hidden>
+          <legend>Bước 2 · Đơn vị</legend>
+          <div class="field"><label for="n" class="req">Tên hiển thị trên Moonkage</label><input id="n" type="text" value="Bánh Nghệ Nhân Hoa Mai"></div>
+          <div class="field"><label for="a" class="req">Địa chỉ cơ sở</label><input id="a" type="text" value="45 Hàng Chiếu, Hoàn Kiếm, Hà Nội"></div>
+          <div class="field-row"><div class="field"><label for="m" class="req">Mã số đăng ký</label><input id="m" type="text" value="01J8001928"></div><div class="field"><label for="p" class="req">Điện thoại</label><input id="p" type="tel" value="0988 112 233"></div></div>
+        </fieldset>
+        <fieldset data-step hidden>
+          <legend>Bước 3 · Chủ hộ</legend>
+          <div class="card card-fill sm" data-why="3"><strong>Lấy từ CCCD đã xác minh</strong><dl class="kv mt-1"><dt>Họ tên</dt><dd>VŨ THỊ MAI HOA</dd><dt>Số định danh</dt><dd>0011******22</dd></dl></div>
+          <label class="check mt-2"><input type="checkbox" checked> Tôi là chủ hộ / chủ doanh nghiệp ghi trên giấy đăng ký</label>
+        </fieldset>
+        <fieldset data-step hidden>
+          <legend>Bước 4 · Giấy tờ</legend>
+          <div class="field"><label class="req">Giấy đăng ký kinh doanh</label><div class="upload"><span class="wf-icon">PDF</span>GiayDK_HoaMai.pdf · <a href="#">Đổi tệp</a></div></div>
+          <div class="field is-error"><label>Giấy an toàn thực phẩm</label><div class="upload">Kéo tệp vào đây hoặc <a href="#">chọn tệp</a></div><span class="field-error">Cần khi bạn tự sản xuất (bước 5)</span></div>
+        </fieldset>
+        <fieldset data-step hidden>
+          <legend>Bước 5 · Nguồn hàng, cách bán</legend>
+          <span class="strong">Nguồn hàng</span>
+          <label class="choice mt-1"><input type="radio" name="s" checked><span>Tự sản xuất</span></label>
+          <label class="choice"><input type="radio" name="s"><span>Bán lại hàng của đơn vị khác</span></label>
+          <span class="strong mt-2" style="display:block">Cách bán</span>
+          <label class="check mt-1"><input type="checkbox" checked> Shop – hàng có sẵn</label>
+          <label class="check"><input type="checkbox" checked> Nhận đặt hàng</label>
+        </fieldset>
+        <fieldset data-step hidden>
+          <legend>Bước 6 · Xem lại</legend>
+          <dl class="kv"><dt>Loại hình</dt><dd>Hộ kinh doanh <a href="#" data-go="0" class="sm">Sửa</a></dd><dt>Đơn vị</dt><dd>Bánh Nghệ Nhân Hoa Mai <a href="#" data-go="1" class="sm">Sửa</a></dd><dt>Chủ hộ</dt><dd>VŨ THỊ MAI HOA</dd><dt>Giấy tờ</dt><dd>2 tệp <a href="#" data-go="3" class="sm">Sửa</a></dd><dt>Cách bán</dt><dd>Shop, Nhận đặt hàng <a href="#" data-go="4" class="sm">Sửa</a></dd></dl>
+          <label class="check mt-2"><input type="checkbox" checked> Thông tin trên là đúng. Tôi hiểu phí mở bán 200.000đ đóng sau khi hồ sơ được duyệt.</label>
+        </fieldset>
+        <div class="form-actions" data-why="4">
+          <button type="button" class="btn btn-ghost" id="back">‹ Quay lại</button>
+          <button type="button" class="btn btn-primary btn-lg" id="next">Tiếp tục</button>
+          <button type="submit" class="btn btn-primary btn-lg" id="submit" data-set-role="seller-pending" hidden>Nộp hồ sơ</button>
+        </div>
+      </form>
+      <aside class="stack sticky" data-why="5">
+        <div class="card card-fill sm stack-sm"><strong>Sau khi nộp</strong><span>Moonkage đối chiếu giấy tờ với CCCD, thường trong 1–2 ngày làm việc. Bạn theo dõi ở Kênh người bán.</span></div>
+      </aside>
     </div>
-
-    <form class="t3-form" id="seller-reg-form" action="../b/b1-0.html" method="GET">
-      <fieldset>
-        <legend>1. Loại hình kinh doanh & Thông tin cơ sở</legend>
-
-        <div class="form-group">
-          <label>Loại hình pháp lý *</label>
-          <div>
-            <label><input type="radio" name="biz_type" value="hkd" checked> Hộ kinh doanh cá thể</label> &nbsp;&nbsp;
-            <label><input type="radio" name="biz_type" value="dntn"> Doanh nghiệp tư nhân (DNTN)</label>
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label for="s-shop-name">Tên đơn vị / Tên thương hiệu hiển thị trên sàn *</label>
-          <input type="text" id="s-shop-name" value="Cơ Sở Bánh Nghệ Nhân Hoa Mai" required>
-        </div>
-
-        <div class="form-group">
-          <label for="s-address">Địa chỉ cơ sở sản xuất / cửa hàng *</label>
-          <input type="text" id="s-address" value="Số 45 Hàng Chiếu, Phường Hàng Mã, Quận Hoàn Kiếm, Hà Nội" required>
-        </div>
-
-        <div class="form-group">
-          <label for="s-phone">Số điện thoại hotline xưởng *</label>
-          <input type="text" id="s-phone" value="0988.112.233" required>
-        </div>
-      </fieldset>
-
-      <fieldset>
-        <legend>2. Người đại diện pháp luật (Đối chiếu CCCD với thẻ NFC)</legend>
-
-        <div class="form-group">
-          <label for="s-owner-name">Họ và tên chủ hộ / người đại diện *</label>
-          <input type="text" id="s-owner-name" value="Vũ Thị Mai Hoa" required>
-        </div>
-
-        <div class="form-group">
-          <label for="s-owner-id">Số CCCD / Định danh cá nhân *</label>
-          <input type="text" id="s-owner-id" value="001188009922" required>
-          <small style="color: #666;">Đã khớp 100% với dữ liệu từ thẻ NFC đã xác minh tại M6.4</small>
-        </div>
-      </fieldset>
-
-      <fieldset>
-        <legend>3. Giấy phép kinh doanh & Chứng nhận ATTP</legend>
-
-        <div class="form-group">
-          <label for="s-tax-id">Mã số đăng ký kinh doanh / Mã số thuế *</label>
-          <input type="text" id="s-tax-id" value="01J8001928" required>
-        </div>
-
-        <div class="form-group">
-          <label>Ảnh chụp Giấy chứng nhận ĐKKD *</label>
-          <div class="wf-img" style="height: 70px;">
-            <span>[Tệp đính kèm: GiayPhep_DKKD_HoaMai.pdf]</span>
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label>Ảnh chụp Giấy chứng nhận đủ điều kiện ATTP *</label>
-          <div class="wf-img" style="height: 70px;">
-            <span>[Tệp đính kèm: GiayChungNhan_ATTP_2026.pdf]</span>
-          </div>
-        </div>
-      </fieldset>
-
-      <fieldset>
-        <legend>4. Nguồn hàng & Hình thức bán hàng</legend>
-
-        <div class="form-group">
-          <label>Nguồn gốc sản phẩm *</label>
-          <div>
-            <label><input type="radio" name="source" value="self" checked> Cơ sở trực tiếp nướng và sản xuất</label><br>
-            <label><input type="radio" name="source" value="resell"> Đại lý phân phối lại từ xưởng khác</label>
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label>Cách thức bạn muốn bán trên sàn Moonkage *</label>
-          <div>
-            <label><input type="checkbox" checked> Mở Shop bán lẻ bánh hộp có sẵn</label><br>
-            <label><input type="checkbox" checked> Nhận đơn đặt hàng theo yêu cầu (in logo, làm hộp riêng)</label>
-          </div>
-        </div>
-      </fieldset>
-
-      <div style="border: 1px solid #000; padding: 12px; background: #eee; margin-top: 10px; font-size: 13px;">
-        <strong>Cam kết:</strong> Tôi cam kết mọi thông tin trên là chính xác. Tôi hiểu rằng phí mở bán 200.000đ chỉ phải nộp sau khi Ban quản trị xét duyệt hồ sơ hợp lệ.
-      </div>
-
-      <div style="display: flex; gap: 10px; margin-top: 16px;">
-        <button type="submit" class="btn btn-primary" id="btn-submit-seller" style="padding: 12px 24px; font-size: 15px;">
-          Nộp hồ sơ người bán (B1.0) ›
-        </button>
-        <a href="m7-0.html" class="btn" style="padding: 12px 16px;">‹ Quay lại giới thiệu</a>
-      </div>
-    </form>
   </main>
 
-  <aside class="wf-note" data-ref="FR-26">
-    Khai hồ sơ người bán (M7.1): các bước loại hình (HKD/DNTN) → đơn vị → chủ hộ → giấy tờ → nguồn hàng, cách bán → nộp. Người dùng cần xác minh NFC trước (M6.4). Nộp xong sẽ chuyển sang B1.0 với trạng thái Chờ duyệt.
-  </aside>
-
-  <script src="../assets/data.js"></script>
-  <script src="../assets/wf.js"></script>
+  <aside class="wf-note" data-ref="FR-26">Bước: loại hình (HKD/DNTN) → đơn vị → chủ hộ → giấy tờ → nguồn hàng, cách bán → xem lại. Cần xác minh danh tính trước (M6.4). Nộp xong → B1.0 (Đang chờ). BR-27, BR-33.</aside>
   <script>
-    document.getElementById('seller-reg-form').addEventListener('submit', function() {
-      try {
-        localStorage.setItem('wf_role', 'seller-pending');
-      } catch(e) {}
-    });
+    // Form nhiều bước giả lập
+    (function () {
+      var steps = document.querySelectorAll('[data-step]'), bar = document.querySelectorAll('#bar li'), i = 0;
+      function go(n) {
+        i = Math.max(0, Math.min(steps.length - 1, n));
+        steps.forEach(function (s, k) { s.hidden = k !== i; });
+        bar.forEach(function (b, k) { b.className = k < i ? 'done' : k === i ? 'active' : ''; });
+        document.getElementById('back').style.visibility = i ? 'visible' : 'hidden';
+        document.getElementById('next').hidden = i === steps.length - 1;
+        document.getElementById('submit').hidden = i !== steps.length - 1;
+      }
+      document.getElementById('next').onclick = function () { go(i + 1); };
+      document.getElementById('back').onclick = function () { go(i - 1); };
+      document.querySelectorAll('[data-go]').forEach(function (a) { a.onclick = function (e) { e.preventDefault(); go(+a.dataset.go); }; });
+      go(0);
+    })();
   </script>
+  <script src="../assets/data.js"></script>
+  <script src="../assets/why-m.js"></script>
+  <script src="../assets/wf.js"></script>
 </body>
 </html>
