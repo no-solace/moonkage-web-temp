@@ -2,7 +2,7 @@
    Moonkage – Wireframe low-fi (wf.css)
    Màu: chỉ thang xám (luật low-fi). KÍCH THƯỚC: lấy đúng số đo của DS thật
    (src/app/styles/tokens.css, app.css) để wireframe có cùng tỷ lệ với UI sẽ code:
-   tràn hết màn chuẩn 1920×1080 (lề 48px → nội dung 1824px), lưới 12 cột rãnh 24px, control 44/36px, thang chữ DS, khoảng cách DS.
+   khung tối đa 1440px trên màn chuẩn 1920×1080 (lề 48px → nội dung 1344px), lưới 12 cột rãnh 24px, control 44/36px, thang chữ DS, khoảng cách DS.
    ========================================================================== */
 
 /* 0. TOKEN ----------------------------------------------------------------- */
@@ -39,8 +39,8 @@
   /* Tên cũ dùng trong vài thuộc tính style của trang */
   --fs-sm: 14px; --fs-md: 16px; --fs-lg: 21px; --fs-xl: 30px;
 
-  /* Khung và lưới: tràn hết màn 1920×1080, lề 48px → nội dung 1824px, 12 cột rãnh 24px (1 cột ≈ 130px) */
-  --page: 100%;
+  /* Khung và lưới: khung tối đa 1440px căn giữa, lề 48px → nội dung 1344px, 12 cột rãnh 24px (1 cột ≈ 90px) */
+  --page: 1440px;
   --pad: 48px;
   --gutter: 24px;
   --why-w: 420px;
@@ -91,14 +91,14 @@ ul, ol { padding-left: var(--s6); }
 .span-3 { grid-column: span 3; } .span-4 { grid-column: span 4; } .span-5 { grid-column: span 5; }
 .span-6 { grid-column: span 6; } .span-7 { grid-column: span 7; } .span-8 { grid-column: span 8; }
 .span-9 { grid-column: span 9; } .span-12 { grid-column: span 12; }
-.split > :nth-child(1) { grid-column: span 9; }          /* nội dung 9/12 = 1386px */
-.split > :nth-child(2) { grid-column: span 3; }          /* cột phụ 3/12 = 438px */
-/* Trang form: form 6/12 (924px, dòng nhập không quá dài), cột phụ 3/12 đặt sát bên, 3 cột còn lại để trống */
+.split > :nth-child(1) { grid-column: span 9; }          /* nội dung 9/12 = 1026px */
+.split > :nth-child(2) { grid-column: span 3; }          /* cột phụ 3/12 = 318px */
+/* Trang form: form 6/12 (672px, dòng nhập không quá dài), cột phụ 3/12 đặt sát bên, 3 cột còn lại để trống */
 .split:has(> .form) > :nth-child(1) { grid-column: span 6; }
-.split-left > :nth-child(1), .wf-account-layout > :nth-child(1) { grid-column: span 2; }  /* 284px */
-.split-left > :nth-child(2), .wf-account-layout > :nth-child(2) { grid-column: span 10; } /* 1540px */
-/* Lưới sản phẩm: mỗi thẻ 2 cột → 6 thẻ/hàng (≈284px, gần cỡ thẻ thật) */
-.grid-products > * { grid-column: span 2; }
+.split-left > :nth-child(1), .wf-account-layout > :nth-child(1) { grid-column: span 3; }  /* 318px */
+.split-left > :nth-child(2), .wf-account-layout > :nth-child(2) { grid-column: span 9; }  /* 1026px */
+/* Lưới sản phẩm: mỗi thẻ 3 cột → 4 thẻ/hàng (318px trên trang, 238px trong vùng 9 cột cạnh bộ lọc) */
+.grid-products > * { grid-column: span 3; }
 .grid-2 > * { grid-column: span 6; }
 .grid-3 > * { grid-column: span 4; }
 .grid-4 > * { grid-column: span 3; }
@@ -237,7 +237,7 @@ tbody tr:hover td { background: #fafafa; }
 
 /* 9. FORM (mk-field: nhãn 14/600, cách ô 8; trường cách nhau 20; nhóm cách nhau 32) */
 .form, .t3-form { display: flex; flex-direction: column; gap: var(--s8); }
-.form { max-width: 924px; }                              /* tối đa 6/12 cột */
+.form { max-width: 672px; }                              /* tối đa 6/12 cột */
 fieldset { border: 0; padding: 0; min-width: 0; }
 legend { font: var(--t-heading); padding: 0; margin-bottom: var(--s4); }
 .field, .form-group { display: flex; flex-direction: column; gap: var(--s2); margin-top: var(--s5); }
@@ -379,7 +379,7 @@ select.w-auto { width: auto; min-width: 160px; }
 .wf-breadcrumb .sep { margin: 0 6px; }
 .wf-breadcrumb .id { margin-left: 6px; }
 
-/* Tràn hết màn, đệm 48 hai bên (≥1280) */
+/* Khung tối đa 1440px căn giữa, đệm 48 hai bên (≥1280) */
 #content { position: relative; max-width: var(--page); margin: 0 auto; padding: var(--s6) var(--pad) var(--s12); }
 
 .wf-footer { background: var(--fill); margin-top: var(--s8); }
@@ -396,7 +396,7 @@ select.w-auto { width: auto; min-width: 160px; }
 .wf-account-main-content { min-width: 0; }
 
 /* 18. RÀO CHẮN THEO VAI --------------------------------------------------- */
-.wf-role-boundary { max-width: 924px; margin: var(--s8) auto; }
+.wf-role-boundary { max-width: 672px; margin: var(--s8) auto; }
 .wf-boundary-box { display: flex; flex-direction: column; gap: var(--s4); padding: var(--s6); border: 1px dashed var(--ink); border-radius: var(--r-lg); }
 .wf-boundary-box h1 { font: var(--t-heading); }
 .wf-boundary-actions { display: flex; gap: var(--s2); flex-wrap: wrap; }
@@ -530,8 +530,8 @@ summary { cursor: pointer; min-height: var(--control-h-sm); display: flex; align
 .card legend, .actions-box legend { font: var(--t-label); margin-bottom: var(--s2); }
 .card fieldset + fieldset { margin-top: var(--s5); }
 /* Neo khối hẹp vào lưới: bắt đầu ở cột 3 (8 cột) hoặc cột 4 (6 cột) để căn giữa */
-.start-3 { grid-column: 4 / span 6; }   /* 6 cột căn giữa: 924px */
-.start-4 { grid-column: 5 / span 4; }   /* 4 cột căn giữa: 592px */
+.start-3 { grid-column: 4 / span 6; }   /* 6 cột căn giữa: 672px */
+.start-4 { grid-column: 5 / span 4; }   /* 4 cột căn giữa: 432px */
 @media (max-width: 1023px) { .start-3, .start-4 { grid-column: 1 / -1; } }
 /* Radio dạng chip (lựa chọn ngắn, xếp ngang) */
 .seg { display: flex; flex-wrap: wrap; gap: var(--s2); }
@@ -547,8 +547,11 @@ body.show-fold::after { z-index: 1001; }
 @media (min-width: 768px) and (max-width: 1279px) { :root { --pad: 24px; } }
 /* Khối mô tả trong thẻ rộng vẫn giữ 45–75 ký tự mỗi dòng */
 .entry .when, .entry .cond, .card p { max-width: 65ch; }
-@media (max-width: 1023px) { .grid-products > * { grid-column: span 4; } }
+@media (max-width: 1023px) { .grid-products > * { grid-column: span 6; } }
 @media (max-width: 767px) { .grid-products > * { grid-column: span 6; } }
 .wf-why-head { position: relative; }
 .wf-why-close { position: absolute; top: var(--s3); right: var(--s3); }
 @media (max-width: 767px) { .wf-role-bar-left, .wf-role-bar-right { flex-wrap: wrap; } .wf-why { visibility: hidden; } body.why-open .wf-why { visibility: visible; } }
+
+/* Cửa sổ ≥1860px (1440 khung + 420 bảng): bảng thuyết minh nằm cạnh trang, không che nội dung */
+@media (min-width: 1860px) { body.why-open { padding-right: var(--why-w); } }

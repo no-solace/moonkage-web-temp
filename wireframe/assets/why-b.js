@@ -174,7 +174,7 @@ WHY['B4.1'] = {
     B('Dải "Bị gỡ"', 'read', false, ['Đọc: vì sao mọi ô bị khóa; chỉ khi sản phẩm bị gỡ.', 'Ngày + lý do.', 'Nhãn đặc.', 'Viền đậm.', '12/12.'], 12),
     B('1. Ảnh', 'act', true, ['Thao tác; ảnh là thứ người mua nhìn đầu tiên ở M2.0 nên điền đầu tiên.', '1–8 ảnh; ảnh đầu là ảnh chính.', 'Ô "+ Thêm" viền đứt.', 'Không viền nhóm.', '4 ô vuông/hàng trong 8 cột; <768: 2/hàng.'], 6),
     B('3. Vỏ và nhân', 'act', true, ['Thao tác.', 'Chip theo danh mục FR-54; ít nhất 1 vỏ, 1 nhân.', 'Chip đặc = đã chọn.', 'Chip cách 8px; hai hàng cách 20px.', '6/12; xuống dòng khi hẹp.'], 6),
-    B('Xem trước thẻ', 'read', false, ['Đọc kiểm tên dài bị kẹp, giá hiện ra sao.', 'Thẻ sản phẩm thật (4 điểm).', 'Như M2.0.', 'Không viền, như ở M2.0.', '3/12, dính. Rộng 438px, lớn hơn thẻ thật ở M2.0 (284px) nên chỉ là ước lượng.'], 3)
+    B('Xem trước thẻ', 'read', false, ['Đọc kiểm tên dài bị kẹp, giá hiện ra sao.', 'Thẻ sản phẩm thật (4 điểm).', 'Như M2.0.', 'Không viền, như ở M2.0.', '3/12, dính. Rộng 318px, gần thẻ thật ở trang chủ (318px) nhưng rộng hơn thẻ ở M2.0 (238px) nên chỉ là ước lượng.'], 3)
   ],
   rejected: []
 };
