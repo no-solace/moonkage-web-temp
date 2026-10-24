@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Moonkage · Quản trị · Tổng quan — Hướng B Thủ công hiện đại</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="../shared/proto.css">
+</head>
+<body data-dir="b" data-screen="q1-0">
+  <div class="ws-top">
+    <a class="logo" href="q1-0.html"><span class="moon" aria-hidden="true"></span>Moonkage<small>Quản trị</small></a>
+    <button type="button" class="ubtn menu-btn" data-nav-toggle aria-expanded="false" aria-controls="rail">☰<span class="sr-only">Menu quản trị</span></button>
+  </div>
+  <div class="ws">
+    <aside class="rail" id="rail">
+      <a class="logo" href="q1-0.html"><span class="moon" aria-hidden="true"></span>Moonkage<small>Quản trị</small></a>
+      <nav aria-label="Menu quản trị">
+        <a href="q1-0.html" aria-current="page">Tổng quan</a>
+        <a href="#" data-out="Q2.0 Người bán">Người bán <span class="badge-n">1</span></a>
+        <a href="#" data-out="Q3.0 Sản phẩm">Sản phẩm</a>
+        <a href="#" data-out="Q4.0 Tiền">Tiền <span class="badge-n">13</span></a>
+        <a href="#" data-out="Q5.0 Khiếu nại">Khiếu nại <span class="badge-n">1</span></a>
+        <a href="#" data-out="Q6.0 Cấu hình">Cấu hình</a>
+      </nav>
+      <div class="who">Quản trị viên · Trần Hà</div>
+    </aside>
+
+    <main class="ws-main">
+      <div class="page-head">
+        <div><h1 class="t-title">Tổng quan</h1><p class="lead" style="margin:6px 0 0;color:var(--ink-2)">Hàng chờ xử lý · <span class="num">24/10/2026</span></p></div>
+      </div>
+
+      <section class="tiles" aria-label="Bốn hàng chờ">
+        <a class="tile raised" href="#" data-out="Q2.0 Người bán"><span class="lbl">Hồ sơ người bán chờ duyệt</span><span class="n">1</span><span class="go">Người bán ›</span></a>
+        <a class="tile raised" href="#" data-out="Q4.1 Duyệt giải ngân"><span class="lbl">Giải ngân cọc chờ duyệt</span><span class="n">1</span><span class="go">Duyệt giải ngân ›</span></a>
+        <a class="tile raised" href="#" data-out="Q4.2 Chuyển tiền"><span class="lbl">Đơn chờ chuyển tiền</span><span class="n">12</span><span class="go">Chuyển tiền ›</span></a>
+        <a class="tile raised" href="#" data-out="Q5.0 Khiếu nại"><span class="lbl">Khiếu nại đang mở</span><span class="n">1</span><span class="go">Khiếu nại ›</span></a>
+      </section>
+
+      <section class="sec" style="margin-top:40px" aria-labelledby="old">
+        <div class="sec-head"><h2 class="t-heading" id="old">Cũ nhất trong hàng chờ</h2><span class="t-small muted">Xử lý từ trên xuống</span></div>
+        <div class="queue raised">
+          <div class="qrow"><span><span class="pill pill--night">Khiếu nại</span></span><span class="what">KN-09 · đơn MK-8810 · người bán đã đề xuất</span><span class="wait">mở 4 ngày</span><a class="btn btn--sm" href="#" data-out="Q5.1 Xử lý khiếu nại">Xử lý</a></div>
+          <div class="qrow"><span><span class="pill pill--line">Hồ sơ</span></span><span class="what">Xưởng Bánh Nghệ Nhân · hộ kinh doanh</span><span class="wait">chờ 1 ngày</span><a class="btn btn--quiet btn--sm" href="#" data-out="Q2.1 Hồ sơ người bán">Xử lý</a></div>
+          <div class="qrow"><span><span class="pill pill--line">Giải ngân</span></span><span class="what">MK-C071 · <span class="num">3.000.000đ</span></span><span class="wait">chờ 6 giờ</span><a class="btn btn--quiet btn--sm" href="#" data-out="Q4.1 Duyệt giải ngân">Xử lý</a></div>
+        </div>
+      </section>
+
+      <section class="sec" style="margin-top:40px" aria-labelledby="flag">
+        <div class="sec-head"><h2 class="t-heading" id="flag">Đơn bị đánh dấu đối soát <span class="pill pill--lacquer" style="vertical-align:middle">1</span></h2></div>
+        <div class="flag raised"><span class="grow">MK-8702 · tiền VNPay báo về khác số tiền đơn <b class="num">25.000đ</b></span><a class="btn btn--quiet btn--sm" href="#" data-out="Q4.3 Đối soát">Xem đối soát</a></div>
+      </section>
+    </main>
+  </div>
+  <script src="../shared/proto.js"></script>
+</body>
+</html>

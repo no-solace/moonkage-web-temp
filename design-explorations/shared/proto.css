@@ -1,0 +1,17 @@
+/* Prototype chrome shared by all three directions. Deliberately neutral (system font, gray)
+   so it never reads as part of any art direction. Not a design proposal. */
+.proto-bar { position: fixed; right: 16px; bottom: 16px; z-index: 9000; font: 500 13px/18px system-ui, -apple-system, "Segoe UI", sans-serif; color: #111; }
+.proto-bar * { box-sizing: border-box; }
+.proto-pill { display: inline-flex; align-items: center; gap: 8px; min-height: 36px; padding: 0 14px; border: 1px solid #999; border-radius: 999px; background: #fff; color: #111; cursor: pointer; box-shadow: 0 2px 8px rgba(0,0,0,.18); font: inherit; }
+.proto-pill b { font-weight: 700; }
+.proto-panel { position: absolute; right: 0; bottom: 44px; width: 320px; max-width: calc(100vw - 32px); padding: 14px; background: #fff; border: 1px solid #999; border-radius: 10px; box-shadow: 0 6px 24px rgba(0,0,0,.2); display: none; }
+.proto-bar.open .proto-panel { display: block; }
+.proto-panel h4 { margin: 10px 0 6px; font: 700 11px/14px system-ui, sans-serif; letter-spacing: .06em; text-transform: uppercase; color: #666; }
+.proto-panel h4:first-child { margin-top: 0; }
+.proto-row { display: flex; flex-wrap: wrap; gap: 6px; }
+.proto-row a { display: inline-flex; align-items: center; min-height: 32px; padding: 0 10px; border: 1px solid #bbb; border-radius: 6px; color: #111; text-decoration: none; background: #fff; }
+.proto-row a[aria-current="true"] { background: #111; color: #fff; border-color: #111; }
+.proto-panel p { margin: 10px 0 0; color: #555; font-size: 12px; line-height: 17px; }
+.proto-panel p a { color: #111; }
+.proto-toasts { position: fixed; left: 50%; bottom: 72px; transform: translateX(-50%); z-index: 9001; display: grid; gap: 8px; width: min(460px, calc(100vw - 32px)); pointer-events: none; }
+@media print { .proto-bar, .proto-toasts { display: none; } }

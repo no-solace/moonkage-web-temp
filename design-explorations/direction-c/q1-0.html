@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Moonkage · Quản trị · Tổng quan — Hướng C Cấu trúc</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="../shared/proto.css">
+</head>
+<body data-dir="c" data-screen="q1-0">
+  <header class="hdr hdr--admin">
+    <div class="wrap">
+      <div class="hdr-row" style="grid-template-columns:auto 1fr auto auto">
+        <a class="mark" href="q1-0.html"><i aria-hidden="true"></i>Moonkage <small>Quản trị</small></a>
+        <span></span>
+        <span class="who hide-m">Quản trị viên · Trần Hà</span>
+        <button type="button" class="menu-btn" data-nav-toggle aria-expanded="false" aria-controls="nav">Menu</button>
+      </div>
+      <nav class="nav" id="nav" aria-label="Menu quản trị">
+        <a href="q1-0.html" aria-current="page">Tổng quan</a>
+        <a href="#" data-out="Q2.0 Người bán">Người bán <span class="cnt">1</span></a>
+        <a href="#" data-out="Q3.0 Sản phẩm">Sản phẩm</a>
+        <a href="#" data-out="Q4.0 Tiền">Tiền <span class="cnt">13</span></a>
+        <a href="#" data-out="Q5.0 Khiếu nại">Khiếu nại <span class="cnt">1</span></a>
+        <a href="#" data-out="Q6.0 Cấu hình">Cấu hình</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="wrap">
+      <div class="titlebar">
+        <div><span class="tag">Bàn làm việc</span><h1 class="lg" style="margin-top:6px">Tổng quan</h1></div>
+        <div><span class="tag">Hàng chờ xử lý</span><span class="sm mono">24/10/2026</span></div>
+      </div>
+
+      <section class="sec" style="margin-top:24px" aria-labelledby="q">
+        <div class="bar"><span class="tag">[01]</span><h2 class="md" id="q" style="padding:14px 16px">Bốn hàng chờ</h2></div>
+        <div class="qtiles ledger">
+          <a class="qtile" href="#" data-out="Q2.0 Người bán"><span class="tag">Hồ sơ người bán chờ duyệt</span><span class="n">1</span><span class="go">Người bán</span></a>
+          <a class="qtile" href="#" data-out="Q4.1 Duyệt giải ngân"><span class="tag">Giải ngân cọc chờ duyệt</span><span class="n">1</span><span class="go">Duyệt giải ngân</span></a>
+          <a class="qtile" href="#" data-out="Q4.2 Chuyển tiền"><span class="tag">Đơn chờ chuyển tiền</span><span class="n">12</span><span class="go">Chuyển tiền</span></a>
+          <a class="qtile" href="#" data-out="Q5.0 Khiếu nại"><span class="tag">Khiếu nại đang mở</span><span class="n">1</span><span class="go">Khiếu nại</span></a>
+        </div>
+      </section>
+
+      <section class="sec" aria-labelledby="old">
+        <div class="bar"><span class="tag">[02]</span><h2 class="md" id="old" style="padding:14px 16px">Cũ nhất trong hàng chờ</h2><span class="tag" style="border:0;border-left:1px solid var(--rule)">Xử lý từ trên xuống</span></div>
+        <table class="qtable">
+          <thead><tr><th scope="col">Loại</th><th scope="col">Việc</th><th scope="col">Đang chờ</th><th scope="col"><span class="sr-only">Thao tác</span></th></tr></thead>
+          <tbody>
+            <tr><td><span class="ktag ktag--hot">Khiếu nại</span></td><td>KN-09 · đơn <span class="mono">MK-8810</span> · người bán đã đề xuất</td><td><div class="age"><span class="mono small">mở 4 ngày</span><span class="bar-track" aria-hidden="true"><i style="width:100%"></i></span></div></td><td><a class="btn btn--sm" href="#" data-out="Q5.1 Xử lý khiếu nại">Xử lý</a></td></tr>
+            <tr><td><span class="ktag">Hồ sơ</span></td><td>Xưởng Bánh Nghệ Nhân · hộ kinh doanh</td><td><div class="age"><span class="mono small">chờ 1 ngày</span><span class="bar-track" aria-hidden="true"><i style="width:25%"></i></span></div></td><td><a class="btn btn--line btn--sm" href="#" data-out="Q2.1 Hồ sơ người bán">Xử lý</a></td></tr>
+            <tr><td><span class="ktag">Giải ngân</span></td><td><span class="mono">MK-C071</span> · <span class="mono">3.000.000đ</span></td><td><div class="age"><span class="mono small">chờ 6 giờ</span><span class="bar-track" aria-hidden="true"><i style="width:6.25%"></i></span></div></td><td><a class="btn btn--line btn--sm" href="#" data-out="Q4.1 Duyệt giải ngân">Xử lý</a></td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section class="sec" aria-labelledby="flag">
+        <div class="flag">
+          <span class="tag">[!] Đối soát</span>
+          <div><h2 class="sm" id="flag">Đơn bị đánh dấu đối soát <span class="cnt" style="background:var(--err);color:#fff;border-color:var(--err)">1</span></h2></div>
+          <div><span><span class="mono">MK-8702</span> · tiền VNPay báo về khác số tiền đơn <b class="mono">25.000đ</b></span></div>
+          <div><a class="btn btn--line btn--sm" href="#" data-out="Q4.3 Đối soát">Xem đối soát</a></div>
+        </div>
+      </section>
+    </div>
+  </main>
+  <script src="../shared/proto.js"></script>
+</body>
+</html>

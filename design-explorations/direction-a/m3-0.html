@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Moonkage · Đặt theo yêu cầu — Hướng A Biên tập</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="../shared/proto.css">
+</head>
+<body data-dir="a" data-screen="m3-0" data-states='[["Khách",""],["Người mua chưa xác minh","?as=buyer"],["Người mua đã xác minh","?as=verified"]]'>
+  <header class="mast">
+    <div class="wrap mast-top">
+      <a class="wordmark" href="m1-0.html">Moonkage<small>Bánh trung thu</small></a>
+      <form class="search" role="search" action="m2-0.html">
+        <label class="sr-only" for="q">Tìm sản phẩm hoặc đơn vị cung cấp</label>
+        <input id="q" type="search" name="q" placeholder="Tìm bánh, nhân bánh hoặc tên đơn vị…">
+        <button type="submit">Tìm</button>
+      </form>
+      <div class="utils">
+        <a href="#" data-out="M1.1 Chọn khu vực giao" data-area><span class="k hide-m">Giao tới</span> <b>Hà Nội</b> ▾</a>
+        <a href="#" data-gate="M4.0 Giỏ hàng" aria-label="Giỏ hàng, 2 món">Giỏ hàng <span class="count">(2)</span></a>
+        <a href="#" data-out="M5.1 Đăng nhập" data-unless="as=buyer,verified"><b>Đăng nhập</b></a>
+        <a href="#" data-out="M6.6 Thông báo" data-if="as=buyer,verified" class="hide-m" aria-label="Thông báo, 3 chưa đọc">Thông báo <span class="count">(3)</span></a>
+        <a href="#" data-out="M6.0 Tài khoản" data-if="as=buyer,verified">Tài khoản ▾</a>
+        <button type="button" class="menu-btn" data-nav-toggle aria-expanded="false" aria-controls="nav">Menu</button>
+      </div>
+    </div>
+    <div class="wrap">
+      <nav class="mast-nav" id="nav" aria-label="Menu chính">
+        <a href="#" class="only-m" data-out="M1.1 Chọn khu vực giao">Giao tới:&nbsp;<b>Hà Nội</b>&nbsp;▾</a>
+        <a href="m2-0.html">Mua hàng có sẵn</a>
+        <div class="dd">
+          <button type="button" data-dd aria-expanded="false" aria-current="page">Đặt theo yêu cầu ▾</button>
+          <div class="dd-menu">
+            <p>Số lượng lớn, in logo hoặc hàng phải làm riêng, dù ít hộp.</p>
+            <a href="m3-0.html">Đặt theo yêu cầu <span>tổng quan</span></a>
+            <a href="#" data-gate="M3.1 Tạo yêu cầu báo giá">Tạo yêu cầu báo giá <span>gửi nhiều nơi</span></a>
+            <a href="#" data-out="M3.2 Đơn vị cung cấp">Đơn vị cung cấp <span>chọn một nơi</span></a>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="wrap">
+      <div class="hero-title">
+        <div>
+          <span class="label">Lối 2</span>
+          <h1 class="display" style="margin-top:10px">Đặt theo <em>yêu cầu</em></h1>
+          <p class="lead">Số lượng lớn, in logo hoặc hàng phải làm riêng, dù ít hộp.</p>
+        </div>
+      </div>
+
+      <section class="chapters" aria-label="Hai cách đặt theo yêu cầu">
+        <article class="chapter">
+          <span class="roman" aria-hidden="true">I</span>
+          <div class="body">
+            <span class="it" style="color:var(--accent);font-size:19px">Gửi nhiều nơi</span>
+            <h2 class="h2">Tạo yêu cầu báo giá</h2>
+            <p class="when"><b>Khi nào chọn</b>Bạn chưa có đơn vị quen và muốn nhận vài báo giá để so sánh.</p>
+            <ul class="cond" aria-label="Điều kiện">
+              <li>Moonkage gửi yêu cầu tới các đơn vị khớp số lượng, kiểu hộp và vùng giao</li>
+              <li>Cần đăng nhập và xác minh danh tính bằng CCCD gắn chip</li>
+              <li>Đặt cọc khi chấp nhận một báo giá</li>
+            </ul>
+            <div><a class="btn" href="#" data-gate="M3.1 Tạo yêu cầu báo giá">Tạo yêu cầu báo giá</a></div>
+          </div>
+        </article>
+        <article class="chapter">
+          <span class="roman" aria-hidden="true">II</span>
+          <div class="body">
+            <span class="it" style="color:var(--accent);font-size:19px">Chọn một nơi</span>
+            <h2 class="h2">Đơn vị cung cấp</h2>
+            <p class="when"><b>Khi nào chọn</b>Bạn đã biết đơn vị mình muốn, hoặc muốn xem năng lực từng nơi trước.</p>
+            <ul class="cond" aria-label="Điều kiện">
+              <li>Xem danh sách và trang đơn vị không cần đăng nhập</li>
+              <li>Gửi yêu cầu cho một đơn vị cần xác minh danh tính</li>
+              <li>Mỗi đơn vị có số hộp tối thiểu riêng</li>
+            </ul>
+            <div><a class="btn btn--line" href="#" data-out="M3.2 Đơn vị cung cấp">Xem đơn vị cung cấp</a></div>
+          </div>
+        </article>
+      </section>
+
+      <section class="sec" aria-labelledby="after">
+        <div class="sec-head" style="border-bottom:0;margin-bottom:0"><div class="t"><span class="secno">Sau đó</span><h2 class="h2" id="after">Sau khi gửi, việc diễn ra thế nào</h2></div></div>
+        <ol class="timeline">
+          <li><span class="lbl">Đơn vị gửi báo giá</span></li>
+          <li><span class="lbl">Bạn chấp nhận và đặt cọc</span></li>
+          <li><span class="lbl">Duyệt maket</span></li>
+          <li><span class="lbl">Đơn vị làm và giao</span></li>
+          <li><span class="lbl">Trả phần còn lại</span></li>
+        </ol>
+      </section>
+    </div>
+  </main>
+
+  <footer class="foot">
+    <div class="wrap">
+      <span>Moonkage · Prototype hướng A, không phải giao diện cuối</span>
+      <nav aria-label="Chân trang"><a href="#" data-out="M7.0 Bán hàng trên Moonkage">Bán hàng trên Moonkage</a><a href="#" data-out="M8.0 Chính sách mua bán">Chính sách mua bán</a></nav>
+    </div>
+  </footer>
+  <script src="../shared/proto.js"></script>
+</body>
+</html>
