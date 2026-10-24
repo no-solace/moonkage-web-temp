@@ -2,7 +2,7 @@
    Moonkage – Wireframe low-fi (wf.css)
    Màu: chỉ thang xám (luật low-fi). KÍCH THƯỚC: lấy đúng số đo của DS thật
    (src/app/styles/tokens.css, app.css) để wireframe có cùng tỷ lệ với UI sẽ code:
-   khung 1280px (màn chuẩn 1920×1080), lưới 12 cột rãnh 24px, control 44/36px, thang chữ DS, khoảng cách DS.
+   tràn hết màn chuẩn 1920×1080 (lề 48px → nội dung 1824px), lưới 12 cột rãnh 24px, control 44/36px, thang chữ DS, khoảng cách DS.
    ========================================================================== */
 
 /* 0. TOKEN ----------------------------------------------------------------- */
@@ -39,11 +39,11 @@
   /* Tên cũ dùng trong vài thuộc tính style của trang */
   --fs-sm: 14px; --fs-md: 16px; --fs-lg: 21px; --fs-xl: 30px;
 
-  /* Khung và lưới: màn chuẩn 1920×1080 → khung 1280px, lề 24px → nội dung 1232px, 12 cột, rãnh 24px */
-  --page: 1280px;
-  --pad: 24px;
+  /* Khung và lưới: tràn hết màn 1920×1080, lề 48px → nội dung 1824px, 12 cột rãnh 24px (1 cột ≈ 130px) */
+  --page: 100%;
+  --pad: 48px;
   --gutter: 24px;
-  --why-w: 380px;
+  --why-w: 420px;
 }
 
 /* 1. NỀN ------------------------------------------------------------------ */
@@ -91,10 +91,14 @@ ul, ol { padding-left: var(--s6); }
 .span-3 { grid-column: span 3; } .span-4 { grid-column: span 4; } .span-5 { grid-column: span 5; }
 .span-6 { grid-column: span 6; } .span-7 { grid-column: span 7; } .span-8 { grid-column: span 8; }
 .span-9 { grid-column: span 9; } .span-12 { grid-column: span 12; }
-.split > :nth-child(1) { grid-column: span 8; }          /* nội dung 8/12 = 813px */
-.split > :nth-child(2) { grid-column: span 4; }          /* cột phụ 4/12 = 395px */
-.split-left > :nth-child(1), .wf-account-layout > :nth-child(1) { grid-column: span 3; }  /* 290px */
-.split-left > :nth-child(2), .wf-account-layout > :nth-child(2) { grid-column: span 9; }  /* 918px */
+.split > :nth-child(1) { grid-column: span 9; }          /* nội dung 9/12 = 1386px */
+.split > :nth-child(2) { grid-column: span 3; }          /* cột phụ 3/12 = 438px */
+/* Trang form: form 6/12 (924px, dòng nhập không quá dài), cột phụ 3/12 đặt sát bên, 3 cột còn lại để trống */
+.split:has(> .form) > :nth-child(1) { grid-column: span 6; }
+.split-left > :nth-child(1), .wf-account-layout > :nth-child(1) { grid-column: span 2; }  /* 284px */
+.split-left > :nth-child(2), .wf-account-layout > :nth-child(2) { grid-column: span 10; } /* 1540px */
+/* Lưới sản phẩm: mỗi thẻ 2 cột → 6 thẻ/hàng (≈284px, gần cỡ thẻ thật) */
+.grid-products > * { grid-column: span 2; }
 .grid-2 > * { grid-column: span 6; }
 .grid-3 > * { grid-column: span 4; }
 .grid-4 > * { grid-column: span 3; }
@@ -233,7 +237,7 @@ tbody tr:hover td { background: #fafafa; }
 
 /* 9. FORM (mk-field: nhãn 14/600, cách ô 8; trường cách nhau 20; nhóm cách nhau 32) */
 .form, .t3-form { display: flex; flex-direction: column; gap: var(--s8); }
-.form:not(.split > *) { max-width: 813px; }              /* 8/12 cột khi đứng một mình */
+.form { max-width: 924px; }                              /* tối đa 6/12 cột */
 fieldset { border: 0; padding: 0; min-width: 0; }
 legend { font: var(--t-heading); padding: 0; margin-bottom: var(--s4); }
 .field, .form-group { display: flex; flex-direction: column; gap: var(--s2); margin-top: var(--s5); }
@@ -338,7 +342,7 @@ select.w-auto { width: auto; min-width: 160px; }
 .wf-logo .mark { width: 28px; height: 28px; border-radius: 50%; border: 2px solid currentColor; position: relative; overflow: hidden; }
 .wf-logo .mark::after { content: ""; position: absolute; inset: 3px 3px 3px 10px; border-radius: 50%; background: currentColor; }
 .wf-logo .zone { font: var(--t-label); padding-left: var(--s3); margin-left: var(--s1); border-left: 1px solid #666; }
-.wf-search-form { flex: 1; max-width: 560px; display: flex; }
+.wf-search-form { flex: 1; max-width: 720px; display: flex; }
 .wf-search-input { border-radius: var(--r-sm) 0 0 var(--r-sm) !important; border-right: 0 !important; }
 .wf-search-btn { border-radius: 0 var(--r-sm) var(--r-sm) 0; padding-inline: var(--s4); }
 .wf-header .wf-search-btn { background: var(--fill-2); border-color: var(--fill-2); color: var(--ink); }
@@ -375,7 +379,7 @@ select.w-auto { width: auto; min-width: 160px; }
 .wf-breadcrumb .sep { margin: 0 6px; }
 .wf-breadcrumb .id { margin-left: 6px; }
 
-/* Khung chuẩn 1280px, đệm 24 hai bên */
+/* Tràn hết màn, đệm 48 hai bên (≥1280) */
 #content { position: relative; max-width: var(--page); margin: 0 auto; padding: var(--s6) var(--pad) var(--s12); }
 
 .wf-footer { background: var(--fill); margin-top: var(--s8); }
@@ -392,7 +396,7 @@ select.w-auto { width: auto; min-width: 160px; }
 .wf-account-main-content { min-width: 0; }
 
 /* 18. RÀO CHẮN THEO VAI --------------------------------------------------- */
-.wf-role-boundary { max-width: 813px; margin: var(--s8) auto; }
+.wf-role-boundary { max-width: 924px; margin: var(--s8) auto; }
 .wf-boundary-box { display: flex; flex-direction: column; gap: var(--s4); padding: var(--s6); border: 1px dashed var(--ink); border-radius: var(--r-lg); }
 .wf-boundary-box h1 { font: var(--t-heading); }
 .wf-boundary-actions { display: flex; gap: var(--s2); flex-wrap: wrap; }
@@ -414,9 +418,9 @@ body.show-grid #content::before {
   top: 0; bottom: 0; left: var(--pad); right: var(--pad);
   background: repeating-linear-gradient(to right, rgba(220, 0, 0, .07) 0 calc((100% - 11 * var(--gutter)) / 12), transparent calc((100% - 11 * var(--gutter)) / 12) calc((100% - 11 * var(--gutter)) / 12 + var(--gutter)));
 }
-body.show-fold::after { content: "Nếp gấp màn 1920×1080"; position: absolute; left: 0; right: var(--why-w); top: var(--fold, 1036px); border-top: 2px dashed rgba(220, 0, 0, .6); font: var(--t-caption); color: rgba(200, 0, 0, .8); padding-left: var(--s2); z-index: 30; pointer-events: none; }
+body.show-fold::after { content: "Nếp gấp màn 1920×1080"; position: absolute; left: 0; right: 0; top: var(--fold, 1036px); border-top: 2px dashed rgba(220, 0, 0, .6); font: var(--t-caption); color: rgba(200, 0, 0, .8); padding-left: var(--s2); z-index: 30; pointer-events: none; }
 
-.wf-why { position: fixed; top: 0; right: 0; bottom: 44px; width: var(--why-w); z-index: 800; display: flex; flex-direction: column; background: var(--paper); border-left: 1px solid var(--ink); font: var(--t-sm); }
+.wf-why { position: fixed; top: 0; right: 0; bottom: 44px; width: var(--why-w); z-index: 800; transform: translateX(100%); transition: transform .2s; box-shadow: none; display: flex; flex-direction: column; background: var(--paper); border-left: 1px solid var(--ink); font: var(--t-sm); }
 .wf-why-head { padding: var(--s4); border-bottom: 1px solid var(--line); background: var(--fill); }
 .wf-why-head h2 { font: var(--t-strong); }
 .wf-why-head .meta { display: flex; gap: var(--s1); flex-wrap: wrap; margin-top: var(--s2); }
@@ -442,9 +446,9 @@ body.show-fold::after { content: "Nếp gấp màn 1920×1080"; position: absolu
 .wf-why-legend { font: var(--t-caption); color: var(--ink-2); display: grid; grid-template-columns: 20px 1fr; gap: 2px var(--s2); }
 .wf-why-legend b { font-weight: 800; color: var(--ink-3); }
 
-body.has-why { padding-right: var(--why-w); }
+body.why-open .wf-why { transform: none; }
 body.hide-notes .wf-note, body.hide-notes .wf-pin, body.hide-notes .wf-why { display: none !important; }
-body.hide-notes.has-why { padding-right: 0; }
+
 
 /* 20. THANH CÔNG TẮC VAI ---------------------------------------------------- */
 .wf-role-bar { position: fixed; left: 0; right: 0; bottom: 0; z-index: 1000; height: 44px; display: flex; align-items: center; justify-content: space-between; gap: var(--s3); padding: 0 var(--s4); background: #000; color: #fff; font: var(--t-caption); }
@@ -476,12 +480,8 @@ body.hide-notes.has-why { padding-right: 0; }
 summary { cursor: pointer; min-height: var(--control-h-sm); display: flex; align-items: center; gap: var(--s2); }
 
 /* Dưới 1660px (1280 khung + 380 bảng thuyết minh) bảng thuyết minh xuống cuối trang */
-@media (max-width: 1659px) {
-  body.has-why { padding-right: 0; }
-  .wf-why { position: static; width: auto; max-width: var(--page); margin: 0 auto var(--s6); border: 1px solid var(--ink); border-radius: var(--r-lg); }
-  .wf-why-body { overflow: visible; }
-  body.show-fold::after { right: 0; }
-}
+/* Dưới 768px: bảng thuyết minh rộng hết màn */
+@media (max-width: 767px) { .wf-why { width: 100%; } }
 /* 768–1023: cột phụ (4/12, 3/12) xuống dưới, lưới thẻ còn 2 cột */
 @media (max-width: 1023px) {
   .split > *, .split-left > *, .wf-account-layout > * { grid-column: span 12 !important; }
@@ -530,8 +530,8 @@ summary { cursor: pointer; min-height: var(--control-h-sm); display: flex; align
 .card legend, .actions-box legend { font: var(--t-label); margin-bottom: var(--s2); }
 .card fieldset + fieldset { margin-top: var(--s5); }
 /* Neo khối hẹp vào lưới: bắt đầu ở cột 3 (8 cột) hoặc cột 4 (6 cột) để căn giữa */
-.start-3 { grid-column: 3 / span 8; }
-.start-4 { grid-column: 4 / span 6; }
+.start-3 { grid-column: 4 / span 6; }   /* 6 cột căn giữa: 924px */
+.start-4 { grid-column: 5 / span 4; }   /* 4 cột căn giữa: 592px */
 @media (max-width: 1023px) { .start-3, .start-4 { grid-column: 1 / -1; } }
 /* Radio dạng chip (lựa chọn ngắn, xếp ngang) */
 .seg { display: flex; flex-wrap: wrap; gap: var(--s2); }
@@ -542,3 +542,13 @@ summary { cursor: pointer; min-height: var(--control-h-sm); display: flex; align
 td > .wf-pin, th > .wf-pin { top: 2px; left: 0; width: 20px; height: 20px; }
 /* Đường nếp gấp vẽ đè lên mép trên thanh vai để vẫn thấy khi chưa cuộn */
 body.show-fold::after { z-index: 1001; }
+
+/* Lề 24px cho cửa sổ 768–1279 (trên 1280: 48px; dưới 768: 16px) */
+@media (min-width: 768px) and (max-width: 1279px) { :root { --pad: 24px; } }
+/* Khối mô tả trong thẻ rộng vẫn giữ 45–75 ký tự mỗi dòng */
+.entry .when, .entry .cond, .card p { max-width: 65ch; }
+@media (max-width: 1023px) { .grid-products > * { grid-column: span 4; } }
+@media (max-width: 767px) { .grid-products > * { grid-column: span 6; } }
+.wf-why-head { position: relative; }
+.wf-why-close { position: absolute; top: var(--s3); right: var(--s3); }
+@media (max-width: 767px) { .wf-role-bar-left, .wf-role-bar-right { flex-wrap: wrap; } .wf-why { visibility: hidden; } body.why-open .wf-why { visibility: visible; } }
