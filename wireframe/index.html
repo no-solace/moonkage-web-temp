@@ -11,7 +11,7 @@
     <header class="ix-head">
       <span class="eyebrow">Wireframe low-fi · IA 23/10/2026 · Requirement v1.8</span>
       <h1>Moonkage – Mục lục wireframe</h1>
-      <p class="lead muted mt-1">68 trang trong 3 khu. Mỗi trang có các chốt số trên bố cục; bảng "Thuyết minh bố cục" bên phải giải thích vì sao từng khối nằm ở đó. Bật / tắt bằng nút ở thanh dưới.</p>
+      <p class="lead muted mt-1">68 trang trong 3 khu, kích thước theo design system thật. Mỗi khối có chốt số; bảng "Thuyết minh bố cục" bên phải kiểm toán từng khối theo 5 câu hỏi và hiện số đo thật của khối.</p>
       <div class="ix-legend">
         <span><span class="wf-pin" style="position:static;display:inline-flex">1</span> Chốt số = lý do bố cục cùng số</span>
         <span><span class="badge badge-solid">Nền đậm</span> cần hành động</span>
@@ -21,14 +21,30 @@
     </header>
 
     <section class="section">
-      <div class="section-head"><h2>Nguyên tắc bố cục chung</h2><p>Áp cho mọi trang; thuyết minh từng trang chỉ nói phần riêng.</p></div>
+      <div class="section-head"><h2>Kích thước theo UI thật</h2><p>Lấy từ src/app/styles/tokens.css và app.css; chỉ màu được đổi sang thang xám.</p></div>
+      <div class="table-wrap"><table>
+        <thead><tr><th>Thứ</th><th>Giá trị dùng trong wireframe</th><th>Nguồn DS</th></tr></thead>
+        <tbody>
+          <tr><td>Khung nội dung</td><td>1040px, lề 24px (≥768) / 16px → nội dung 992px</td><td><code>.app-main</code></td></tr>
+          <tr><td>Lưới</td><td>12 cột, rãnh 24px (điện thoại 16px): 1 cột ≈ 61px; 3 cột 230 · 4 cột 315 · 6 cột 484 · 8 cột 653 · 9 cột 738</td><td>từ khung 1040 + <code>--space-6</code></td></tr>
+          <tr><td>Nút, ô nhập</td><td>44px; nút nhỏ, chip 36px; nút chính lớn 52px</td><td><code>--control-h</code>, <code>--control-h-sm</code></td></tr>
+          <tr><td>Chữ</td><td>tiêu đề trang 30/36 · tiêu đề khối 21/28 · tên thẻ 19/25 · đoạn 16/26 · phụ 14/22 · giá 20/26 · chú thích 12/16</td><td><code>--text-*</code></td></tr>
+          <tr><td>Khoảng cách</td><td>4 · 8 · 12 · 16 · 20 (giữa trường) · 24 (đệm thẻ, rãnh) · 32 (giữa khối) · 48</td><td><code>--space-*</code></td></tr>
+          <tr><td>Bo góc</td><td>ô nhập 6 · nút 10 · thẻ, ảnh, hộp thoại 18</td><td><code>--radius-*</code></td></tr>
+          <tr><td>Khung riêng</td><td>form đăng nhập 400px · hộp thoại 480px · QR 240px</td><td><code>.login__form</code>, <code>.nfc-qr</code></td></tr>
+        </tbody></table></div>
+      <p class="hint mt-1">Mở trang ở cửa sổ 1440×900: bảng thuyết minh chiếm 380px bên phải, phần còn lại đúng bằng khung 1040px. Nút "Lưới 12 cột" và "Nếp gấp" ở thanh dưới để soát.</p>
+    </section>
+
+    <section class="section">
+      <div class="section-head"><h2>Quy trình 5 câu hỏi cho mỗi khối</h2><p>Mỗi chốt số trên trang trả lời đủ 5 bước; số cột, kích thước px và vị trí so với nếp gấp do wf.js đo trực tiếp.</p></div>
       <div class="grid-3">
-        <article class="card stack-sm"><h3>1. Một khung, ba khu</h3><p class="sm muted">Header 2 tầng (logo + công cụ / menu cấp 1), breadcrumb, nội dung rộng tối đa 1200px. Ba khu dùng cùng khung, chỉ đổi menu và nhãn khu cạnh logo, để người vừa mua vừa bán không phải học hai giao diện.</p></article>
-        <article class="card stack-sm"><h3>2. Hành động chính luôn ở một chỗ</h3><p class="sm muted">Danh sách: nút chính góc phải tiêu đề. Chi tiết: hộp hành động cột phải, dính khi cuộn. Form: nút cuối form canh phải, Hủy là chữ bên trái. Thanh toán: nút dưới con số tổng.</p></article>
-        <article class="card stack-sm"><h3>3. Hai cột 1fr + 320px</h3><p class="sm muted">Cột trái là nội dung để đọc, cột phải là thứ cần giữ trong tầm mắt (tiền, hành động, xem trước). Dưới 1024px cột phải xuống cuối; dưới 720px mọi lưới thành một cột.</p></article>
-        <article class="card stack-sm"><h3>4. Trạng thái bằng độ đậm, không bằng màu</h3><p class="sm muted">Low-fi chỉ có thang xám, nên 3 mức nhãn: nền đậm = việc đang chờ người xem trang, nền xám = đang chạy, viền đứt = đã xong / không áp dụng. Mắt dò cột trạng thái chỉ dừng ở nền đậm.</p></article>
-        <article class="card stack-sm"><h3>5. Nhịp 4px, 4 cỡ chữ</h3><p class="sm muted">Khoảng cách 4/8/12/16/24/32/48px; chữ 12/14/18/24px. Khoảng cách giữa khối lớn hơn khoảng cách trong khối, nên nhóm thông tin tự tách mà không cần thêm viền.</p></article>
-        <article class="card stack-sm"><h3>6. Cùng một thứ, cùng một hình</h3><p class="sm muted">Thẻ sản phẩm, thanh bước, dòng thời gian Lịch sử, tóm tắt tiền dùng lại y nguyên ở mọi nơi; người mua và người bán thấy cùng thanh tiến độ của một đơn.</p></article>
+        <article class="card stack-sm"><h3>1. Mục đích → loại & vị trí</h3><p class="sm muted">Đọc hay thao tác? Đọc: dòng 45–75 ký tự, nhiều khoảng trắng. Thao tác: vùng bấm ≥ 44px, đường di chuyển ngắn. Bỏ khối đi có xong nhiệm vụ không? Không → trên nếp gấp; có → xuống dưới, thu nhỏ, gập lại.</p></article>
+        <article class="card stack-sm"><h3>2. Dữ liệu → kích thước & hình</h3><p class="sm muted">Quá 4–5 điểm dữ liệu thì chuyển thẻ sang bảng / dòng ngang. Tính trường hợp dài nhất / rỗng: tên kẹp 2 dòng, ô nhập rộng theo dữ liệu (số lượng 112px, ngày 168px, tiền 200px, mã số thuế 240px, địa chỉ rộng hết).</p></article>
+        <article class="card stack-sm"><h3>3. Phân cấp → tỷ lệ & tương phản</h3><p class="sm muted">Mỏ neo chữ lớn / đậm nhất; bổ trợ 14px xám; hành động chính nút đặc, phụ nút viền hoặc chữ. Thứ tự đọc trên → dưới, trái → phải.</p></article>
+        <article class="card stack-sm"><h3>4. Khoảng cách → ranh giới</h3><p class="sm muted">Cùng nhóm 4–8px, khác nhóm 16–32px. Chỉ thêm viền khi khoảng trắng không đủ: thẻ đặt sát trên lưới, bảng dày, khối cần tách khỏi lưới bên cạnh. Nhóm trong form không có viền.</p></article>
+        <article class="card stack-sm"><h3>5. Lưới → tọa độ & co giãn</h3><p class="sm muted">Mọi khối neo vào 12 cột (3 / 4 / 6 / 8 / 9 / 12). Ghi rõ cố định (avatar, ảnh nhỏ, QR, ô nhập theo dữ liệu, cột 3/12) hay co giãn. ≥1024: đủ cột · 768–1023: cột phụ xuống dưới · &lt;768: một cột, bảng thành thẻ.</p></article>
+        <article class="card card-fill stack-sm"><h3>Trạng thái bằng độ đậm</h3><p class="sm muted"><span class="badge badge-solid">Nền đậm</span> chờ người đang xem · <span class="badge badge-soft">Nền xám</span> đang chạy · <span class="badge badge-dash">Viền đứt</span> xong / hoãn / giả lập. Nền xám ở khối = chỉ đọc.</p></article>
       </div>
     </section>
 

@@ -22,12 +22,12 @@
           <div class="field-row">
             <div class="field is-error">
               <label for="qty" class="req">Số hộp</label>
-              <input id="qty" type="number" value="8">
+              <input id="qty" type="number" value="8" class="w-qty">
               <span class="field-error">Chưa có đơn vị nào nhận dưới 10 hộp với yêu cầu này. Thử tăng số hộp hoặc bỏ in logo.</span>
             </div>
             <div class="field">
               <label for="per" class="req">Số bánh mỗi hộp</label>
-              <select id="per"><option>4 bánh</option><option>6 bánh</option><option>2 bánh</option><option>Khác</option></select>
+              <select id="per" class="w-auto"><option>4 bánh</option><option>6 bánh</option><option>2 bánh</option><option>Khác</option></select>
             </div>
           </div>
           <div class="field">
@@ -42,19 +42,22 @@
 
         <fieldset data-why="2">
           <legend>2. Làm riêng</legend>
-          <label class="choice"><input type="radio" name="custom" checked><span><strong>In logo lên hộp</strong><br><small class="muted">Đơn vị gửi maket để bạn duyệt trước khi làm</small></span></label>
-          <label class="choice"><input type="radio" name="custom"><span><strong>Hộp và thiệp theo thiết kế riêng</strong></span></label>
-          <label class="choice"><input type="radio" name="custom"><span><strong>Không cần làm riêng</strong><br><small class="muted">Chỉ cần nhiều hộp</small></span></label>
-          <div class="field">
-            <label>Tệp logo hoặc mẫu (không bắt buộc)</label>
-            <div class="upload"><span class="wf-icon">TỆP</span><span>Kéo tệp vào đây hoặc <a href="#">chọn tệp</a></span><small>PDF, AI, PNG · tối đa 20MB</small></div>
+          <div class="seg" role="radiogroup" aria-label="Làm riêng">
+            <label><input type="radio" name="custom" checked> In logo lên hộp</label>
+            <label><input type="radio" name="custom"> Hộp, thiệp thiết kế riêng</label>
+            <label><input type="radio" name="custom"> Không làm riêng</label>
           </div>
+          <p class="hint mt-1">In logo: đơn vị gửi maket để bạn duyệt trước khi làm.</p>
+          <details class="mt-2">
+            <summary class="strong">+ Đính kèm logo hoặc mẫu (không bắt buộc)</summary>
+            <div class="upload mt-1"><span class="wf-icon">TỆP</span><span>Kéo tệp vào đây hoặc <a href="#">chọn tệp</a></span><small>PDF, AI, PNG · tối đa 20MB</small></div>
+          </details>
         </fieldset>
 
         <fieldset data-why="3">
           <legend>3. Giao hàng</legend>
           <div class="field-row">
-            <div class="field"><label for="date" class="req">Cần nhận trước ngày</label><input id="date" type="text" value="15/11/2026" placeholder="DD/MM/YYYY"></div>
+            <div class="field fit"><label for="date" class="req">Cần nhận trước ngày</label><input id="date" type="text" value="15/11/2026" placeholder="DD/MM/YYYY" class="w-date"></div>
             <div class="field"><label for="prov" class="req">Giao tới</label><select id="prov"><option>Hà Nội</option><option>TP. Hồ Chí Minh</option><option>Đà Nẵng</option></select></div>
           </div>
           <div class="field"><label for="note">Ghi chú cho đơn vị</label><textarea id="note" placeholder="Ví dụ: cần xuất hóa đơn công ty, giao một lần tới văn phòng"></textarea></div>

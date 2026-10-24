@@ -1,184 +1,249 @@
-// Thuyết minh bố cục – Kênh người bán (B). Cấu trúc như why-m.js.
+// Thuyết minh bố cục – Kênh người bán (B). Cấu trúc như why-m.js:
+// q[0] Mục đích · q[1] Dữ liệu · q[2] Phân cấp · q[3] Khoảng cách · q[4] Lưới.
 var WHY = window.WHY || {};
 window.WHY = WHY;
+function B(t, a, core, q, span) { return { t: t, a: a, core: core, q: q, span: span }; }
 
 WHY['B1.0'] = {
-  goal: 'Trang đầu Kênh người bán, có hai bố cục khác hẳn nhau: trước khi mở bán chỉ có một việc (theo dõi hồ sơ), sau khi mở bán có nhiều việc song song.',
+  goal: 'Trang đầu Kênh người bán, hai bố cục: trước mở bán chỉ theo dõi hồ sơ; sau mở bán xử lý nhiều việc song song.',
   points: [
-    ['Trước mở bán: một thẻ trạng thái lớn chiếm cột chính', 'Lúc này người bán chỉ hỏi "hồ sơ tới đâu, tôi cần làm gì". Một thẻ duy nhất với tiêu đề là trạng thái, một câu giải thích và đúng một nút (nếu có việc) trả lời đủ. Ba trạng thái (chờ / đã duyệt / cần bổ sung) dùng chung khung, chỉ đổi chữ và nút.'],
-    ['Thanh 4 bước trong thẻ', 'Cho thấy đường tới lúc bán được, và phí nằm ở đâu trong đường đó, để người bán không bất ngờ.'],
-    ['Cột phụ: lối xem hồ sơ và cài đặt', 'Hai mục duy nhất mở được trước khi mở bán; menu trên cũng chỉ còn các mục này.'],
-    ['Sau mở bán: hàng 4 ô "Việc cần làm"', 'Đúng 4 loại việc của đặc tả, mỗi ô là số + nơi xử lý. Xếp ngang để thấy cả 4 trong một cái nhìn; ô nào bằng 0 vẫn giữ chỗ để vị trí không nhảy.'],
-    ['"Cần chú ý" dạng danh sách dưới các ô', 'Việc có hạn (khiếu nại cần phản hồi) cần câu chữ và hạn chót, không gói được vào một con số, nên đứng riêng dạng dòng với nhãn nền đậm.']
+    B('Thẻ trạng thái hồ sơ (trước mở bán)', 'act', true, [
+      'Đọc trạng thái và làm đúng một việc (nếu có). Đây là toàn bộ nhiệm vụ trước khi mở bán.',
+      '4 điểm: nhãn, trạng thái, một câu giải thích, nút. Ba trạng thái (chờ / đã duyệt / cần bổ sung) cùng khung; "chờ" không có nút.',
+      'Mỏ neo: trạng thái 21px · Bổ trợ: giải thích 16px xám · Hành động: một nút đặc duy nhất.',
+      'Viền đậm: là khối duy nhất cần chú ý trên trang.',
+      '8/12. <1024: rộng hết.'
+    ], 8),
+    B('Thanh 4 bước trong thẻ', 'read', false, [
+      'Đọc: đường tới lúc bán được, và phí nằm ở bước nào.',
+      '4 nhãn; nhãn dài nhất ~30 ký tự xuống 2 dòng.',
+      'Bước hiện tại đậm.',
+      'Trong thẻ, cách câu giải thích 16px.',
+      'Rộng hết thẻ; điện thoại chỉ nhãn bước hiện tại.'
+    ]),
+    B('Cột phụ trong lúc chờ', 'act', false, [
+      'Thao tác phụ: hai mục duy nhất mở được trước khi duyệt.',
+      '2 liên kết + nút của người review.',
+      'Liên kết chữ.',
+      'Nền xám, nhẹ hơn thẻ trạng thái.',
+      '4/12.'
+    ], 4),
+    B('Việc cần làm (sau mở bán)', 'act', true, [
+      'Thao tác: 4 hàng việc của đặc tả. Trên nếp gấp.',
+      '3 điểm/ô: nhãn, số, nơi xử lý. Ô bằng 0 vẫn giữ chỗ để vị trí không nhảy.',
+      'Mỏ neo: số 30px · Bổ trợ: nhãn 14px · Hành động: cả ô là liên kết.',
+      'Ô sát nhau → viền mảnh; cách nhau 24px.',
+      '4 ô × 3 cột. <1024: 2 ô/hàng.'
+    ], 12),
+    B('Cần chú ý', 'act', true, [
+      'Thao tác có hạn chót (khiếu nại cần phản hồi).',
+      'Mỗi dòng 3 điểm: loại, mô tả kèm hạn, nút. Không có gì → ẩn khối.',
+      'Nhãn loại đặc · hạn in đậm trong câu · nút cuối dòng.',
+      'Vách ngăn dòng.',
+      '12/12.'
+    ], 12)
   ],
-  rejected: [
-    'Biểu đồ doanh số trên trang tổng quan: không phục vụ việc cần làm hôm nay, và đặc tả không yêu cầu.',
-    'Hiện menu Đơn hàng/Sản phẩm mờ trước khi mở bán: ẩn hẳn theo đặc tả để không có lối chết.'
-  ]
+  rejected: ['Biểu đồ doanh số: không phục vụ việc cần làm hôm nay.', 'Hiện mục menu mờ trước khi mở bán: ẩn hẳn để không có lối chết.']
 };
 
 WHY['B1.1'] = {
-  goal: 'Khuôn T5 cho một khoản phí: xác nhận đã được duyệt, nói phí mở ra điều gì, rồi trả.',
+  goal: 'Xác nhận đã được duyệt, nói phí mở ra điều gì, rồi trả.',
   points: [
-    ['Thanh bước nối tiếp thanh bước ở B1.0', 'Cùng 4 bước, giờ ở bước 3: người bán thấy đây là bước cuối trước khi bán.'],
-    ['Cột chính: dải "Đã duyệt" và danh sách việc sau khi đóng', 'Trả lời "trả xong thì sao" bằng các bước cụ thể, thay cho danh sách quyền lợi quảng cáo.'],
-    ['Cột tóm tắt phải giống M4.x, có "Để sau"', 'Cùng vị trí, cùng kiểu tóm tắt với mọi màn thanh toán. "Để sau" dạng chữ để không cạnh tranh với nút trả.']
+    B('Thanh bước', 'read', false, ['Đọc: nối tiếp thanh bước ở B1.0.', '4 nhãn.', 'Bước hiện tại đậm.', 'Không viền.', '12/12.'], 12),
+    B('Đã duyệt + việc sau khi đóng', 'read', true, [
+      'Đọc trấn an và định hướng.',
+      'Nhãn + 1 câu; 3 việc tiếp theo.',
+      'Nhãn "Đã duyệt" đặc · danh sách 14px.',
+      'Dải nền xám, rồi thẻ viền mảnh.',
+      '8/12.'
+    ], 8),
+    B('Tóm tắt phí + nút trả', 'act', true, [
+      'Thao tác chính; trên nếp gấp.',
+      '1 khoản, tổng, ghi chú hóa đơn, 2 nút.',
+      'Mỏ neo: tổng · Hành động: nút đặc 52px · "Để sau" chữ.',
+      'Viền đậm, giống tóm tắt ở M4.x.',
+      '4/12, dính.'
+    ], 4)
   ],
-  rejected: ['Danh sách "quyền lợi" và "không thu chiết khấu": quảng cáo, nhắc tới hoa hồng, trái luật mục 1.']
+  rejected: ['Danh sách "quyền lợi": quảng cáo, nhắc tới hoa hồng.']
 };
 
 WHY['B2.0'] = {
-  goal: 'Danh sách đơn (T1) của người bán: thấy ngay đơn nào đang chờ mình.',
+  goal: 'Thấy ngay đơn nào đang chờ người bán.',
   points: [
-    ['Tab theo cách bán đã bật', 'Đơn Shop và đơn đặt hàng có quy trình khác nhau, nên hai bảng với cột riêng. Người chỉ bật một cách bán chỉ thấy một tab.'],
-    ['Chip mặc định "Cần làm"', 'Người bán mở trang để xử lý, nên lọc sẵn những đơn chờ mình. "Chưa có hóa đơn" và "Đang khiếu nại" là chip riêng vì là việc riêng.'],
-    ['Bảng 5 cột, nút cuối dòng đổi chữ theo việc', 'Nút "Xử lý" nền đậm cho đơn chờ mình, "Xem" viền mảnh cho đơn đang chạy: quét dọc cột nút là thấy việc.'],
-    ['Nhãn "Đang khiếu nại" nền đậm cạnh trạng thái', 'Khiếu nại có hạn phản hồi; đặt cạnh trạng thái giao hàng để không bị lẫn vào dòng chữ phụ.']
+    B('Tab theo cách bán', 'act', true, ['Thao tác.', '1–2 tab theo cách bán đã bật; số đếm đơn cần làm.', 'Gạch dưới đậm.', 'Kẻ mảnh.', '12/12.'], 12),
+    B('Chip lọc', 'act', true, ['Thao tác; mặc định "Cần làm".', '5 chip.', 'Chip đặc = đang chọn.', 'Cách 8px.', 'Xuống dòng khi hẹp.'], 12),
+    B('Bảng đơn', 'act', true, [
+      'Thao tác chọn đơn để xử lý.',
+      '5 cột: đơn (mã + ngày + số món), người mua · giao tới, trạng thái, tiền, nút. Địa chỉ dài cắt ở quận, tỉnh.',
+      'Mỏ neo: mã đơn · Hành động: "Xử lý" đặc cho đơn chờ mình, "Xem" viền cho đơn đang chạy (quét dọc cột nút là thấy việc).',
+      'Kẻ ngang (dữ liệu dày).',
+      '12/12. <768: mỗi đơn thành thẻ.'
+    ], 12),
+    B('Nhãn "Đang khiếu nại"', 'read', true, ['Đọc: có hạn phản hồi.', '1 nhãn.', 'Đặc, cạnh trạng thái giao.', '4px cạnh nhãn trạng thái.', 'Theo cột trạng thái.'])
   ],
-  rejected: ['Thẻ đơn dạng lưới: người bán có nhiều đơn, cần so dọc trạng thái và tiền; bảng tiết kiệm chỗ hơn. Trên điện thoại bảng tự chuyển thành thẻ.']
+  rejected: ['Lưới thẻ đơn: khó so dọc trạng thái và tiền.']
 };
 
 WHY['B2.1'] = {
-  goal: 'Chi tiết đơn Shop (T2) phía người bán. Khi có khiếu nại, khiếu nại là việc gấp nhất nên đứng đầu.',
+  goal: 'Xử lý đơn Shop; khi có khiếu nại thì khiếu nại là việc gấp nhất.',
   points: [
-    ['Tiêu đề kèm hai nhãn: trạng thái giao và khiếu nại', 'Hai trạng thái độc lập (đã giao nhưng đang khiếu nại) hiện song song thay vì gộp thành một nhãn khó hiểu.'],
-    ['Khối khiếu nại viền đậm đứng đầu cột chính', 'Có hạn phản hồi, ảnh hưởng tiền. Bố cục hai cột trong khối: bên trái điều người mua nói (đọc), bên phải đề xuất của bạn (làm) – đọc xong là trả lời ngay cạnh đó. Khi không có khiếu nại, khối này không hiện.'],
-    ['Món trong đơn dạng danh sách gọn', 'Người bán đã biết hàng của mình; chỉ cần đối chiếu nhanh.'],
-    ['Lịch sử dạng dòng thời gian', 'Cùng khối Lịch sử với mọi trang T2, mã vận đơn nằm ngay trong mốc "Đã giao".'],
-    ['Cột hành động phải', 'Cùng vị trí với chi tiết đơn phía người mua. Nút đổi theo trạng thái; ở đây còn thiếu hóa đơn nên "Gắn hóa đơn" là nút chính.']
+    B('Tiêu đề + hai nhãn', 'read', true, ['Đọc.', 'Mã, trạng thái giao, nhãn khiếu nại, người mua · nơi · ngày.', 'Mỏ neo: mã 30px; hai nhãn cạnh nhau.', 'Không viền.', '12/12.'], 12),
+    B('Khối khiếu nại', 'act', true, [
+      'Thao tác có hạn; trên nếp gấp.',
+      'Trái: lý do, lời người mua, ảnh. Phải: đề xuất (3 lựa chọn), số tiền, giải thích, nút.',
+      'Mỏ neo: hạn phản hồi (nhãn đặc góc phải) · Hành động: "Gửi đề xuất" đặc.',
+      'Viền đậm; hai nửa cách 24px: đọc bên trái, làm bên phải.',
+      '8/12; bên trong chia 2 × 4 cột. Ô tiền 200px. <768: xếp chồng.'
+    ], 8),
+    B('Món trong đơn', 'read', false, ['Đọc đối chiếu.', '1–n món + phí.', 'Tiền canh phải.', 'Vách ngăn.', '8/12.'], 8),
+    B('Lịch sử', 'read', false, ['Đọc.', 'Mốc + thời gian + mã vận đơn.', 'Sự kiện đậm.', 'Chấm + đường nối.', '8/12.'], 8),
+    B('Cột xử lý đơn', 'act', true, ['Thao tác theo trạng thái.', '2 cặp + nút + gợi ý.', 'Nút chính đặc theo trạng thái (ở đây: gắn hóa đơn).', 'Viền đậm.', '4/12, dính.'], 4)
   ],
-  rejected: ['Đặt khiếu nại ở cuối trang như bản cũ: người bán có thể bỏ lỡ hạn phản hồi.']
+  rejected: ['Khiếu nại ở cuối trang: dễ lỡ hạn.']
 };
 
 WHY['B2.2'] = {
-  goal: 'Mặt người bán của đơn đặt hàng: cùng bố cục với M6.1.2 để hai bên nhìn thấy cùng một tiến trình.',
+  goal: 'Mặt người bán của đơn đặt hàng, cùng bố cục với M6.1.2.',
   points: [
-    ['Nhãn trạng thái nói việc của người bán', '"Sửa maket theo góp ý" – nhãn nền đậm khi việc ở phía người bán, giống quy ước bên người mua.'],
-    ['Cùng thanh 5 bước với M6.1.2', 'Người mua và người bán nói về cùng một bước khi trao đổi.'],
-    ['Bốn tab, tab Giải ngân thay cho tab Thanh toán', 'Người bán quan tâm tiền được giải ngân, không phải tiền người mua trả; vị trí tab giữ nguyên.'],
-    ['Hộp hành động phải nói đúng một việc', 'Đơn dài nhiều tuần; hộp phải trả lời "bây giờ tôi làm gì" kèm số tiền đang giữ.']
+    B('Tiêu đề + trạng thái', 'read', true, ['Đọc.', 'Nhãn nói việc của người bán.', 'Nhãn đặc khi chờ người bán.', 'Không viền.', '12/12.'], 12),
+    B('Thanh 5 bước', 'read', true, ['Đọc; cùng thanh với người mua.', '5 nhãn.', 'Bước hiện tại đậm.', 'Viền thẻ.', '12/12.'], 12),
+    B('Bốn tab', 'act', true, ['Thao tác.', '4 tab; Giải ngân thay cho Thanh toán.', 'Gạch dưới; số đếm ở tab có việc.', 'Kẻ mảnh.', '8/12.'], 8),
+    B('Hộp hành động', 'act', true, ['Thao tác.', '1 câu + nút + 2 số tiền.', 'Nút đặc.', 'Viền đậm.', '4/12, dính.'], 4)
   ],
   rejected: []
 };
 
 WHY['B3.0'] = {
-  goal: 'Danh sách yêu cầu (T1): người bán chọn yêu cầu đáng báo giá trước khi hết hạn.',
+  goal: 'Chọn yêu cầu đáng báo giá trước khi hết hạn.',
   points: [
-    ['Ba tab theo vòng đời', 'Mới · Đã báo giá · Đã đóng – tab Mới mở sẵn với số đếm.'],
-    ['Mỗi yêu cầu một thẻ: nội dung trái, hạn và nút phải', 'Người bán cần đọc yêu cầu (số hộp, làm riêng, nơi giao) để quyết định có làm không, nên phần chữ được chỗ rộng. Nhãn phân biệt "Gửi riêng cho bạn" (đậm) với "Lời mời" để ưu tiên.'],
-    ['Hạn còn lại ngay trên nút', 'Hạn là lý do để làm trước; đặt cạnh nút "Báo giá" để quyết định và hành động ở cùng một chỗ.']
+    B('Ba tab', 'act', true, ['Thao tác.', 'Mới · Đã báo giá · Đã đóng.', 'Tab Mới mở sẵn, có số đếm.', 'Kẻ mảnh.', '12/12.'], 12),
+    B('Bảng yêu cầu', 'act', true, [
+      'Đọc để quyết định làm hay không, rồi bấm báo giá.',
+      'Mỗi yêu cầu có ~9 điểm (mã, số hộp, làm riêng, vỏ, nhân, loại, người mua, nơi, hạn) → quá 4–5 điểm cho một thẻ; chuyển từ thẻ sang bảng 5 cột, gom phụ vào dòng 2 xám của ô.',
+      'Mỏ neo: mã + số hộp đậm · Bổ trợ: dòng 2 xám · Hành động: "Báo giá" đặc, "Xem" viền.',
+      'Kẻ ngang.',
+      '12/12. <768: thẻ.'
+    ], 12),
+    B('Hạn trả lời', 'read', true, ['Đọc: lý do để làm trước.', '1 nhãn.', 'Đặc khi < 24 giờ.', 'Cạnh cột nút.', 'Cột co theo nội dung.'])
   ],
-  rejected: ['Bảng như bản cũ: cột mô tả yêu cầu dài làm bảng vỡ trên điện thoại.']
+  rejected: ['Thẻ nhiều dòng (bản trước): 9 điểm dữ liệu một thẻ, khó quét.']
 };
 
 WHY['B3.1'] = {
-  goal: 'Đọc kỹ yêu cầu rồi chọn: báo giá hoặc từ chối.',
+  goal: 'Đọc kỹ một yêu cầu rồi chọn: báo giá hoặc từ chối.',
   points: [
-    ['Tiêu đề kèm loại yêu cầu và hạn', 'Thông tin quyết định độ ưu tiên đặt ở đầu.'],
-    ['Yêu cầu dạng cặp nhãn – giá trị', 'Dùng đúng các mục người mua đã điền ở M3.1, cùng thứ tự, để hai bên hiểu như nhau.'],
-    ['Tệp người mua gửi tách riêng', 'Tệp cần mở xem, nên có khối riêng thay vì lẫn trong chữ.'],
-    ['Cột phải: Báo giá là nút, Từ chối gập trong "details"', 'Hành động chính rõ ràng; từ chối cần chọn lý do nên gập lại để không bấm nhầm.']
+    B('Tiêu đề + hạn', 'read', true, ['Đọc: yêu cầu nào, còn bao lâu.', 'Loại, mã, hạn, người mua.', 'Mỏ neo: mã 30px + nhãn hạn đặc · Bổ trợ: người mua 16px xám.', 'Không viền.', '12/12.'], 12),
+    B('Người mua cần', 'read', true, ['Đọc để quyết định có làm không.', '5 cặp, cùng thứ tự với form M3.1 để hai bên hiểu như nhau; ghi chú dài tới 500 ký tự xuống nhiều dòng trong cột giá trị.', 'Nhãn 14px xám · giá trị 16px đậm.', 'Viền mảnh vì đứng cạnh cột phản hồi.', '8/12.'], 8),
+    B('Tệp người mua gửi', 'read', false, ['Đọc / mở tệp; không có tệp thì ẩn khối.', '0–5 tệp.', 'Tên tệp dưới ô xem trước.', 'Không viền; ô xem trước tự là khung.', 'Mỗi tệp 4 cột (3 tệp/hàng).'], 8),
+    B('Phản hồi', 'act', true, ['Thao tác; trên nếp gấp.', 'Nút báo giá, từ chối (gập, chọn lý do), ghi chú thu hồi.', '"Soạn báo giá" đặc · "Từ chối" gập trong details và dùng nút viền đứt vì cần lý do.', 'Viền đậm.', '4/12, dính.'], 4)
   ],
   rejected: []
 };
 
 WHY['B3.2'] = {
-  goal: 'Form báo giá (T3) với cột phải cho thấy đúng con số người mua sẽ thấy.',
+  goal: 'Soạn báo giá; thấy đúng con số người mua sẽ thấy.',
   points: [
-    ['Giá trước, làm và giao sau', 'Giá là quyết định chính; gợi ý theo bậc giá đặt ngay dưới ô đơn giá.'],
-    ['Cột phải: bản xem trước tổng và cọc', 'Người bán thấy ngay tổng tiền và tiền cọc thay đổi theo đơn giá, giống cột trong bảng so sánh của người mua.']
+    B('1. Giá', 'act', true, ['Thao tác.', 'Đơn giá (≤ 12 ký tự → 200px), cọc (select). Gợi ý theo bậc giá dưới ô.', 'Nhãn đậm · gợi ý xám.', 'Không viền.', '8/12; ô cố định theo dữ liệu.'], 8),
+    B('Người mua sẽ thấy', 'read', true, ['Đọc kiểm.', 'Phép tính, tổng, cọc.', 'Tổng 20px.', 'Viền đậm.', '4/12, dính.'], 4)
   ],
   rejected: []
 };
 
 WHY['B4.0'] = {
-  goal: 'Danh sách sản phẩm (T1): chỉnh giá, tồn, ẩn/hiện nhanh mà không mở từng sản phẩm.',
+  goal: 'Chỉnh giá, tồn, ẩn/hiện nhanh mà không phải mở từng sản phẩm.',
   points: [
-    ['Tiêu đề trái, "Đăng sản phẩm" phải', 'Mẫu T1 chung.'],
-    ['Ba tab theo trạng thái hiển thị', 'Đang bán · Đang ẩn · Bị gỡ: mỗi tab có thao tác khác nhau; không có tab hay nút xóa.'],
-    ['Bảng có ảnh nhỏ, giá và tồn canh phải', 'Người bán so giá, tồn giữa các sản phẩm theo chiều dọc; số tồn thấp in đậm để thấy hàng sắp hết.'],
-    ['Ô "Đang hiện" ngay trên dòng', 'Ẩn / hiện là thao tác hay dùng nhất (F7), làm được tại chỗ, không cần vào trang sửa.'],
-    ['Sản phẩm bị gỡ có dải viền đứt riêng kèm lý do', 'Tách khỏi bảng chính để không lẫn với hàng đang bán, và lý do gỡ đọc được ngay.']
+    B('Tiêu đề + "Đăng sản phẩm"', 'act', false, ['Tiêu đề để đọc; đăng mới là thao tác phụ ở trang này.', '2.', 'Nút đặc mép phải (khuôn T1).', 'Không viền.', '12/12.'], 12),
+    B('Ba tab', 'act', true, ['Thao tác.', 'Đang bán · Đang ẩn · Bị gỡ, có số đếm; không có tab hay nút xóa.', 'Gạch dưới tab đang mở.', 'Kẻ mảnh.', '12/12.'], 12),
+    B('Bảng sản phẩm', 'act', true, [
+      'Thao tác sửa nhanh.',
+      '5 điểm: ảnh, tên + vỏ/nhân, giá, tồn, hiện. Tên dài tới 120 ký tự → kẹp 2 dòng; tồn ≤ 5 → in đậm.',
+      'Mỏ neo: tên · Bổ trợ: vỏ/nhân 14px xám · Hành động: ô "Đang hiện" và "Sửa".',
+      'Kẻ ngang (dữ liệu dày).',
+      '12/12; ảnh 48px cố định; giá, tồn canh phải. <768: thẻ.'
+    ], 12),
+    B('Ô "Đang hiện"', 'act', true, ['Ẩn/hiện là thao tác hay dùng nhất (F7), làm tại chỗ.', '1 ô đánh dấu + nhãn.', 'Ô 20px, vùng bấm gồm cả nhãn.', 'Cách tên cột 16px.', 'Cột co theo nội dung.']),
+    B('Sản phẩm bị gỡ', 'read', false, ['Đọc lý do gỡ.', 'Tên, ngày, lý do (≤ 200 ký tự).', 'Nhãn viền đứt · "Xem" viền.', 'Viền đứt, tách khỏi bảng hàng đang bán.', '12/12.'], 12)
   ],
   rejected: []
 };
 
 WHY['B4.1'] = {
-  goal: 'Form sản phẩm (T3) với bản xem trước thẻ sản phẩm như người mua sẽ thấy.',
+  goal: 'Form sản phẩm (T3), có xem trước thẻ đúng như người mua sẽ thấy.',
   points: [
-    ['Dải "Bị gỡ" trên cùng khi chỉ xem', 'Giải thích vì sao mọi ô bị khóa trước khi người bán thử bấm.'],
-    ['Ảnh là nhóm đầu tiên', 'Ảnh là thứ người mua nhìn đầu tiên ở M2.0, nên người bán cũng điền đầu tiên. Lưới ô vuông cho thấy ảnh đã có và chỗ thêm.'],
-    ['Vỏ và nhân dạng chip', 'Danh mục cố định, chọn nhiều; chip cho thấy hết lựa chọn trên một dòng và khớp đúng bộ lọc M2.0.'],
-    ['Cột phải: thẻ sản phẩm xem trước', 'Dùng đúng thẻ của M2.0 để người bán kiểm tên dài, giá hiện ra sao.']
+    B('Dải "Bị gỡ"', 'read', false, ['Đọc: vì sao mọi ô bị khóa; chỉ khi sản phẩm bị gỡ.', 'Ngày + lý do.', 'Nhãn đặc.', 'Viền đậm.', '12/12.'], 12),
+    B('1. Ảnh', 'act', true, ['Thao tác; ảnh là thứ người mua nhìn đầu tiên ở M2.0 nên điền đầu tiên.', '1–8 ảnh; ảnh đầu là ảnh chính.', 'Ô "+ Thêm" viền đứt.', 'Không viền nhóm.', '4 ô vuông/hàng trong 8 cột; <768: 2/hàng.'], 8),
+    B('3. Vỏ và nhân', 'act', true, ['Thao tác.', 'Chip theo danh mục FR-54; ít nhất 1 vỏ, 1 nhân.', 'Chip đặc = đã chọn.', 'Chip cách 8px; hai hàng cách 20px.', '8/12; xuống dòng khi hẹp.'], 8),
+    B('Xem trước thẻ', 'read', false, ['Đọc kiểm tên dài bị kẹp, giá hiện ra sao.', 'Thẻ sản phẩm thật (4 điểm).', 'Như M2.0.', 'Không viền, như ở M2.0.', '4/12, dính. Rộng 315px ≈ thẻ thật ở M2.0 (230px) nên chỉ là ước lượng.'], 4)
   ],
   rejected: []
 };
 
 WHY['B5.0'] = {
-  goal: 'Trang trung chuyển của Tiền, thêm ba con số trả lời câu "tiền của tôi đang ở đâu".',
+  goal: 'Tiền của tôi đang ở đâu.',
   points: [
-    ['Ba ô số liệu trên cùng', 'Đang giữ → chờ chuyển → đã nhận: theo đúng dòng chảy của tiền, đọc trái sang phải.'],
-    ['Hai thẻ lối vào bên dưới', 'Khuôn T4. Đặc tả cho phép bỏ trang này và mở thẳng Đối soát; ba ô số liệu là lý do để giữ lại.']
+    B('Ba con số', 'read', true, ['Đọc.', 'Đang giữ → chờ chuyển → đã nhận (theo dòng chảy tiền).', 'Số 30px.', 'Ô sát → viền.', '3 × 4 cột.'], 12),
+    B('Hai lối vào', 'act', true, ['Thao tác.', '2 thẻ.', 'Tên 21px.', 'Viền.', '6 + 6.'], 12)
   ],
   rejected: []
 };
 
 WHY['B5.1'] = {
   goal: 'Bảng đối soát chỉ xem.',
-  points: [['Bảng, các cột tiền canh phải, cột cuối là trạng thái chuyển', 'Đối soát là đọc số theo cột; cột "Bạn nhận" in đậm vì là con số người bán dò. Trạng thái chuyển dùng 3 mức nhãn: đậm (bị chặn), xám (đang chờ), viền đứt (xong).']],
+  points: [B('Bảng đối soát', 'read', true, ['Đọc theo cột số.', '6 cột; tiền tới 12 ký tự.', '"Bạn nhận" đậm.', 'Kẻ ngang.', '12/12; cột tiền canh phải.'], 12)],
   rejected: []
 };
 
 WHY['B5.2'] = {
   goal: 'Danh sách giải ngân cọc theo đơn.',
   points: [
-    ['Nút tạo yêu cầu ở góc phải', 'Mẫu T1; cũng tạo được từ tab Giải ngân của B2.2.'],
-    ['Cột "Còn giữ sau đó" cạnh số xin', 'Người bán thấy ngay phần cọc còn lại, không phải tự trừ.']
+    B('Tiêu đề + tạo yêu cầu', 'act', false, ['Thao tác phụ.', '2.', 'Nút đặc phải.', 'Không viền.', '12/12.'], 12),
+    B('Bảng giải ngân', 'read', true, ['Đọc.', '5 cột; "còn giữ" cạnh số xin.', 'Trạng thái 3 mức nhãn.', 'Kẻ ngang.', '12/12.'], 12)
   ],
   rejected: []
 };
 
 WHY['B6.0'] = {
-  goal: 'Trung chuyển tới các mục cài đặt, kèm trạng thái của từng mục.',
+  goal: 'Trung chuyển tới các mục cài đặt, kèm trạng thái để biết còn thiếu gì.',
   points: [
-    ['Danh sách dọc thay cho lưới thẻ', 'Bốn mục cài đặt là danh sách để kiểm tra, không phải lựa chọn; mỗi dòng có trạng thái (Chưa cài nền đậm) nên người bán thấy ngay còn thiếu gì.'],
-    ['Mục chưa mở được vẫn hiện, ghi "Mở sau khi duyệt"', 'Người bán chờ duyệt biết trước việc sẽ phải làm.']
+    B('Danh sách mục cài đặt', 'act', true, ['Thao tác chọn mục.', '4 dòng × 3 điểm: tên, mô tả, trạng thái + nút.', 'Tên đậm · "Chưa cài" nhãn đặc · nút "Mở" cuối dòng.', 'Vách ngăn dòng.', '12/12.'], 12),
+    B('Mục chưa mở được', 'read', false, ['Đọc trước việc sẽ phải làm sau khi duyệt.', '1 nhãn.', 'Viền đứt, không có nút.', 'Cùng dòng.', 'Theo danh sách.'])
   ],
-  rejected: []
+  rejected: ['Lưới thẻ: không thấy ngay mục nào còn thiếu.']
 };
 
 WHY['B6.1'] = {
   goal: 'Xem hồ sơ đã nộp; nộp lại khi cần bổ sung.',
   points: [
-    ['Nhãn trạng thái góc phải tiêu đề', 'Cho biết ngay trang này sửa được hay chỉ xem.'],
-    ['Dải "Moonkage cần" có nút Nộp lại', 'Khi cần bổ sung, việc cần làm đứng trên mọi thông tin khác.'],
-    ['Hai khối nền xám cạnh nhau', 'Nền xám = chỉ đọc. Đơn vị và chủ hộ là hai nhóm ngang hàng.']
+    B('Tiêu đề + trạng thái', 'read', true, ['Đọc: sửa được hay chỉ xem.', 'Tên, loại hình, nhãn trạng thái.', 'Nhãn ở góc phải tiêu đề.', 'Không viền.', '12/12.'], 12),
+    B('Dải "Moonkage cần"', 'act', true, ['Thao tác khi cần bổ sung; đứng trên mọi thông tin.', '1 câu (≤ 200 ký tự) + nút.', 'Nút đặc.', 'Viền đậm.', '12/12.'], 12),
+    B('Đơn vị / Chủ hộ', 'read', false, ['Đọc.', '2 khối × 2–3 cặp; địa chỉ xuống 2 dòng.', 'Nhãn xám · giá trị đậm.', 'Nền xám = chỉ đọc.', '6 + 6. <768: xếp chồng.'], 12)
   ],
   rejected: []
 };
 
 WHY['B6.2'] = {
-  goal: 'Form vùng giao: nội tỉnh trước, liên tỉnh sau.',
+  goal: 'Khai vùng giao và phí giao, bước giữa của luồng F4.',
   points: [
-    ['Nội tỉnh là nhóm đầu', 'Hầu hết Shop giao trong tỉnh; nhóm này ngắn nhất.'],
-    ['Liên tỉnh: bảng phí chỉ đọc', 'Phí liên tỉnh do Moonkage cấu hình (Q6.1), nên hiện dạng bảng để tham khảo, không phải ô nhập.'],
-    ['Cột phải nói bước tiếp theo', 'Trang này nằm giữa luồng F4; cột phải dẫn sang bước sau.']
+    B('Nội tỉnh', 'act', true, ['Thao tác.', '1 ô đánh dấu + phí (tới "50.000đ" → ô 200px).', 'Nhãn đậm.', 'Không viền nhóm.', '8/12.'], 8),
+    B('Liên tỉnh', 'act', false, ['Thao tác bật/tắt; phí do Moonkage cấu hình nên chỉ đọc.', 'Bảng 63 tỉnh (hiện 2 dòng + "…").', 'Phí canh phải.', 'Kẻ ngang.', '8/12.'], 8),
+    B('Bước tiếp theo', 'read', false, ['Đọc: dẫn sang bước sau trong luồng.', '1 câu + liên kết.', 'Liên kết chữ.', 'Nền xám.', '4/12, dính.'], 4)
   ],
   rejected: []
 };
 
 WHY['B6.3'] = {
-  goal: 'Form điều kiện nhận đặt hàng, có xem trước phần người mua thấy ở M3.3.',
+  goal: 'Khai điều kiện nhận đặt hàng; xem trước khối sẽ hiện ở M3.3.',
   points: [
-    ['Quy mô đầu tiên', 'Số hộp tối thiểu là điều kiện lọc mạnh nhất khi ghép yêu cầu báo giá.'],
-    ['Vỏ, nhân dạng chip từ cùng danh mục', 'Giống B4.1 và bộ lọc M2.0 để dữ liệu khớp nhau.'],
-    ['Cột phải: thẻ "Nhận làm" xem trước', 'Đúng khối hiện ở tab Nhận đặt hàng của M3.3.']
+    B('1. Quy mô', 'act', true, ['Thao tác; tối thiểu là điều kiện lọc mạnh nhất khi ghép yêu cầu.', 'Tối thiểu (≤ 5 chữ số → 112px), thời gian maket (select co theo nội dung).', 'Nhãn đậm.', 'Không viền nhóm.', '8/12.'], 8),
+    B('2. Vỏ và nhân', 'act', true, ['Thao tác.', 'Chip FR-54, giống B4.1 và bộ lọc M2.0.', 'Chip đặc = chọn.', 'Cách 8px.', '8/12.'], 8),
+    B('Người mua sẽ thấy', 'read', false, ['Đọc kiểm.', '3 cặp, đúng khối "Nhận làm" ở M3.3.', 'Giá trị đậm.', 'Viền mảnh như ở M3.3.', '4/12, dính.'], 4)
   ],
   rejected: []
 };
 
 WHY['B6.4'] = {
-  goal: 'Trang hoãn.',
-  points: [['Khung rỗng viền đứt, nhãn "Hoãn trong demo"', 'Cùng kiểu trạng thái rỗng để người review biết trang có trong IA nhưng không làm.']],
+  goal: 'Trang hoãn trong demo.',
+  points: [B('Khung hoãn', 'read', false, ['Đọc: trang có trong IA nhưng không làm.', '1 nhãn + 1 câu + lối quay lại.', 'Nhãn viền đứt.', 'Viền đứt cả khung.', '6/12 căn giữa (cột 4–9).'], 6)],
   rejected: []
 };
