@@ -22,6 +22,8 @@
   }
   var ROLE = load('wf_role', 'buyer');
   var NOTES_ON = load('wf_notes_visible', 'true') !== 'false';
+  var GRID_ON = load('wf_grid', 'false') === 'true';
+  var FOLD_ON = load('wf_fold', 'false') === 'true';
 
   var isSeller = ROLE === 'seller-pending' || ROLE === 'seller-open';
   var isNfc = ROLE === 'buyer-nfc' || ROLE === 'seller-open' || ROLE === 'admin';
@@ -166,6 +168,8 @@
       '<div class="wf-role-bar-left"><label for="wf-role-switcher"><strong>Vai thử</strong></label>' +
       '<select id="wf-role-switcher" class="wf-role-select">' + opts + '</select></div>' +
       '<div class="wf-role-bar-right">' +
+      '<button type="button" id="wf-grid-toggle" aria-pressed="' + GRID_ON + '">Lưới 12 cột</button>' +
+      '<button type="button" id="wf-fold-toggle" aria-pressed="' + FOLD_ON + '">Nếp gấp</button>' +
       '<button type="button" id="wf-notes-toggle" aria-pressed="' + NOTES_ON + '">Ghi chú & thuyết minh: ' + (NOTES_ON ? 'BẬT' : 'TẮT') + '</button>' +
       link('index.html', 'Mục lục') +
       '</div></div>';
@@ -291,28 +295,49 @@
   }
 
   // 8. Bảng "Thuyết minh bố cục" ----------------------------------------------
+  // Mỗi khối có chốt số trả lời 5 bước câu hỏi: 1 Mục đích, 2 Dữ liệu, 3 Phân cấp,
+  // 4 Khoảng cách, 5 Lưới & đáp ứng. Số đo (cột, px, nếp gấp) do wf.js tự đo trên trang.
+  var FOLD = 900 - 44;              // nếp gấp của màn 1440×900, trừ thanh vai 44px
+  var Q_LABEL = ['Mục đích', 'Dữ liệu', 'Phân cấp', 'Khoảng cách', 'Lưới'];
+
+  function measure(el) {
+    var content = document.getElementById('content');
+    if (!el || !content || el.getClientRects().length === 0) return null;
+    var cs = getComputedStyle(content);
+    var inner = content.clientWidth - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight);
+    var g = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--gutter')) || 24;
+    var col = (inner - 11 * g) / 12;
+    var r = el.getBoundingClientRect();
+    var span = Math.max(1, Math.min(12, Math.round((r.width + g) / (col + g))));
+    var top = r.top + window.scrollY;
+    return { w: Math.round(r.width), h: Math.round(r.height), span: span, top: Math.round(top), above: top < FOLD };
+  }
+
   function buildWhy() {
     var why = (typeof WHY !== 'undefined') ? WHY[PAGE_ID] : null;
     var notes = Array.prototype.slice.call(document.querySelectorAll('.wf-note'));
     if (!why && !notes.length) return;
     var page = findPage(PAGE_ID) || {};
 
-    var pins = {};
+    var els = {};
     document.querySelectorAll('[data-why]').forEach(function (el) {
       var n = el.getAttribute('data-why');
-      if (getComputedStyle(el).display === 'none') return;
-      pins[n] = true;
+      if (el.getClientRects().length === 0) return;   // khối đang ẩn theo vai / trạng thái
+      els[n] = el;
       var b = document.createElement('button');
       b.type = 'button';
       b.className = 'wf-pin';
       b.textContent = n;
-      b.setAttribute('aria-label', 'Lý do bố cục số ' + n);
+      b.setAttribute('aria-label', 'Thuyết minh khối số ' + n);
       b.addEventListener('click', function (e) {
         e.preventDefault(); e.stopPropagation();
         var li = document.getElementById('wf-why-' + n);
         if (li) { li.scrollIntoView({ block: 'nearest', behavior: 'smooth' }); flash(n); }
       });
-      el.insertBefore(b, el.firstChild);
+      // Hàng bảng: đặt chốt trong ô đầu để không sinh thêm ô làm lệch bảng
+      var host = (el.tagName === 'TR' && el.cells.length) ? el.cells[0] : el;
+      if (host !== el) host.style.position = 'relative';
+      host.insertBefore(b, host.firstChild);
     });
 
     var html = '<div class="wf-why-head"><span class="eyebrow">Thuyết minh bố cục</span>' +
@@ -321,16 +346,46 @@
       (page.fr ? '<span class="badge badge-dash">' + esc(page.fr) + '</span>' : '') + '</div></div>' +
       '<div class="wf-why-body">';
     if (why) {
-      if (why.goal) html += '<section><h3>Trang này để làm gì</h3><p class="wf-why-goal">' + why.goal + '</p></section>';
+      if (why.goal) html += '<section><h3>Nhiệm vụ chính của trang</h3><p class="wf-why-goal">' + why.goal + '</p></section>';
       if (why.points && why.points.length) {
-        html += '<section><h3>Vì sao bố cục như vậy</h3><ol class="wf-why-list">';
+        html += '<section><h3>Kiểm toán từng khối</h3>' +
+          '<div class="wf-why-legend mb-1"><b>1</b><span>Mục đích: đọc hay thao tác; bỏ khối đi có làm xong nhiệm vụ không</span>' +
+          '<b>2</b><span>Dữ liệu: số điểm dữ liệu; dài nhất / ngắn nhất / rỗng</span>' +
+          '<b>3</b><span>Phân cấp: mỏ neo · bổ trợ · hành động</span>' +
+          '<b>4</b><span>Khoảng cách: nhóm gần 4–8px, nhóm khác 16–24px; có cần viền không</span>' +
+          '<b>5</b><span>Lưới: số cột trên 12; cố định hay co giãn; lên điện thoại ra sao</span></div>' +
+          '<ol class="wf-why-list">';
         why.points.forEach(function (pt, i) {
           var n = String(i + 1);
-          html += '<li id="wf-why-' + n + '" data-n="' + n + '"><span class="n' + (pins[n] ? '' : ' off') + '">' + n + '</span>' +
-            '<div><b>' + pt[0] + '</b>' + pt[1] + '</div></li>';
+          var el = els[n];
+          var m = el ? measure(el) : null;
+          var tags = '';
+          var warn = '';
+          if (pt.a) tags += '<span class="badge ' + (pt.a === 'act' ? 'badge-solid' : '') + '">' + (pt.a === 'act' ? 'Thao tác' : 'Đọc') + '</span>';
+          if (pt.core !== undefined) tags += '<span class="badge ' + (pt.core ? '' : 'badge-dash') + '">' + (pt.core ? 'Cốt lõi' : 'Phụ') + '</span>';
+          if (m) {
+            tags += '<span class="badge badge-soft">' + m.span + '/12 cột · ' + m.w + '×' + m.h + 'px</span>';
+            tags += '<span class="badge badge-soft">' + (m.above ? 'Trên nếp gấp' : 'Dưới nếp gấp') + ' · y=' + m.top + '</span>';
+            if (pt.core && !m.above && window.innerWidth >= 1280) warn = '⚠ Khối cốt lõi nhưng đang nằm dưới nếp gấp.';
+            if (pt.span && window.innerWidth >= 1280 && pt.span !== m.span) warn += (warn ? ' ' : '') + '⚠ Dự kiến ' + pt.span + '/12 cột, đo được ' + m.span + '/12.';
+          } else {
+            tags += '<span class="badge badge-dash">Không hiện ở vai / trạng thái này</span>';
+          }
+          html += '<li id="wf-why-' + n + '" data-n="' + n + '">' +
+            '<div class="hd"><span class="n' + (el ? '' : ' off') + '">' + n + '</span><b>' + (pt.t || pt[0]) + '</b></div>' +
+            '<div class="wf-why-tags">' + tags + '</div>';
+          if (pt.q) {
+            html += '<dl class="wf-why-q">';
+            pt.q.forEach(function (ans, k) { if (ans) html += '<dt title="' + Q_LABEL[k] + '">' + (k + 1) + '</dt><dd><i>' + Q_LABEL[k] + ':</i> ' + ans + '</dd>'; });
+            html += '</dl>';
+          } else if (pt[1]) {
+            html += '<p class="wf-why-q" style="display:block">' + pt[1] + '</p>';
+          }
+          if (warn) html += '<p class="wf-why-warn">' + warn + '</p>';
+          html += '</li>';
         });
         html += '</ol>';
-        if (why.points.some(function (pt, i) { return !pins[String(i + 1)]; })) {
+        if (why.points.some(function (pt, i) { return !els[String(i + 1)]; })) {
           html += '<p class="faint mt-1">Số viền rỗng: khối chỉ hiện ở vai hoặc trạng thái khác (đổi vai ở thanh dưới, hoặc dùng các liên kết "Ví dụ" trên trang).</p>';
         }
         html += '</section>';
@@ -351,18 +406,30 @@
     var footer = document.querySelector('.wf-footer');
     if (footer) body.insertBefore(panel, footer); else body.appendChild(panel);
     var holder = panel.querySelector('#wf-why-notes');
-    notes.forEach(function (n) { holder.appendChild(n); });
+    notes.forEach(function (nt) { holder.appendChild(nt); });
     if (!notes.length) holder.parentNode.remove();
     body.classList.add('has-why');
 
-    panel.querySelectorAll('.wf-why-list li').forEach(function (li) {
+    panel.querySelectorAll('.wf-why-list > li').forEach(function (li) {
       var n = li.getAttribute('data-n');
       li.addEventListener('mouseenter', function () { mark(n, true); });
       li.addEventListener('mouseleave', function () { mark(n, false); });
     });
   }
   function mark(n, on) {
-    document.querySelectorAll('[data-why="' + n + '"]').forEach(function (el) { el.classList.toggle('wf-hl', on); });
+    document.querySelectorAll('[data-why="' + n + '"]').forEach(function (el) {
+      el.classList.toggle('wf-hl', on);
+      var tag = el.querySelector(':scope > .wf-measure');
+      if (on && !tag) {
+        var m = measure(el);
+        if (!m) return;
+        tag = document.createElement('span');
+        tag.className = 'wf-measure';
+        tag.style.right = '0'; tag.style.top = '-22px';
+        tag.textContent = m.w + ' × ' + m.h + 'px · ' + m.span + '/12 cột';
+        el.appendChild(tag);
+      } else if (!on && tag) tag.remove();
+    });
   }
   function flash(n) {
     var li = document.getElementById('wf-why-' + n);
@@ -410,6 +477,9 @@
   // 10. Khởi chạy -------------------------------------------------------------
   document.addEventListener('DOMContentLoaded', function () {
     if (!NOTES_ON) body.classList.add('hide-notes');
+    body.classList.toggle('show-grid', GRID_ON);
+    body.classList.toggle('show-fold', FOLD_ON);
+    body.style.setProperty('--fold', FOLD + 'px');
 
     if (ZONE && ZONE !== 'INDEX') {
       body.insertAdjacentHTML('afterbegin', buildHeader() + buildBreadcrumb());
@@ -420,7 +490,7 @@
     }
 
     var ok = enforceBoundary();
-    if (ok && ZONE === 'M' && starts('M6.') && PAGE_ID !== 'M6.6') attachAccountSidebar();
+    if (ok && ['M6.0', 'M6.1', 'M6.2', 'M6.3', 'M6.4', 'M6.5'].indexOf(PAGE_ID) !== -1) attachAccountSidebar();
 
     body.insertAdjacentHTML('beforeend', buildRoleBar());
     applyRoleVisibility();
@@ -438,6 +508,13 @@
       body.classList.toggle('hide-notes', !NOTES_ON);
       this.textContent = 'Ghi chú & thuyết minh: ' + (NOTES_ON ? 'BẬT' : 'TẮT');
       this.setAttribute('aria-pressed', String(NOTES_ON));
+    });
+    [['wf-grid-toggle', 'show-grid', 'wf_grid'], ['wf-fold-toggle', 'show-fold', 'wf_fold']].forEach(function (cfg) {
+      document.getElementById(cfg[0]).addEventListener('click', function () {
+        var on = body.classList.toggle(cfg[1]);
+        save(cfg[2], on ? 'true' : 'false');
+        this.setAttribute('aria-pressed', String(on));
+      });
     });
     document.addEventListener('click', function (e) {
       var t = e.target.closest('[data-logout], [data-switch-role], .wf-menu-btn, [data-set-role]');
