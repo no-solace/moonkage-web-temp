@@ -8,109 +8,95 @@
 </head>
 <body data-zone="M" data-page="M6.1.2">
   <main id="content">
-    <div class="t2-header">
+    <div class="page-head" data-why="1">
       <div>
-        <h1>Đơn đặt hàng #MK-CUS-2026-088</h1>
-        <small style="color: #666;">Khởi tạo từ Yêu cầu báo giá #RFQ-104 · Ngày đặt: 20/10/2026</small>
-      </div>
-      <div>
-        <span class="t2-status">Trạng thái: Đang sản xuất</span>
+        <span class="eyebrow">Đơn đặt theo yêu cầu</span>
+        <h1>Đơn MK-C088 <span class="badge badge-solid" style="vertical-align:middle">Chờ bạn duyệt maket</span></h1>
+        <p class="lead">Xưởng Bánh Nghệ Nhân · 150 hộp gỗ khắc logo · từ yêu cầu <a href="m6-2-1.html">YC-104</a></p>
       </div>
     </div>
 
-    <!-- Khối tóm tắt đơn hàng -->
-    <div class="t2-summary">
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px;">
-        <div>
-          <small style="color: #666;">Đơn vị cung cấp:</small><br>
-          <strong>Xưởng Bánh Nghệ Nhân Hà Nội</strong>
-        </div>
-        <div>
-          <small style="color: #666;">Quy cách đặt:</small><br>
-          <strong>150 hộp gỗ khắc laser logo doanh nghiệp</strong>
-        </div>
-        <div>
-          <small style="color: #666;">Tổng giá trị hợp đồng:</small><br>
-          <strong style="font-size: 16px;">102.000.000đ</strong>
-        </div>
-        <div>
-          <small style="color: #666;">Tiến độ thanh toán:</small><br>
-          <strong>Đã đặt cọc 50% (51.000.000đ)</strong>
-        </div>
-      </div>
-    </div>
+    <section class="card mb-3" data-why="2">
+      <ol class="steps" style="margin:0">
+        <li class="done"><span class="lbl">Đặt cọc</span></li>
+        <li class="active"><span class="lbl">Duyệt maket</span></li>
+        <li><span class="lbl">Sản xuất</span></li>
+        <li><span class="lbl">Giao hàng</span></li>
+        <li><span class="lbl">Trả phần còn lại</span></li>
+      </ol>
+    </section>
 
-    <div class="t2-layout">
-      <!-- Cột trái: Các tab nghiệp vụ của đơn đặt hàng -->
+    <div class="split">
       <div>
-        <div class="t1-tabs">
-          <a href="#tab-progress" class="t1-tab active">Tiến độ</a>
-          <a href="#tab-maket" class="t1-tab">Maket</a>
-          <a href="#tab-payment" class="t1-tab">Thanh toán</a>
-          <a href="#tab-invoice" class="t1-tab">Hóa đơn</a>
-        </div>
+        <nav class="tabs" data-why="3">
+          <a href="#maket" class="tab">Maket <span class="count">1</span></a>
+          <a href="#tien-do" class="tab">Tiến độ</a>
+          <a href="#thanh-toan" class="tab">Thanh toán</a>
+          <a href="#hoa-don" class="tab">Hóa đơn</a>
+        </nav>
 
-        <!-- Nội dung Tab Tiến độ -->
-        <div style="border: 1px solid #ccc; padding: 16px; margin-bottom: 20px;">
-          <h2>Tiến độ thực hiện đơn</h2>
-          <div style="margin: 12px 0; display: flex; flex-direction: column; gap: 8px;">
-            <div>[✓] <strong>20/10/2026 10:00</strong> — Đã nhận đặt cọc 50.000.000đ qua VNPay</div>
-            <div>[✓] <strong>21/10/2026 15:30</strong> — Người mua đã duyệt mẫu maket nắp hộp</div>
-            <div>[▶] <strong>22/10/2026 08:00</strong> — Xưởng đang nướng bánh & ép kim vỏ hộp (Dự kiến xong 26/10)</div>
-            <div style="color: #888;">[ ] <strong>Chưa tới</strong> — Đóng gói hộp quà và giao hàng</div>
-            <div style="color: #888;">[ ] <strong>Chưa tới</strong> — Người mua thanh toán 50% còn lại</div>
+        <section id="maket" data-tab data-why="4">
+          <div class="grid-2">
+            <div class="wf-img ratio-43"><span>Maket lần 2 – nắp hộp</span></div>
+            <div class="stack-sm">
+              <strong>Maket lần 2</strong><small class="muted">Gửi 22/10/2026 · sửa theo góp ý: logo nhỏ lại</small>
+              <div class="field" style="margin-top:0"><label for="fb">Góp ý (nếu yêu cầu sửa)</label><textarea id="fb" placeholder="Ví dụ: dời logo xuống giữa nắp"></textarea></div>
+            </div>
           </div>
-        </div>
+          <details class="mt-2"><summary class="sm">Maket lần 1 · đã yêu cầu sửa 21/10/2026</summary><div class="wf-img ratio-169 mt-1" style="max-width:320px"><span>Maket lần 1</span></div></details>
+        </section>
 
-        <!-- Khối Lịch sử trong trang -->
-        <div class="t2-history">
-          <h2>Lịch sử thay đổi trạng thái</h2>
-          <table style="margin-top: 8px;">
-            <thead>
-              <tr>
-                <th>Thời gian</th>
-                <th>Người thực hiện</th>
-                <th>Hành động</th>
-                <th>Chi tiết</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>21/10/2026 15:30</td>
-                <td>Người mua (Chị Lan)</td>
-                <td>Duyệt maket</td>
-                <td>Đồng ý bản in logo v2</td>
-              </tr>
-              <tr>
-                <td>20/10/2026 10:00</td>
-                <td>Cổng VNPay</td>
-                <td>Thanh toán cọc</td>
-                <td>51.000.000đ (Mã GD: #VNP-99120)</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+        <section id="tien-do" data-tab hidden>
+          <ol class="timeline">
+            <li class="done"><strong>Đặt cọc 9.000.000đ</strong><span class="when">20/10/2026</span></li>
+            <li class="done"><strong>Đơn vị gửi maket lần 1</strong><span class="when">21/10/2026</span></li>
+            <li class="done"><strong>Bạn yêu cầu sửa maket</strong><span class="when">21/10/2026</span></li>
+            <li><strong>Đơn vị gửi maket lần 2</strong><span class="when">22/10/2026</span></li>
+            <li class="todo"><strong>Sản xuất</strong><span class="when">sau khi duyệt maket</span></li>
+          </ol>
+        </section>
+
+        <section id="thanh-toan" data-tab hidden>
+          <ul class="list">
+            <li><span class="grow">Giá trị đơn</span><span class="price">18.000.000đ</span></li>
+            <li><span class="grow">Đã cọc 50% · 20/10/2026</span><span>9.000.000đ</span></li>
+            <li><strong class="grow">Còn lại · trả sau khi giao</strong><span class="price">9.000.000đ</span></li>
+          </ul>
+        </section>
+
+        <section id="hoa-don" data-tab hidden>
+          <div class="empty"><strong>Chưa có hóa đơn</strong><p>Đơn vị gắn hóa đơn sau khi giao hàng.</p></div>
+        </section>
       </div>
 
-      <!-- Cột phải: Hành động khả dụng theo trạng thái -->
-      <div>
-        <div class="t2-actions">
-          <h2>Hành động khả dụng</h2>
-          <p style="font-size: 12px; color: #555;">Đơn đang sản xuất. Sau khi nhận hàng, bạn sẽ thanh toán 50% còn lại.</p>
-          <a href="m4-2.html" class="btn btn-primary" style="text-align: center;">Thanh toán phần còn lại (51.000.000đ)</a>
-          <a href="m6-1-3.html" class="btn">Báo vấn đề với đơn</a>
-          <button class="btn btn-disabled" disabled title="Nút đặt lại ẩn trong demo">[Đặt lại — Ẩn trong demo]</button>
-          <a href="m6-1.html" class="btn">Quay lại danh sách đơn</a>
-        </div>
-      </div>
+      <aside class="actions-box sticky" data-why="5">
+        <h2>Việc của bạn bây giờ</h2>
+        <p class="sm muted">Duyệt maket lần 2 để đơn vị bắt đầu sản xuất.</p>
+        <button type="button" class="btn btn-primary btn-block">Duyệt maket</button>
+        <button type="button" class="btn btn-block">Yêu cầu sửa</button>
+        <hr style="margin: var(--s2) 0">
+        <a href="m4-2.html?for=con-lai" class="btn btn-block" disabled aria-disabled="true">Trả phần còn lại (sau khi giao)</a>
+        <a href="m6-1-3.html" class="btn btn-ghost btn-block">Báo vấn đề với đơn</a>
+      </aside>
     </div>
   </main>
 
-  <aside class="wf-note" data-ref="Đ6">
-    Cùng đường dẫn với M6.1.1 (/tai-khoan/don-hang/:orderId), trang tải đơn rồi chọn template theo loại đơn. Bốn tab: Tiến độ · Maket · Thanh toán · Hóa đơn. Nút 'Đặt lại' ẩn trong demo.
-  </aside>
-
+  <aside class="wf-note" data-ref="Đ6">Cùng đường dẫn với M6.1.1, chọn template theo loại đơn. Tab: Tiến độ · Maket · Thanh toán · Hóa đơn. Nút "Đặt lại" ẩn trong demo.</aside>
+  <aside class="wf-note" data-ref="F3">Đơn không làm riêng → bỏ tab Maket.</aside>
+  <script>
+    // Chuyển tab giả lập: mỗi .tab trỏ #id của một <section data-tab>
+    (function () {
+      var tabs = document.querySelectorAll('.tabs .tab');
+      function show(id) {
+        document.querySelectorAll('[data-tab]').forEach(function (s) { s.hidden = s.id !== id; });
+        tabs.forEach(function (t) { t.classList.toggle('active', t.getAttribute('href') === '#' + id); });
+      }
+      tabs.forEach(function (t) { t.addEventListener('click', function (e) { e.preventDefault(); show(t.getAttribute('href').slice(1)); }); });
+      show(location.hash ? location.hash.slice(1) : tabs[0].getAttribute('href').slice(1));
+    })();
+  </script>
   <script src="../assets/data.js"></script>
+  <script src="../assets/why-m.js"></script>
   <script src="../assets/wf.js"></script>
 </body>
 </html>

@@ -3,43 +3,37 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Moonkage – Tổng quan Quản trị (Q1.0)</title>
+  <title>Moonkage – Tổng quan (Q1.0)</title>
   <link rel="stylesheet" href="../assets/wf.css">
 </head>
 <body data-zone="Q" data-page="Q1.0">
   <main id="content">
-    <h1>Bảng điều khiển Quản trị Moonkage (Q1.0)</h1>
-    <p style="color: #444; margin-bottom: 24px;">Hàng chờ công việc vận hành, kiểm duyệt hồ sơ và giám sát dòng tiền sàn (FR-45–FR-51).</p>
-
-    <div class="t4-grid">
-      <div class="t4-card">
-        <h2>1. Hồ sơ người bán chờ duyệt</h2>
-        <div style="font-size: 24px; font-weight: 700; margin: 8px 0;">1 hồ sơ</div>
-        <a href="q2-0.html" class="btn btn-primary">Xử lý duyệt hồ sơ (Q2.0) ›</a>
+    <div class="page-head"><div><h1>Tổng quan</h1><p class="lead">Hàng chờ xử lý · 24/10/2026</p></div></div>
+    <section class="section" data-why="1">
+      <div class="grid-4">
+        <a class="stat" href="q2-0.html"><span class="lbl">Hồ sơ người bán chờ duyệt</span><span class="num">1</span><span class="go">Người bán</span></a>
+        <a class="stat" href="q4-1.html"><span class="lbl">Giải ngân cọc chờ duyệt</span><span class="num">1</span><span class="go">Duyệt giải ngân</span></a>
+        <a class="stat" href="q4-2.html"><span class="lbl">Đơn chờ chuyển tiền</span><span class="num">12</span><span class="go">Chuyển tiền</span></a>
+        <a class="stat" href="q5-0.html"><span class="lbl">Khiếu nại đang mở</span><span class="num">1</span><span class="go">Khiếu nại</span></a>
       </div>
-      <div class="t4-card">
-        <h2>2. Yêu cầu giải ngân cọc chờ duyệt</h2>
-        <div style="font-size: 24px; font-weight: 700; margin: 8px 0;">1 đợt</div>
-        <a href="q4-1.html" class="btn btn-primary">Duyệt giải ngân (Q4.1) ›</a>
-      </div>
-      <div class="t4-card">
-        <h2>3. Đơn đủ điều kiện chuyển tiền</h2>
-        <div style="font-size: 24px; font-weight: 700; margin: 8px 0;">12 đơn</div>
-        <a href="q4-2.html" class="btn btn-primary">Chuyển tiền người bán (Q4.2) ›</a>
-      </div>
-      <div class="t4-card">
-        <h2>4. Khiếu nại đang mở</h2>
-        <div style="font-size: 24px; font-weight: 700; margin: 8px 0; color: #000;">1 khiếu nại</div>
-        <a href="q5-0.html" class="btn btn-primary">Xử lý khiếu nại (Q5.0) ›</a>
-      </div>
-    </div>
+    </section>
+    <section class="section" data-why="2">
+      <div class="section-head"><h2>Cũ nhất trong hàng chờ</h2><p>Xử lý từ trên xuống</p></div>
+      <ul class="list">
+        <li><span class="badge badge-solid">Khiếu nại</span><div class="grow">KN-09 · đơn MK-8810 · người bán đã đề xuất</div><small class="muted">mở 4 ngày</small><a href="q5-1.html" class="btn btn-sm">Xử lý</a></li>
+        <li><span class="badge">Hồ sơ</span><div class="grow">Bánh Nghệ Nhân Hoa Mai · hộ kinh doanh</div><small class="muted">chờ 1 ngày</small><a href="q2-1.html" class="btn btn-sm">Xử lý</a></li>
+        <li><span class="badge">Giải ngân</span><div class="grow">MK-C071 · 3.000.000đ</div><small class="muted">chờ 6 giờ</small><a href="q4-1.html" class="btn btn-sm">Xử lý</a></li>
+      </ul>
+    </section>
+    <section class="section" data-why="3">
+      <div class="section-head"><h2>Đơn bị đánh dấu đối soát <span class="count">1</span></h2></div>
+      <div class="callout"><div class="grow">MK-8702 · tiền VNPay báo về khác số tiền đơn 25.000đ</div><a href="q4-3.html" class="btn btn-sm">Xem đối soát</a></div>
+    </section>
   </main>
 
-  <aside class="wf-note" data-ref="FR-45">
-    Tổng quan Quản trị (Q1.0). Số việc chờ của từng hàng + đơn bị đánh dấu đối soát (AC-51.4).
-  </aside>
-
+  <aside class="wf-note" data-ref="FR-45">Số việc chờ của từng hàng + đơn bị đánh dấu đối soát (AC-51.4). FR-47, FR-48, FR-49, FR-51.</aside>
   <script src="../assets/data.js"></script>
+  <script src="../assets/why-q.js"></script>
   <script src="../assets/wf.js"></script>
 </body>
 </html>

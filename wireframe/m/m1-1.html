@@ -7,62 +7,51 @@
   <link rel="stylesheet" href="../assets/wf.css">
 </head>
 <body data-zone="M" data-page="M1.1">
-  <!-- Trang nền mờ phía sau -->
-  <main id="content" style="opacity: 0.3; pointer-events: none;">
-    <h1>Trang chủ Moonkage</h1>
-    <p>Nội dung trang chủ phía sau hộp thoại chọn khu vực...</p>
-  </main>
+  <main id="content">
+    <!-- Trang chủ mờ phía sau: hộp thoại không rời người dùng khỏi chỗ đang đứng -->
+    <div class="backdrop-page" aria-hidden="true">
+      <div class="grid-2 mb-3"><div class="entry"><h2>Mua hàng có sẵn</h2></div><div class="entry"><h2>Đặt theo yêu cầu</h2></div></div>
+      <div class="grid-4"><div class="wf-img ratio-43"></div><div class="wf-img ratio-43"></div><div class="wf-img ratio-43"></div><div class="wf-img ratio-43"></div></div>
+    </div>
 
-  <!-- Lớp phủ Hộp thoại (Khuôn T6) -->
-  <div class="t6-overlay">
-    <div class="t6-dialog" role="dialog" aria-labelledby="dialog-title">
-      <h2 id="dialog-title">Chọn khu vực giao hàng</h2>
-      <p style="color: #555; margin-bottom: 14px; font-size: 13px;">
-        Hệ thống Moonkage lọc và hiển thị chính xác các dòng bánh có sẵn, giao ngay tới địa phương của bạn.
-      </p>
+    <div class="overlay">
+      <div class="dialog" role="dialog" aria-modal="true" aria-labelledby="dlg-title">
+        <h1 id="dlg-title" style="font-size: var(--fs-lg)">Chọn khu vực giao</h1>
+        <p class="muted">Chúng tôi chỉ hiện sản phẩm giao được tới nơi bạn chọn. Đổi lại lúc nào cũng được ở "Giao tới" trên thanh đầu trang.</p>
 
-      <!-- Trường hợp 1: Người mua đã đăng nhập (chọn từ địa chỉ đã lưu) -->
-      <div style="border: 1px solid #ccc; padding: 10px; margin-bottom: 12px; background: #fafafa;">
-        <strong style="font-size: 13px; display: block; margin-bottom: 6px;">Địa chỉ bạn đã lưu:</strong>
-        <div style="display: flex; flex-direction: column; gap: 6px;">
-          <label style="display: flex; align-items: flex-start; gap: 6px;">
-            <input type="radio" name="saved-addr" checked>
-            <span><strong>Số 18 Hoàng Diệu</strong>, Phường Điện Biên, Quận Ba Đình, Hà Nội (Mặc định)</span>
-          </label>
-          <label style="display: flex; align-items: flex-start; gap: 6px;">
-            <input type="radio" name="saved-addr">
-            <span><strong>124 Nguyễn Huệ</strong>, Phường Bến Nghé, Quận 1, TP. Hồ Chí Minh</span>
-          </label>
+        <!-- Người đã đăng nhập: chọn từ địa chỉ đã lưu -->
+        <fieldset data-show="buyer buyer-nfc seller-pending seller-open admin" data-why="1">
+          <legend>Địa chỉ đã lưu</legend>
+          <label class="choice"><input type="radio" name="addr" checked>
+            <span><strong>Nhà</strong> <span class="badge">Mặc định</span><br><small class="muted">18 Hoàng Diệu, Ba Đình, Hà Nội</small></span></label>
+          <label class="choice"><input type="radio" name="addr">
+            <span><strong>Văn phòng</strong><br><small class="muted">124 Nguyễn Huệ, Quận 1, TP. Hồ Chí Minh</small></span></label>
+        </fieldset>
+
+        <div class="field" data-why="2">
+          <label for="city">Tỉnh / thành phố</label>
+          <select id="city">
+            <option>Hà Nội</option>
+            <option>TP. Hồ Chí Minh</option>
+            <option>Đà Nẵng</option>
+            <option>Hải Phòng</option>
+            <option>Cần Thơ</option>
+          </select>
+          <span class="hint">Khách chỉ cần chọn tỉnh/thành; địa chỉ chi tiết nhập ở bước thanh toán.</span>
+        </div>
+
+        <div class="dialog-actions" data-why="3">
+          <a href="m1-0.html" class="btn btn-ghost">Để sau</a>
+          <a href="m2-0.html" class="btn btn-primary">Xem hàng giao tới đây</a>
         </div>
       </div>
-
-      <!-- Trường hợp 2: Khách vãng lai chọn Tỉnh / Thành -->
-      <div class="form-group">
-        <label for="city-select">Hoặc chọn Tỉnh / Thành phố khác:</label>
-        <select id="city-select">
-          <option value="HN" selected>Hà Nội (Có hàng giao ngay 24h)</option>
-          <option value="HCM">TP. Hồ Chí Minh (Có hàng giao ngay 24h)</option>
-          <option value="DN">Đà Nẵng (Giao liên tỉnh)</option>
-          <option value="HP">Hải Phòng</option>
-          <option value="CT">Cần Thơ</option>
-        </select>
-      </div>
-
-      <!-- 2 nút hành động của khuôn T6 -->
-      <div class="t6-actions">
-        <a href="m1-0.html" class="btn">Đóng / Bỏ qua</a>
-        <a href="m2-0.html" class="btn btn-primary" id="btn-confirm-area">
-          Xác nhận khu vực & Xem bánh ›
-        </a>
-      </div>
     </div>
-  </div>
+  </main>
 
-  <aside class="wf-note" data-ref="AC-05.3">
-    Mở trước khi hiện sản phẩm nếu khách chưa có khu vực. Người đã đăng nhập chọn từ danh sách địa chỉ đã lưu; khách chọn Tỉnh/Thành phố (FR-03, FR-05).
-  </aside>
+  <aside class="wf-note" data-ref="AC-05.3">Mở trước khi hiện sản phẩm nếu chưa có khu vực. Người đã đăng nhập chọn từ địa chỉ đã lưu; khách chọn tỉnh/thành (FR-03, FR-05).</aside>
 
   <script src="../assets/data.js"></script>
+  <script src="../assets/why-m.js"></script>
   <script src="../assets/wf.js"></script>
 </body>
 </html>

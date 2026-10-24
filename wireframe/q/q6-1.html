@@ -8,39 +8,25 @@
 </head>
 <body data-zone="Q" data-page="Q6.1">
   <main id="content">
-    <h1>Cấu hình phí giao hàng liên tỉnh (Q6.1)</h1>
-    <p style="color: #444; margin-bottom: 20px;">Bắt buộc phải cấu hình đủ 63 tỉnh/thành; hệ thống sẽ chặn lưu nếu thiếu tỉnh (AC-52.3).</p>
-    <form class="t3-form" action="q6-0.html" method="GET">
-      <fieldset>
-        <legend>Biểu phí theo vùng miền</legend>
-        <div class="form-group">
-          <label for="fee-north">Tuyến liên tỉnh Miền Bắc (VNĐ) *</label>
-          <input type="number" id="fee-north" value="35000" step="5000" required>
-        </div>
-        <div class="form-group">
-          <label for="fee-central">Tuyến Miền Trung (VNĐ) *</label>
-          <input type="number" id="fee-central" value="45000" step="5000" required>
-        </div>
-        <div class="form-group">
-          <label for="fee-south">Tuyến Miền Nam (VNĐ) *</label>
-          <input type="number" id="fee-south" value="50000" step="5000" required>
-        </div>
-        <div class="form-group">
-          <label><input type="checkbox" checked disabled> Đã kiểm tra đủ 63/63 tỉnh thành (AC-52.3)</label>
-        </div>
-      </fieldset>
-      <div style="display: flex; gap: 10px; margin-top: 10px;">
-        <button type="submit" class="btn btn-primary" style="padding: 10px 20px;">Lưu cấu hình cước (Q6.0) ›</button>
-        <a href="q6-0.html" class="btn">Hủy</a>
-      </div>
+    <div class="page-head"><div><h1>Phí giao liên tỉnh</h1></div></div>
+    <form class="form" action="q6-0.html" method="get" style="max-width:760px">
+      <div class="callout" data-why="1"><span class="grow"><strong>Còn thiếu 1 tỉnh:</strong> Cà Mau. Chưa lưu được (AC-52.3).</span><a href="#ca-mau" class="btn btn-sm">Tới ô trống</a></div>
+      <div class="toolbar" data-why="2"><div class="search"><input type="search" class="wf-search-input" aria-label="Lọc tỉnh" placeholder="Lọc tỉnh…"><button type="button" class="wf-search-btn">Lọc</button></div><button type="button" class="btn btn-sm">Áp một mức cho các tỉnh đã chọn</button></div>
+      <div class="table-wrap" data-why="3"><table>
+        <thead><tr><th><input type="checkbox" aria-label="Chọn tất cả"></th><th>Tỉnh / thành</th><th>Phí giao</th></tr></thead>
+        <tbody>
+          <tr><td><input type="checkbox" aria-label="Chọn"></td><td>An Giang</td><td><input type="text" value="45.000đ" aria-label="Phí An Giang" style="max-width:160px"></td></tr>
+          <tr><td><input type="checkbox" aria-label="Chọn"></td><td>Bà Rịa – Vũng Tàu</td><td><input type="text" value="45.000đ" aria-label="Phí" style="max-width:160px"></td></tr>
+          <tr id="ca-mau" class="is-error"><td><input type="checkbox" aria-label="Chọn"></td><td><strong>Cà Mau</strong></td><td><input type="text" aria-label="Phí Cà Mau" style="max-width:160px"><div class="field-error">Chưa nhập</div></td></tr>
+          <tr><td colspan="3" class="faint">… 60 tỉnh khác</td></tr>
+        </tbody></table></div>
+      <div class="form-actions"><a href="q6-0.html" class="btn btn-ghost">Hủy</a><button type="submit" class="btn btn-primary btn-lg" disabled>Lưu (còn thiếu 1 tỉnh)</button></div>
     </form>
   </main>
 
-  <aside class="wf-note" data-ref="AC-52.3">
-    Phí giao liên tỉnh (Q6.1). Không cho lưu khi thiếu tỉnh theo quy định bắt buộc AC-52.3 (FR-52).
-  </aside>
-
+  <aside class="wf-note" data-ref="AC-52.3">Không cho lưu khi thiếu tỉnh. FR-52.</aside>
   <script src="../assets/data.js"></script>
+  <script src="../assets/why-q.js"></script>
   <script src="../assets/wf.js"></script>
 </body>
 </html>

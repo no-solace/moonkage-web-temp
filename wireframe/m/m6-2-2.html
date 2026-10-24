@@ -8,79 +8,46 @@
 </head>
 <body data-zone="M" data-page="M6.2.2">
   <main id="content">
-    <h1>Chấp nhận báo giá & Đặt cọc 50%</h1>
-
-    <!-- Thanh bước (Khuôn T5) -->
-    <div class="t5-steps">
-      <div class="t5-step-item">1. So sánh báo giá</div>
-      <div class="t5-step-item active">2. Xác nhận điều khoản & Cọc</div>
-      <div class="t5-step-item">3. Cổng VNPay</div>
-      <div class="t5-step-item">4. Khởi tạo đơn đặt hàng</div>
-    </div>
-
-    <div class="t5-layout">
-      <!-- Cột trái: Điều khoản cam kết và thông tin xuất hóa đơn cọc -->
-      <div>
-        <div style="border: 1px solid #000; padding: 16px; background: #fafafa; margin-bottom: 20px;">
-          <h2>Hợp đồng nguyên tắc sản xuất bánh trung thu theo yêu cầu</h2>
-          <div style="font-size: 13px; line-height: 1.6; margin-top: 8px;">
-            <div>• <strong>Bên A (Khách hàng):</strong> Công ty TNHH Giải Pháp Công Nghệ Mặt Trời</div>
-            <div>• <strong>Bên B (Đơn vị cung cấp):</strong> Xưởng Bánh Nghệ Nhân Hà Nội</div>
-            <div>• <strong>Quy cách:</strong> 150 hộp quà gỗ nắp trượt khắc laser logo doanh nghiệp</div>
-            <div>• <strong>Hạn chót giao bánh:</strong> 08/09/2026 (trước Tết Trung thu 7 ngày)</div>
-            <div>• <strong>Chính sách giữ tiền:</strong> Moonkage bảo đảm tạm giữ tiền cọc đến khi bên A duyệt maket thực tế và bên B tiến hành nướng bánh đúng cam kết.</div>
-          </div>
-        </div>
-
-        <form class="t3-form" action="m4-2.html" method="GET">
-          <fieldset>
-            <legend>Xác nhận thanh toán tiền cọc</legend>
-            <div class="form-group">
-              <label><input type="checkbox" checked required> Tôi đã kiểm tra bản vẽ maket mẫu và đồng ý với điều khoản hợp đồng của xưởng.</label>
-            </div>
-            <div class="form-group">
-              <label><input type="checkbox" checked required> Xuất hóa đơn GTGT tiền đặt cọc (51.000.000đ) gửi về email công ty.</label>
-            </div>
-          </fieldset>
-
-          <div style="margin-top: 16px; display: flex; gap: 10px;">
-            <button type="submit" class="btn btn-primary" style="padding: 12px 24px; font-size: 15px;">
-              Tiến hành thanh toán tiền cọc qua Cổng VNPay (M4.2) ›
-            </button>
-            <a href="m6-2-1.html" class="btn" style="padding: 12px 16px;">‹ Xem lại báo giá khác</a>
-          </div>
-        </form>
+    <h1 class="mb-2">Chấp nhận báo giá và đặt cọc</h1>
+    <ol class="steps" data-why="1">
+      <li class="done"><span class="lbl">So sánh báo giá</span></li>
+      <li class="active"><span class="lbl">Xác nhận và đặt cọc</span></li>
+      <li><span class="lbl">Thanh toán VNPay</span></li>
+      <li><span class="lbl">Đơn được tạo</span></li>
+    </ol>
+    <div class="split">
+      <div class="stack-lg">
+        <section class="card" data-why="2">
+          <div class="card-head"><h2 style="font-size:var(--fs-md)">Báo giá của Xưởng Bánh Nghệ Nhân</h2><a href="m6-2-1.html" class="sm">Đổi báo giá</a></div>
+          <dl class="kv">
+            <dt>Số hộp</dt><dd>150 hộp gỗ × 4 bánh</dd>
+            <dt>Làm riêng</dt><dd>Khắc laser logo lên nắp</dd>
+            <dt>Giao trước</dt><dd>10/11/2026 · Cầu Giấy, Hà Nội</dd>
+            <dt>Maket</dt><dd>Đơn vị gửi trong 24 giờ sau khi nhận cọc</dd>
+          </dl>
+        </section>
+        <fieldset data-why="3">
+          <legend>Xác nhận</legend>
+          <label class="check"><input type="checkbox"> Tôi đồng ý với báo giá và cách giữ tiền: Moonkage giữ tiền cọc, chỉ giải ngân cho đơn vị theo tiến độ.</label>
+          <label class="check"><input type="checkbox" checked> Xuất hóa đơn công ty (dùng thông tin đã lưu: Công ty TNHH Mặt Trời)</label>
+        </fieldset>
+        <a href="m6-2-1.html" class="sm">‹ Quay lại so sánh</a>
       </div>
-
-      <!-- Cột phải: Bảng chi tiết tiền cọc -->
-      <div>
-        <div class="t5-summary-box">
-          <h2>Chi tiết thanh toán</h2>
-          <div style="display: flex; justify-content: space-between; border-bottom: 1px solid #eee; padding: 6px 0;">
-            <span>Tổng giá trị đơn hàng (150 hộp):</span>
-            <strong>102.000.000đ</strong>
-          </div>
-          <div style="display: flex; justify-content: space-between; border-bottom: 1px solid #eee; padding: 6px 0;">
-            <span>Tỷ lệ đặt cọc quy định:</span>
-            <strong>50%</strong>
-          </div>
-          <div style="display: flex; justify-content: space-between; padding: 10px 0; font-size: 16px; border-top: 2px solid #000;">
-            <strong>Số tiền cọc cần trả ngay:</strong>
-            <strong style="font-size: 18px;">51.000.000đ</strong>
-          </div>
-          <div style="font-size: 12px; color: #666; margin-top: 4px;">
-            Phần còn lại (51.000.000đ) sẽ được thanh toán sau khi xưởng hoàn tất sản xuất và giao bánh thành công.
-          </div>
+      <aside class="sticky" data-why="4">
+        <div class="summary">
+          <h2 style="font-size:var(--fs-md)">Thanh toán</h2>
+          <div class="line"><span>Giá trị đơn</span><span>18.000.000đ</span></div>
+          <div class="total"><span>Đặt cọc bây giờ (50%)</span><span class="price">9.000.000đ</span></div>
+          <div class="line sm"><span>Trả sau khi giao</span><span>9.000.000đ</span></div>
+          <a href="m4-2.html?for=coc" class="btn btn-primary btn-block btn-lg mt-1">Đặt cọc qua VNPay</a>
         </div>
-      </div>
+      </aside>
     </div>
   </main>
 
-  <aside class="wf-note" data-ref="FR-19">
-    Chấp nhận báo giá và đặt cọc 50% (FR-19, FR-24). Bấm tiếp tục chuyển sang Cổng VNPay M4.2 để nộp cọc. Khi thanh toán cọc thành công, hệ thống tự động tạo đơn đặt hàng M6.1.2.
-  </aside>
-
+  <aside class="wf-note" data-ref="FR-19">Chấp nhận báo giá → cọc qua VNPay (M4.2) → tạo đơn đặt hàng (M6.1.2). FR-24 hóa đơn.</aside>
   <script src="../assets/data.js"></script>
+  <script src="../assets/why-m.js"></script>
   <script src="../assets/wf.js"></script>
 </body>
 </html>

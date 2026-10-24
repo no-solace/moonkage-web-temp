@@ -8,121 +8,79 @@
 </head>
 <body data-zone="M" data-page="M4.0">
   <main id="content">
-    <h1>Giỏ hàng</h1>
+    <h1 class="mb-2">Giỏ hàng</h1>
+    <ol class="steps" data-why="1">
+      <li class="active"><span class="lbl">Giỏ hàng</span></li>
+      <li><span class="lbl">Giao hàng và hóa đơn</span></li>
+      <li><span class="lbl">Thanh toán VNPay</span></li>
+      <li><span class="lbl">Kết quả</span></li>
+    </ol>
 
-    <!-- Thanh bước (Khuôn T5) -->
-    <div class="t5-steps">
-      <div class="t5-step-item active">1. Giỏ hàng</div>
-      <div class="t5-step-item">2. Địa chỉ & Hóa đơn</div>
-      <div class="t5-step-item">3. Cổng VNPay</div>
-      <div class="t5-step-item">4. Kết quả đơn hàng</div>
-    </div>
+    <div class="split">
+      <div class="stack">
+        <!-- Nhóm theo Shop -->
+        <section class="card" data-why="2">
+          <div class="card-head">
+            <h2 style="font-size: var(--fs-md)">Xưởng Bánh Nghệ Nhân</h2>
+            <small class="muted">Phí giao: 25.000đ</small>
+          </div>
+          <div class="row row-top" data-why="3">
+            <div class="wf-img ratio-1" style="width:72px;min-height:0"></div>
+            <div class="grow">
+              <strong>Hộp Hoàng Kim 4 bánh</strong>
+              <div class="sm muted">680.000đ / hộp · còn 42 hộp</div>
+            </div>
+            <label class="sr-only" for="q1">Số lượng</label>
+            <input id="q1" type="number" value="1" style="width:72px">
+            <span class="price" style="width:96px;text-align:right">680.000đ</span>
+            <button type="button" class="btn btn-ghost btn-sm">Xóa</button>
+          </div>
+          <!-- Vượt tồn kho / ngưỡng (AC-08.2) -->
+          <div class="callout callout-soft mt-2 sm" data-why="4">
+            <div class="grow">Cần nhiều hơn 42 hộp? Shop này nhận đặt theo yêu cầu.</div>
+            <a href="m3-4.html" class="btn btn-sm" data-needs-nfc="true">Gửi yêu cầu cho Shop này</a>
+          </div>
+        </section>
 
-    <div class="t5-layout">
-      <!-- Cột trái: Danh sách sản phẩm tách theo Shop -->
-      <div>
-        <!-- Shop 1 -->
-        <div style="border: 1px solid #ccc; padding: 14px; margin-bottom: 16px;">
-          <div style="font-weight: 700; border-bottom: 1px solid #eee; padding-bottom: 6px; margin-bottom: 8px;">
-            Shop: Xưởng Bánh Nghệ Nhân Hà Nội
+        <section class="card">
+          <div class="card-head">
+            <h2 style="font-size: var(--fs-md)">Bánh Cổ Truyền Trăng Vàng</h2>
+            <small class="muted">Phí giao: 20.000đ</small>
           </div>
-          <table>
-            <thead>
-              <tr>
-                <th>Sản phẩm</th>
-                <th style="width: 100px;">Đơn giá</th>
-                <th style="width: 80px;">Số lượng</th>
-                <th style="width: 110px;">Thành tiền</th>
-                <th style="width: 50px;">Xóa</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>
-                  <strong>Hộp Hoàng Kim Thượng Hạng</strong><br>
-                  <small style="color: #666;">Hộp 4 bánh cao cấp (200g/bánh)</small>
-                </td>
-                <td>680.000đ</td>
-                <td><input type="number" value="1" min="1" max="15" style="width: 50px;"></td>
-                <td><strong>680.000đ</strong></td>
-                <td><button type="button" class="btn">[Xóa]</button></td>
-              </tr>
-            </tbody>
-          </table>
-          <div style="text-align: right; font-size: 12px; color: #555;">
-            Phí giao hàng dự kiến Shop này: <strong>25.000đ</strong>
+          <div class="row row-top">
+            <div class="wf-img ratio-1" style="width:72px;min-height:0"></div>
+            <div class="grow">
+              <strong>Hộp Trăng Rằm 4 bánh</strong>
+              <div class="sm muted">420.000đ / hộp</div>
+            </div>
+            <label class="sr-only" for="q2">Số lượng</label>
+            <input id="q2" type="number" value="1" style="width:72px">
+            <span class="price" style="width:96px;text-align:right">420.000đ</span>
+            <button type="button" class="btn btn-ghost btn-sm">Xóa</button>
           </div>
-        </div>
+        </section>
 
-        <!-- Shop 2 -->
-        <div style="border: 1px solid #ccc; padding: 14px; margin-bottom: 16px;">
-          <div style="font-weight: 700; border-bottom: 1px solid #eee; padding-bottom: 6px; margin-bottom: 8px;">
-            Shop: Cơ Sở Bánh Cổ Truyền Trăng Vàng
-          </div>
-          <table>
-            <thead>
-              <tr>
-                <th>Sản phẩm</th>
-                <th style="width: 100px;">Đơn giá</th>
-                <th style="width: 80px;">Số lượng</th>
-                <th style="width: 110px;">Thành tiền</th>
-                <th style="width: 50px;">Xóa</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>
-                  <strong>Hộp Trăng Rằm Đoàn Viên</strong><br>
-                  <small style="color: #666;">Hộp 4 bánh truyền thống</small>
-                </td>
-                <td>420.000đ</td>
-                <td><input type="number" value="1" min="1" max="20" style="width: 50px;"></td>
-                <td><strong>420.000đ</strong></td>
-                <td><button type="button" class="btn">[Xóa]</button></td>
-              </tr>
-            </tbody>
-          </table>
-          <div style="text-align: right; font-size: 12px; color: #555;">
-            Phí giao hàng dự kiến Shop này: <strong>20.000đ</strong>
-          </div>
-        </div>
-
-        <!-- Cảnh báo vượt ngưỡng -->
-        <div class="wf-note" data-ref="AC-08.2" style="background:#fff; border:1px solid #000; border-left:4px solid #000;">
-          <strong>Cảnh báo vượt tồn kho hoặc số lượng sỉ:</strong> Nếu bạn cần đặt số lượng nhiều hơn giới hạn tồn kho của Shop, vui lòng sử dụng <a href="m3-4.html">Gửi yêu cầu riêng cho đơn vị này (M3.4)</a> để nhận giá ưu đãi và cam kết giao đúng hẹn.
-        </div>
+        <a href="m2-0.html" class="sm">‹ Tiếp tục mua</a>
       </div>
 
-      <!-- Cột phải: Tóm tắt tiền -->
-      <div>
-        <div class="t5-summary-box">
-          <h2>Tóm tắt đơn hàng</h2>
-          <div style="display: flex; justify-content: space-between; border-bottom: 1px solid #eee; padding: 6px 0;">
-            <span>Tiền hàng (2 món):</span>
-            <strong>1.100.000đ</strong>
-          </div>
-          <div style="display: flex; justify-content: space-between; border-bottom: 1px solid #eee; padding: 6px 0;">
-            <span>Tổng phí giao hàng (2 Shop):</span>
-            <strong>45.000đ</strong>
-          </div>
-          <div style="display: flex; justify-content: space-between; padding: 10px 0; font-size: 16px;">
-            <strong>Tổng cộng:</strong>
-            <strong style="font-size: 18px;">1.145.000đ</strong>
-          </div>
-          <a href="m4-1.html" class="btn btn-primary" data-needs-login="true" style="text-align: center; padding: 10px;">
-            Tiến hành đặt hàng (M4.1) ›
-          </a>
-          <a href="m2-0.html" class="btn" style="text-align: center; margin-top: 4px;">‹ Tiếp tục chọn bánh</a>
+      <aside class="sticky" data-why="5">
+        <div class="summary">
+          <h2 style="font-size: var(--fs-md)">Tóm tắt</h2>
+          <div class="line"><span>Tiền hàng (2 món)</span><span>1.100.000đ</span></div>
+          <div class="line"><span>Phí giao (2 Shop)</span><span>45.000đ</span></div>
+          <div class="total"><span>Tổng cộng</span><span class="price">1.145.000đ</span></div>
+          <small class="muted">Thanh toán một lần, tạo 2 đơn – mỗi Shop một đơn.</small>
+          <a href="m4-1.html" class="btn btn-primary btn-block btn-lg mt-1">Tiếp tục</a>
         </div>
-      </div>
+      </aside>
     </div>
   </main>
 
-  <aside class="wf-note" data-ref="AC-02.3">
-    Không có giỏ hàng cho khách: nếu vai là Khách, khi bấm 'Tiến hành đặt hàng' sẽ chuyển sang cổng đăng nhập M5.1, sau khi đăng nhập xong tự động quay về đây. Giỏ tách theo Shop, phí giao tính riêng từng Shop (Đ4).
-  </aside>
+  <aside class="wf-note" data-ref="AC-02.3">Không có giỏ của khách: khách bấm "Thêm vào giỏ" → đăng nhập → tự thêm và quay về. Giỏ thuộc tài khoản, BR-22 kiểm ngay lúc thêm (Đ4).</aside>
+  <aside class="wf-note" data-ref="AC-08.2">Vượt tồn kho hoặc ngưỡng → lối "Gửi yêu cầu cho Shop này" (M3.4, nối F3).</aside>
 
   <script src="../assets/data.js"></script>
+  <script src="../assets/why-m.js"></script>
   <script src="../assets/wf.js"></script>
 </body>
 </html>

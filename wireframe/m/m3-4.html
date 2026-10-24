@@ -3,95 +3,66 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Moonkage – Gửi yêu cầu cho Xưởng Bánh Nghệ Nhân Hà Nội (M3.4)</title>
+  <title>Moonkage – Gửi yêu cầu cho đơn vị (M3.4)</title>
   <link rel="stylesheet" href="../assets/wf.css">
 </head>
 <body data-zone="M" data-page="M3.4">
   <main id="content">
-    <h1>Gửi yêu cầu cho Xưởng Bánh Nghệ Nhân Hà Nội</h1>
-    <p style="color: #444; margin-bottom: 20px;">
-      Gửi yêu cầu đặt làm bánh riêng hoặc đặt mua số lượng lớn trực tiếp tới xưởng. Xưởng sẽ phản hồi báo giá chi tiết và mẫu maket trong vòng 24 giờ.
-    </p>
-
-    <form class="t3-form" action="m6-2.html" method="GET">
-      <fieldset>
-        <legend>1. Quy cách sản phẩm mong muốn</legend>
-
-        <div class="form-group">
-          <label for="u-target">Đơn vị nhận yêu cầu:</label>
-          <input type="text" id="u-target" value="Xưởng Bánh Nghệ Nhân Hà Nội" readonly style="background:#eee;">
-        </div>
-
-        <div class="form-group">
-          <label for="u-box">Quy cách đóng hộp *</label>
-          <select id="u-box" required>
-            <option>Hộp 4 bánh cao cấp nắp trượt gỗ</option>
-            <option>Hộp 6 bánh sơn mài nghệ thuật</option>
-            <option>Hộp 2 bánh truyền thống tri ân</option>
-          </select>
-        </div>
-
-        <div class="form-group">
-          <label for="u-qty">Số lượng hộp dự kiến *</label>
-          <input type="number" id="u-qty" value="120" min="10" required>
-          <small style="color: #666;">Số lượng càng lớn sẽ có chiết khấu theo bậc giá của xưởng.</small>
-        </div>
-
-        <div class="form-group">
-          <label>Nhân bánh mong muốn:</label>
-          <div>
-            <label><input type="checkbox" checked> Thập cẩm jambon bát bửu</label> &nbsp;
-            <label><input type="checkbox" checked> Hạt sen trứng muối</label> &nbsp;
-            <label><input type="checkbox"> Trà xanh matcha</label>
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label for="u-logo">Yêu cầu in ấn & Logo riêng</label>
-          <input type="text" id="u-logo" value="Khắc laser logo công ty lên nắp hộp gỗ và thiệp chúc mừng riêng">
-        </div>
-
-        <div class="form-group">
-          <label>Tệp mẫu logo hoặc bản vẽ maket (nếu có):</label>
-          <div class="wf-img" style="height: 70px;">
-            <span>[Chọn tệp logo vector hoặc ảnh mẫu thiết kế]</span>
-          </div>
-        </div>
-      </fieldset>
-
-      <fieldset>
-        <legend>2. Hạn nhận hàng & Địa điểm giao</legend>
-
-        <div class="form-group">
-          <label for="u-deadline">Hạn chót cần nhận hàng *</label>
-          <input type="text" id="u-deadline" value="08/09/2026" placeholder="DD/MM/YYYY" required>
-        </div>
-
-        <div class="form-group">
-          <label for="u-addr">Địa chỉ nhận hàng dự kiến *</label>
-          <input type="text" id="u-addr" value="Tòa nhà Landmark, Quận Cầu Giấy, Hà Nội" required>
-        </div>
-
-        <div class="form-group">
-          <label for="u-notes">Ghi chú thêm:</label>
-          <textarea id="u-notes" rows="3" placeholder="Yêu cầu về xuất hóa đơn GTGT, quy cách đóng gói và giao hàng..."></textarea>
-        </div>
-      </fieldset>
-
-      <div style="display: flex; gap: 10px; margin-top: 10px;">
-        <button type="submit" class="btn btn-primary" data-needs-login="true" data-needs-nfc="true">
-          Gửi yêu cầu cho đơn vị này ›
-        </button>
-        <a href="m3-3.html" class="btn">Hủy & Quay lại</a>
+    <div class="page-head">
+      <div>
+        <h1>Gửi yêu cầu cho Xưởng Bánh Nghệ Nhân</h1>
+        <p class="lead">Đơn vị sẽ trả báo giá trong Yêu cầu và báo giá của bạn.</p>
       </div>
-    </form>
+    </div>
+
+    <div class="split">
+      <form class="form" action="m6-2.html" method="get">
+        <fieldset data-why="1">
+          <legend>1. Bánh và hộp</legend>
+          <div class="field-row">
+            <div class="field"><label for="qty" class="req">Số hộp</label><input id="qty" type="number" value="120"><span class="hint">Đơn vị này nhận từ 20 hộp</span></div>
+            <div class="field"><label for="box" class="req">Kiểu hộp</label><select id="box"><option>Hộp gỗ 4 bánh</option><option>Hộp giấy 6 bánh</option><option>Hộp 2 bánh</option></select></div>
+          </div>
+          <div class="field">
+            <span class="strong">Nhân bánh</span>
+            <div class="chips"><label class="chip"><input type="checkbox" checked> Thập cẩm</label><label class="chip"><input type="checkbox" checked> Hạt sen</label><label class="chip"><input type="checkbox"> Trà xanh</label></div>
+          </div>
+        </fieldset>
+        <fieldset>
+          <legend>2. Làm riêng</legend>
+          <div class="field"><label for="logo">Mô tả phần làm riêng</label><input id="logo" type="text" value="Khắc laser logo công ty lên nắp hộp gỗ"></div>
+          <div class="field"><label>Tệp logo hoặc mẫu (không bắt buộc)</label><div class="upload"><span class="wf-icon">TỆP</span><span>Kéo tệp vào đây hoặc <a href="#">chọn tệp</a></span></div></div>
+        </fieldset>
+        <fieldset>
+          <legend>3. Giao hàng</legend>
+          <div class="field-row">
+            <div class="field"><label for="date" class="req">Cần nhận trước ngày</label><input id="date" type="text" value="15/11/2026"></div>
+            <div class="field"><label for="addr" class="req">Địa chỉ nhận</label><select id="addr"><option>Văn phòng – Cầu Giấy, Hà Nội</option><option>Nhà – Ba Đình, Hà Nội</option></select></div>
+          </div>
+          <div class="field"><label for="note">Ghi chú</label><textarea id="note" placeholder="Ví dụ: cần xuất hóa đơn công ty"></textarea></div>
+        </fieldset>
+        <div class="form-actions">
+          <a href="m3-3.html" class="btn btn-ghost">Hủy</a>
+          <button type="submit" class="btn btn-primary btn-lg" data-needs-login="true" data-needs-nfc="true">Gửi yêu cầu cho Nghệ Nhân</button>
+        </div>
+      </form>
+
+      <aside class="stack sticky" data-why="2">
+        <div class="card card-strong stack-sm">
+          <span class="eyebrow">Người nhận</span>
+          <div class="row"><span class="avatar">NN</span><div><strong>Xưởng Bánh Nghệ Nhân</strong><br><small class="muted">Ba Đình, Hà Nội</small></div></div>
+          <dl class="kv sm"><dt>Tối thiểu</dt><dd>20 hộp</dd><dt>Maket</dt><dd>24 giờ</dd><dt>Giao</dt><dd>Toàn quốc</dd></dl>
+          <a href="m3-3.html#custom" class="sm">Xem trang đơn vị</a>
+        </div>
+        <div class="card card-fill sm" data-why="3">Muốn so sánh nhiều nơi? <a href="m3-1.html">Tạo yêu cầu báo giá</a> thay vào đó.</div>
+      </aside>
+    </div>
   </main>
 
-  <aside class="wf-note" data-ref="FR-15">
-    Chính là yêu cầu trực tiếp. Lối vào từ M2.1, M3.3 và giỏ hàng vượt ngưỡng (AC-08.2). Nhãn chốt: 'Gửi yêu cầu cho [tên đơn vị]'. Yêu cầu xác minh danh tính NFC (BR-23). Chủ xưởng không thấy lối vào tự gửi cho mình (BR-22).
-  </aside>
+  <aside class="wf-note" data-ref="FR-15">Yêu cầu trực tiếp. Lối vào từ M2.1, M3.3 và giỏ hàng vượt ngưỡng (AC-08.2). Cần xác minh danh tính. Chủ của người bán không thấy lối vào (BR-22).</aside>
 
   <script src="../assets/data.js"></script>
+  <script src="../assets/why-m.js"></script>
   <script src="../assets/wf.js"></script>
 </body>
 </html>

@@ -8,68 +8,53 @@
 </head>
 <body data-zone="B" data-page="B2.1">
   <main id="content">
-    <div class="t2-header">
-      <div>
-        <h1>Chi tiết đơn hàng #MK-ORD-9921 (B2.1)</h1>
-        <small style="color: #666;">Khách hàng: Anh Minh · Ngày đặt: 23/10/2026</small>
-      </div>
-      <div>
-        <span class="t2-status">Trạng thái: Chờ xác nhận & Giao</span>
-      </div>
+    <div class="page-head" data-why="1">
+      <div><span class="eyebrow">Đơn Shop</span>
+        <h1>Đơn MK-8810 <span class="badge badge-dash" style="vertical-align:middle">Đã giao</span> <span class="badge badge-solid" style="vertical-align:middle">Đang khiếu nại</span></h1>
+        <p class="lead">Chị Lan · Quận 1, TP. Hồ Chí Minh · đặt 18/10/2026</p></div>
     </div>
-
-    <div class="t2-summary">
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px;">
-        <div>
-          <small style="color: #666;">Sản phẩm đặt:</small><br>
-          <strong>Hộp Hoàng Kim Thượng Hạng (x1)</strong>
-        </div>
-        <div>
-          <small style="color: #666;">Địa chỉ nhận bánh:</small><br>
-          <strong>Số 18 Hoàng Diệu, Ba Đình, Hà Nội</strong>
-        </div>
-        <div>
-          <small style="color: #666;">Tiền hàng tạm giữ:</small><br>
-          <strong>680.000đ</strong> (+25.000đ ship)
-        </div>
-        <div>
-          <small style="color: #666;">Hóa đơn VAT:</small><br>
-          <strong>Khách có yêu cầu xuất HĐĐT</strong>
-        </div>
+    <div class="split">
+      <div class="stack-lg">
+        <section class="card card-strong stack-sm" data-why="2">
+          <div class="row-between"><h2 style="font-size:var(--fs-md)">Khiếu nại của người mua</h2><span class="badge badge-solid">Còn 1 ngày để phản hồi</span></div>
+          <div class="grid-2">
+            <div class="stack-sm sm"><strong>Hộp hoặc bánh bị hỏng khi nhận</strong><span class="muted">"Nắp hộp rách, 1 bánh dập góc."</span><div class="wf-img ratio-43" style="max-width:200px"><span>Ảnh người mua</span></div></div>
+            <form class="stack-sm">
+              <label class="strong" for="prop">Đề xuất của bạn</label>
+              <select id="prop"><option>Hoàn một phần</option><option>Hoàn toàn bộ</option><option>Không hoàn, kèm lý do</option></select>
+              <label for="amt" class="sm">Số tiền đề xuất hoàn</label><input id="amt" type="text" value="210.000đ">
+              <textarea aria-label="Giải thích">Đồng ý 1 bánh bị dập do vận chuyển.</textarea>
+              <button type="button" class="btn btn-primary">Gửi đề xuất cho Moonkage</button>
+              <small class="hint">Quản trị ra quyết định cuối cùng. Tiền đơn đang được giữ.</small>
+            </form>
+          </div>
+        </section>
+        <section data-why="3">
+          <h2 class="mb-1">Món trong đơn</h2>
+          <ul class="list">
+            <li><div class="grow"><strong>Hộp Trăng Rằm 4 bánh</strong> × 2</div><span class="price">840.000đ</span></li>
+            <li><span class="grow muted">Phí giao liên tỉnh</span><span>35.000đ</span></li>
+          </ul>
+        </section>
+        <section data-why="4"><h2 class="mb-1">Lịch sử</h2>
+          <ol class="timeline">
+            <li><strong>Người mua báo vấn đề</strong><span class="when">20/10/2026</span></li>
+            <li class="done"><strong>Đã giao</strong><span class="when">19/10/2026 · VNPOST-77120</span></li>
+            <li class="done"><strong>Bạn xác nhận đơn</strong><span class="when">18/10/2026</span></li>
+          </ol></section>
       </div>
-    </div>
-
-    <div class="t2-layout">
-      <div>
-        <h2>Quy trình xử lý đơn hàng</h2>
-        <div style="border: 1px solid #ccc; padding: 14px; background: #fafafa; margin: 12px 0;">
-          <p>[✓] <strong>Bước 1:</strong> Thanh toán VNPay đã tạm giữ qua sàn.</p>
-          <p>[▶] <strong>Bước 2:</strong> Xưởng đóng gói niêm phong và bàn giao cho bưu tá.</p>
-          <p>[ ] <strong>Bước 3:</strong> Cập nhật mã vận đơn giao hàng.</p>
-        </div>
-
-        <div style="border: 1px solid #000; padding: 14px; margin-top: 16px;">
-          <h3>Khối Khiếu nại (Phản hồi đề xuất giải quyết):</h3>
-          <p style="font-size: 13px; color: #555; margin: 6px 0;">Đơn này hiện chưa có khiếu nại mở.</p>
-        </div>
-      </div>
-
-      <div>
-        <div class="t2-actions">
-          <h2>Hành động người bán</h2>
-          <button class="btn btn-primary" style="text-align: center;">[Xác nhận đơn & Đã giao bưu tá]</button>
-          <button class="btn" style="text-align: center;">[Gắn tệp Hóa đơn VAT (PDF)]</button>
-          <a href="b2-0.html" class="btn" style="text-align: center;">‹ Về danh sách đơn</a>
-        </div>
-      </div>
+      <aside class="actions-box sticky" data-why="5">
+        <h2>Xử lý đơn</h2>
+        <dl class="kv sm"><dt>Giao</dt><dd>Đã giao 19/10/2026</dd><dt>Hóa đơn</dt><dd>Chưa có</dd></dl>
+        <button type="button" class="btn btn-primary btn-block">Gắn hóa đơn</button>
+        <small class="hint">Đơn mới: Xác nhận → nhập mã vận đơn (liên tỉnh) → Đã giao.</small>
+      </aside>
     </div>
   </main>
 
-  <aside class="wf-note" data-ref="FR-32">
-    Chi tiết đơn Shop (B2.1). Xác nhận → Đang giao (mã vận đơn) → Đã giao; gắn hóa đơn; khối Khiếu nại (xem, gửi phản hồi đề xuất). Cùng đường dẫn với B2.2 (Đ6, FR-32, FR-44).
-  </aside>
-
+  <aside class="wf-note" data-ref="FR-32">Xác nhận → Đang giao (mã vận đơn nếu liên tỉnh) → Đã giao; gắn hóa đơn (FR-44); khối Khiếu nại (xem, gửi phản hồi: đề xuất). Cùng đường dẫn với B2.2 (Đ6).</aside>
   <script src="../assets/data.js"></script>
+  <script src="../assets/why-b.js"></script>
   <script src="../assets/wf.js"></script>
 </body>
 </html>

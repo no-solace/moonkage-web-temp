@@ -8,104 +8,83 @@
 </head>
 <body data-zone="M" data-page="M3.1">
   <main id="content">
-    <h1>Tạo yêu cầu báo giá</h1>
-    <p style="color: #444; margin-bottom: 16px;">
-      Số lượng lớn, in logo hoặc hàng phải làm riêng, dù ít hộp. Yêu cầu của bạn sẽ được gửi tới các đơn vị cung cấp phù hợp.
-    </p>
-
-    <!-- Thanh bước (Form nhiều bước) -->
-    <div class="form-steps">
-      <div class="form-step-item active">1. Quy cách bánh & Yêu cầu in</div>
-      <div class="form-step-item">2. Thời gian & Địa điểm giao</div>
-      <div class="form-step-item">3. Xác nhận gửi</div>
+    <div class="page-head">
+      <div>
+        <h1>Tạo yêu cầu báo giá</h1>
+        <p class="lead">Mô tả thứ bạn cần; các đơn vị phù hợp sẽ gửi báo giá để bạn so sánh.</p>
+      </div>
     </div>
 
-    <form class="t3-form" action="m6-2.html" method="GET">
-      <fieldset>
-        <legend>1. Quy cách bánh & Hộp quà</legend>
-
-        <div class="form-group">
-          <label for="f-box-type">Quy cách đóng hộp *</label>
-          <select id="f-box-type" required>
-            <option value="4">Hộp 4 bánh cao cấp (200g/bánh)</option>
-            <option value="6">Hộp 6 bánh thượng hạng (150g/bánh)</option>
-            <option value="2">Hộp 2 bánh truyền thống</option>
-            <option value="other">Quy cách riêng theo thiết kế</option>
-          </select>
-        </div>
-
-        <div class="form-group">
-          <label for="f-qty">Số lượng hộp dự kiến *</label>
-          <input type="number" id="f-qty" value="150" min="20" required>
-          <span class="field-error" style="display:none;" id="err-qty">Vui lòng nhập số lượng từ 20 hộp trở lên</span>
-        </div>
-
-        <div class="form-group">
-          <label>Nhân bánh mong muốn (chọn một hoặc nhiều)</label>
-          <div>
-            <label><input type="checkbox" checked> Thập cẩm jambon bát bửu</label> &nbsp;
-            <label><input type="checkbox" checked> Hạt sen trứng muối</label> &nbsp;
-            <label><input type="checkbox"> Trà xanh matcha</label> &nbsp;
-            <label><input type="checkbox"> Đậu xanh sầu riêng</label>
+    <div class="split">
+      <form class="form" action="m6-2.html" method="get">
+        <fieldset data-why="1">
+          <legend>1. Bánh và hộp</legend>
+          <div class="field-row">
+            <div class="field is-error">
+              <label for="qty" class="req">Số hộp</label>
+              <input id="qty" type="number" value="8">
+              <span class="field-error">Chưa có đơn vị nào nhận dưới 10 hộp với yêu cầu này. Thử tăng số hộp hoặc bỏ in logo.</span>
+            </div>
+            <div class="field">
+              <label for="per" class="req">Số bánh mỗi hộp</label>
+              <select id="per"><option>4 bánh</option><option>6 bánh</option><option>2 bánh</option><option>Khác</option></select>
+            </div>
           </div>
-        </div>
-
-        <div class="form-group">
-          <label for="f-custom">Yêu cầu in ấn logo & Thiệp chúc mừng</label>
-          <select id="f-custom">
-            <option>Ép kim logo doanh nghiệp lên nắp hộp</option>
-            <option>Khắc laser lên hộp gỗ</option>
-            <option>In thiệp chúc mừng riêng từng người nhận</option>
-            <option>Không in logo (chỉ đóng hộp tiêu chuẩn)</option>
-          </select>
-        </div>
-
-        <div class="form-group">
-          <label>File logo hoặc mẫu thiết kế (nếu có)</label>
-          <div class="wf-img" style="height: 80px;">
-            <span>[Kéo thả file vector logo (AI/PDF/PNG) hoặc bấm để chọn]</span>
+          <div class="field">
+            <span class="strong">Vỏ bánh</span>
+            <div class="chips"><label class="chip"><input type="checkbox" checked> Nướng</label><label class="chip"><input type="checkbox"> Dẻo</label><label class="chip"><input type="checkbox"> Than tre</label></div>
           </div>
+          <div class="field">
+            <span class="strong">Nhân bánh</span>
+            <div class="chips"><label class="chip"><input type="checkbox" checked> Thập cẩm</label><label class="chip"><input type="checkbox" checked> Hạt sen</label><label class="chip"><input type="checkbox"> Đậu xanh</label><label class="chip"><input type="checkbox"> Trà xanh</label></div>
+          </div>
+        </fieldset>
+
+        <fieldset data-why="2">
+          <legend>2. Làm riêng</legend>
+          <label class="choice"><input type="radio" name="custom" checked><span><strong>In logo lên hộp</strong><br><small class="muted">Đơn vị gửi maket để bạn duyệt trước khi làm</small></span></label>
+          <label class="choice"><input type="radio" name="custom"><span><strong>Hộp và thiệp theo thiết kế riêng</strong></span></label>
+          <label class="choice"><input type="radio" name="custom"><span><strong>Không cần làm riêng</strong><br><small class="muted">Chỉ cần nhiều hộp</small></span></label>
+          <div class="field">
+            <label>Tệp logo hoặc mẫu (không bắt buộc)</label>
+            <div class="upload"><span class="wf-icon">TỆP</span><span>Kéo tệp vào đây hoặc <a href="#">chọn tệp</a></span><small>PDF, AI, PNG · tối đa 20MB</small></div>
+          </div>
+        </fieldset>
+
+        <fieldset data-why="3">
+          <legend>3. Giao hàng</legend>
+          <div class="field-row">
+            <div class="field"><label for="date" class="req">Cần nhận trước ngày</label><input id="date" type="text" value="15/11/2026" placeholder="DD/MM/YYYY"></div>
+            <div class="field"><label for="prov" class="req">Giao tới</label><select id="prov"><option>Hà Nội</option><option>TP. Hồ Chí Minh</option><option>Đà Nẵng</option></select></div>
+          </div>
+          <div class="field"><label for="note">Ghi chú cho đơn vị</label><textarea id="note" placeholder="Ví dụ: cần xuất hóa đơn công ty, giao một lần tới văn phòng"></textarea></div>
+        </fieldset>
+
+        <div class="form-actions">
+          <a href="m3-0.html" class="btn btn-ghost">Hủy</a>
+          <button type="submit" class="btn btn-primary btn-lg" data-needs-login="true" data-needs-nfc="true">Gửi yêu cầu báo giá</button>
         </div>
-      </fieldset>
+      </form>
 
-      <fieldset>
-        <legend>2. Hạn nhận hàng & Địa điểm</legend>
-
-        <div class="form-group">
-          <label for="f-deadline">Hạn chót mong muốn nhận hàng *</label>
-          <input type="text" id="f-deadline" value="10/09/2026" placeholder="DD/MM/YYYY" required>
+      <aside class="stack sticky" data-why="4">
+        <div class="summary">
+          <span class="eyebrow">Sẽ gửi tới</span>
+          <div class="price-lg">0 đơn vị</div>
+          <p class="sm muted">khớp số hộp, kiểu làm riêng và vùng giao bạn chọn.</p>
+          <div class="callout callout-soft sm">Tăng lên 10 hộp: 3 đơn vị · Bỏ in logo: 5 đơn vị</div>
         </div>
-
-        <div class="form-group">
-          <label for="f-area">Tỉnh / Thành phố giao hàng *</label>
-          <select id="f-area" required>
-            <option value="Hà Nội" selected>Hà Nội</option>
-            <option value="TP. Hồ Chí Minh">TP. Hồ Chí Minh</option>
-            <option value="Đà Nẵng">Đà Nẵng</option>
-            <option value="Khác">Tỉnh thành khác (liên tỉnh)</option>
-          </select>
+        <div class="card card-fill sm stack-sm">
+          <strong>Sau khi gửi</strong>
+          <span>Theo dõi báo giá ở <a href="m6-2.html">Yêu cầu và báo giá</a>. Bạn chưa phải trả tiền cho tới khi chấp nhận một báo giá.</span>
         </div>
-
-        <div class="form-group">
-          <label for="f-note">Ghi chú bổ sung cho xưởng sản xuất</label>
-          <textarea id="f-note" rows="3" placeholder="Ví dụ: Cần đóng gói hộp quà cẩn thận, xuất hóa đơn VAT cho công ty..."></textarea>
-        </div>
-      </fieldset>
-
-      <div style="display: flex; gap: 10px; align-items: center; margin-top: 10px;">
-        <button type="submit" class="btn btn-primary" data-needs-login="true" data-needs-nfc="true">
-          Gửi yêu cầu báo giá
-        </button>
-        <a href="m3-0.html" class="btn">Hủy & Quay lại</a>
-      </div>
-    </form>
+      </aside>
+    </div>
   </main>
 
-  <aside class="wf-note" data-ref="FR-16">
-    Tạo yêu cầu báo giá (yêu cầu gửi nhiều nơi). Người mua cần xác minh NFC (BR-23); nếu chưa xác minh → chuyển sang M6.4 trước rồi quay lại. Không có người bán phù hợp → gợi ý chỉnh số lượng, custom, hạn giao.
-  </aside>
+  <aside class="wf-note" data-ref="FR-16">Yêu cầu gửi nhiều nơi. Cần xác minh danh tính (BR-23); chưa xác minh → M6.4 rồi quay lại. Không có người bán phù hợp → gợi ý chỉnh số lượng, custom, hạn giao.</aside>
 
   <script src="../assets/data.js"></script>
+  <script src="../assets/why-m.js"></script>
   <script src="../assets/wf.js"></script>
 </body>
 </html>

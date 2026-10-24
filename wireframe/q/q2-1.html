@@ -3,128 +3,59 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Moonkage – Duyệt hồ sơ người bán (Q2.1)</title>
+  <title>Moonkage – Hồ sơ người bán (Q2.1)</title>
   <link rel="stylesheet" href="../assets/wf.css">
 </head>
 <body data-zone="Q" data-page="Q2.1">
   <main id="content">
-    <div class="t2-header">
+    <div class="page-head" data-why="1"><div><span class="eyebrow">Hồ sơ người bán · lần nộp 1</span><h1>Bánh Nghệ Nhân Hoa Mai <span class="badge badge-solid" style="vertical-align:middle">Chờ duyệt</span></h1><p class="lead">Hộ kinh doanh · Hà Nội · nộp 23/10/2026</p></div></div>
+    <div class="split">
       <div>
-        <h1>Duyệt hồ sơ: Cơ Sở Bánh Nghệ Nhân Hoa Mai (Q2.1)</h1>
-        <small style="color: #666;">Mã hồ sơ: #SELLER-DOC-9912 · Nộp ngày 23/10/2026</small>
-      </div>
-      <div>
-        <span class="t2-status">Trạng thái: Đang chờ quyết định</span>
-      </div>
-    </div>
-
-    <!-- Kết quả so định danh tự động (AC-45.4) -->
-    <div style="border: 2px solid #000; padding: 14px; background: #eee; margin-bottom: 20px;">
-      <strong>Kết quả so khớp tự động dữ liệu CCCD gắn chip & ĐKKD:</strong>
-      <div style="margin-top: 6px; font-size: 13px;">
-        • Họ tên chủ cơ sở trên ĐKKD: <strong>Vũ Thị Mai Hoa</strong> — Khớp 100% với tên trên CCCD qua xác minh NFC.<br>
-        • Số định danh cá nhân: <strong>001188009922</strong> — Đã kiểm tra tính hợp lệ qua cơ sở dữ liệu quốc gia.<br>
-        • Mã số thuế / ĐKKD: <strong>01J8001928</strong> — Hộ kinh doanh đang hoạt động tại Chi cục Thuế Hoàn Kiếm.
-      </div>
-    </div>
-
-    <div class="t2-layout">
-      <!-- Cột trái: Chi tiết tài liệu nộp & Tab Lịch sử -->
-      <div>
-        <h2>Tài liệu pháp lý đính kèm</h2>
-        <table>
-          <thead>
-            <tr>
-              <th>Loại giấy tờ</th>
-              <th>Tệp đính kèm</th>
-              <th>Hành động</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Giấy chứng nhận đăng ký hộ kinh doanh</td>
-              <td><code>GiayPhep_DKKD_HoaMai.pdf</code></td>
-              <td><button class="btn">[Xem tài liệu gốc]</button></td>
-            </tr>
-            <tr>
-              <td>Giấy chứng nhận cơ sở đủ điều kiện ATTP</td>
-              <td><code>GiayChungNhan_ATTP_2026.pdf</code></td>
-              <td><button class="btn">[Xem tài liệu gốc]</button></td>
-            </tr>
-          </tbody>
-        </table>
-
-        <!-- Tab Lịch sử trong trang đối tượng (Đ5) -->
-        <div class="t2-history" style="margin-top: 24px;">
-          <h2>Lịch sử xét duyệt & Xử lý hồ sơ (Đ5)</h2>
-          <table style="margin-top: 8px;">
-            <thead>
-              <tr>
-                <th>Thời gian</th>
-                <th>Người duyệt</th>
-                <th>Hành động</th>
-                <th>Ghi chú</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>23/10/2026 15:00</td>
-                <td>Hệ thống tự động</td>
-                <td>So khớp NFC & ĐKKD</td>
-                <td>Trùng khớp 100% họ tên và số định danh</td>
-              </tr>
-              <tr>
-                <td>23/10/2026 14:30</td>
-                <td>Người bán</td>
-                <td>Nộp hồ sơ lần 1</td>
-                <td>Khởi tạo hồ sơ mở bán</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-
-      <!-- Cột phải: Khối ra quyết định của Quản trị viên -->
-      <div>
-        <div class="t2-actions">
-          <h2>Quyết định duyệt</h2>
-
-          <div style="font-size: 13px; margin-bottom: 8px;">
-            <label style="display: block; margin-bottom: 6px;">
-              <input type="checkbox" id="chk-verify" checked> Tôi đã đối chiếu chữ ký số và con dấu trên tệp ĐKKD gốc.
-            </label>
+        <nav class="tabs"><a href="#ho-so" class="tab">Hồ sơ</a><a href="#lich-su" class="tab">Lịch sử <span class="count">2</span></a></nav>
+        <section id="ho-so" data-tab class="stack-lg">
+          <div class="card card-strong" data-why="2">
+            <h2 class="mb-1" style="font-size:var(--fs-md)">So khớp chủ hộ (tự động)</h2>
+            <div class="table-wrap"><table><thead><tr><th></th><th>Trên giấy đăng ký</th><th>Từ chip CCCD</th><th>Kết quả</th></tr></thead><tbody>
+              <tr><th scope="row">Họ tên</th><td>Vũ Thị Mai Hoa</td><td>VŨ THỊ MAI HOA</td><td><span class="badge badge-soft">Khớp</span></td></tr>
+              <tr><th scope="row">Số định danh</th><td>001188009922</td><td>001188009922</td><td><span class="badge badge-soft">Khớp</span></td></tr></tbody></table></div>
           </div>
-
-          <!-- Nút Duyệt hồ sơ -> Sang B1.1 đóng phí mở bán -->
-          <a href="../b/b1-1.html" class="btn btn-primary" style="text-align: center; padding: 10px;">
-            [✓] Duyệt hồ sơ & Cho phép đóng phí mở bán (B1.1) ›
-          </a>
-
-          <button type="button" class="btn" style="text-align: center; margin-top: 4px;">
-            Yêu cầu nộp bổ sung giấy tờ
-          </button>
-
-          <button type="button" class="btn" style="text-align: center; margin-top: 4px; color: #000; border-color: #888;">
-            Từ chối hồ sơ
-          </button>
-
-          <button type="button" class="btn btn-disabled" disabled style="text-align: center; margin-top: 8px;" title="Chỉ khóa khi có vi phạm sau khi mở bán">
-            Khóa tài khoản người bán
-          </button>
-
-          <a href="q2-0.html" class="btn" style="text-align: center; margin-top: 12px;">
-            ‹ Về danh sách hồ sơ
-          </a>
-        </div>
+          <div class="grid-2" data-why="3">
+            <div class="stack-sm"><strong>Giấy đăng ký hộ kinh doanh</strong><div class="wf-img ratio-43"><span>Xem tệp gốc</span></div></div>
+            <div class="stack-sm"><strong>Giấy an toàn thực phẩm</strong><div class="wf-img ratio-43"><span>Xem tệp gốc</span></div></div>
+          </div>
+          <dl class="kv card"><dt>Mã đăng ký</dt><dd>01J8001928</dd><dt>Địa chỉ</dt><dd>45 Hàng Chiếu, Hoàn Kiếm, Hà Nội</dd><dt>Nguồn hàng</dt><dd>Tự sản xuất</dd><dt>Cách bán</dt><dd>Shop, Nhận đặt hàng</dd></dl>
+        </section>
+        <section id="lich-su" data-tab hidden data-why="4">
+          <ol class="timeline"><li><strong>Hệ thống so khớp chủ hộ: khớp</strong><span class="when">23/10/2026 15:00</span></li><li class="done"><strong>Người bán nộp hồ sơ lần 1</strong><span class="when">23/10/2026 14:30</span></li></ol>
+        </section>
       </div>
+      <aside class="actions-box sticky" data-why="5">
+        <h2>Quyết định</h2>
+        <label class="check sm"><input type="checkbox"> Tôi đã đối chiếu giấy tờ gốc với thông tin khai</label>
+        <a href="../b/b1-0.html?hs=ok" class="btn btn-primary btn-block" data-set-role="seller-pending">Duyệt</a>
+        <details><summary class="sm">Yêu cầu bổ sung</summary><div class="stack-sm mt-1"><textarea aria-label="Cần bổ sung gì" placeholder="Nêu rõ giấy tờ cần bổ sung"></textarea><a href="../b/b1-0.html?hs=more" class="btn btn-sm" data-set-role="seller-pending">Gửi yêu cầu bổ sung</a></div></details>
+        <details><summary class="sm">Từ chối</summary><div class="stack-sm mt-1"><textarea aria-label="Lý do từ chối"></textarea><button type="button" class="btn btn-sm btn-danger">Từ chối hồ sơ</button></div></details>
+        <hr style="margin:var(--s2) 0"><button type="button" class="btn btn-ghost btn-sm" disabled>Khóa người bán (sau khi duyệt)</button>
+      </aside>
     </div>
   </main>
 
-  <aside class="wf-note" data-ref="AC-45.4">
-    Hồ sơ người bán (Q2.1). Kết quả so định danh, ô xác nhận đối chiếu, duyệt / bổ sung / từ chối; khóa. Tab Lịch sử: các lần nộp, kết quả so chủ, quyết định và người duyệt (Đ5, AC-45.4). Sau khi duyệt, người bán chuyển sang bước đóng phí B1.1.
-  </aside>
-
+  <aside class="wf-note" data-ref="Đ5">Tab Lịch sử: các lần nộp, kết quả so chủ, quyết định và người duyệt (AC-45.4). Không có trang nhật ký chung.</aside>
+  <aside class="wf-note" data-ref="FR-45">Kết quả so định danh, ô xác nhận đối chiếu, duyệt / bổ sung / từ chối; khóa. FR-46.</aside>
+  <script>
+    // Chuyển tab giả lập: mỗi .tab trỏ #id của một <section data-tab>
+    (function () {
+      var tabs = document.querySelectorAll('.tabs .tab');
+      function show(id) {
+        document.querySelectorAll('[data-tab]').forEach(function (s) { s.hidden = s.id !== id; });
+        tabs.forEach(function (t) { t.classList.toggle('active', t.getAttribute('href') === '#' + id); });
+      }
+      tabs.forEach(function (t) { t.addEventListener('click', function (e) { e.preventDefault(); show(t.getAttribute('href').slice(1)); }); });
+      show(location.hash ? location.hash.slice(1) : tabs[0].getAttribute('href').slice(1));
+    })();
+  </script>
   <script src="../assets/data.js"></script>
+  <script src="../assets/why-q.js"></script>
   <script src="../assets/wf.js"></script>
 </body>
 </html>

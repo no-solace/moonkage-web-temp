@@ -1,580 +1,455 @@
 /**
- * wf.js - Bộ khung runtime cho Low-fi Wireframe Moonkage
- * Chèn Header/Footer/Menu theo khu, công tắc vai, công tắc ghi chú, breadcrumb, cổng đăng nhập & NFC
+ * wf.js – khung chạy chung cho wireframe low-fi Moonkage.
+ * Chèn header/menu/breadcrumb/footer theo khu, công tắc vai, công tắc ghi chú,
+ * cổng đăng nhập (AC-02.3) và cổng NFC (BR-23), rào chắn theo vai,
+ * bảng "Thuyết minh bố cục" (đọc WHY trong why.js) và mục lục index.html.
+ * Không gọi mạng; chỉ lưu vai và trạng thái ghi chú trong localStorage.
  */
-
 (function () {
   'use strict';
 
-  // Xác định đường dẫn tương đối về thư mục gốc wireframe/
-  var isSubDir = (document.body.dataset.zone && document.body.dataset.zone !== 'INDEX');
-  var ROOT = isSubDir ? '../' : '';
+  var body = document.body;
+  var ZONE = body.dataset.zone || '';
+  var PAGE_ID = body.dataset.page || '';
+  var ROOT = (ZONE && ZONE !== 'INDEX') ? '../' : '';
 
-  // 1. Quản lý Vai trò người dùng (Role Store)
-  function getSavedRole() {
-    try {
-      return localStorage.getItem('wf_role') || 'buyer';
-    } catch (e) {
-      return 'buyer';
-    }
+  // 1. Lưu trữ vai và ghi chú -------------------------------------------------
+  function load(key, fallback) {
+    try { var v = localStorage.getItem(key); return v === null ? fallback : v; } catch (e) { return fallback; }
   }
-
-  function setSavedRole(role) {
-    try {
-      localStorage.setItem('wf_role', role);
-    } catch (e) {}
+  function save(key, value) {
+    try { localStorage.setItem(key, value); } catch (e) {}
   }
+  var ROLE = load('wf_role', 'buyer');
+  var NOTES_ON = load('wf_notes_visible', 'true') !== 'false';
 
-  // Quản lý Bật/Tắt Ghi chú
-  function areNotesVisible() {
-    try {
-      return localStorage.getItem('wf_notes_visible') !== 'false';
-    } catch (e) {
-      return true;
-    }
+  var isSeller = ROLE === 'seller-pending' || ROLE === 'seller-open';
+  var isNfc = ROLE === 'buyer-nfc' || ROLE === 'seller-open' || ROLE === 'admin';
+
+  function esc(s) {
+    return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c];
+    });
   }
-
-  function setNotesVisible(visible) {
-    try {
-      localStorage.setItem('wf_notes_visible', visible ? 'true' : 'false');
-    } catch (e) {}
-  }
-
-  // 2. Tra cứu trang trong PAGES
-  function findPage(pageId) {
+  function findPage(id) {
     if (typeof PAGES === 'undefined') return null;
-    return PAGES.find(function (p) { return p.id === pageId; });
+    for (var i = 0; i < PAGES.length; i++) if (PAGES[i].id === id) return PAGES[i];
+    return null;
+  }
+  function roleName(id) {
+    if (typeof ROLES !== 'undefined') for (var i = 0; i < ROLES.length; i++) if (ROLES[i].id === id) return ROLES[i].name;
+    return id;
+  }
+  function starts(prefix) { return PAGE_ID.indexOf(prefix) === 0; }
+  function link(href, label, cls, extra) {
+    return '<a href="' + ROOT + href + '" class="' + (cls || '') + '"' + (extra || '') + '>' + label + '</a>';
   }
 
-  // 3. Render Breadcrumb
-  function buildBreadcrumb(currentPageId) {
-    if (!currentPageId || typeof PAGES === 'undefined') return '';
+  // 2. Breadcrumb từ cây cha–con trong PAGES ----------------------------------
+  function buildBreadcrumb() {
     var trail = [];
-    var curr = findPage(currentPageId);
-    while (curr) {
-      trail.unshift(curr);
-      curr = curr.parent ? findPage(curr.parent) : null;
-    }
-
-    if (trail.length === 0) return '';
-
-    var html = '<nav class="wf-breadcrumb" aria-label="Breadcrumb">';
-    html += '<a href="' + ROOT + 'index.html">Mục lục</a>';
-
-    trail.forEach(function (p, idx) {
-      html += ' <span>›</span> ';
-      if (idx === trail.length - 1) {
-        html += '<strong>' + p.name + ' (' + p.id + ')</strong>';
-      } else {
-        html += '<a href="' + ROOT + p.file + '">' + p.name + '</a>';
-      }
+    var cur = findPage(PAGE_ID);
+    while (cur) { trail.unshift(cur); cur = cur.parent ? findPage(cur.parent) : null; }
+    if (!trail.length) return '';
+    var html = '<nav class="wf-breadcrumb" aria-label="Breadcrumb">' + link('index.html', 'Mục lục');
+    trail.forEach(function (p, i) {
+      html += '<span class="sep">›</span>';
+      html += (i === trail.length - 1)
+        ? '<strong>' + esc(p.name) + '</strong><code class="id">' + p.id + '</code>'
+        : link(p.file, esc(p.name));
     });
-
-    html += '</nav>';
-    return html;
+    return html + '</nav>';
   }
 
-  // 4. Render Header theo Phân Khu
-  function buildHeader(zone, currentPageId, currentRole) {
-    if (!zone || zone === 'INDEX') return '';
+  // 3. Header theo khu (mục 4 – Điều hướng) ----------------------------------
+  var LOGO_MARK = '<span class="mark" aria-hidden="true"></span>';
 
-    var html = '<header class="wf-header">';
-    html += '<div class="wf-header-top">';
-
-    // Logo theo khu
-    if (zone === 'M') {
-      html += '<a href="' + ROOT + 'm/m1-0.html" class="wf-logo">MOONKAGE</a>';
-      // Ô tìm kiếm Mua hàng
-      html += '<form class="wf-search-form" action="' + ROOT + 'm/m2-0.html" method="GET">';
-      html += '<input type="text" name="q" class="wf-search-input" placeholder="Tìm bánh trung thu, nhân bánh, xưởng..." aria-label="Tìm kiếm">';
-      html += '<button type="submit" class="wf-search-btn">[Tìm]</button>';
-      html += '</form>';
-
-      // Hành động bên phải
-      html += '<div class="wf-header-actions">';
-      html += '<a href="' + ROOT + 'm/m1-1.html" class="meta-tag" title="Bấm để đổi khu vực giao hàng"><strong>[Giao tới: Hà Nội ▾]</strong></a>';
-      html += '<a href="' + ROOT + 'm/m4-0.html" data-needs-login="true" class="meta-tag">[Giỏ hàng (2)]</a>';
-      
-      if (currentRole === 'guest') {
-        html += '<a href="' + ROOT + 'm/m5-1.html" class="btn btn-primary">Đăng nhập</a>';
-      } else {
-        html += '<a href="' + ROOT + 'm/m6-6.html" class="meta-tag" aria-label="Thông báo">[Thông báo]</a>';
-        html += '<div class="wf-account-dropdown">';
-        html += '<a href="' + ROOT + 'm/m6-0.html" class="meta-tag wf-account-dropdown-toggle"><strong>Tài khoản ▾</strong></a>';
-        html += '<div class="wf-account-menu">';
-        html += '<a href="' + ROOT + 'm/m6-0.html" class="wf-account-item">Tổng quan</a>';
-        html += '<a href="' + ROOT + 'm/m6-1.html" class="wf-account-item">Đơn hàng</a>';
-        html += '<a href="' + ROOT + 'm/m6-2.html" class="wf-account-item">Yêu cầu và báo giá</a>';
-        html += '<a href="' + ROOT + 'm/m6-3.html" class="wf-account-item">Địa chỉ giao hàng</a>';
-        html += '<a href="' + ROOT + 'm/m6-4.html" class="wf-account-item">Xác minh danh tính</a>';
-        html += '<a href="' + ROOT + 'm/m6-5.html" class="wf-account-item">Thông tin cá nhân</a>';
-        if (currentRole === 'seller-pending' || currentRole === 'seller-open') {
-          html += '<a href="' + ROOT + 'b/b1-0.html" class="wf-account-item">Kênh người bán</a>';
-        } else {
-          html += '<a href="' + ROOT + 'm/m7-0.html" class="wf-account-item">Bán hàng trên Moonkage</a>';
-        }
-        html += '<a href="' + ROOT + 'm/m5-1.html" class="wf-account-item" id="wf-logout-link" style="border-top:1px solid #000; font-weight:700;">Đăng xuất</a>';
-        html += '</div>';
-        html += '</div>';
-      }
-      html += '</div>';
-    } else if (zone === 'B') {
-      html += '<a href="' + ROOT + 'b/b1-0.html" class="wf-logo">MOONKAGE · KÊNH NGƯỜI BÁN</a>';
-      html += '<div class="wf-header-actions">';
-      html += '<a href="' + ROOT + 'm/m6-6.html" class="meta-tag">[Thông báo bán]</a>';
-      html += '<a href="' + ROOT + 'm/m1-0.html" class="btn">↩ Về trang mua hàng</a>';
-      html += '</div>';
-    } else if (zone === 'Q') {
-      html += '<a href="' + ROOT + 'q/q1-0.html" class="wf-logo">MOONKAGE · QUẢN TRỊ HỆ THỐNG</a>';
-      html += '<div class="wf-header-actions">';
-      html += '<span class="meta-tag">[Quản trị viên]</span>';
-      html += '<a href="' + ROOT + 'm/m1-0.html" class="btn">Về Web Mua hàng</a>';
-      html += '</div>';
+  function headerM() {
+    var top = link('m/m1-0.html', LOGO_MARK + 'MOONKAGE', 'wf-logo');
+    top += '<form class="wf-search-form" role="search" action="' + ROOT + 'm/m2-0.html" method="get">' +
+      '<label class="sr-only" for="wf-q">Tìm sản phẩm hoặc đơn vị cung cấp</label>' +
+      '<input id="wf-q" type="search" name="q" class="wf-search-input" placeholder="Tìm bánh, nhân bánh hoặc tên đơn vị…">' +
+      '<button type="submit" class="wf-search-btn">Tìm</button></form>';
+    top += '<div class="wf-header-actions">';
+    top += link('m/m1-1.html', '<span class="k">Giao tới</span> <strong>Hà Nội ▾</strong>', 'wf-hbtn');
+    top += link('m/m4-0.html', '<span class="wf-icon" aria-hidden="true">GH</span><span class="lbl">Giỏ hàng</span> <span class="count">2</span>', 'wf-hbtn', ' data-needs-login="true" aria-label="Giỏ hàng, 2 món"');
+    if (ROLE === 'guest') {
+      top += link('m/m5-1.html', 'Đăng nhập', 'btn btn-primary btn-sm');
+    } else {
+      top += link('m/m6-6.html', '<span class="wf-icon" aria-hidden="true">TB</span> <span class="count">3</span>', 'wf-hbtn', ' aria-label="Thông báo, 3 chưa đọc"');
+      top += '<div class="wf-dd">' + link('m/m6-0.html', '<span class="avatar" style="width:28px;height:28px">AM</span><span class="lbl">Tài khoản ▾</span>', 'wf-hbtn', ' aria-haspopup="true"') +
+        '<div class="wf-dd-menu right">' +
+        link('m/m6-0.html', 'Tổng quan', 'wf-dd-item') +
+        link('m/m6-1.html', 'Đơn hàng', 'wf-dd-item') +
+        link('m/m6-2.html', 'Yêu cầu và báo giá', 'wf-dd-item') +
+        link('m/m6-3.html', 'Địa chỉ giao hàng', 'wf-dd-item') +
+        link('m/m6-4.html', 'Xác minh danh tính <small>' + (isNfc ? 'Đã xác minh' : 'Chưa xác minh') + '</small>', 'wf-dd-item') +
+        link('m/m6-5.html', 'Thông tin cá nhân', 'wf-dd-item') +
+        '<div class="wf-dd-sep"></div>' +
+        (isSeller ? link('b/b1-0.html', 'Kênh người bán ›', 'wf-dd-item') : link('m/m7-0.html', 'Bán hàng trên Moonkage', 'wf-dd-item')) +
+        '<div class="wf-dd-sep"></div>' +
+        link('m/m5-1.html', 'Đăng xuất', 'wf-dd-item', ' data-logout="true"') +
+        '</div></div>';
     }
+    top += '</div>';
 
-    html += '</div>'; // end wf-header-top
+    var nav = link('m/m2-0.html', 'Mua hàng có sẵn', 'wf-nav-item' + (starts('M2.') ? ' active' : ''));
+    nav += '<div class="wf-dd">' + link('m/m3-0.html', 'Đặt theo yêu cầu ▾', 'wf-nav-item' + (starts('M3.') ? ' active' : ''), ' aria-haspopup="true"') +
+      '<div class="wf-dd-menu">' +
+      '<div class="wf-dd-desc">Số lượng lớn, in logo hoặc hàng phải làm riêng, dù ít hộp.</div>' +
+      link('m/m3-1.html', 'Tạo yêu cầu báo giá <small>gửi nhiều nơi</small>', 'wf-dd-item') +
+      link('m/m3-2.html', 'Đơn vị cung cấp <small>chọn một nơi</small>', 'wf-dd-item') +
+      '</div></div>';
+    return { top: top, nav: nav };
+  }
 
-    // Menu toàn cục cấp 1
-    html += '<nav class="wf-nav">';
-    if (zone === 'M') {
-      html += '<a href="' + ROOT + 'm/m2-0.html" class="wf-nav-item ' + (currentPageId === 'M2.0' ? 'active' : '') + '">Mua hàng có sẵn</a>';
-      html += '<a href="' + ROOT + 'm/m3-0.html" class="wf-nav-item ' + (currentPageId.indexOf('M3.') === 0 ? 'active' : '') + '">Đặt theo yêu cầu ▾</a>';
-      html += '<a href="' + ROOT + 'm/m3-2.html" class="wf-nav-item ' + (currentPageId === 'M3.2' ? 'active' : '') + '">Đơn vị cung cấp</a>';
-
-      if (currentRole === 'seller-pending' || currentRole === 'seller-open') {
-        html += '<a href="' + ROOT + 'b/b1-0.html" class="wf-nav-item" style="border:1px dashed #000;">Kênh người bán</a>';
-      } else {
-        html += '<a href="' + ROOT + 'm/m7-0.html" class="wf-nav-item ' + (currentPageId.indexOf('M7.') === 0 ? 'active' : '') + '">Bán hàng trên Moonkage</a>';
-      }
-    } else if (zone === 'B') {
-      html += '<a href="' + ROOT + 'b/b1-0.html" class="wf-nav-item ' + (currentPageId === 'B1.0' ? 'active' : '') + '">Tổng quan</a>';
-      
-      // Các mục chỉ hiện khi đã mở bán (seller-open)
-      var isOpen = (currentRole === 'seller-open');
-      if (isOpen) {
-        html += '<a href="' + ROOT + 'b/b2-0.html" class="wf-nav-item ' + (currentPageId.indexOf('B2.') === 0 ? 'active' : '') + '">Đơn hàng</a>';
-        html += '<a href="' + ROOT + 'b/b3-0.html" class="wf-nav-item ' + (currentPageId.indexOf('B3.') === 0 ? 'active' : '') + '">Yêu cầu báo giá</a>';
-        html += '<a href="' + ROOT + 'b/b4-0.html" class="wf-nav-item ' + (currentPageId.indexOf('B4.') === 0 ? 'active' : '') + '">Sản phẩm</a>';
-        html += '<a href="' + ROOT + 'b/b5-0.html" class="wf-nav-item ' + (currentPageId.indexOf('B5.') === 0 ? 'active' : '') + '">Tiền</a>';
-      } else {
-        html += '<span class="wf-nav-item" style="color:#888;" title="Chỉ mở sau khi nộp hồ sơ và đóng phí mở bán">(Chờ mở bán...)</span>';
-      }
-      html += '<a href="' + ROOT + 'b/b6-0.html" class="wf-nav-item ' + (currentPageId.indexOf('B6.') === 0 ? 'active' : '') + '">Cài đặt bán hàng</a>';
-    } else if (zone === 'Q') {
-      html += '<a href="' + ROOT + 'q/q1-0.html" class="wf-nav-item ' + (currentPageId === 'Q1.0' ? 'active' : '') + '">Tổng quan</a>';
-      html += '<a href="' + ROOT + 'q/q2-0.html" class="wf-nav-item ' + (currentPageId.indexOf('Q2.') === 0 ? 'active' : '') + '">Người bán (Chờ duyệt)</a>';
-      html += '<a href="' + ROOT + 'q/q3-0.html" class="wf-nav-item ' + (currentPageId.indexOf('Q3.') === 0 ? 'active' : '') + '">Sản phẩm</a>';
-      html += '<a href="' + ROOT + 'q/q4-0.html" class="wf-nav-item ' + (currentPageId.indexOf('Q4.') === 0 ? 'active' : '') + '">Tiền (Giải ngân / Chuyển tiền)</a>';
-      html += '<a href="' + ROOT + 'q/q5-0.html" class="wf-nav-item ' + (currentPageId.indexOf('Q5.') === 0 ? 'active' : '') + '">Khiếu nại</a>';
-      html += '<a href="' + ROOT + 'q/q6-0.html" class="wf-nav-item ' + (currentPageId.indexOf('Q6.') === 0 ? 'active' : '') + '">Cấu hình</a>';
+  function headerB() {
+    var open = ROLE === 'seller-open' || ROLE === 'admin';
+    var top = link('b/b1-0.html', LOGO_MARK + 'MOONKAGE<span class="zone">Kênh người bán</span>', 'wf-logo');
+    top += '<div class="wf-header-actions">' +
+      '<span class="badge ' + (open ? 'badge-soft' : 'badge-dash') + '">Bánh Nghệ Nhân Hoa Mai · ' + (open ? 'Đang mở bán' : 'Hồ sơ chờ duyệt') + '</span>' +
+      '</div>';
+    var nav = link('b/b1-0.html', 'Tổng quan', 'wf-nav-item' + (PAGE_ID === 'B1.0' || PAGE_ID === 'B1.1' ? ' active' : ''));
+    if (open) {
+      nav += link('b/b2-0.html', 'Đơn hàng <span class="count">4</span>', 'wf-nav-item' + (starts('B2.') ? ' active' : ''));
+      nav += link('b/b3-0.html', 'Yêu cầu báo giá <span class="count">2</span>', 'wf-nav-item' + (starts('B3.') ? ' active' : ''));
+      nav += link('b/b4-0.html', 'Sản phẩm', 'wf-nav-item' + (starts('B4.') ? ' active' : ''));
+      nav += link('b/b5-0.html', 'Tiền', 'wf-nav-item' + (starts('B5.') ? ' active' : ''));
     }
-    html += '</nav>';
-    html += '</header>';
-
-    return html;
+    nav += link('b/b6-0.html', 'Cài đặt bán hàng', 'wf-nav-item' + (starts('B6.') ? ' active' : ''));
+    nav += '<span class="spacer"></span>';
+    nav += link('m/m6-6.html?loc=ban', '<span class="wf-icon" aria-hidden="true">TB</span> Thông báo <span class="count">1</span>', 'wf-nav-item', ' aria-label="Thông báo, 1 chưa đọc"');
+    nav += link('m/m1-0.html', '↩ Về trang mua hàng', 'wf-nav-item');
+    return { top: top, nav: nav };
   }
 
-  // 5. Render Footer cho Khu M
-  function buildFooter(zone) {
-    if (zone !== 'M') return '';
-    var html = '<footer class="wf-footer">';
-    html += '<div><strong>MOONKAGE</strong> — Sàn thương mại điện tử Bánh Trung Thu (Wireframe Low-fi)</div>';
-    html += '<div class="wf-footer-links">';
-    html += '<a href="' + ROOT + 'm/m7-0.html">Bán hàng trên Moonkage</a>';
-    html += '<a href="' + ROOT + 'm/m8-0.html">Chính sách mua bán</a>';
-    html += '<a href="' + ROOT + 'index.html">Mục lục Wireframe</a>';
-    html += '</div>';
-    html += '</footer>';
-    return html;
+  function headerQ() {
+    var top = link('q/q1-0.html', LOGO_MARK + 'MOONKAGE<span class="zone">Quản trị</span>', 'wf-logo');
+    top += '<div class="wf-header-actions"><span class="badge">Quản trị viên · Trần Hà</span></div>';
+    var nav = link('q/q1-0.html', 'Tổng quan', 'wf-nav-item' + (PAGE_ID === 'Q1.0' ? ' active' : ''));
+    nav += link('q/q2-0.html', 'Người bán <span class="count">1</span>', 'wf-nav-item' + (starts('Q2.') ? ' active' : ''));
+    nav += link('q/q3-0.html', 'Sản phẩm', 'wf-nav-item' + (starts('Q3.') ? ' active' : ''));
+    nav += link('q/q4-0.html', 'Tiền <span class="count">13</span>', 'wf-nav-item' + (starts('Q4.') ? ' active' : ''));
+    nav += link('q/q5-0.html', 'Khiếu nại <span class="count">1</span>', 'wf-nav-item' + (starts('Q5.') ? ' active' : ''));
+    nav += link('q/q6-0.html', 'Cấu hình', 'wf-nav-item' + (starts('Q6.') ? ' active' : ''));
+    return { top: top, nav: nav };
   }
 
-  // 6. Thanh Công Tắc Vai & Ghi Chú Cố Định (Fixed Role Bar)
-  function buildRoleBar(currentRole, notesVisible) {
-    var html = '<div class="wf-role-bar" id="wf-role-bar">';
-    
-    html += '<div class="wf-role-bar-left">';
-    html += '<strong>[Vai thử nghiệm]:</strong> ';
-    html += '<select id="wf-role-switcher" class="wf-role-select">';
-    
-    if (typeof ROLES !== 'undefined') {
-      ROLES.forEach(function (r) {
-        var sel = (r.id === currentRole) ? ' selected' : '';
-        html += '<option value="' + r.id + '"' + sel + '>' + r.name + '</option>';
-      });
-    }
-    html += '</select>';
-    html += '</div>';
-
-    html += '<div class="wf-role-bar-right">';
-    html += '<button type="button" id="wf-notes-toggle" class="btn" style="padding:2px 8px; font-size:12px;">';
-    html += notesVisible ? '[Ghi chú: BẬT]' : '[Ghi chú: TẮT]';
-    html += '</button>';
-    html += '<a href="' + ROOT + 'index.html">[Mục lục 68 trang]</a>';
-    html += '</div>';
-
-    html += '</div>';
-    return html;
+  function buildHeader() {
+    var h = ZONE === 'M' ? headerM() : ZONE === 'B' ? headerB() : headerQ();
+    return '<header class="wf-header">' +
+      '<div class="wf-header-top">' +
+      '<button type="button" class="wf-menu-btn btn btn-sm" aria-expanded="false" aria-controls="wf-nav-bar">☰<span class="sr-only">Menu</span></button>' +
+      h.top + '</div>' +
+      '<div class="wf-nav-bar" id="wf-nav-bar"><nav class="wf-nav" aria-label="Menu chính">' + h.nav + '</nav></div>' +
+      '</header>';
   }
 
-  // 7. Xử lý Cổng Đăng Nhập & Cổng NFC (AC-02.3, BR-23)
-  function setupGates(currentRole) {
-    // Xử lý tất cả các phần tử có yêu cầu đăng nhập hoặc yêu cầu NFC
-    document.querySelectorAll('[data-needs-login="true"], [data-needs-nfc="true"]').forEach(function (el) {
-      el.addEventListener('click', function (e) {
-        var needsLogin = el.getAttribute('data-needs-login') === 'true';
-        var needsNfc = el.getAttribute('data-needs-nfc') === 'true';
+  function buildFooter() {
+    if (ZONE !== 'M') return '';
+    return '<footer class="wf-footer"><div class="wf-footer-in">' +
+      '<div><strong>MOONKAGE</strong> · Wireframe low-fi, không phải giao diện cuối</div>' +
+      '<div class="wf-footer-links">' +
+      link('m/m7-0.html', 'Bán hàng trên Moonkage') +
+      link('m/m8-0.html', 'Chính sách mua bán') +
+      link('index.html', 'Mục lục wireframe') +
+      '</div></div></footer>';
+  }
 
-        // Lấy trang mục tiêu (ưu tiên href của thẻ <a>, nếu là button thì lấy trang hiện tại)
-        var targetHref = el.getAttribute('href');
-        var currentPage = window.location.pathname.split('/').pop() || 'm1-0.html';
-        var nextTarget = (targetHref && targetHref !== '#' && targetHref.indexOf('javascript:') !== 0) ? targetHref : currentPage;
-
-        // BƯỚC 1: Nếu chưa đăng nhập (vai Khách)
-        // Bắt buộc chuyển sang trang đăng nhập (M5.1) trước khi làm bất kỳ thao tác nào
-        if (currentRole === 'guest') {
-          e.preventDefault();
-          window.location.href = ROOT + 'm/m5-1.html?next=' + encodeURIComponent(nextTarget);
-          return;
-        }
-
-        // BƯỚC 2: Đã đăng nhập nhưng chưa xác minh NFC (vai chưa phải buyer-nfc, seller-open, admin)
-        // Nếu chức năng yêu cầu NFC -> chuyển sang trang xác minh NFC (M6.4)
-        if (needsNfc) {
-          var isNfcVerified = (currentRole === 'buyer-nfc' || currentRole === 'admin' || currentRole === 'seller-open');
-          if (!isNfcVerified) {
-            e.preventDefault();
-            window.location.href = ROOT + 'm/m6-4.html?next=' + encodeURIComponent(nextTarget);
-            return;
-          }
-        }
-      });
+  // 4. Thanh công tắc vai --------------------------------------------------
+  function buildRoleBar() {
+    var opts = '';
+    if (typeof ROLES !== 'undefined') ROLES.forEach(function (r) {
+      opts += '<option value="' + r.id + '"' + (r.id === ROLE ? ' selected' : '') + '>' + esc(r.name) + '</option>';
     });
+    return '<div class="wf-role-bar" id="wf-role-bar">' +
+      '<div class="wf-role-bar-left"><label for="wf-role-switcher"><strong>Vai thử</strong></label>' +
+      '<select id="wf-role-switcher" class="wf-role-select">' + opts + '</select></div>' +
+      '<div class="wf-role-bar-right">' +
+      '<button type="button" id="wf-notes-toggle" aria-pressed="' + NOTES_ON + '">Ghi chú & thuyết minh: ' + (NOTES_ON ? 'BẬT' : 'TẮT') + '</button>' +
+      link('index.html', 'Mục lục') +
+      '</div></div>';
   }
 
-  // 8. Cập nhật hiển thị theo thuộc tính data-show
-  function applyRoleVisibility(currentRole) {
-    document.querySelectorAll('[data-show]').forEach(function (el) {
-      var allowedRoles = el.getAttribute('data-show').split(' ');
-      if (allowedRoles.indexOf(currentRole) !== -1 || allowedRoles.indexOf('all') !== -1) {
-        el.style.display = '';
-      } else {
-        el.style.display = 'none';
-      }
-    });
-  }
-
-  // 9. Dựng và chèn Sidebar cho Phân khu Tài khoản (M6.0 - M6.5)
-  function buildAccountSidebarHtml(currentPageId, currentRole) {
-    var isOverview = (currentPageId === 'M6.0');
-    var isOrders = (currentPageId.indexOf('M6.1') === 0);
-    var isRfq = (currentPageId.indexOf('M6.2') === 0);
-    var isAddr = (currentPageId.indexOf('M6.3') === 0);
-    var isNfc = (currentPageId === 'M6.4');
-    var isProfile = (currentPageId === 'M6.5');
-
-    var html = '<div class="wf-account-user-card">';
-    html += '<div class="wf-account-avatar">[Avatar]</div>';
-    html += '<div class="wf-account-user-meta">';
-    html += '<strong>Anh Minh</strong><br>';
-    html += '<small style="color: #666;">';
-    if (currentRole === 'buyer-nfc') {
-      html += 'Đã xác minh NFC';
-    } else if (currentRole === 'seller-open') {
-      html += 'Chủ người bán';
-    } else if (currentRole === 'seller-pending') {
-      html += 'Chờ duyệt mở bán';
-    } else if (currentRole === 'admin') {
-      html += 'Quản trị viên';
-    } else if (currentRole === 'guest') {
-      html += 'Khách';
-    } else {
-      html += 'Người mua';
-    }
-    html += '</small>';
-    html += '</div>';
-    html += '</div>';
-
-    html += '<nav class="wf-account-nav-list">';
-    html += '<a href="' + ROOT + 'm/m6-0.html" class="wf-account-nav-link ' + (isOverview ? 'active' : '') + '">Tổng quan</a>';
-    html += '<a href="' + ROOT + 'm/m6-1.html" class="wf-account-nav-link ' + (isOrders ? 'active' : '') + '">Đơn hàng</a>';
-    html += '<a href="' + ROOT + 'm/m6-2.html" class="wf-account-nav-link ' + (isRfq ? 'active' : '') + '">Yêu cầu và báo giá</a>';
-    html += '<a href="' + ROOT + 'm/m6-3.html" class="wf-account-nav-link ' + (isAddr ? 'active' : '') + '">Địa chỉ giao hàng</a>';
-    html += '<a href="' + ROOT + 'm/m6-4.html" class="wf-account-nav-link ' + (isNfc ? 'active' : '') + '">Xác minh danh tính</a>';
-    html += '<a href="' + ROOT + 'm/m6-5.html" class="wf-account-nav-link ' + (isProfile ? 'active' : '') + '">Thông tin cá nhân</a>';
-    
-    html += '<div style="border-top: 1px solid #ccc; margin: 8px 0;"></div>';
-    
-    if (currentRole === 'seller-pending' || currentRole === 'seller-open') {
-      html += '<a href="' + ROOT + 'b/b1-0.html" class="wf-account-nav-link" style="font-weight: 700;">Kênh người bán ›</a>';
-    } else {
-      html += '<a href="' + ROOT + 'm/m7-0.html" class="wf-account-nav-link">Bán hàng trên Moonkage</a>';
-    }
-    
-    if (currentRole === 'guest') {
-      html += '<a href="' + ROOT + 'm/m5-1.html" class="wf-account-nav-link" style="border-top: 1px solid #000; font-weight: 700; margin-top: 4px;">Đăng nhập</a>';
-    } else {
-      html += '<a href="' + ROOT + 'm/m5-1.html" class="wf-account-nav-link" id="wf-sidebar-logout-link" style="border-top: 1px solid #000; font-weight: 700; margin-top: 4px;">Đăng xuất</a>';
-    }
-    html += '</nav>';
-    return html;
-  }
-
-  function attachAccountSidebar(currentPageId, currentRole) {
-    var mainContent = document.getElementById('content');
-    if (!mainContent) return;
-
-    var layout = document.createElement('div');
-    layout.className = 'wf-account-layout';
-
-    var sidebar = document.createElement('aside');
-    sidebar.className = 'wf-account-sidebar';
-    sidebar.innerHTML = buildAccountSidebarHtml(currentPageId, currentRole);
-
-    var contentWrap = document.createElement('div');
-    contentWrap.className = 'wf-account-main-content';
-
-    while (mainContent.firstChild) {
-      contentWrap.appendChild(mainContent.firstChild);
-    }
-
-    layout.appendChild(sidebar);
-    layout.appendChild(contentWrap);
-    mainContent.appendChild(layout);
-
-    var sidebarLogout = document.getElementById('wf-sidebar-logout-link');
-    if (sidebarLogout) {
-      sidebarLogout.addEventListener('click', function () {
-        setSavedRole('guest');
-      });
-    }
-  }
-
-  // 10. Rào chắn phân quyền vai trò (Role Boundary Enforcement)
-  function getRoleName(roleId) {
-    if (typeof ROLES !== 'undefined') {
-      for (var i = 0; i < ROLES.length; i++) {
-        if (ROLES[i].id === roleId) return ROLES[i].name;
-      }
-    }
-    return roleId;
-  }
-
-  function getPagePermission(pageId, zone) {
-    // 1. Phân khu Quản trị (Zone Q)
-    if (zone === 'Q' || pageId.indexOf('Q') === 0) {
-      return {
-        allowedRoles: ['admin'],
-        recommendedRole: 'admin',
-        reason: 'Khu vực quản trị hệ thống chỉ dành riêng cho tài khoản Quản trị viên (admin). Các vai trò người mua hoặc người bán không được phép xem hoặc thao tác tại khu vực này.',
-        fallbackLink: ROOT + 'm/m1-0.html',
-        fallbackText: 'Quay về trang chủ Mua hàng (M1.0)'
-      };
-    }
-
-    // 2. Phân khu Kênh người bán (Zone B)
-    if (zone === 'B' || pageId.indexOf('B') === 0) {
-      var openShopOnly = [
-        'B2.0', 'B2.1', 'B2.2',
-        'B3.0', 'B3.1', 'B3.2',
-        'B4.0', 'B4.1',
-        'B5.0', 'B5.1', 'B5.2'
-      ];
-      if (openShopOnly.indexOf(pageId) !== -1) {
-        return {
-          allowedRoles: ['seller-open', 'admin'],
-          recommendedRole: 'seller-open',
-          reason: 'Chức năng quản lý đơn hàng, báo giá, sản phẩm và tiền chỉ mở sau khi hồ sơ người bán đã được duyệt và hoàn tất đóng phí mở bán (FR-27).',
-          fallbackLink: ROOT + 'b/b1-0.html',
-          fallbackText: 'Về trang Tổng quan hồ sơ (B1.0)'
-        };
-      }
-      return {
-        allowedRoles: ['seller-pending', 'seller-open', 'admin'],
-        recommendedRole: 'seller-pending',
-        reason: 'Kênh người bán chỉ dành cho chủ cơ sở sản xuất hoặc chủ gian hàng đã gửi hồ sơ đăng ký. Người mua hoặc khách vãng lai không có quyền truy cập khu vực này.',
-        fallbackLink: ROOT + 'm/m7-0.html',
-        fallbackText: 'Xem hướng dẫn Bán hàng trên Moonkage (M7.0)'
-      };
-    }
-
-    // 3. Phân khu Mua hàng (Zone M)
-    var nfcPages = ['M3.1', 'M3.4', 'M7.1'];
-    if (nfcPages.indexOf(pageId) !== -1) {
-      return {
-        allowedRoles: ['buyer-nfc', 'seller-open', 'admin'],
-        recommendedRole: 'buyer-nfc',
-        reason: 'Theo quy định phòng chống gian lận đơn hàng lớn và đăng ký bán hàng (BR-23), bạn cần xác minh danh tính qua thẻ CCCD gắn chip (NFC) trước khi truy cập chức năng này.',
-        fallbackLink: ROOT + 'm/m6-4.html?next=' + pageId.toLowerCase().replace('.', '-') + '.html',
-        fallbackText: 'Đi tới Xác minh danh tính NFC (M6.4)'
-      };
-    }
-
-    if (pageId === 'M7.0') {
-      return {
-        allowedRoles: ['guest', 'buyer', 'buyer-nfc', 'admin'],
-        recommendedRole: 'buyer',
-        reason: 'Tài khoản của bạn đã là chủ người bán trên hệ thống Moonkage. Vui lòng truy cập Kênh người bán để quản lý hoạt động kinh doanh.',
-        fallbackLink: ROOT + 'b/b1-0.html',
-        fallbackText: 'Vào Kênh người bán (B1.0)'
-      };
-    }
-
-    var authRequiredPages = [
-      'M4.0', 'M4.1', 'M4.2', 'M4.3',
-      'M6.0', 'M6.1', 'M6.1.1', 'M6.1.2', 'M6.1.3',
-      'M6.2', 'M6.2.1', 'M6.2.2',
-      'M6.3', 'M6.3.1', 'M6.3.2',
-      'M6.4', 'M6.5', 'M6.6'
-    ];
-    if (authRequiredPages.indexOf(pageId) !== -1) {
-      return {
-        allowedRoles: ['buyer', 'buyer-nfc', 'seller-pending', 'seller-open', 'admin'],
-        recommendedRole: 'buyer',
-        reason: 'Khu vực quản lý giỏ hàng, đơn hàng, yêu cầu báo giá và thông tin cá nhân yêu cầu tài khoản đã đăng nhập (AC-02.3). Khách chưa đăng nhập không thể xem thông tin này.',
-        fallbackLink: ROOT + 'm/m5-1.html?next=' + pageId.toLowerCase().replace('.', '-') + '.html',
-        fallbackText: 'Đăng nhập tài khoản ngay (M5.1)'
-      };
-    }
-
-    return {
-      allowedRoles: ['guest', 'buyer', 'buyer-nfc', 'seller-pending', 'seller-open', 'admin'],
-      recommendedRole: '',
-      reason: ''
+  // 5. Rào chắn theo vai ---------------------------------------------------
+  function permission() {
+    var p = PAGE_ID;
+    if (ZONE === 'Q') return {
+      allow: ['admin'], suggest: 'admin',
+      reason: 'Khu Quản trị chỉ dành cho tài khoản Quản trị.',
+      back: 'm/m1-0.html', backText: 'Về trang chủ'
     };
+    if (ZONE === 'B') {
+      if (/^B[2-5]\./.test(p)) return {
+        allow: ['seller-open', 'admin'], suggest: 'seller-open',
+        reason: 'Đơn hàng, yêu cầu báo giá, sản phẩm và tiền chỉ mở sau khi hồ sơ được duyệt và đã đóng phí mở bán (FR-27).',
+        back: 'b/b1-0.html', backText: 'Về Tổng quan Kênh người bán'
+      };
+      return {
+        allow: ['seller-pending', 'seller-open', 'admin'], suggest: 'seller-pending',
+        reason: 'Kênh người bán chỉ dành cho tài khoản đã khai hồ sơ người bán.',
+        back: 'm/m7-0.html', backText: 'Xem Bán hàng trên Moonkage'
+      };
+    }
+    if (['M3.1', 'M3.4', 'M7.1'].indexOf(p) !== -1) return {
+      allow: ['buyer-nfc', 'seller-open', 'admin'], suggest: 'buyer-nfc',
+      reason: 'Thao tác này cần xác minh danh tính bằng CCCD gắn chip trước (BR-23).',
+      back: 'm/m6-4.html?next=' + p.toLowerCase().replace(/\./g, '-') + '.html', backText: 'Đi tới Xác minh danh tính'
+    };
+    if (p === 'M7.0') return {
+      allow: ['guest', 'buyer', 'buyer-nfc', 'admin'], suggest: 'buyer',
+      reason: 'Tài khoản đã là chủ người bán nên lối "Bán hàng trên Moonkage" được thay bằng "Kênh người bán".',
+      back: 'b/b1-0.html', backText: 'Vào Kênh người bán'
+    };
+    if (/^M4\.|^M6\./.test(p)) return {
+      allow: ['buyer', 'buyer-nfc', 'seller-pending', 'seller-open', 'admin'], suggest: 'buyer',
+      reason: 'Trang này cần đăng nhập (AC-02.3). Khách không có giỏ hàng.',
+      back: 'm/m5-1.html?next=' + p.toLowerCase().replace(/\./g, '-') + '.html', backText: 'Đăng nhập'
+    };
+    return null;
   }
 
-  function enforceRoleBoundary(zone, pageId, currentRole) {
-    if (!zone || zone === 'INDEX') return true;
-
-    var perm = getPagePermission(pageId, zone);
-    var isAllowed = (perm.allowedRoles.indexOf(currentRole) !== -1 || perm.allowedRoles.indexOf('all') !== -1);
-
-    if (isAllowed) return true;
-
-    var mainContent = document.getElementById('content');
-    if (!mainContent) return false;
-
-    var allowedNames = perm.allowedRoles.map(function(r) { return getRoleName(r); }).join(', ');
-    var currentName = getRoleName(currentRole);
-
-    var boundaryHtml = '<div class="wf-role-boundary">';
-    boundaryHtml += '<div class="wf-boundary-box">';
-    boundaryHtml += '<div class="wf-boundary-icon">[!] RÀO CHẮN PHÂN QUYỀN (ROLE BOUNDARY)</div>';
-    boundaryHtml += '<h2>Truy cập bị giới hạn theo vai trò</h2>';
-    boundaryHtml += '<p class="wf-boundary-desc">' + perm.reason + '</p>';
-    
-    boundaryHtml += '<div class="wf-boundary-meta">';
-    boundaryHtml += '<div><strong>Màn hình:</strong> <code>' + pageId + '</code></div>';
-    boundaryHtml += '<div><strong>Vai trò được phép xem:</strong> <span style="font-weight:700;">' + allowedNames + '</span></div>';
-    boundaryHtml += '<div><strong>Vai trò hiện tại của bạn:</strong> <span style="font-weight:700; text-decoration: underline;">' + currentName + '</span></div>';
-    boundaryHtml += '</div>';
-
-    boundaryHtml += '<div class="wf-boundary-actions">';
-    if (perm.recommendedRole) {
-      boundaryHtml += '<button type="button" class="btn btn-primary" onclick="switchRoleAndReload(\'' + perm.recommendedRole + '\')">';
-      boundaryHtml += 'Chuyển sang vai [' + getRoleName(perm.recommendedRole) + '] để thử nghiệm ›';
-      boundaryHtml += '</button>';
-    }
-    if (perm.fallbackLink) {
-      boundaryHtml += '<a href="' + perm.fallbackLink + '" class="btn">';
-      boundaryHtml += '‹ ' + perm.fallbackText;
-      boundaryHtml += '</a>';
-    } else {
-      boundaryHtml += '<a href="' + ROOT + 'm/m1-0.html" class="btn">';
-      boundaryHtml += '‹ Quay về Trang chủ Mua hàng (M1.0)';
-      boundaryHtml += '</a>';
-    }
-    boundaryHtml += '</div>';
-
-    boundaryHtml += '<small style="color: #666; display: block; margin-top: 14px;">';
-    boundaryHtml += '* Gợi ý: Trong chế độ thử nghiệm wireframe, bạn có thể chuyển đổi giữa các vai bằng thanh điều khiển ở đáy màn hình hoặc bấm nút phía trên.';
-    boundaryHtml += '</small>';
-
-    boundaryHtml += '</div>';
-    boundaryHtml += '</div>';
-
-    mainContent.innerHTML = boundaryHtml;
+  function enforceBoundary() {
+    var perm = permission();
+    if (!perm || perm.allow.indexOf(ROLE) !== -1) return true;
+    var main = document.getElementById('content');
+    if (!main) return false;
+    main.innerHTML =
+      '<div class="wf-role-boundary"><div class="wf-boundary-box">' +
+      '<span class="eyebrow">Rào chắn theo vai · ' + esc(PAGE_ID) + '</span>' +
+      '<h1>Vai "' + esc(roleName(ROLE)) + '" không vào được trang này</h1>' +
+      '<p class="muted">' + esc(perm.reason) + '</p>' +
+      '<dl class="kv"><dt>Vai được vào</dt><dd>' + perm.allow.map(roleName).join(', ') + '</dd></dl>' +
+      '<div class="wf-boundary-actions">' +
+      '<button type="button" class="btn btn-primary" data-switch-role="' + perm.suggest + '">Đổi sang vai "' + esc(roleName(perm.suggest)) + '"</button>' +
+      link(perm.back, perm.backText, 'btn') +
+      '</div></div></div>';
     return false;
   }
 
-  window.switchRoleAndReload = function (newRole) {
-    setSavedRole(newRole);
-    window.location.reload();
-  };
-
-  // Khởi chạy khi DOM sẵn sàng
-  document.addEventListener('DOMContentLoaded', function () {
-    var zone = document.body.dataset.zone || '';
-    var pageId = document.body.dataset.page || '';
-    var currentRole = getSavedRole();
-    var notesVisible = areNotesVisible();
-
-    if (!notesVisible) {
-      document.body.classList.add('hide-notes');
+  // 6. Cột menu tài khoản (M6.0–M6.5) -----------------------------------------
+  function attachAccountSidebar() {
+    var main = document.getElementById('content');
+    if (!main) return;
+    function item(href, label, on, right) {
+      return link(href, label + (right ? ' <small class="faint">' + right + '</small>' : ''), 'wf-account-nav-link' + (on ? ' active' : ''));
     }
+    var status = { 'buyer-nfc': 'Đã xác minh danh tính', 'seller-open': 'Chủ người bán · đã mở bán', 'seller-pending': 'Chủ người bán · chờ duyệt', 'admin': 'Quản trị' }[ROLE] || 'Chưa xác minh danh tính';
+    var html = '<div class="wf-account-user-card"><span class="avatar">AM</span><div><strong>Anh Minh</strong><br><small class="muted">' + status + '</small></div></div>' +
+      '<nav class="wf-account-nav-list" aria-label="Tài khoản">' +
+      item('m/m6-0.html', 'Tổng quan', PAGE_ID === 'M6.0') +
+      item('m/m6-1.html', 'Đơn hàng', starts('M6.1')) +
+      item('m/m6-2.html', 'Yêu cầu và báo giá', starts('M6.2')) +
+      item('m/m6-3.html', 'Địa chỉ giao hàng', starts('M6.3')) +
+      item('m/m6-4.html', 'Xác minh danh tính', PAGE_ID === 'M6.4', isNfc ? '✓' : 'chưa') +
+      item('m/m6-5.html', 'Thông tin cá nhân', PAGE_ID === 'M6.5') +
+      '<div class="wf-dd-sep"></div>' +
+      (isSeller ? item('b/b1-0.html', 'Kênh người bán ›') : item('m/m7-0.html', 'Bán hàng trên Moonkage')) +
+      link('m/m5-1.html', 'Đăng xuất', 'wf-account-nav-link', ' data-logout="true"') +
+      '</nav>';
+    var layout = document.createElement('div');
+    layout.className = 'wf-account-layout';
+    var side = document.createElement('aside');
+    side.className = 'wf-account-sidebar';
+    side.innerHTML = html;
+    var wrap = document.createElement('div');
+    wrap.className = 'wf-account-main-content';
+    while (main.firstChild) wrap.appendChild(main.firstChild);
+    layout.appendChild(side);
+    layout.appendChild(wrap);
+    main.appendChild(layout);
+  }
 
-    // Chèn Header & Breadcrumb
-    if (zone && zone !== 'INDEX') {
-      var headerHtml = buildHeader(zone, pageId, currentRole);
-      var breadcrumbHtml = buildBreadcrumb(pageId);
-      document.body.insertAdjacentHTML('afterbegin', headerHtml + breadcrumbHtml);
-
-      // Chèn Footer
-      var footerHtml = buildFooter(zone);
-      if (footerHtml) {
-        document.body.insertAdjacentHTML('beforeend', footerHtml);
-      }
-    }
-
-    // Kiểm tra rào chắn phân quyền vai trò (Role Boundary)
-    var isAccessPermitted = enforceRoleBoundary(zone, pageId, currentRole);
-
-    // Chỉ chèn Sidebar tài khoản nếu vai trò hợp lệ
-    if (isAccessPermitted && zone === 'M' && pageId.indexOf('M6.') === 0 && pageId !== 'M6.6') {
-      attachAccountSidebar(pageId, currentRole);
-    }
-
-    // Chèn thanh vai trò cố định
-    var roleBarHtml = buildRoleBar(currentRole, notesVisible);
-    document.body.insertAdjacentHTML('beforeend', roleBarHtml);
-
-    // Gắn sự kiện đổi vai
-    var roleSelect = document.getElementById('wf-role-switcher');
-    if (roleSelect) {
-      roleSelect.addEventListener('change', function () {
-        var newRole = this.value;
-        setSavedRole(newRole);
-        window.location.reload();
-      });
-    }
-
-    // Gắn sự kiện bật/tắt ghi chú
-    var notesBtn = document.getElementById('wf-notes-toggle');
-    if (notesBtn) {
-      notesBtn.addEventListener('click', function () {
-        var visible = !areNotesVisible();
-        setNotesVisible(visible);
-        if (visible) {
-          document.body.classList.remove('hide-notes');
-          this.textContent = '[Ghi chú: BẬT]';
-        } else {
-          document.body.classList.add('hide-notes');
-          this.textContent = '[Ghi chú: TẮT]';
+  // 7. Cổng đăng nhập và cổng NFC ---------------------------------------------
+  function setupGates() {
+    document.querySelectorAll('[data-needs-login="true"], [data-needs-nfc="true"]').forEach(function (el) {
+      el.addEventListener('click', function (e) {
+        var href = el.getAttribute('href');
+        var here = location.pathname.split('/').pop() || 'm1-0.html';
+        var next = (href && href !== '#') ? href.replace(/^\.\.\/m\//, '') : here;
+        if (ROLE === 'guest') {
+          e.preventDefault();
+          location.href = ROOT + 'm/m5-1.html?next=' + encodeURIComponent(next);
+          return;
+        }
+        if (el.getAttribute('data-needs-nfc') === 'true' && !isNfc) {
+          e.preventDefault();
+          location.href = ROOT + 'm/m6-4.html?next=' + encodeURIComponent(next);
         }
       });
-    }
+    });
+  }
 
-    // Gắn sự kiện Đăng xuất trong menu Tài khoản
-    var logoutLink = document.getElementById('wf-logout-link');
-    if (logoutLink) {
-      logoutLink.addEventListener('click', function (e) {
-        setSavedRole('guest');
+  function applyRoleVisibility() {
+    document.querySelectorAll('[data-show]').forEach(function (el) {
+      var list = el.getAttribute('data-show').split(/\s+/);
+      el.style.display = (list.indexOf(ROLE) !== -1 || list.indexOf('all') !== -1) ? '' : 'none';
+    });
+    document.querySelectorAll('[data-hide]').forEach(function (el) {
+      if (el.getAttribute('data-hide').split(/\s+/).indexOf(ROLE) !== -1) el.style.display = 'none';
+    });
+  }
+
+  // 8. Bảng "Thuyết minh bố cục" ----------------------------------------------
+  function buildWhy() {
+    var why = (typeof WHY !== 'undefined') ? WHY[PAGE_ID] : null;
+    var notes = Array.prototype.slice.call(document.querySelectorAll('.wf-note'));
+    if (!why && !notes.length) return;
+    var page = findPage(PAGE_ID) || {};
+
+    var pins = {};
+    document.querySelectorAll('[data-why]').forEach(function (el) {
+      var n = el.getAttribute('data-why');
+      if (getComputedStyle(el).display === 'none') return;
+      pins[n] = true;
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'wf-pin';
+      b.textContent = n;
+      b.setAttribute('aria-label', 'Lý do bố cục số ' + n);
+      b.addEventListener('click', function (e) {
+        e.preventDefault(); e.stopPropagation();
+        var li = document.getElementById('wf-why-' + n);
+        if (li) { li.scrollIntoView({ block: 'nearest', behavior: 'smooth' }); flash(n); }
       });
+      el.insertBefore(b, el.firstChild);
+    });
+
+    var html = '<div class="wf-why-head"><span class="eyebrow">Thuyết minh bố cục</span>' +
+      '<h2>' + esc(page.name || PAGE_ID) + ' <code>' + esc(PAGE_ID) + '</code></h2>' +
+      '<div class="meta">' + (page.template ? '<span class="badge">Khuôn: ' + esc(page.template) + '</span>' : '') +
+      (page.fr ? '<span class="badge badge-dash">' + esc(page.fr) + '</span>' : '') + '</div></div>' +
+      '<div class="wf-why-body">';
+    if (why) {
+      if (why.goal) html += '<section><h3>Trang này để làm gì</h3><p class="wf-why-goal">' + why.goal + '</p></section>';
+      if (why.points && why.points.length) {
+        html += '<section><h3>Vì sao bố cục như vậy</h3><ol class="wf-why-list">';
+        why.points.forEach(function (pt, i) {
+          var n = String(i + 1);
+          html += '<li id="wf-why-' + n + '" data-n="' + n + '"><span class="n' + (pins[n] ? '' : ' off') + '">' + n + '</span>' +
+            '<div><b>' + pt[0] + '</b>' + pt[1] + '</div></li>';
+        });
+        html += '</ol>';
+        if (why.points.some(function (pt, i) { return !pins[String(i + 1)]; })) {
+          html += '<p class="faint mt-1">Số viền rỗng: khối chỉ hiện ở vai hoặc trạng thái khác (đổi vai ở thanh dưới, hoặc dùng các liên kết "Ví dụ" trên trang).</p>';
+        }
+        html += '</section>';
+      }
+      if (why.rejected && why.rejected.length) {
+        html += '<section><h3>Bố cục đã cân nhắc nhưng không chọn</h3><ul class="wf-why-rej">';
+        why.rejected.forEach(function (r) { html += '<li>' + r + '</li>'; });
+        html += '</ul></section>';
+      }
+    }
+    html += '<section class="wf-why-notes"><h3>Ghi chú FR / AC</h3><div id="wf-why-notes"></div></section>';
+    html += '</div>';
+
+    var panel = document.createElement('aside');
+    panel.className = 'wf-why';
+    panel.setAttribute('aria-label', 'Thuyết minh bố cục');
+    panel.innerHTML = html;
+    var footer = document.querySelector('.wf-footer');
+    if (footer) body.insertBefore(panel, footer); else body.appendChild(panel);
+    var holder = panel.querySelector('#wf-why-notes');
+    notes.forEach(function (n) { holder.appendChild(n); });
+    if (!notes.length) holder.parentNode.remove();
+    body.classList.add('has-why');
+
+    panel.querySelectorAll('.wf-why-list li').forEach(function (li) {
+      var n = li.getAttribute('data-n');
+      li.addEventListener('mouseenter', function () { mark(n, true); });
+      li.addEventListener('mouseleave', function () { mark(n, false); });
+    });
+  }
+  function mark(n, on) {
+    document.querySelectorAll('[data-why="' + n + '"]').forEach(function (el) { el.classList.toggle('wf-hl', on); });
+  }
+  function flash(n) {
+    var li = document.getElementById('wf-why-' + n);
+    mark(n, true); if (li) li.classList.add('wf-hl');
+    setTimeout(function () { mark(n, false); if (li) li.classList.remove('wf-hl'); }, 1600);
+  }
+
+  // 9. Mục lục (index.html) dựng từ PAGES và FLOWS ----------------------------
+  function renderIndex() {
+    var root = document.getElementById('ix-root');
+    if (!root || typeof PAGES === 'undefined') return;
+    var html = '<section class="section"><div class="section-head"><h2>Luồng bấm xuyên suốt</h2>' +
+      '<p>Chọn đúng vai ở thanh dưới rồi bấm lần lượt từng bước.</p></div>';
+    FLOWS.forEach(function (f) {
+      html += '<div class="flow"><div class="row-between"><div><strong>' + f.id + ' · ' + esc(f.name) + '</strong> <span class="muted sm">— ' + esc(f.persona) + '</span></div></div>' +
+        '<div class="flow-steps">';
+      f.steps.forEach(function (id, i) {
+        var p = findPage(id);
+        if (i) html += '<span class="arr">→</span>';
+        html += p ? '<a href="' + p.file + '" title="' + esc(p.name) + '">' + id + ' ' + esc(p.name) + '</a>' : '<span class="badge badge-dash">' + id + '</span>';
+      });
+      html += '</div>' + (f.exceptions ? '<p class="sm muted mt-1">Nhánh / ngoại lệ: ' + esc(f.exceptions) + '</p>' : '') + '</div>';
+    });
+    html += '</section>';
+
+    [['M', 'Mua hàng'], ['B', 'Kênh người bán'], ['Q', 'Quản trị']].forEach(function (z) {
+      var rows = PAGES.filter(function (p) { return p.zone === z[0]; });
+      html += '<section class="section" id="zone-' + z[0] + '"><div class="section-head"><h2>' + z[1] + ' <span class="faint">(' + z[0] + ') · ' + rows.length + ' trang</span></h2></div>' +
+        '<div class="table-wrap"><table class="cards"><thead><tr><th>Mã</th><th>Tên trang</th><th>Khuôn</th><th>Ai thấy</th><th>FR</th><th>Luồng</th><th>Demo</th></tr></thead><tbody>';
+      rows.forEach(function (p) {
+        var demo = p.demo === 'Làm trọn' ? 'badge-soft' : p.demo === 'Hoãn' ? 'badge-dash' : '';
+        html += '<tr><td data-label="Mã"><code>' + p.id + '</code></td>' +
+          '<td data-label="Trang"><a href="' + p.file + '"><strong>' + esc(p.name) + '</strong></a><br><small class="faint">' + esc(p.path) + '</small></td>' +
+          '<td data-label="Khuôn"><small>' + esc(p.template) + '</small></td>' +
+          '<td data-label="Ai thấy"><small>' + esc(p.who) + '</small></td>' +
+          '<td data-label="FR"><small>' + esc(p.fr) + '</small></td>' +
+          '<td data-label="Luồng"><small>' + esc(p.flows) + '</small></td>' +
+          '<td data-label="Demo"><span class="badge ' + demo + '">' + esc(p.demo) + '</span></td></tr>';
+      });
+      html += '</tbody></table></div></section>';
+    });
+    root.innerHTML = html;
+  }
+
+  // 10. Khởi chạy -------------------------------------------------------------
+  document.addEventListener('DOMContentLoaded', function () {
+    if (!NOTES_ON) body.classList.add('hide-notes');
+
+    if (ZONE && ZONE !== 'INDEX') {
+      body.insertAdjacentHTML('afterbegin', buildHeader() + buildBreadcrumb());
+      var f = buildFooter();
+      if (f) body.insertAdjacentHTML('beforeend', f);
+    } else {
+      renderIndex();
     }
 
-    // Xử lý cổng đăng nhập & cổng NFC
-    setupGates(currentRole);
-    applyRoleVisibility(currentRole);
-  });
+    var ok = enforceBoundary();
+    if (ok && ZONE === 'M' && starts('M6.') && PAGE_ID !== 'M6.6') attachAccountSidebar();
 
+    body.insertAdjacentHTML('beforeend', buildRoleBar());
+    applyRoleVisibility();
+    // Khối phụ (ví dụ cột lọc) gập sẵn trên màn hẹp để nội dung chính lên trước
+    if (window.innerWidth <= 720) document.querySelectorAll('details[data-collapse-mobile]').forEach(function (d) { d.open = false; });
+    if (ok) buildWhy();
+    setupGates();
+
+    document.getElementById('wf-role-switcher').addEventListener('change', function () {
+      save('wf_role', this.value); location.reload();
+    });
+    document.getElementById('wf-notes-toggle').addEventListener('click', function () {
+      NOTES_ON = !NOTES_ON;
+      save('wf_notes_visible', NOTES_ON ? 'true' : 'false');
+      body.classList.toggle('hide-notes', !NOTES_ON);
+      this.textContent = 'Ghi chú & thuyết minh: ' + (NOTES_ON ? 'BẬT' : 'TẮT');
+      this.setAttribute('aria-pressed', String(NOTES_ON));
+    });
+    document.addEventListener('click', function (e) {
+      var t = e.target.closest('[data-logout], [data-switch-role], .wf-menu-btn, [data-set-role]');
+      if (!t) return;
+      if (t.hasAttribute('data-logout')) save('wf_role', 'guest');
+      if (t.hasAttribute('data-set-role')) save('wf_role', t.getAttribute('data-set-role'));
+      if (t.hasAttribute('data-switch-role')) { save('wf_role', t.getAttribute('data-switch-role')); location.reload(); }
+      if (t.classList.contains('wf-menu-btn')) {
+        var bar = document.getElementById('wf-nav-bar');
+        var open = bar.classList.toggle('open');
+        t.setAttribute('aria-expanded', String(open));
+      }
+    });
+  });
 })();

@@ -8,47 +8,29 @@
 </head>
 <body data-zone="M" data-page="M6.3.1">
   <main id="content">
-    <h1>Thêm / Sửa địa chỉ nhận hàng (M6.3.1)</h1>
-    <p style="color: #444; margin-bottom: 20px;">Cập nhật thông tin nhận bánh chính xác để hệ thống tính phí vận chuyển.</p>
-    <form class="t3-form" action="m6-3.html" method="GET">
-      <fieldset>
-        <legend>Thông tin người nhận</legend>
-        <div class="form-group">
-          <label for="a-name">Họ và tên người nhận *</label>
-          <input type="text" id="a-name" value="Anh Minh" required>
-        </div>
-        <div class="form-group">
-          <label for="a-phone">Số điện thoại *</label>
-          <input type="text" id="a-phone" value="0912.345.678" required>
-        </div>
-        <div class="form-group">
-          <label for="a-city">Tỉnh / Thành phố *</label>
-          <select id="a-city" required>
-            <option value="HN" selected>Hà Nội</option>
-            <option value="HCM">TP. Hồ Chí Minh</option>
-            <option value="DN">Đà Nẵng</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label for="a-detail">Địa chỉ chi tiết (Số nhà, đường, phường/xã) *</label>
-          <input type="text" id="a-detail" value="Số 18 Hoàng Diệu, Ba Đình" required>
-        </div>
-        <div class="form-group">
-          <label><input type="checkbox" checked> Đặt làm địa chỉ mặc định</label>
+    <div class="page-head"><div><h1>Thêm địa chỉ</h1></div></div>
+    <form class="form" action="m6-3.html" method="get">
+      <fieldset data-why="1">
+        <legend>Người nhận</legend>
+        <div class="field-row">
+          <div class="field"><label for="n" class="req">Họ tên</label><input id="n" type="text" value="Anh Minh"></div>
+          <div class="field"><label for="p" class="req">Số điện thoại</label><input id="p" type="tel" value="0912 345 678"></div>
         </div>
       </fieldset>
-      <div style="display: flex; gap: 10px; margin-top: 10px;">
-        <button type="submit" class="btn btn-primary" style="padding: 10px 20px;">Lưu địa chỉ (M6.3) ›</button>
-        <a href="m6-3.html" class="btn">Hủy</a>
-      </div>
+      <fieldset data-why="2">
+        <legend>Địa chỉ</legend>
+        <div class="field"><label for="c" class="req">Tỉnh / thành phố</label><select id="c"><option>Hà Nội</option><option>TP. Hồ Chí Minh</option><option>Đà Nẵng</option></select></div>
+        <div class="field"><label for="d" class="req">Số nhà, đường, phường</label><input id="d" type="text" value="18 Hoàng Diệu, Ba Đình"></div>
+        <div class="field"><label for="t">Tên gợi nhớ</label><input id="t" type="text" value="Nhà"><span class="hint">Hiện khi chọn địa chỉ ở thanh toán</span></div>
+        <label class="check mt-2"><input type="checkbox" checked> Đặt làm địa chỉ mặc định</label>
+      </fieldset>
+      <div class="form-actions" data-why="3"><a href="m6-3.html" class="btn btn-ghost">Hủy</a><button type="submit" class="btn btn-primary btn-lg">Lưu địa chỉ</button></div>
     </form>
   </main>
 
-  <aside class="wf-note" data-ref="FR-03">
-    Thêm / sửa địa chỉ (M6.3.1). Form khuôn T3 để thêm hoặc chỉnh sửa địa chỉ nhận hàng (FR-03).
-  </aside>
-
+  <aside class="wf-note" data-ref="FR-03">Form thêm hoặc sửa địa chỉ.</aside>
   <script src="../assets/data.js"></script>
+  <script src="../assets/why-m.js"></script>
   <script src="../assets/wf.js"></script>
 </body>
 </html>

@@ -3,47 +3,24 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Moonkage – Đối soát thanh toán (B5.1)</title>
+  <title>Moonkage – Đối soát (B5.1)</title>
   <link rel="stylesheet" href="../assets/wf.css">
 </head>
 <body data-zone="B" data-page="B5.1">
   <main id="content">
-    <div class="t1-header">
-      <div>
-        <h1>Bảng đối soát thanh toán (B5.1)</h1>
-        <small style="color: #666;">Demo: xem bảng doanh thu các đơn hàng đã giao thành công (FR-43)</small>
-      </div>
-    </div>
-
-    <table>
-      <thead>
-        <tr>
-          <th>Kỳ đối soát</th>
-          <th>Số lượng đơn</th>
-          <th>Doanh số bánh</th>
-          <th>Phí ship thu hộ</th>
-          <th>Thực nhận</th>
-          <th>Trạng thái</th>
-        </tr>
-      </thead>
+    <div class="page-head"><div><h1>Đối soát</h1><p class="lead">Demo: chỉ xem, chưa lọc và xuất tệp.</p></div></div>
+    <div class="table-wrap" data-why="1"><table class="cards">
+      <thead><tr><th>Đơn</th><th>Giao xong</th><th class="num">Tiền hàng</th><th class="num">Phí giao</th><th class="num">Bạn nhận</th><th>Chuyển</th></tr></thead>
       <tbody>
-        <tr>
-          <td><strong>Kỳ 2 (15/10 – 22/10/2026)</strong></td>
-          <td>12 đơn</td>
-          <td>8.400.000đ</td>
-          <td>300.000đ</td>
-          <td><strong>8.700.000đ</strong></td>
-          <td><span class="t2-status">Đã chuyển khoản</span></td>
-        </tr>
-      </tbody>
-    </table>
+        <tr><td data-label="Đơn">MK-9921</td><td data-label="Giao">24/10/2026</td><td class="num" data-label="Tiền hàng">680.000đ</td><td class="num" data-label="Phí giao">25.000đ</td><td class="num" data-label="Nhận"><strong>705.000đ</strong></td><td data-label="Chuyển"><span class="badge badge-soft">Chờ hết hạn khiếu nại</span></td></tr>
+        <tr><td data-label="Đơn">MK-8810</td><td data-label="Giao">19/10/2026</td><td class="num" data-label="Tiền hàng">840.000đ</td><td class="num" data-label="Phí giao">35.000đ</td><td class="num" data-label="Nhận"><strong>875.000đ</strong></td><td data-label="Chuyển"><span class="badge badge-solid">Tạm dừng · khiếu nại</span></td></tr>
+        <tr><td data-label="Đơn">MK-8702</td><td data-label="Giao">12/10/2026</td><td class="num" data-label="Tiền hàng">1.260.000đ</td><td class="num" data-label="Phí giao">25.000đ</td><td class="num" data-label="Nhận"><strong>1.285.000đ</strong></td><td data-label="Chuyển"><span class="badge badge-dash">Đã chuyển 16/10/2026</span></td></tr>
+      </tbody></table></div>
   </main>
 
-  <aside class="wf-note" data-ref="FR-43">
-    Đối soát (B5.1). Demo: chỉ xem bảng đối soát, chưa lọc và xuất file theo mục 6 (FR-43).
-  </aside>
-
+  <aside class="wf-note" data-ref="FR-43">Demo: chỉ xem bảng.</aside>
   <script src="../assets/data.js"></script>
+  <script src="../assets/why-b.js"></script>
   <script src="../assets/wf.js"></script>
 </body>
 </html>

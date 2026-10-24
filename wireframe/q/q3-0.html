@@ -3,100 +3,29 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Moonkage – Kiểm duyệt sản phẩm (Q3.0)</title>
+  <title>Moonkage – Sản phẩm (Q3.0)</title>
   <link rel="stylesheet" href="../assets/wf.css">
 </head>
 <body data-zone="Q" data-page="Q3.0">
   <main id="content">
-    <div class="t1-header">
-      <div>
-        <h1>Kiểm duyệt sản phẩm toàn sàn (Q3.0)</h1>
-        <small style="color: #666;">Giám sát các dòng bánh niêm yết trên Moonkage, gỡ bỏ các sản phẩm vi phạm tiêu chuẩn ATTP hoặc chất lượng (FR-46)</small>
-      </div>
-      <div>
-        <form action="q3-0.html" method="GET" style="display: flex;">
-          <input type="text" name="q" class="wf-search-input" placeholder="Tìm sản phẩm, tên Shop..." value="Hoàng Kim">
-          <button type="submit" class="wf-search-btn">[Tìm]</button>
-        </form>
-      </div>
+    <div class="page-head"><div><h1>Sản phẩm</h1></div></div>
+    <div class="toolbar" data-why="1">
+      <form class="search" role="search"><input type="search" class="wf-search-input" aria-label="Tìm sản phẩm" value="Hoàng Kim"><button type="button" class="wf-search-btn">Tìm</button></form>
+      <div class="chips"><a href="#" class="chip active">Đang bán</a><a href="#" class="chip">Đã gỡ</a></div>
     </div>
-
-    <!-- Thanh lọc chip trạng thái -->
-    <div class="t1-chips">
-      <a href="#" class="chip active">Tất cả sản phẩm (3)</a>
-      <a href="#" class="chip">Đang bày bán bình thường (2)</a>
-      <a href="#" class="chip">Đã bị Quản trị gỡ bỏ (1)</a>
-    </div>
-
-    <!-- Bảng danh sách sản phẩm (Khuôn T1 Danh sách) -->
-    <table>
-      <thead>
-        <tr>
-          <th>Sản phẩm</th>
-          <th>Đơn vị cung cấp</th>
-          <th>Giá niêm yết</th>
-          <th>Chứng nhận ATTP</th>
-          <th>Trạng thái sàn</th>
-          <th style="width: 180px;">Hành động quản trị</th>
-        </tr>
-      </thead>
+    <div class="table-wrap" data-why="2"><table class="cards">
+      <thead><tr><th style="width:64px"></th><th>Sản phẩm</th><th>Shop</th><th class="num">Giá</th><th></th></tr></thead>
       <tbody>
-        <tr>
-          <td>
-            <strong>Hộp Hoàng Kim Thượng Hạng</strong><br>
-            <small style="color: #666;">4 bánh nướng 200g</small>
-          </td>
-          <td>Xưởng Bánh Nghệ Nhân Hà Nội</td>
-          <td>680.000đ</td>
-          <td><span class="t2-status" style="background:#fff;">Hợp lệ 100%</span></td>
-          <td><span class="t2-status">Bình thường</span></td>
-          <td>
-            <button type="button" class="btn" style="color:#000;">[Gỡ kèm lý do]</button>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <strong>Hộp Trăng Rằm Đoàn Viên</strong><br>
-            <small style="color: #666;">4 bánh truyền thống</small>
-          </td>
-          <td>Cơ Sở Bánh Cổ Truyền Trăng Vàng</td>
-          <td>420.000đ</td>
-          <td><span class="t2-status" style="background:#fff;">Hợp lệ 100%</span></td>
-          <td><span class="t2-status">Bình thường</span></td>
-          <td>
-            <button type="button" class="btn" style="color:#000;">[Gỡ kèm lý do]</button>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <strong>Hộp Bánh Thập Cẩm Thiếu Nhãn Phụ</strong><br>
-            <small style="color: #666;">4 bánh gia công ngoài</small>
-          </td>
-          <td>Cơ Sở Bánh Gia Truyền H.M</td>
-          <td>250.000đ</td>
-          <td><span class="t2-status" style="border-style:dashed;">Chưa nộp công bố ATTP</span></td>
-          <td><span class="t2-status" style="background:#000; color:#fff;">ĐÃ BỊ GỠ BỎ</span></td>
-          <td>
-            <a href="../b/b4-1.html" class="btn" title="Chuyển sang B4.1 để xem sản phẩm bị gỡ ở chế độ chỉ xem">[Xem B4.1 (Chỉ xem)]</a>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-
-    <div class="t1-pagination">
-      <span>Hiển thị 3 trong 3 sản phẩm được kiểm tra</span>
-      <div>
-        <button class="btn btn-disabled" disabled>‹ Trang trước</button>
-        <button class="btn btn-disabled" disabled>Trang sau ›</button>
-      </div>
-    </div>
+        <tr><td><div class="wf-img ratio-1" style="width:48px;min-height:0"></div></td><td data-label="Sản phẩm"><strong>Hộp Hoàng Kim 4 bánh</strong></td><td data-label="Shop">Xưởng Bánh Nghệ Nhân</td><td class="num" data-label="Giá">680.000đ</td>
+          <td data-why="3"><details><summary class="btn btn-sm btn-danger">Gỡ</summary><div class="stack-sm mt-1" style="min-width:220px"><textarea aria-label="Lý do gỡ" placeholder="Lý do (người bán sẽ thấy)"></textarea><button type="button" class="btn btn-sm btn-primary">Gỡ sản phẩm</button></div></details></td></tr>
+        <tr><td><div class="wf-img ratio-1" style="width:48px;min-height:0"></div></td><td data-label="Sản phẩm"><strong>Hộp Hoàng Kim Đặc Biệt</strong></td><td data-label="Shop">Bánh Nghệ Nhân Hoa Mai</td><td class="num" data-label="Giá">720.000đ</td>
+          <td><details><summary class="btn btn-sm btn-danger">Gỡ</summary><div class="stack-sm mt-1"><textarea aria-label="Lý do gỡ"></textarea><button type="button" class="btn btn-sm btn-primary">Gỡ sản phẩm</button></div></details></td></tr>
+      </tbody></table></div>
   </main>
 
-  <aside class="wf-note" data-ref="FR-46">
-    Kiểm duyệt sản phẩm (Q3.0). Quản trị viên có quyền tìm và gỡ sản phẩm kèm lý do vi phạm (FR-46). Sản phẩm sau khi bị gỡ sẽ chuyển sang tab 'Bị gỡ' ở B4.0 và người bán chỉ có quyền xem, không được sửa (B4.1).
-  </aside>
-
+  <aside class="wf-note" data-ref="FR-46">Tìm và gỡ kèm lý do. Sản phẩm bị gỡ: B4.1 chỉ xem (F7).</aside>
   <script src="../assets/data.js"></script>
+  <script src="../assets/why-q.js"></script>
   <script src="../assets/wf.js"></script>
 </body>
 </html>

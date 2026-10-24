@@ -8,64 +8,27 @@
 </head>
 <body data-zone="B" data-page="B6.2">
   <main id="content">
-    <h1>Vùng giao và phí giao hàng (B6.2)</h1>
-    <p style="color: #444; margin-bottom: 20px;">
-      Thiết lập các quận/huyện và tỉnh thành mà xưởng có thể giao hàng bánh có sẵn, kèm biểu phí vận chuyển tương ứng.
-    </p>
-
-    <form class="t3-form" action="b6-0.html" method="GET">
-      <fieldset>
-        <legend>1. Khu vực giao hàng nội thành (Hà Nội)</legend>
-
-        <div class="form-group">
-          <label>Các quận giao nhanh trong 24 giờ:</label>
-          <div style="font-size: 13px;">
-            <label><input type="checkbox" checked> Quận Ba Đình</label> &nbsp;
-            <label><input type="checkbox" checked> Quận Hoàn Kiếm</label> &nbsp;
-            <label><input type="checkbox" checked> Quận Cầu Giấy</label> &nbsp;
-            <label><input type="checkbox" checked> Quận Đống Đa</label> &nbsp;
-            <label><input type="checkbox" checked> Quận Tây Hồ</label>
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label for="fee-inner">Phí giao hàng đồng giá nội thành (VNĐ) *</label>
-          <input type="number" id="fee-inner" value="25000" step="5000" required>
-        </div>
-
-        <div class="form-group">
-          <label for="free-threshold">Miễn phí giao hàng cho đơn từ (VNĐ):</label>
-          <input type="number" id="free-threshold" value="1500000" step="100000">
-        </div>
-      </fieldset>
-
-      <fieldset>
-        <legend>2. Vận chuyển liên tỉnh (Toàn quốc)</legend>
-
-        <div class="form-group">
-          <label><input type="checkbox" checked id="c-intercity"> Xưởng có hỗ trợ nhận đơn giao liên tỉnh qua đơn vị vận chuyển đối tác</label>
-        </div>
-
-        <div class="form-group">
-          <label for="intercity-note">Thời gian đóng gói và gửi hàng liên tỉnh:</label>
-          <input type="text" id="intercity-note" value="Đóng thùng xốp bảo quản gửi bưu tá trong vòng 24 giờ từ khi nhận đơn">
-        </div>
-      </fieldset>
-
-      <div style="display: flex; gap: 10px; margin-top: 10px;">
-        <button type="submit" class="btn btn-primary" style="padding: 10px 20px;">
-          Lưu cài đặt vùng giao (B6.2) ›
-        </button>
-        <a href="b6-0.html" class="btn">Hủy & Quay lại</a>
-      </div>
-    </form>
+    <div class="page-head"><div><h1>Vùng giao và phí giao</h1><p class="lead">Người mua ở ngoài các vùng này sẽ không thấy sản phẩm của bạn.</p></div></div>
+    <div class="split">
+      <form class="form" action="b4-1.html" method="get">
+        <fieldset data-why="1"><legend>Nội tỉnh · Hà Nội</legend>
+          <label class="check"><input type="checkbox" checked> Giao toàn Hà Nội</label>
+          <div class="field"><label for="f1" class="req">Phí giao</label><input id="f1" type="text" value="25.000đ"></div>
+        </fieldset>
+        <fieldset data-why="2"><legend>Liên tỉnh</legend>
+          <label class="check"><input type="checkbox" checked> Nhận giao liên tỉnh</label>
+          <p class="hint mt-1">Phí theo bảng phí liên tỉnh của Moonkage. Bạn phải nhập mã vận đơn khi giao.</p>
+          <div class="table-wrap mt-1"><table><thead><tr><th>Tỉnh</th><th class="num">Phí</th></tr></thead><tbody><tr><td>TP. Hồ Chí Minh</td><td class="num">35.000đ</td></tr><tr><td>Đà Nẵng</td><td class="num">35.000đ</td></tr><tr><td class="faint" colspan="2">… 61 tỉnh khác</td></tr></tbody></table></div>
+        </fieldset>
+        <div class="form-actions"><a href="b6-0.html" class="btn btn-ghost">Hủy</a><button type="submit" class="btn btn-primary btn-lg">Lưu</button></div>
+      </form>
+      <aside class="card card-fill sm stack-sm sticky" data-why="3"><strong>Bước tiếp theo</strong><span>Lưu xong, đăng sản phẩm đầu tiên hoặc khai điều kiện nhận đặt hàng.</span><a href="b6-3.html">Điều kiện nhận đặt hàng</a></aside>
+    </div>
   </main>
 
-  <aside class="wf-note" data-ref="FR-28">
-    Vùng giao và phí giao (B6.2). Chỉ mở sau khi hồ sơ đã được duyệt (FR-28). Biểu phí này sẽ được tự động cộng vào tóm tắt giỏ hàng M4.0 khi người mua chọn địa chỉ tương ứng.
-  </aside>
-
+  <aside class="wf-note" data-ref="FR-28">Mở sau khi duyệt. Phí liên tỉnh lấy từ Q6.1.</aside>
   <script src="../assets/data.js"></script>
+  <script src="../assets/why-b.js"></script>
   <script src="../assets/wf.js"></script>
 </body>
 </html>
