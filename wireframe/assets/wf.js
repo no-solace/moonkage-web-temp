@@ -329,7 +329,11 @@
           html += '<li id="wf-why-' + n + '" data-n="' + n + '"><span class="n' + (pins[n] ? '' : ' off') + '">' + n + '</span>' +
             '<div><b>' + pt[0] + '</b>' + pt[1] + '</div></li>';
         });
-        html += '</ol></section>';
+        html += '</ol>';
+        if (why.points.some(function (pt, i) { return !pins[String(i + 1)]; })) {
+          html += '<p class="faint mt-1">Số viền rỗng: khối chỉ hiện ở vai hoặc trạng thái khác (đổi vai ở thanh dưới, hoặc dùng các liên kết "Ví dụ" trên trang).</p>';
+        }
+        html += '</section>';
       }
       if (why.rejected && why.rejected.length) {
         html += '<section><h3>Bố cục đã cân nhắc nhưng không chọn</h3><ul class="wf-why-rej">';
@@ -420,6 +424,8 @@
 
     body.insertAdjacentHTML('beforeend', buildRoleBar());
     applyRoleVisibility();
+    // Khối phụ (ví dụ cột lọc) gập sẵn trên màn hẹp để nội dung chính lên trước
+    if (window.innerWidth <= 720) document.querySelectorAll('details[data-collapse-mobile]').forEach(function (d) { d.open = false; });
     if (ok) buildWhy();
     setupGates();
 

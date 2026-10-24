@@ -3,70 +3,40 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Moonkage – Danh mục Vỏ & Nhân bánh (Q6.4)</title>
+  <title>Moonkage – Vỏ và nhân bánh (Q6.4)</title>
   <link rel="stylesheet" href="../assets/wf.css">
 </head>
 <body data-zone="Q" data-page="Q6.4">
   <main id="content">
-    <div class="t1-header">
-      <div>
-        <h1>Danh mục Vỏ và Nhân bánh chuẩn (Q6.4)</h1>
-        <small style="color: #666;">Từ điển nguồn dùng chung cho toàn bộ bộ lọc M2.0 và form đăng sản phẩm B4.1 (FR-54)</small>
-      </div>
-    </div>
-
-    <!-- 2 Tab: Vỏ bánh · Nhân bánh -->
-    <div class="t1-tabs">
-      <a href="q6-4.html" class="t1-tab active">Danh mục Vỏ bánh (3)</a>
-      <a href="q6-4.html?tab=fill" class="t1-tab">Danh mục Nhân bánh (5)</a>
-    </div>
-
-    <table>
-      <thead>
-        <tr>
-          <th>Tên mục</th>
-          <th>Thứ tự hiển thị</th>
-          <th>Trạng thái</th>
-          <th style="width: 180px;">Hành động</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><strong>Vỏ nướng truyền thống</strong></td>
-          <td>1</td>
-          <td><span class="t2-status">Hiển thị</span></td>
-          <td>
-            <button class="btn">[Đổi tên]</button>
-            <button class="btn">[Ẩn]</button>
-          </td>
-        </tr>
-        <tr>
-          <td><strong>Vỏ dẻo hạt sen</strong></td>
-          <td>2</td>
-          <td><span class="t2-status">Hiển thị</span></td>
-          <td>
-            <button class="btn">[Đổi tên]</button>
-            <button class="btn">[Ẩn]</button>
-          </td>
-        </tr>
-        <tr>
-          <td><strong>Vỏ than tre hiện đại</strong></td>
-          <td>3</td>
-          <td><span class="t2-status">Hiển thị</span></td>
-          <td>
-            <button class="btn">[Đổi tên]</button>
-            <button class="btn btn-disabled" disabled title="Không ẩn được giá trị cuối cùng của một nhóm">[Ẩn - Chặn]</button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+    <div class="page-head"><div><h1>Vỏ và nhân bánh</h1></div></div>
+    <div class="tabs" data-why="1"><a href="#vo" class="tab">Vỏ <span class="count">3</span></a><a href="#nhan" class="tab">Nhân <span class="count">5</span></a></div>
+    <section id="vo" data-tab>
+      <ul class="list" data-why="2">
+        <li><span class="wf-icon" title="Kéo để đổi thứ tự">⋮⋮</span><input type="text" value="Nướng" aria-label="Tên" style="max-width:260px"><span class="grow"></span><span class="badge badge-soft">Đang hiện</span><button type="button" class="btn btn-sm">Ẩn</button></li>
+        <li><span class="wf-icon">⋮⋮</span><input type="text" value="Dẻo" aria-label="Tên" style="max-width:260px"><span class="grow"></span><span class="badge badge-soft">Đang hiện</span><button type="button" class="btn btn-sm">Ẩn</button></li>
+        <li class="faint"><span class="wf-icon">⋮⋮</span><input type="text" value="Than tre" aria-label="Tên" style="max-width:260px"><span class="grow"></span><span class="badge badge-dash">Đang ẩn</span><button type="button" class="btn btn-sm">Hiện</button></li>
+        <li><span class="wf-icon">+</span><input type="text" placeholder="Thêm vỏ mới" aria-label="Thêm" style="max-width:260px"><button type="button" class="btn btn-sm btn-primary">Thêm</button></li>
+      </ul>
+      <p class="hint mt-1" data-why="3">Không xóa được. Không ẩn được giá trị đang hiện cuối cùng của một nhóm.</p>
+    </section>
+    <section id="nhan" data-tab hidden><ul class="list"><li><span class="wf-icon">⋮⋮</span><span class="grow">Thập cẩm</span><button type="button" class="btn btn-sm">Ẩn</button></li><li><span class="wf-icon">⋮⋮</span><span class="grow">Hạt sen</span><button type="button" class="btn btn-sm">Ẩn</button></li><li><span class="wf-icon">⋮⋮</span><span class="grow">Đậu xanh</span><button type="button" class="btn btn-sm">Ẩn</button></li><li><span class="wf-icon">⋮⋮</span><span class="grow">Trà xanh</span><button type="button" class="btn btn-sm">Ẩn</button></li><li><span class="wf-icon">⋮⋮</span><span class="grow">Khoai môn</span><button type="button" class="btn btn-sm">Ẩn</button></li></ul></section>
   </main>
 
-  <aside class="wf-note" data-ref="FR-54">
-    Vỏ và nhân bánh (Q6.4). Hai tab: Vỏ · Nhân; thêm, đổi tên, kéo đổi thứ tự, ẩn/hiện; không xóa; không ẩn được giá trị cuối cùng của một nhóm (FR-54, Luồng F7).
-  </aside>
-
+  <aside class="wf-note" data-ref="FR-54">Hai tab Vỏ · Nhân; thêm, đổi tên, kéo đổi thứ tự, ẩn / hiện; không xóa; không ẩn được giá trị cuối cùng của một nhóm.</aside>
+  <script>
+    // Chuyển tab giả lập: mỗi .tab trỏ #id của một <section data-tab>
+    (function () {
+      var tabs = document.querySelectorAll('.tabs .tab');
+      function show(id) {
+        document.querySelectorAll('[data-tab]').forEach(function (s) { s.hidden = s.id !== id; });
+        tabs.forEach(function (t) { t.classList.toggle('active', t.getAttribute('href') === '#' + id); });
+      }
+      tabs.forEach(function (t) { t.addEventListener('click', function (e) { e.preventDefault(); show(t.getAttribute('href').slice(1)); }); });
+      show(location.hash ? location.hash.slice(1) : tabs[0].getAttribute('href').slice(1));
+    })();
+  </script>
   <script src="../assets/data.js"></script>
+  <script src="../assets/why-q.js"></script>
   <script src="../assets/wf.js"></script>
 </body>
 </html>

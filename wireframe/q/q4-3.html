@@ -3,49 +3,29 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Moonkage – Đối soát sàn (Q4.3)</title>
+  <title>Moonkage – Đối soát (Q4.3)</title>
   <link rel="stylesheet" href="../assets/wf.css">
 </head>
 <body data-zone="Q" data-page="Q4.3">
   <main id="content">
-    <div class="t1-header">
-      <div>
-        <h1>Đối soát doanh thu toàn sàn (Q4.3)</h1>
-        <small style="color: #666;">Tổng hợp dòng tiền giao dịch và phí mở bán 200.000đ đã thu từ các xưởng (FR-51)</small>
-      </div>
+    <div class="page-head"><div><h1>Đối soát</h1><p class="lead">Tháng 10/2026</p></div></div>
+    <div class="grid-4 mb-3" data-why="1">
+      <div class="stat"><span class="lbl">VNPay báo về</span><span class="num">187.000.000đ</span></div>
+      <div class="stat"><span class="lbl">Đang giữ</span><span class="num">54.200.000đ</span></div>
+      <div class="stat"><span class="lbl">Đã chuyển / giải ngân</span><span class="num">131.200.000đ</span></div>
+      <div class="stat"><span class="lbl">Phí mở bán đã thu</span><span class="num">1.600.000đ</span></div>
     </div>
-
-    <table>
-      <thead>
-        <tr>
-          <th>Khoản thu</th>
-          <th>Số lượng phát sinh</th>
-          <th>Tổng số tiền</th>
-          <th>Ghi chú</th>
-        </tr>
-      </thead>
+    <div class="table-wrap" data-why="2"><table class="cards">
+      <thead><tr><th>Giao dịch</th><th>Loại</th><th class="num">VNPay</th><th class="num">Hệ thống</th><th>Khớp</th></tr></thead>
       <tbody>
-        <tr>
-          <td><strong>Phí đăng ký mở bán 200.000đ</strong></td>
-          <td>8 xưởng đã mở bán</td>
-          <td><strong>1.600.000đ</strong></td>
-          <td>Đã xuất hóa đơn VAT đầy đủ</td>
-        </tr>
-        <tr>
-          <td><strong>Dòng tiền mua bán bánh</strong></td>
-          <td>48 đơn hàng</td>
-          <td><strong>185.400.000đ</strong></td>
-          <td>Tạm giữ qua Cổng VNPay</td>
-        </tr>
-      </tbody>
-    </table>
+        <tr><td data-label="Giao dịch">MK-8702</td><td data-label="Loại">Mua hàng có sẵn</td><td class="num" data-label="VNPay">1.260.000đ</td><td class="num" data-label="Hệ thống">1.285.000đ</td><td data-label="Khớp"><span class="badge badge-solid">Lệch 25.000đ</span></td></tr>
+        <tr><td data-label="Giao dịch">PMB-0008</td><td data-label="Loại">Phí mở bán</td><td class="num" data-label="VNPay">200.000đ</td><td class="num" data-label="Hệ thống">200.000đ</td><td data-label="Khớp"><span class="badge badge-dash">Khớp</span></td></tr>
+      </tbody></table></div>
   </main>
 
-  <aside class="wf-note" data-ref="FR-51">
-    Đối soát Quản trị (Q4.3). Đối soát toàn diện bao gồm phí mở bán 200.000đ đã thu (FR-51).
-  </aside>
-
+  <aside class="wf-note" data-ref="FR-51">Gồm phí mở bán đã thu. Đơn lệch được đánh dấu và hiện ở Q1.0 (AC-51.4).</aside>
   <script src="../assets/data.js"></script>
+  <script src="../assets/why-q.js"></script>
   <script src="../assets/wf.js"></script>
 </body>
 </html>

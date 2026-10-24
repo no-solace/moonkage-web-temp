@@ -8,33 +8,18 @@
 </head>
 <body data-zone="Q" data-page="Q6.2">
   <main id="content">
-    <h1>Cấu hình phí đăng ký mở bán (Q6.2)</h1>
-    <p style="color: #444; margin-bottom: 20px;">Mức phí gia nhập gian hàng thu một lần sau khi duyệt hồ sơ người bán (FR-53).</p>
-    <form class="t3-form" action="q6-0.html" method="GET">
-      <fieldset>
-        <legend>Định mức phí mở bán</legend>
-        <div class="form-group">
-          <label for="open-fee">Mức phí mở bán tiêu chuẩn (VNĐ) *</label>
-          <input type="number" id="open-fee" value="200000" step="50000" required>
-          <small style="color: #666;">Hiện tại đang áp dụng mức 200.000đ.</small>
-        </div>
-        <div class="form-group">
-          <label for="bank-acc">Tài khoản thụ hưởng của Moonkage:</label>
-          <input type="text" id="bank-acc" value="992188 - Ngân hàng TMCP Quân Đội (MB)" readonly style="background:#eee;">
-        </div>
+    <div class="page-head"><div><h1>Phí đăng ký mở bán</h1></div></div>
+    <form class="form" action="q6-0.html" method="get">
+      <fieldset data-why="1"><legend>Mức phí</legend>
+        <div class="field"><label for="f" class="req">Phí mở bán</label><input id="f" type="text" value="200.000đ"><span class="hint">Áp cho hồ sơ được duyệt sau khi lưu; hồ sơ đã duyệt giữ mức cũ.</span></div>
       </fieldset>
-      <div style="display: flex; gap: 10px; margin-top: 10px;">
-        <button type="submit" class="btn btn-primary" style="padding: 10px 20px;">Lưu cấu hình phí ›</button>
-        <a href="q6-0.html" class="btn">Hủy</a>
-      </div>
+      <div class="form-actions"><a href="q6-0.html" class="btn btn-ghost">Hủy</a><button type="submit" class="btn btn-primary btn-lg">Lưu</button></div>
     </form>
   </main>
 
-  <aside class="wf-note" data-ref="FR-53">
-    Phí đăng ký mở bán (Q6.2). Cấu hình mức phí 200.000đ (FR-53).
-  </aside>
-
+  <aside class="wf-note" data-ref="FR-53">Mức phí thu một lần sau khi duyệt.</aside>
   <script src="../assets/data.js"></script>
+  <script src="../assets/why-q.js"></script>
   <script src="../assets/wf.js"></script>
 </body>
 </html>

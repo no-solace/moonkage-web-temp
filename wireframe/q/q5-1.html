@@ -3,53 +3,40 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Moonkage – Phân xử khiếu nại (Q5.1)</title>
+  <title>Moonkage – Xử lý khiếu nại (Q5.1)</title>
   <link rel="stylesheet" href="../assets/wf.css">
 </head>
 <body data-zone="Q" data-page="Q5.1">
   <main id="content">
-    <div class="t2-header">
-      <div>
-        <h1>Phân xử khiếu nại #DISP-2026-09 (Q5.1)</h1>
-        <small style="color: #666;">Đơn hàng: #MK-ORD-8810 · Số tiền tạm giữ tối đa có thể hoàn: 840.000đ</small>
+    <div class="page-head" data-why="1"><div><span class="eyebrow">Khiếu nại · đơn Shop</span><h1>KN-09 · đơn MK-8810 <span class="badge badge-solid" style="vertical-align:middle">Chờ quyết định</span></h1><p class="lead">Chị Lan ↔ Bánh Cổ Truyền Trăng Vàng · mở 20/10/2026</p></div></div>
+    <div class="split">
+      <div class="stack-lg">
+        <section class="grid-2" data-why="2">
+          <div class="card stack-sm"><span class="eyebrow">Người mua</span><strong>Hộp hoặc bánh bị hỏng khi nhận</strong><p class="sm">"Nắp hộp rách, 1 bánh dập góc."</p><div class="wf-img ratio-43"><span>Ảnh 1</span></div></div>
+          <div class="card stack-sm"><span class="eyebrow">Người bán đề xuất</span><strong>Hoàn một phần · 210.000đ</strong><p class="sm">"Đồng ý 1 bánh bị dập do vận chuyển."</p></div>
+        </section>
+        <section data-why="3"><h2 class="mb-1">Đơn</h2><ul class="list"><li><span class="grow">Hộp Trăng Rằm 4 bánh × 2</span><span>840.000đ</span></li><li><span class="grow">Phí giao liên tỉnh · giao 19/10/2026 · VNPOST-77120</span><span>35.000đ</span></li></ul></section>
+        <section><h2 class="mb-1">Lịch sử</h2><ol class="timeline"><li class="done"><strong>Người bán đề xuất</strong><span class="when">21/10/2026</span></li><li class="done"><strong>Người mua báo vấn đề · tiền bị giữ</strong><span class="when">20/10/2026</span></li></ol></section>
       </div>
-      <div>
-        <span class="t2-status">Trạng thái: Chờ phân xử</span>
-      </div>
-    </div>
-
-    <div class="t2-layout">
-      <div>
-        <h2>Hồ sơ đối chiếu hai bên</h2>
-        <div style="border: 1px solid #ccc; padding: 14px; background: #fafafa; margin: 12px 0;">
-          <strong>Ý kiến Người mua (Chị Lan):</strong>
-          <p style="font-size: 13px; margin: 4px 0 10px;">"Hộp bánh nắp bị rách mép, 1 bánh bị dập góc. Yêu cầu hoàn 50% tiền hàng (420.000đ)."</p>
-          <div class="wf-img" style="height: 70px;"><span>[Ảnh bằng chứng hộp bánh móp từ khách]</span></div>
-        </div>
-
-        <div style="border: 1px solid #ccc; padding: 14px; background: #fafafa; margin: 12px 0;">
-          <strong>Ý kiến Người bán (Bánh Trăng Vàng):</strong>
-          <p style="font-size: 13px; margin: 4px 0;">"Xưởng đồng ý bồi thường 420.000đ do lỗi đóng thùng của bưu tá."</p>
-        </div>
-      </div>
-
-      <div>
-        <div class="t2-actions">
-          <h2>Quyết định phân xử</h2>
-          <button class="btn btn-primary" style="text-align: center;">[Hoàn tiền một phần (420.000đ)]</button>
-          <button class="btn" style="text-align: center; margin-top: 4px;">[Hoàn toàn bộ 100% (840.000đ)]</button>
-          <button class="btn" style="text-align: center; margin-top: 4px;">[Bác bỏ khiếu nại]</button>
-          <a href="q5-0.html" class="btn" style="text-align: center; margin-top: 12px;">‹ Về danh sách</a>
-        </div>
-      </div>
+      <aside class="stack sticky">
+        <div class="summary" data-why="4"><h2 style="font-size:var(--fs-md)">Sổ tiền</h2>
+          <div class="line"><span>Đang giữ</span><span>875.000đ</span></div><div class="line"><span>Đã chuyển cho người bán</span><span>0đ</span></div>
+          <div class="total"><span>Tối đa hoàn được</span><span class="price">875.000đ</span></div></div>
+        <div class="actions-box" data-why="5"><h2>Quyết định</h2>
+          <label class="choice"><input type="radio" name="d"><span>Hoàn toàn bộ</span></label>
+          <label class="choice"><input type="radio" name="d" checked><span>Hoàn một phần</span></label>
+          <label class="choice"><input type="radio" name="d"><span>Bác</span></label>
+          <div class="field" style="margin-top:0"><label for="a" class="sm">Số tiền hoàn</label><input id="a" type="text" value="210.000đ"></div>
+          <textarea aria-label="Lý do (hai bên đều thấy)" placeholder="Lý do (hai bên đều thấy)"></textarea>
+          <a href="q5-0.html" class="btn btn-primary btn-block">Gửi quyết định</a>
+          <small class="hint">Hoàn qua VNPay; lỗi thì chuyển sang tab Cần xử lý tay. Phần còn lại chuyển cho người bán ở Q4.2.</small></div>
+      </aside>
     </div>
   </main>
 
-  <aside class="wf-note" data-ref="FR-49">
-    Xử lý khiếu nại (Q5.1). Xem đơn, bằng chứng 2 bên, sổ tiền giữ/hoàn, ra quyết định hoàn toàn bộ / một phần / bác bỏ kèm lý do (FR-49, Luồng F5).
-  </aside>
-
+  <aside class="wf-note" data-ref="FR-49">Xem đơn, báo giá, maket, tiến độ, bằng chứng hai bên, sổ tiền (đang giữ, đã giải ngân, tối đa hoàn được); hoàn toàn bộ / một phần / bác kèm lý do. Số hoàn > đang giữ: Q-01.</aside>
   <script src="../assets/data.js"></script>
+  <script src="../assets/why-q.js"></script>
   <script src="../assets/wf.js"></script>
 </body>
 </html>
