@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Moonkage · Trang chủ — Hướng C Cấu trúc</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="../shared/proto.css">
+</head>
+<body data-dir="c" data-screen="m1-0" data-states='[["Khách (chưa chọn khu vực)",""],["Người mua đã đăng nhập","?as=buyer"]]'>
+  <header class="hdr">
+    <div class="wrap">
+      <div class="hdr-row">
+        <a class="mark" href="m1-0.html"><i aria-hidden="true"></i>Moonkage</a>
+        <form class="srch" role="search" action="m2-0.html">
+          <label class="sr-only" for="q">Tìm sản phẩm hoặc đơn vị cung cấp</label>
+          <input id="q" type="search" name="q" placeholder="Tìm bánh, nhân bánh hoặc tên đơn vị…">
+          <button type="submit">Tìm</button>
+        </form>
+        <a class="hcell hide-m" href="#" data-out="M1.1 Chọn khu vực giao" data-area><span class="k">Giao tới</span> <b>Hà Nội</b> ▾</a>
+        <a class="hcell" href="#" data-gate="M4.0 Giỏ hàng" aria-label="Giỏ hàng, 2 món"><span class="hide-m">Giỏ hàng</span><span class="cnt">2</span></a>
+        <a class="hcell hide-m" href="#" data-out="M6.6 Thông báo" data-if="as=buyer,verified" aria-label="Thông báo, 3 chưa đọc">Thông báo<span class="cnt">3</span></a>
+        <a class="hcell hcell--ink" href="#" data-out="M6.0 Tài khoản" data-if="as=buyer,verified">Tài khoản ▾</a>
+        <a class="hcell hcell--ink" href="#" data-out="M5.1 Đăng nhập" data-unless="as=buyer,verified">Đăng nhập</a>
+        <button type="button" class="menu-btn" data-nav-toggle aria-expanded="false" aria-controls="nav">Menu</button>
+      </div>
+      <nav class="nav" id="nav" aria-label="Menu chính">
+        <a href="#" class="only-m" data-out="M1.1 Chọn khu vực giao">Giao tới:&nbsp;<b>Hà Nội</b>&nbsp;▾</a>
+        <a href="m2-0.html">Mua hàng có sẵn</a>
+        <div class="dd">
+          <button type="button" data-dd aria-expanded="false">Đặt theo yêu cầu ▾</button>
+          <div class="dd-menu">
+            <p>Số lượng lớn, in logo hoặc hàng phải làm riêng, dù ít hộp.</p>
+            <a href="m3-0.html">Đặt theo yêu cầu <span>Tổng quan</span></a>
+            <a href="#" data-gate="M3.1 Tạo yêu cầu báo giá">Tạo yêu cầu báo giá <span>Gửi nhiều nơi</span></a>
+            <a href="#" data-out="M3.2 Đơn vị cung cấp">Đơn vị cung cấp <span>Chọn một nơi</span></a>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <div class="wrap">
+      <h1 class="sr-only">Trang chủ</h1>
+      <section class="signal-row" data-unless="as=buyer,verified" aria-label="Chọn khu vực giao">
+        <span class="tag">[!] Khu vực giao</span>
+        <div><span><b>Bạn muốn giao tới đâu?</b> Sản phẩm, giá và phí giao bên dưới sẽ tính theo tỉnh/thành bạn chọn.</span></div>
+        <div><a class="btn" href="#" data-out="M1.1 Chọn khu vực giao">Chọn khu vực giao</a></div>
+      </section>
+
+      <section class="sec" style="margin-top:24px" aria-labelledby="ways">
+        <div class="bar"><span class="tag">[01]</span><h2 class="md" id="ways" style="padding:14px 16px">Bạn cần bánh theo cách nào?</h2></div>
+        <div class="fork ledger">
+        <div class="corner"><span class="tag">So hai cách</span></div>
+        <div class="head p1"><span class="tag">Lối 1</span><h2 class="lg">Mua hàng có sẵn</h2></div>
+        <div class="head p2"><span class="tag">Lối 2</span><h2 class="lg">Đặt theo yêu cầu</h2></div>
+        <div class="rh"><span class="tag">Dành cho</span></div>
+        <div class="c p1" data-label="Dành cho">Bánh đã đóng hộp, Shop giao tới khu vực của bạn. Chọn món, thanh toán và chờ giao.</div>
+        <div class="c p2" data-label="Dành cho">Số lượng lớn, in logo hoặc hàng phải làm riêng, dù ít hộp.</div>
+        <div class="rh"><span class="tag">Điều kiện</span></div>
+        <div class="c p1" data-label="Điều kiện"><ul><li>Chỉ hiện sản phẩm giao được tới <b>Hà Nội</b></li><li>Thanh toán VNPay ngay khi đặt; mỗi Shop tách một đơn</li></ul></div>
+        <div class="c p2" data-label="Điều kiện"><ul><li>Cần đăng nhập và xác minh danh tính bằng CCCD gắn chip</li><li>Đặt cọc khi chấp nhận báo giá; duyệt maket trước khi làm</li></ul></div>
+        <div class="rh"><span class="tag">Bắt đầu</span></div>
+        <div class="acts p1" data-label="Bắt đầu"><a class="btn" href="m2-0.html">Xem hàng có sẵn</a></div>
+        <div class="acts p2" data-label="Bắt đầu"><a class="btn" href="#" data-gate="M3.1 Tạo yêu cầu báo giá">Tạo yêu cầu báo giá</a><a class="btn btn--line" href="#" data-out="M3.2 Đơn vị cung cấp">Chọn đơn vị cung cấp</a></div>
+        </div>
+        <div class="tasks" data-if="as=buyer,verified" aria-label="Việc cần bạn">
+          <span class="tag" style="color:var(--ink)">Việc cần bạn</span>
+          <div><a href="#" data-out="M6.1.2 Chi tiết đơn đặt hàng"><span class="cnt">1</span><span>maket chờ duyệt</span></a><a href="#" data-out="M6.2.1 So sánh báo giá"><span class="cnt">2</span><span>báo giá mới</span></a></div>
+          <div><a class="lnk" href="#" data-out="M6.0 Tài khoản">Xem tất cả</a></div>
+        </div>
+      </section>
+
+      <section class="sec" aria-labelledby="avail">
+        <div class="bar"><span class="tag">[02]</span><h2 class="md" id="avail" style="padding:14px 16px">Có sẵn giao tới Hà Nội</h2><a class="more" href="m2-0.html">Xem tất cả hàng có sẵn →</a></div>
+        <div class="pgrid ledger">
+          <a class="pcell" href="#" data-out="M2.1 Chi tiết sản phẩm"><div class="pimg" role="img" aria-label="Ảnh minh họa"><span>Ảnh minh họa</span></div><div class="pbody"><span class="pn">Hộp Hoàng Kim 4 bánh</span><span class="pshop">Xưởng Bánh Nghệ Nhân</span><div class="pmeta"><span class="price">680.000đ</span><span class="rate">4,8★ (32)</span></div></div></a>
+          <a class="pcell" href="#" data-out="M2.1 Chi tiết sản phẩm"><div class="pimg" role="img" aria-label="Ảnh minh họa"><span>Ảnh minh họa</span></div><div class="pbody"><span class="pn">Hộp Trăng Rằm 4 bánh</span><span class="pshop">Bánh Cổ Truyền Trăng Vàng</span><div class="pmeta"><span class="price">420.000đ</span><span class="rate">4,6★ (18)</span></div></div></a>
+          <a class="pcell" href="#" data-out="M2.1 Chi tiết sản phẩm"><div class="pimg" role="img" aria-label="Ảnh minh họa"><span>Ảnh minh họa</span></div><div class="pbody"><span class="pn">Hộp Thu Sắc 5 bánh mini</span><span class="pshop">Đại lý Thu Hương</span><div class="pmeta"><span class="price">360.000đ</span><span class="rate">4,5★ (9)</span></div></div></a>
+          <a class="pcell" href="#" data-out="M2.1 Chi tiết sản phẩm"><div class="pimg" role="img" aria-label="Ảnh minh họa"><span>Ảnh minh họa</span></div><div class="pbody"><span class="pn">Bánh dẻo hạt sen 150g</span><span class="pshop">Bánh Cổ Truyền Trăng Vàng</span><div class="pmeta"><span class="price">65.000đ</span><span class="rate">4,7★ (21)</span></div></div></a>
+        </div>
+      </section>
+
+      <section class="sec" aria-labelledby="custom">
+        <div class="bar"><span class="tag">[03]</span><h2 class="md" id="custom" style="padding:14px 16px">Nhận đặt theo yêu cầu</h2><a class="more" href="#" data-out="M3.2 Đơn vị cung cấp">Xem tất cả đơn vị cung cấp →</a></div>
+        <table class="stable">
+          <thead><tr><th scope="col">Đơn vị</th><th scope="col">Khu vực</th><th scope="col">Nhận làm</th><th scope="col">Tối thiểu</th><th scope="col">Giao</th><th scope="col"><span class="sr-only">Thao tác</span></th></tr></thead>
+          <tbody>
+            <tr><td data-label="Đơn vị"><b>Xưởng Bánh Nghệ Nhân</b></td><td data-label="Khu vực">Ba Đình, Hà Nội</td><td data-label="Nhận làm">In logo · hộp riêng</td><td data-label="Tối thiểu" class="mono">20 hộp</td><td data-label="Giao">Toàn quốc</td><td class="acts"><a class="btn btn--line btn--sm btn--plain" href="#" data-out="M3.3 Trang đơn vị">Xem đơn vị</a><a class="btn btn--sm" href="#" data-gate="M3.4 Gửi yêu cầu cho đơn vị">Gửi yêu cầu cho Nghệ Nhân</a></td></tr>
+            <tr><td data-label="Đơn vị"><b>Bánh Cổ Truyền Trăng Vàng</b></td><td data-label="Khu vực">Hoàn Kiếm, Hà Nội</td><td data-label="Nhận làm">Hộp sơn mài · nhân theo yêu cầu</td><td data-label="Tối thiểu" class="mono">10 hộp</td><td data-label="Giao">Hà Nội</td><td class="acts"><a class="btn btn--line btn--sm btn--plain" href="#" data-out="M3.3 Trang đơn vị">Xem đơn vị</a><a class="btn btn--sm" href="#" data-gate="M3.4 Gửi yêu cầu cho đơn vị">Gửi yêu cầu cho Trăng Vàng</a></td></tr>
+            <tr><td data-label="Đơn vị"><b>Xưởng Minh Hòa</b><span class="only">Chỉ nhận đặt hàng</span></td><td data-label="Khu vực">Đống Đa, Hà Nội</td><td data-label="Nhận làm">In logo · thiệp kèm</td><td data-label="Tối thiểu" class="mono">50 hộp</td><td data-label="Giao">Toàn quốc</td><td class="acts"><a class="btn btn--line btn--sm btn--plain" href="#" data-out="M3.3 Trang đơn vị">Xem đơn vị</a><a class="btn btn--sm" href="#" data-gate="M3.4 Gửi yêu cầu cho đơn vị">Gửi yêu cầu cho Minh Hòa</a></td></tr>
+          </tbody>
+        </table>
+      </section>
+    </div>
+  </main>
+  <footer class="foot">
+    <div class="wrap">
+      <span class="tag">Moonkage · Prototype hướng C · không phải giao diện cuối</span>
+      <nav aria-label="Chân trang"><a href="#" data-out="M7.0 Bán hàng trên Moonkage">Bán hàng trên Moonkage</a><a href="#" data-out="M8.0 Chính sách mua bán">Chính sách mua bán</a></nav>
+    </div>
+  </footer>
+  <script src="../shared/proto.js"></script>
+</body>
+</html>

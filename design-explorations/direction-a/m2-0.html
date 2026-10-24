@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Moonkage · Mua hàng có sẵn — Hướng A Biên tập</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="../shared/proto.css">
+</head>
+<body data-dir="a" data-screen="m2-0" data-states='[["Mặc định",""],["Tìm “Nghệ Nhân”","?q=Nghệ+Nhân"],["Không có kết quả","?empty=1"],["Người mua đã đăng nhập","?as=buyer"]]'>
+  <header class="mast">
+    <div class="wrap mast-top">
+      <a class="wordmark" href="m1-0.html">Moonkage<small>Bánh trung thu</small></a>
+      <form class="search" role="search" action="m2-0.html">
+        <label class="sr-only" for="q">Tìm sản phẩm hoặc đơn vị cung cấp</label>
+        <input id="q" type="search" name="q" placeholder="Tìm bánh, nhân bánh hoặc tên đơn vị…">
+        <button type="submit">Tìm</button>
+      </form>
+      <div class="utils">
+        <a href="#" data-out="M1.1 Chọn khu vực giao" data-area><span class="k hide-m">Giao tới</span> <b>Hà Nội</b> ▾</a>
+        <a href="#" data-gate="M4.0 Giỏ hàng" aria-label="Giỏ hàng, 2 món">Giỏ hàng <span class="count">(2)</span></a>
+        <a href="#" data-out="M5.1 Đăng nhập" data-unless="as=buyer,verified"><b>Đăng nhập</b></a>
+        <a href="#" data-out="M6.6 Thông báo" data-if="as=buyer,verified" class="hide-m" aria-label="Thông báo, 3 chưa đọc">Thông báo <span class="count">(3)</span></a>
+        <a href="#" data-out="M6.0 Tài khoản" data-if="as=buyer,verified">Tài khoản ▾</a>
+        <button type="button" class="menu-btn" data-nav-toggle aria-expanded="false" aria-controls="nav">Menu</button>
+      </div>
+    </div>
+    <div class="wrap">
+      <nav class="mast-nav" id="nav" aria-label="Menu chính">
+        <a href="#" class="only-m" data-out="M1.1 Chọn khu vực giao">Giao tới:&nbsp;<b>Hà Nội</b>&nbsp;▾</a>
+        <a href="m2-0.html" aria-current="page">Mua hàng có sẵn</a>
+        <div class="dd">
+          <button type="button" data-dd aria-expanded="false">Đặt theo yêu cầu ▾</button>
+          <div class="dd-menu">
+            <p>Số lượng lớn, in logo hoặc hàng phải làm riêng, dù ít hộp.</p>
+            <a href="m3-0.html">Đặt theo yêu cầu <span>tổng quan</span></a>
+            <a href="#" data-gate="M3.1 Tạo yêu cầu báo giá">Tạo yêu cầu báo giá <span>gửi nhiều nơi</span></a>
+            <a href="#" data-out="M3.2 Đơn vị cung cấp">Đơn vị cung cấp <span>chọn một nơi</span></a>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="wrap">
+      <div class="page-title">
+        <div>
+          <span class="label">Lối 1</span>
+          <h1 class="h1" style="margin-top:8px">Mua hàng có sẵn</h1>
+          <p class="lead">Bánh đã đóng hộp, giao được tới <b>Hà Nội</b> · <a class="link" href="#" data-out="M1.1 Chọn khu vực giao">Đổi khu vực</a></p>
+        </div>
+      </div>
+
+      <!-- Khối đơn vị cung cấp: chỉ khi từ khóa khớp tên đơn vị (AC-14.5) -->
+      <section class="supplier-match" data-if="q" aria-labelledby="sm">
+        <div><span class="label">Đơn vị cung cấp</span><h2 class="h3" id="sm" style="margin-top:6px">Khớp “<span data-q-echo>Nghệ Nhân</span>”</h2><p class="hint" style="margin-top:6px">Nhận đặt theo yêu cầu · không lọc theo vùng giao</p></div>
+        <article class="srow">
+          <div><h3 class="h3">Xưởng Bánh Nghệ Nhân</h3><span class="muted small">Ba Đình, Hà Nội</span></div>
+          <div class="small">In logo, hộp riêng<br><span class="muted">Nhận đặt từ 20 hộp</span></div>
+          <div class="acts"><a class="btn btn--line btn--sm" href="#" data-out="M3.3 Trang đơn vị">Xem đơn vị</a><a class="btn btn--sm" href="#" data-gate="M3.4 Gửi yêu cầu cho đơn vị">Gửi yêu cầu cho Nghệ Nhân</a></div>
+        </article>
+      </section>
+
+      <div class="listing">
+        <aside class="filters" id="filters" aria-label="Bộ lọc">
+          <div class="filters-head"><span class="label" style="color:var(--ink)">Bộ lọc</span><button type="button" class="arrow filters-mobile" data-filter-toggle aria-expanded="false" style="border:0;background:none;font:inherit;cursor:pointer">Xong</button></div>
+          <fieldset class="fgroup"><legend class="label">Giá</legend>
+            <div class="range"><label class="field-u"><span class="small muted">Từ</span><input type="text" inputmode="numeric" placeholder="0đ"></label><label class="field-u"><span class="small muted">Đến</span><input type="text" inputmode="numeric" placeholder="1.000.000đ"></label></div>
+          </fieldset>
+          <fieldset class="fgroup"><legend class="label">Thương hiệu</legend><label class="check"><input type="checkbox" id="b1" data-chip="Nghệ Nhân" checked> Nghệ Nhân</label><label class="check"><input type="checkbox" id="b2" data-chip="Trăng Vàng"> Trăng Vàng</label><label class="check"><input type="checkbox" id="b3" data-chip="Thu Hương"> Thu Hương</label></fieldset>
+          <fieldset class="fgroup"><legend class="label">Vỏ bánh</legend><label class="check"><input type="checkbox" id="v1" data-chip="Vỏ nướng" checked> Nướng</label><label class="check"><input type="checkbox" id="v2" data-chip="Vỏ dẻo"> Dẻo</label><label class="check"><input type="checkbox" id="v3" data-chip="Vỏ than tre"> Than tre</label></fieldset>
+          <fieldset class="fgroup"><legend class="label">Nhân bánh</legend><label class="check"><input type="checkbox" id="n1" data-chip="Thập cẩm"> Thập cẩm</label><label class="check"><input type="checkbox" id="n2" data-chip="Hạt sen" checked> Hạt sen</label><label class="check"><input type="checkbox" id="n3" data-chip="Đậu xanh" checked> Đậu xanh</label><label class="check"><input type="checkbox" id="n4" data-chip="Trà xanh"> Trà xanh</label></fieldset>
+          <fieldset class="fgroup"><legend class="label">Shop</legend><label class="check"><input type="checkbox" id="s1" data-chip="Xưởng Bánh Nghệ Nhân"> Xưởng Bánh Nghệ Nhân</label><label class="check"><input type="checkbox" id="s2" data-chip="Bánh Cổ Truyền Trăng Vàng"> Bánh Cổ Truyền Trăng Vàng</label><label class="check"><input type="checkbox" id="s3" data-chip="Đại lý Thu Hương"> Đại lý Thu Hương</label></fieldset>
+          <p class="hint">Nhiều lựa chọn trong một nhóm = HOẶC; giữa các nhóm = VÀ.</p>
+        </aside>
+        <div>
+          <div class="toolbar">
+            <div class="chips">
+              <button type="button" class="btn btn--line btn--sm filters-mobile" data-filter-toggle aria-expanded="false" aria-controls="filters">Bộ lọc <span data-filter-count></span></button>
+              <span data-chips style="display:contents"></span>
+              <a href="#" class="small muted" data-clear-filters data-when-filters>Xóa lọc</a>
+            </div>
+            <label class="sort">Sắp xếp <select><option>Đánh giá cao</option><option>Giá thấp → cao</option><option>Giá cao → thấp</option></select></label>
+          </div>
+          <p class="count-line" data-unless="empty">12 sản phẩm</p>
+          <p class="count-line" data-if="empty">0 sản phẩm</p>
+          <div class="plates plates--3" data-unless="empty">
+          <a class="plate" href="#" data-out="M2.1 Chi tiết sản phẩm"><div class="ph" role="img" aria-label="Ảnh minh họa"><span>Ảnh minh họa</span></div><span class="pname">Hộp Hoàng Kim 4 bánh</span><span class="pshop">Nghệ Nhân</span><span class="pfoot"><span class="price">680.000đ</span><span class="rating">4,8 ★ (32)</span></span></a>
+          <a class="plate" href="#" data-out="M2.1 Chi tiết sản phẩm"><div class="ph" role="img" aria-label="Ảnh minh họa"><span>Ảnh minh họa</span></div><span class="pname">Hộp Hạt Sen 2 bánh</span><span class="pshop">Nghệ Nhân</span><span class="pfoot"><span class="price">320.000đ</span><span class="rating">4,7 ★ (14)</span></span></a>
+          <a class="plate" href="#" data-out="M2.1 Chi tiết sản phẩm"><div class="ph" role="img" aria-label="Ảnh minh họa"><span>Ảnh minh họa</span></div><span class="pname">Bánh nướng đậu xanh 200g</span><span class="pshop">Nghệ Nhân</span><span class="pfoot"><span class="price">85.000đ</span><span class="rating">4,6 ★ (40)</span></span></a>
+          <a class="plate" href="#" data-out="M2.1 Chi tiết sản phẩm"><div class="ph" role="img" aria-label="Ảnh minh họa"><span>Ảnh minh họa</span></div><span class="pname">Hộp Đoàn Viên 6 bánh</span><span class="pshop">Nghệ Nhân</span><span class="pfoot"><span class="price">890.000đ</span><span class="rating">4,9 ★ (11)</span></span></a>
+          <a class="plate" href="#" data-out="M2.1 Chi tiết sản phẩm"><div class="ph" role="img" aria-label="Ảnh minh họa"><span>Ảnh minh họa</span></div><span class="pname">Bánh nướng hạt sen 150g</span><span class="pshop">Nghệ Nhân</span><span class="pfoot"><span class="price">70.000đ</span><span class="rating">4,5 ★ (8)</span></span></a>
+          <a class="plate" href="#" data-out="M2.1 Chi tiết sản phẩm"><div class="ph" role="img" aria-label="Ảnh minh họa"><span>Ảnh minh họa</span></div><span class="pname">Hộp Thu Vàng 4 bánh</span><span class="pshop">Nghệ Nhân</span><span class="pfoot"><span class="price">450.000đ</span><span class="rating">chưa có đánh giá</span></span></a>
+          </div>
+          <div class="empty" data-if="empty">
+            <h2 class="h2">Không có sản phẩm giao tới Hà Nội khớp bộ lọc</h2>
+            <p class="lead" style="font-size:18px">Thử bỏ bớt bộ lọc. Nếu cần hàng làm riêng, gửi yêu cầu để các đơn vị báo giá.</p>
+            <div class="acts"><a class="btn btn--line" href="m2-0.html">Bỏ hết bộ lọc</a><a class="btn" href="#" data-gate="M3.1 Tạo yêu cầu báo giá">Tạo yêu cầu báo giá</a></div>
+          </div>
+          <nav class="pager" aria-label="Phân trang" data-unless="empty">
+            <span class="it muted">Trang 1 / 2</span>
+            <div class="pages"><span aria-current="page">1</span><a href="#" data-out="Trang 2 của danh sách">2</a><a href="#" data-out="Trang 2 của danh sách" aria-label="Trang sau">→</a></div>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="foot">
+    <div class="wrap">
+      <span>Moonkage · Prototype hướng A, không phải giao diện cuối</span>
+      <nav aria-label="Chân trang"><a href="#" data-out="M7.0 Bán hàng trên Moonkage">Bán hàng trên Moonkage</a><a href="#" data-out="M8.0 Chính sách mua bán">Chính sách mua bán</a></nav>
+    </div>
+  </footer>
+  <script src="../shared/proto.js"></script>
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Moonkage · Khám phá hướng thiết kế</title>
+  <style>
+    /* Neutral launcher. Not part of any direction. */
+    :root { --ink: #161616; --muted: #5c5c5c; --line: #d9d9d9; --bg: #fafafa; }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--bg); color: var(--ink); font: 400 16px/24px system-ui, -apple-system, "Segoe UI", sans-serif; }
+    main { max-width: 1120px; margin: 0 auto; padding: 48px 24px 80px; }
+    h1 { font-size: 32px; line-height: 38px; margin: 0 0 8px; }
+    p { margin: 0 0 12px; color: var(--muted); max-width: 70ch; }
+    .grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin-top: 28px; }
+    .dir { background: #fff; border: 1px solid var(--line); border-radius: 10px; padding: 20px; display: grid; gap: 12px; align-content: start; }
+    .dir h2 { margin: 0; font-size: 20px; line-height: 26px; }
+    .dir p { font-size: 14px; line-height: 21px; margin: 0; }
+    .swatch { display: flex; height: 28px; border-radius: 6px; overflow: hidden; border: 1px solid var(--line); }
+    .swatch span { flex: 1; }
+    ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 4px; }
+    li a { display: flex; justify-content: space-between; min-height: 40px; align-items: center; padding: 0 12px; border: 1px solid var(--line); border-radius: 6px; color: var(--ink); text-decoration: none; font-size: 15px; }
+    li a:hover { border-color: var(--ink); }
+    li small { color: var(--muted); }
+    .docs { margin-top: 32px; display: flex; gap: 16px; flex-wrap: wrap; }
+    .docs a { color: var(--ink); }
+    @media (max-width: 860px) { .grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Moonkage · ba hướng thiết kế</h1>
+    <p>Cùng bốn màn đại diện (M1.0, M2.0, M3.0, Q1.0), cùng nội dung và quy tắc lấy từ wireframe, dựng theo ba triết lý thị giác khác nhau. Đây là prototype khám phá, không phải giao diện cuối. Ảnh sản phẩm là chỗ trống minh họa.</p>
+    <p>Trong mỗi màn, nút <b>Prototype</b> ở góc phải dưới cho phép đổi hướng, đổi màn và xem các trạng thái (khách / người mua, tìm theo tên đơn vị, không có kết quả…).</p>
+    <div class="grid">
+      <section class="dir">
+        <h2>A · Biên tập</h2>
+        <div class="swatch" aria-hidden="true"><span style="background:#f6f3ec"></span><span style="background:#191612"></span><span style="background:#a23b17"></span><span style="background:#e8e1d4"></span></div>
+        <p>Chữ dẫn dắt phân cấp: serif lớn, đường kẻ mảnh thay cho khung, tiêu đề đặt ở lề. Newsreader + IBM Plex Sans.</p>
+        <ul>
+          <li><a href="direction-a/m1-0.html">M1.0 Trang chủ <small>›</small></a></li>
+          <li><a href="direction-a/m2-0.html">M2.0 Mua hàng có sẵn <small>›</small></a></li>
+          <li><a href="direction-a/m3-0.html">M3.0 Đặt theo yêu cầu <small>›</small></a></li>
+          <li><a href="direction-a/q1-0.html">Q1.0 Tổng quan quản trị <small>›</small></a></li>
+        </ul>
+      </section>
+      <section class="dir">
+        <h2>B · Thủ công hiện đại</h2>
+        <div class="swatch" aria-hidden="true"><span style="background:#f5ecdc"></span><span style="background:#1c2b4b"></span><span style="background:#c9a14a"></span><span style="background:#ebdfc8"></span><span style="background:#9e2f27"></span></div>
+        <p>Bề mặt mang nghĩa: giấy nổi là thứ để chọn, giấy lõm là điều kiện và bộ lọc. Ảnh làm trung tâm. Dựng trên token DS Moonkage có sẵn. Fraunces + Be Vietnam Pro.</p>
+        <ul>
+          <li><a href="direction-b/m1-0.html">M1.0 Trang chủ <small>›</small></a></li>
+          <li><a href="direction-b/m2-0.html">M2.0 Mua hàng có sẵn <small>›</small></a></li>
+          <li><a href="direction-b/m3-0.html">M3.0 Đặt theo yêu cầu <small>›</small></a></li>
+          <li><a href="direction-b/q1-0.html">Q1.0 Tổng quan quản trị <small>›</small></a></li>
+        </ul>
+      </section>
+      <section class="dir">
+        <h2>C · Cấu trúc</h2>
+        <div class="swatch" aria-hidden="true"><span style="background:#ecece6"></span><span style="background:#ffffff"></span><span style="background:#0e0f11"></span><span style="background:#ffd23f"></span></div>
+        <p>Cấu trúc là bản sắc: lưới ô kẻ chung đường viền, hai lối mua so trên cùng hàng, số liệu chữ mono, vàng chỉ để báo "cần bạn". Archivo + JetBrains Mono.</p>
+        <ul>
+          <li><a href="direction-c/m1-0.html">M1.0 Trang chủ <small>›</small></a></li>
+          <li><a href="direction-c/m2-0.html">M2.0 Mua hàng có sẵn <small>›</small></a></li>
+          <li><a href="direction-c/m3-0.html">M3.0 Đặt theo yêu cầu <small>›</small></a></li>
+          <li><a href="direction-c/q1-0.html">Q1.0 Tổng quan quản trị <small>›</small></a></li>
+        </ul>
+      </section>
+    </div>
+    <div class="docs">
+      <a href="README.md">README</a>
+      <a href="ART-DIRECTIONS.md">Tài liệu ba hướng</a>
+      <a href="COMPARISON.md">So sánh và đề xuất</a>
+      <a href="../wireframe/index.html">Wireframe gốc</a>
+    </div>
+  </main>
+</body>
+</html>

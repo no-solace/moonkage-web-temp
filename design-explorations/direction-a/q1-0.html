@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Moonkage · Quản trị · Tổng quan — Hướng A Biên tập</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="../shared/proto.css">
+</head>
+<body data-dir="a" data-screen="q1-0">
+  <header class="mast mast--admin">
+    <div class="wrap mast-top">
+      <a class="wordmark" href="q1-0.html">Moonkage<small>Quản trị</small></a>
+      <div class="utils"><span>Quản trị viên · Trần Hà</span><button type="button" class="menu-btn" data-nav-toggle aria-expanded="false" aria-controls="nav">Menu</button></div>
+    </div>
+    <div class="wrap">
+      <nav class="mast-nav" id="nav" aria-label="Menu quản trị">
+        <a href="q1-0.html" aria-current="page">Tổng quan</a>
+        <a href="#" data-out="Q2.0 Người bán">Người bán<sup>1</sup></a>
+        <a href="#" data-out="Q3.0 Sản phẩm">Sản phẩm</a>
+        <a href="#" data-out="Q4.0 Tiền">Tiền<sup>13</sup></a>
+        <a href="#" data-out="Q5.0 Khiếu nại">Khiếu nại<sup>1</sup></a>
+        <a href="#" data-out="Q6.0 Cấu hình">Cấu hình</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="wrap">
+      <div class="page-title" style="grid-template-columns:1fr auto">
+        <div><span class="label">Bàn làm việc</span><h1 class="h1" style="margin-top:8px">Tổng quan</h1></div>
+        <p class="lead" style="text-align:right">Hàng chờ xử lý<br><span class="num">24/10/2026</span></p>
+      </div>
+
+      <section class="sec" style="padding-top:32px" aria-label="Bốn hàng chờ">
+        <div class="queues">
+          <a class="queue" href="#" data-out="Q2.0 Người bán"><span class="label">Hồ sơ người bán chờ duyệt</span><span class="n">1</span><span class="go">Người bán</span></a>
+          <a class="queue" href="#" data-out="Q4.1 Duyệt giải ngân"><span class="label">Giải ngân cọc chờ duyệt</span><span class="n">1</span><span class="go">Duyệt giải ngân</span></a>
+          <a class="queue" href="#" data-out="Q4.2 Chuyển tiền"><span class="label">Đơn chờ chuyển tiền</span><span class="n">12</span><span class="go">Chuyển tiền</span></a>
+          <a class="queue" href="#" data-out="Q5.0 Khiếu nại"><span class="label">Khiếu nại đang mở</span><span class="n">1</span><span class="go">Khiếu nại</span></a>
+        </div>
+      </section>
+
+      <section class="sec margin" aria-labelledby="old">
+        <div class="m-head">
+          <span class="secno">01</span>
+          <h2 class="h2" id="old">Cũ nhất trong hàng chờ</h2>
+          <p class="hint">Xử lý từ trên xuống.</p>
+        </div>
+        <div class="m-body">
+          <table class="ledger">
+            <thead><tr><th scope="col">Loại</th><th scope="col">Việc</th><th scope="col">Đang chờ</th><th scope="col"><span class="sr-only">Thao tác</span></th></tr></thead>
+            <tbody>
+              <tr><td><span class="kind kind--urgent">Khiếu nại</span></td><td>KN-09 · đơn MK-8810 · người bán đã đề xuất</td><td class="wait">mở 4 ngày</td><td><a class="btn btn--sm" href="#" data-out="Q5.1 Xử lý khiếu nại">Xử lý</a></td></tr>
+              <tr><td><span class="kind">Hồ sơ</span></td><td>Xưởng Bánh Nghệ Nhân · hộ kinh doanh</td><td class="wait">chờ 1 ngày</td><td><a class="btn btn--line btn--sm" href="#" data-out="Q2.1 Hồ sơ người bán">Xử lý</a></td></tr>
+              <tr><td><span class="kind">Giải ngân</span></td><td>MK-C071 · <span class="num">3.000.000đ</span></td><td class="wait">chờ 6 giờ</td><td><a class="btn btn--line btn--sm" href="#" data-out="Q4.1 Duyệt giải ngân">Xử lý</a></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="sec" aria-labelledby="flag">
+        <div class="flag">
+          <div><span class="secno" style="color:var(--err)">02</span><h2 class="h3" id="flag" style="margin-top:4px">Đơn bị đánh dấu đối soát <span class="num">(1)</span></h2></div>
+          <div class="body"><span>MK-8702 · tiền VNPay báo về khác số tiền đơn <b class="num">25.000đ</b></span><a class="btn btn--line btn--sm" href="#" data-out="Q4.3 Đối soát">Xem đối soát</a></div>
+        </div>
+      </section>
+    </div>
+  </main>
+  <script src="../shared/proto.js"></script>
+</body>
+</html>
