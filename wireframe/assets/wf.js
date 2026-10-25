@@ -83,10 +83,9 @@
       '<input id="wf-q" type="search" name="q" class="wf-search-input" placeholder="Tìm bánh, nhân bánh hoặc tên đơn vị…">' +
       '<button type="submit" class="wf-search-btn">Tìm</button></form>';
     top += '<div class="wf-header-actions">';
-    top += link('m/m1-1.html', '<span class="k">Giao tới</span> <strong>Hà Nội ▾</strong>', 'wf-hbtn');
     if (ROLE === 'admin') {
       // Tài khoản quản trị là tài khoản nội bộ: xem được trang công khai, không có giỏ, đơn, tài khoản mua
-      return { top: top + link('q/q1-0.html', 'Về Quản trị ›', 'btn btn-sm') + '</div>', nav: headerMNav() };
+      return { util: utilM(), top: top + link('q/q1-0.html', 'Về Quản trị ›', 'btn btn-sm') + '</div>', nav: headerMNav() };
     }
     top += link('m/m4-0.html', '<span class="wf-icon" aria-hidden="true">GH</span><span class="lbl">Giỏ hàng</span> <span class="count">2</span>', 'wf-hbtn', ' data-needs-login="true" aria-label="Giỏ hàng, 2 món"');
     if (ROLE === 'guest') {
@@ -107,7 +106,14 @@
     }
     top += '</div>';
 
-    return { top: top, nav: headerMNav() };
+    return { util: utilM(), top: top, nav: headerMNav() };
+  }
+  // Thanh tiện ích trên cùng (hướng bố cục mới): khu vực giao bên trái; lối sang khu bán và chính sách bên phải
+  function utilM() {
+    return '<div class="wf-util"><div class="wf-util-in">' +
+      link('m/m1-1.html', 'Giao tới <strong>Hà Nội ▾</strong> · Sản phẩm, giá và phí giao tính theo nơi bạn chọn', 'area') +
+      '<nav aria-label="Tiện ích">' + (ROLE !== 'admin' ? sellEntry('', starts('M7.')) : '') + link('m/m8-0.html', 'Chính sách mua bán') + '</nav>' +
+      '</div></div>';
   }
   function headerMNav() {
     var nav = link('m/m2-0.html', 'Mua hàng có sẵn', 'wf-nav-item' + (starts('M2.') ? ' active' : ''));
@@ -117,11 +123,6 @@
       link('m/m3-1.html', 'Tạo yêu cầu báo giá <small>gửi nhiều nơi</small>', 'wf-dd-item', ' data-needs-login="true" data-needs-nfc="true"') +
       link('m/m3-2.html', 'Đơn vị cung cấp <small>chọn một nơi</small>', 'wf-dd-item') +
       '</div></div>';
-    // Lối vào bán hàng nằm ngay trên thanh menu, cả khách cũng thấy; đối xứng với "↩ Về trang mua hàng" ở khu B
-    if (ROLE !== 'admin') {
-      nav += '<span class="spacer"></span>';
-      nav += sellEntry('wf-nav-item', starts('M7.'));
-    }
     return nav;
   }
 
@@ -159,7 +160,7 @@
 
   function buildHeader() {
     var h = ZONE === 'M' ? headerM() : ZONE === 'B' ? headerB() : headerQ();
-    return '<header class="wf-header">' +
+    return (h.util || '') + '<header class="wf-header">' +
       '<div class="wf-header-top">' +
       '<button type="button" class="wf-menu-btn btn btn-sm" aria-expanded="false" aria-controls="wf-nav-bar">☰<span class="sr-only">Menu</span></button>' +
       h.top + '</div>' +

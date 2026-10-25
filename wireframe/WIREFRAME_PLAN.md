@@ -74,11 +74,11 @@ Mỗi trang chỉ chứa phần thân. Khung chung do `wf.js` chèn dựa trên 
 | Mua hàng | Toàn cục | 1 | Ô tìm kiếm | M2.0 | Mọi người | Sản phẩm theo khu vực đang chọn; từ khóa khớp tên đơn vị nhận đặt hàng thì trang kết quả có thêm khối Đơn vị cung cấp, tách khỏi danh sách sản phẩm (AC-14.5, Đ2) |
 | Mua hàng | Toàn cục | 2 | Mua hàng có sẵn | M2.0 | Mọi người | Chốt theo tree test (Đ1, cây B) |
 | Mua hàng | Toàn cục | 3 | Đặt theo yêu cầu ▾ | M3.0 | Mọi người | Chốt theo tree test (Đ1, cây B). Menu con: Tạo yêu cầu báo giá (M3.1), Đơn vị cung cấp (M3.2) |
-| Mua hàng | Toàn cục | 4 | Giao tới: [tỉnh/thành] | M1.1 | Mọi người | |
+| Mua hàng | Toàn cục | 4 | Giao tới: [tỉnh/thành] | M1.1 | Mọi người | Thanh tiện ích trên cùng, bên trái |
 | Mua hàng | Toàn cục | 5 | Giỏ hàng | M4.0 | Mọi người | Số món. Khách bấm thì sang đăng nhập rồi quay về; không có giỏ của khách (AC-02.3, Đ4) |
 | Mua hàng | Toàn cục | 6 | Thông báo | M6.6 | Đã đăng nhập | Chỉ thông báo mua hàng; thông báo cửa hàng ở B7.0, hai hộp tách riêng; có aria-label (Đ7) |
 | Mua hàng | Toàn cục | 7 | Tài khoản ▾ / Đăng nhập | M6.0 / M5.1 | | Khách thấy Đăng nhập |
-| Mua hàng | Toàn cục | 8 | Bán hàng trên Moonkage / Kênh người bán › / Cửa hàng của bạn › | M7.0 / B1.0 / B1.0 | Mọi người trừ Quản trị | Chưa làm chủ người bán / hồ sơ chờ duyệt / đã mở bán. Không có trong menu Tài khoản ▾. Mép phải thanh menu, đối xứng với "↩ Về trang mua hàng" ở khu B. Khách cũng thấy; nút khai hồ sơ ở M7.0 mới qua cổng đăng nhập và xác minh. Điện thoại: trong menu ☰ |
+| Mua hàng | Toàn cục | 8 | Bán hàng trên Moonkage / Kênh người bán › / Cửa hàng của bạn › | M7.0 / B1.0 / B1.0 | Mọi người trừ Quản trị | Chưa làm chủ người bán / hồ sơ chờ duyệt / đã mở bán. Không có trong menu Tài khoản ▾. Thanh tiện ích trên cùng, bên phải (cạnh Chính sách mua bán) |
 | Menu Tài khoản | Menu | 1 | Tổng quan | M6.0 | Đã đăng nhập | |
 | Menu Tài khoản | Menu | 2 | Đơn hàng | M6.1 | Đã đăng nhập | |
 | Menu Tài khoản | Menu | 3 | Yêu cầu và báo giá | M6.2 | Đã đăng nhập | |
@@ -106,7 +106,7 @@ Mỗi trang chỉ chứa phần thân. Khung chung do `wf.js` chèn dựa trên 
 | Quản trị | Toàn cục | 5 | Khiếu nại | Q5.0 | Quản trị | Số khiếu nại mở |
 | Quản trị | Toàn cục | 6 | Cấu hình | Q6.0 | Quản trị | |
 
-**Trang chủ M1.0 – năm khối theo thứ tự:** (1) chọn khu vực giao (khách chưa chọn) · (2) hai thẻ lối vào **Mua hàng có sẵn** / **Đặt theo yêu cầu**, mỗi thẻ kèm điều kiện thật · (3) một dòng "Việc cần bạn" (chỉ khi đã đăng nhập và có việc chờ) · (4) "Có sẵn giao tới [tỉnh]" (lưới sản phẩm) · (5) "Nhận đặt theo yêu cầu" (vài đơn vị cung cấp). Không có lịch mùa, hạn chót, số liệu không tính từ dữ liệu, ngưỡng chung "30 hộp".
+**Trang chủ M1.0 – bảy khối theo thứ tự (hướng bố cục mới, tham khảo Shopcart):** (1) hero lớn tràn ngang: một thông điệp, hai nút Xem hàng có sẵn / Đặt theo yêu cầu, ảnh lớn Moonkage tự chụp; khách chưa chọn nơi giao có một dòng Chọn khu vực giao · (2) hai thẻ lối vào **Mua hàng có sẵn** / **Đặt theo yêu cầu** kèm điều kiện thật, đè mép dưới hero · (3) "Việc cần bạn" (chỉ khi đã đăng nhập và có việc chờ) · (4) Tìm nhanh: chip vỏ, nhân, giá (bộ lọc M2.0) · (5) "Có sẵn giao tới [tỉnh]" (thẻ có nút Thêm vào giỏ) · (6) "Nhận đặt theo yêu cầu" · (7) "Tiền của bạn đi thế nào" (chỉ quy tắc có trong đặc tả). Không có lịch mùa, hạn chót, khuyến mãi, số liệu không tính từ dữ liệu, ngưỡng chung "30 hộp".
 
 **Dòng mô tả dưới nhãn "Đặt theo yêu cầu"** (menu, thẻ trang chủ, M3.0): "Số lượng lớn, in logo hoặc hàng phải làm riêng, dù ít hộp."
 
@@ -235,11 +235,11 @@ Mỗi trang chỉ chứa phần thân. Khung chung do `wf.js` chèn dựa trên 
 | Mua hàng | Toàn cục | 1 | Ô tìm kiếm | M2.0 | Mọi người | Sản phẩm theo khu vực đang chọn; từ khóa khớp tên đơn vị nhận đặt hàng thì trang kết quả có thêm khối Đơn vị cung cấp, tách khỏi danh sách sản phẩm (AC-14.5, Đ2) |
 | Mua hàng | Toàn cục | 2 | Mua hàng có sẵn | M2.0 | Mọi người | Chốt theo tree test (Đ1, cây B) |
 | Mua hàng | Toàn cục | 3 | Đặt theo yêu cầu ▾ | M3.0 | Mọi người | Chốt theo tree test (Đ1, cây B). Menu con: Tạo yêu cầu báo giá (M3.1), Đơn vị cung cấp (M3.2) |
-| Mua hàng | Toàn cục | 4 | Giao tới: [tỉnh/thành] | M1.1 | Mọi người | |
+| Mua hàng | Toàn cục | 4 | Giao tới: [tỉnh/thành] | M1.1 | Mọi người | Thanh tiện ích trên cùng, bên trái |
 | Mua hàng | Toàn cục | 5 | Giỏ hàng | M4.0 | Mọi người | Số món. Khách bấm thì sang đăng nhập rồi quay về; không có giỏ của khách (AC-02.3, Đ4) |
 | Mua hàng | Toàn cục | 6 | Thông báo | M6.6 | Đã đăng nhập | Chỉ thông báo mua hàng; thông báo cửa hàng ở B7.0, hai hộp tách riêng; có aria-label (Đ7) |
 | Mua hàng | Toàn cục | 7 | Tài khoản ▾ / Đăng nhập | M6.0 / M5.1 | | Khách thấy Đăng nhập |
-| Mua hàng | Toàn cục | 8 | Bán hàng trên Moonkage / Kênh người bán › / Cửa hàng của bạn › | M7.0 / B1.0 / B1.0 | Mọi người trừ Quản trị | Chưa làm chủ người bán / hồ sơ chờ duyệt / đã mở bán. Không có trong menu Tài khoản ▾. Mép phải thanh menu, đối xứng với "↩ Về trang mua hàng" ở khu B. Khách cũng thấy; nút khai hồ sơ ở M7.0 mới qua cổng đăng nhập và xác minh. Điện thoại: trong menu ☰ |
+| Mua hàng | Toàn cục | 8 | Bán hàng trên Moonkage / Kênh người bán › / Cửa hàng của bạn › | M7.0 / B1.0 / B1.0 | Mọi người trừ Quản trị | Chưa làm chủ người bán / hồ sơ chờ duyệt / đã mở bán. Không có trong menu Tài khoản ▾. Thanh tiện ích trên cùng, bên phải (cạnh Chính sách mua bán) |
 | Menu Tài khoản | Menu | 1 | Tổng quan | M6.0 | Đã đăng nhập | |
 | Menu Tài khoản | Menu | 2 | Đơn hàng | M6.1 | Đã đăng nhập | |
 | Menu Tài khoản | Menu | 3 | Yêu cầu và báo giá | M6.2 | Đã đăng nhập | |
@@ -267,7 +267,7 @@ Mỗi trang chỉ chứa phần thân. Khung chung do `wf.js` chèn dựa trên 
 | Quản trị | Toàn cục | 5 | Khiếu nại | Q5.0 | Quản trị | Số khiếu nại mở |
 | Quản trị | Toàn cục | 6 | Cấu hình | Q6.0 | Quản trị | |
 
-**Trang chủ M1.0 – năm khối theo thứ tự:** (1) chọn khu vực giao (khách chưa chọn) · (2) hai thẻ lối vào **Mua hàng có sẵn** / **Đặt theo yêu cầu**, mỗi thẻ kèm điều kiện thật · (3) một dòng "Việc cần bạn" (chỉ khi đã đăng nhập và có việc chờ) · (4) "Có sẵn giao tới [tỉnh]" (lưới sản phẩm) · (5) "Nhận đặt theo yêu cầu" (vài đơn vị cung cấp). Không có lịch mùa, hạn chót, số liệu không tính từ dữ liệu, ngưỡng chung "30 hộp".
+**Trang chủ M1.0 – bảy khối theo thứ tự (hướng bố cục mới, tham khảo Shopcart):** (1) hero lớn tràn ngang: một thông điệp, hai nút Xem hàng có sẵn / Đặt theo yêu cầu, ảnh lớn Moonkage tự chụp; khách chưa chọn nơi giao có một dòng Chọn khu vực giao · (2) hai thẻ lối vào **Mua hàng có sẵn** / **Đặt theo yêu cầu** kèm điều kiện thật, đè mép dưới hero · (3) "Việc cần bạn" (chỉ khi đã đăng nhập và có việc chờ) · (4) Tìm nhanh: chip vỏ, nhân, giá (bộ lọc M2.0) · (5) "Có sẵn giao tới [tỉnh]" (thẻ có nút Thêm vào giỏ) · (6) "Nhận đặt theo yêu cầu" · (7) "Tiền của bạn đi thế nào" (chỉ quy tắc có trong đặc tả). Không có lịch mùa, hạn chót, khuyến mãi, số liệu không tính từ dữ liệu, ngưỡng chung "30 hộp".
 
 **Dòng mô tả dưới nhãn "Đặt theo yêu cầu"** (menu, thẻ trang chủ, M3.0): "Số lượng lớn, in logo hoặc hàng phải làm riêng, dù ít hộp."
 
@@ -295,7 +295,7 @@ Cột "Khuôn" cho biết ghép từ khuôn nào ở mục 3. Trang "Hoãn" ch�
 
 | ID | File | Tên trang | Khuôn | Đường dẫn (React sau này) | Ai thấy | Điều kiện | FR | Demo | Luồng | Ghi chú |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| M1.0 | m/m1-0.html | Trang chủ | Riêng | / | Khách, Người mua | | FR-05, FR-06, FR-14, FR-16 (lối vào) | Làm trọn | F1, F2, F3 | Năm khối theo thứ tự (Đ3): 1 chọn khu vực (khách chưa có, AC-05.3) · 2 hai thẻ lối vào kèm điều kiện thật · 3 một dòng 'Việc cần bạn' (đã đăng nhập, có việc chờ) · 4 'Có sẵn giao tới [tỉnh]' · 5 'Nhận đặt theo yêu cầu' (bảng vài đơn vị). Không có: lịch mùa, hạn chót, số liệu không tính từ dữ liệu, ngưỡng chung '30 hộp' |
+| M1.0 | m/m1-0.html | Trang chủ | Riêng | / | Khách, Người mua | | FR-05, FR-06, FR-14, FR-16 (lối vào) | Làm trọn | F1, F2, F3 | Bảy khối theo thứ tự (Đ3, hướng bố cục mới): 1 hero lớn tràn ngang, hai nút (khách chưa chọn nơi giao có dòng Chọn khu vực giao, AC-05.3) · 2 hai thẻ lối vào kèm điều kiện thật, đè mép dưới hero · 3 'Việc cần bạn' (đã đăng nhập, có việc chờ) · 4 Tìm nhanh (chip bộ lọc M2.0) · 5 'Có sẵn giao tới [tỉnh]' (nút Thêm vào giỏ) · 6 'Nhận đặt theo yêu cầu' · 7 'Tiền của bạn đi thế nào'. Không có: lịch mùa, hạn chót, khuyến mãi, số liệu không tính từ dữ liệu, ngưỡng chung '30 hộp' |
 | M1.1 | m/m1-1.html | Chọn khu vực giao | T6 Hộp thoại | (hộp thoại) | Khách, Người mua | Mở trước khi hiện sản phẩm nếu chưa có khu vực | FR-03, FR-05 (AC-05.3) | Làm trọn | F1 | Người đã đăng nhập chọn từ địa chỉ đã lưu; khách chọn tỉnh/thành |
 | M2.0 | m/m2-0.html | Mua hàng có sẵn | T1 Danh sách | /san-pham | Khách, Người mua | | FR-06, AC-14.5 | Làm trọn | F1, F3 | Nhãn chốt theo tree test (Đ1, cây B). Lọc giá, thương hiệu, vỏ bánh, nhân bánh, Shop (chọn nhiều trong một bộ lọc = HOẶC); sắp xếp giá, đánh giá. Từ khóa khớp tên đơn vị nhận đặt hàng → khối 'Đơn vị cung cấp' tách khỏi danh sách sản phẩm, không lọc vùng giao (AC-14.5, /api/suppliers?q=). Không có kết quả → gợi ý bỏ lọc + lối Tạo yêu cầu báo giá |
 | M2.1 | m/m2-1.html | Chi tiết sản phẩm | T2 Chi tiết | /san-pham/:productId | Khách, Người mua | Chủ của Shop: nhãn "Sản phẩm của bạn", không có nút mua (BR-22) | FR-07, FR-08 | Làm trọn | F1, F3 | Có lối "Gửi yêu cầu cho Shop này" nếu người bán nhận đặt hàng |

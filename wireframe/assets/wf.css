@@ -564,3 +564,40 @@ body.show-fold::after { z-index: 1001; }
 @media (max-width: 767px) { .wf-role-bar-left, .wf-role-bar-right { flex-wrap: wrap; } .wf-why { visibility: hidden; } body.why-open .wf-why { visibility: visible; } }
 
 /* Khung 1440 luôn căn giữa như UI thật; bảng thuyết minh là ngăn kéo phủ, không đẩy trang */
+
+/* 20. HƯỚNG BỐ CỤC MỚI (tham khảo Shopcart): thanh tiện ích, hero lớn, nút bo tròn ---------- */
+.wf-util { background: var(--ink); color: #bbb; border-bottom: 1px solid #333; font: var(--t-caption); }
+.wf-util-in { max-width: var(--page); margin: 0 auto; padding: 0 var(--pad); min-height: 36px; display: flex; align-items: center; justify-content: space-between; gap: var(--s4); }
+.wf-util a { color: var(--paper); text-decoration: none; }
+.wf-util a:hover { text-decoration: underline; }
+.wf-util nav { display: flex; gap: var(--s6); }
+.wf-util .area strong { color: var(--paper); }
+.pill { border-radius: 999px; }
+.wf-header .wf-search-input { border-radius: 999px 0 0 999px !important; }
+.wf-header .wf-search-btn { border-radius: 0 999px 999px 0; }
+/* Hero tràn hết khung 1440, chữ vẫn neo lưới 12 cột */
+.hero-band { margin: calc(-1 * var(--s6)) calc(-1 * var(--pad)) 0; padding: var(--s12) var(--pad) calc(var(--s12) + 48px); background: var(--fill); }
+.hero-band { position: relative; }
+.hero-band > .wf-pin { left: var(--s4); top: var(--s4); }
+.hero-grid { align-items: center; }
+.hero-text { display: flex; flex-direction: column; gap: var(--s4); }
+.hero-title { font: 700 56px/64px system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; letter-spacing: -.02em; max-width: 16ch; text-wrap: balance; }
+.hero-text .lead { font-size: 19px; line-height: 28px; color: var(--ink-2); max-width: 46ch; }
+.hero-text .row { margin-top: var(--s4); }
+.hero-img { min-height: 420px; border-radius: var(--r-lg); background-color: var(--fill-2); }
+/* Thẻ lối vào đè mép dưới hero */
+.mode-row { margin-top: -48px; position: relative; }
+.mode-card { display: flex; flex-direction: column; gap: var(--s1); padding: var(--s6); border: 1px solid var(--ink); border-radius: var(--r-lg); background: var(--paper); color: var(--ink); text-decoration: none; }
+.mode-card > strong { font: var(--t-heading); }
+.mode-card .go { font: var(--t-label); text-decoration: underline; margin-top: var(--s2); }
+.mode-card-dark { background: var(--ink); color: var(--paper); }
+.mode-card-dark .eyebrow { color: #bbb; }
+.quick-chips { align-items: center; margin-top: var(--s8); }
+.quick-chips .chip { border-radius: 999px; }
+.quick-chips .chip-end { margin-left: auto; }
+.quick-chips + .section { margin-top: var(--s8); }
+/* Thẻ sản phẩm: ảnh vuông, tên + giá cùng dòng, nút thêm vào giỏ */
+.product-buy .name-row { display: flex; justify-content: space-between; gap: var(--s3); color: var(--ink); text-decoration: none; margin-top: var(--s2); }
+.product-buy .name-row .price { margin-top: 0; white-space: nowrap; }
+.product-buy .btn { align-self: flex-start; margin-top: var(--s2); }
+.maker { justify-content: space-between; }
