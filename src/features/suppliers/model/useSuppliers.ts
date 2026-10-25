@@ -1,10 +1,19 @@
 import { useAsync } from '../../../shared/ui';
-import { fetchFeaturedSuppliers, fetchSuppliers, type Supplier } from '../api/suppliersApi';
+import { fetchFeaturedSuppliers, fetchSupplier, fetchSuppliers, type Supplier } from '../api/suppliersApi';
 
 export type SupplierKind = 'all' | 'shop' | 'custom-only' | 'logo';
 
 export function useSuppliers() {
   return useAsync(fetchSuppliers, []);
+}
+
+export function useSupplier(supplierId: string) {
+  return useAsync(() => fetchSupplier(supplierId), [supplierId]);
+}
+
+/** Suppliers that would receive an open request: own minimum met, and logo printing when asked. */
+export function matchingSuppliers(suppliers: Supplier[], boxes: number, wantsLogo: boolean): Supplier[] {
+  return suppliers.filter((s) => boxes >= s.minBoxes && (!wantsLogo || /in logo|khắc|ép kim/i.test(s.makes)));
 }
 
 export function useFeaturedSuppliers() {

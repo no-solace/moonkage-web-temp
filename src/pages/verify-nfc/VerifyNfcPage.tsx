@@ -7,10 +7,13 @@ import {
   useNfcSession,
   useNfcStatus,
 } from '../../features/nfc';
+import { Link, useSearchParams } from 'react-router-dom';
 import { formatDateTime } from '../../shared/utils/format';
 
 /** FR-04 on the web (route /account/verify-nfc): shows the account's NFC status, or the QR for the app. */
 export function VerifyNfcPage() {
+  // where the user was going when the NFC gate sent them here (RequireNfc)
+  const next = useSearchParams()[0].get('next');
   const { status, refresh, reload: reloadStatus } = useNfcStatus();
   const { phase, start, reset } = useNfcSession(refresh);
 
@@ -38,7 +41,7 @@ export function VerifyNfcPage() {
   const locked = lockedMessage !== null;
 
   return (
-    <div className="shop__inner page page--narrow">
+    <div className="stack-lg">
       <header className="page__head">
         <h1 className="title-text">{nfcStrings.title}</h1>
         <p className="muted">{nfcStrings.intro}</p>
@@ -57,7 +60,16 @@ export function VerifyNfcPage() {
         </div>
       )}
 
-      {status.kind === 'loaded' && status.info.nfcStatus === 'VERIFIED' && <NfcVerifiedCard info={status.info} />}
+      {status.kind === 'loaded' && status.info.nfcStatus === 'VERIFIED' && (
+        <>
+          <NfcVerifiedCard info={status.info} />
+          {next?.startsWith('/') && (
+            <Link to={next} className="mk-btn mk-btn--primary">
+              Tiếp tục việc đang làm
+            </Link>
+          )}
+        </>
+      )}
 
       {status.kind === 'loaded' && (status.info.nfcStatus === 'LOCKED' || locked) && (
         <NfcLockedCard message={lockedMessage ?? undefined} onReload={reload} />

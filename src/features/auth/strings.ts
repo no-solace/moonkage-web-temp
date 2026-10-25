@@ -6,6 +6,8 @@ export const authStrings = {
   submit: 'Đăng nhập',
   submitting: 'Đang đăng nhập…',
   missingFields: 'Nhập email hoặc số điện thoại và mật khẩu.',
+  demoTitle: 'Tài khoản demo',
+  demoHint: (password: string) => `Bản demo chạy trên dữ liệu mẫu. Chọn một vai, mật khẩu: ${password}.`,
   menu: {
     account: 'Tài khoản',
     overview: 'Tổng quan',

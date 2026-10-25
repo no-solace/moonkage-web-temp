@@ -26,6 +26,7 @@ export function AccountMenu() {
     { to: routes.addresses, label: authStrings.menu.addresses },
     { to: routes.verifyNfc, label: authStrings.menu.verify },
     { to: routes.profile, label: authStrings.menu.profile },
+    ...(session.isAdmin ? [{ to: routes.admin, label: 'Quản trị' }] : []),
   ];
 
   return (

@@ -10,6 +10,10 @@ export interface CartValue {
   /** Number of boxes in the cart (the header count). */
   count: number;
   add: (productId: string, quantity: number) => void;
+  setQuantity: (productId: string, quantity: number) => void;
+  remove: (productId: string) => void;
+  /** After checkout: the paid lines leave the cart. */
+  clear: () => void;
 }
 
 export const CartContext = createContext<CartValue | null>(null);

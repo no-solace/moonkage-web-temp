@@ -1,8 +1,11 @@
 import { useState, type FormEvent } from 'react';
 import { ApiError } from '../../../shared/api/client';
+import { Link } from 'react-router-dom';
+import { routes } from '../../../shared/config/routes';
 import { strings } from '../../../shared/config/strings';
 import { useAuth } from '../model/useAuth';
 import { authStrings } from '../strings';
+import { DemoAccounts } from './DemoAccounts';
 
 /** E-mail or phone number and password (FR-02); `onLoggedIn` runs once the session is stored. */
 export function LoginForm({ onLoggedIn }: { onLoggedIn: () => void }) {
@@ -77,6 +80,18 @@ export function LoginForm({ onLoggedIn }: { onLoggedIn: () => void }) {
       >
         {submitting ? authStrings.submitting : authStrings.submit}
       </button>
+
+      <p className="auth-footer">
+        <Link to={routes.forgotPassword}>Quên mật khẩu?</Link> · Chưa có tài khoản? <Link to={routes.register}>Đăng ký</Link>
+      </p>
+
+      <DemoAccounts
+        onPick={(user, pass) => {
+          setUsername(user);
+          setPassword(pass);
+          setError(null);
+        }}
+      />
     </form>
   );
 }
