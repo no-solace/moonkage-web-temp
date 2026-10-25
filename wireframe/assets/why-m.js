@@ -18,7 +18,7 @@ WHY['M1.0'] = {
       'Thao tác + nhận diện: một thông điệp, hai nút cho hai lối. Khách chưa chọn nơi giao có thêm một dòng "Chọn khu vực giao" (AC-05.3).',
       'Tiêu đề ≤ 2 dòng, 1 câu phụ, 2 nút. Không số liệu, không khuyến mãi (không có dữ liệu).',
       'Mỏ neo: tiêu đề 56px · Bổ trợ: câu phụ 19px xám · Hành động: nút đặc "Xem hàng có sẵn", nút viền "Đặt theo yêu cầu", bo tròn.',
-      'Nền xám tràn hết khung 1440, chữ vẫn neo lưới. Ảnh lớn 6/12 bên phải: Moonkage tự chụp, không dùng ảnh của một Shop.',
+      'Chỉ hero tràn hết bề ngang màn hình (ở mọi độ rộng); thanh tiện ích, header, footer nền trắng kẻ mảnh nên hero là dải màu duy nhất. Chữ và ảnh vẫn neo lưới 12 cột. Ảnh lớn 6/12 bên phải: Moonkage tự chụp, không dùng ảnh của một Shop.',
       '6 + 6 cột, cao ~520px.'
     ], 12),
     B('Hai thẻ lối vào (đè mép dưới hero)', 'act', true, [
