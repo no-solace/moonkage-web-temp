@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>M1.0 Trang chủ · T1 Hai chế độ</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="../shared/review.css">
+</head>
+<body data-dir="t1" data-screen="m1-0">
+<header class="bar">
+  <div class="bar-in">
+    <a class="logo-off" href="m1-0.html" aria-label="Logo ẩn khi đánh giá">Logo ẩn</a>
+    <nav class="switch" aria-label="Chế độ mua"><a class="mode mode--shelf" href="m2-1.html"><i aria-hidden="true"></i>Mua hàng có sẵn</a><a class="mode mode--bench" href="m6-2-1.html"><i aria-hidden="true"></i>Đặt theo yêu cầu</a></nav>
+    <form class="search" role="search"><label class="sr" for="q">Tìm</label><input id="q" type="search" placeholder="Tìm bánh, nhân bánh hoặc tên đơn vị…"><button type="submit">Tìm</button></form>
+    <a class="area" href="#"><span>Giao tới</span><b>Hà Nội</b><span aria-hidden="true">▾</span></a>
+    <a class="hb" href="#">Giỏ hàng <span class="n">2</span></a>
+    <a class="hb hb--solid" href="#">Đăng nhập</a>
+  </div>
+</header>
+<main id="main">
+<h1 class="sr">Trang chủ</h1>
+<p class="ask">Bạn cần bánh theo cách nào?</p>
+<div class="fields">
+  <section class="field field--shelf" aria-labelledby="m1">
+    <div class="fhead">
+      <div><span class="mtag mtag--shelf">Lối 1</span><h2 id="m1" class="ftitle">Mua hàng có sẵn</h2><p class="fdesc">Bánh đã đóng hộp, Shop giao tới khu vực của bạn. Chọn món, thanh toán và chờ giao.</p><ul class="cond"><li>Chỉ hiện sản phẩm giao được tới Hà Nội</li><li>Thanh toán VNPay ngay khi đặt; mỗi Shop tách một đơn</li></ul></div>
+      <a class="btn-s" href="#">Xem hàng có sẵn</a>
+    </div>
+    <div class="shelf-head"><h3>Có sẵn giao tới Hà Nội</h3><a class="lk" href="#">Xem tất cả hàng có sẵn ›</a></div>
+    <div class="shelf"><a class="pc" href="m2-1.html"><div class="imgbox pc-img"><img src="../shared/images/p1.jpg" alt="Hộp Hoàng Kim 4 bánh — ảnh chính (Ảnh minh họa)" loading="lazy"><span class="ill-badge">Ảnh minh họa</span></div><span class="pc-name">Hộp Hoàng Kim 4 bánh</span><span class="pc-maker">Xưởng Bánh Nghệ Nhân</span><span class="pc-row"><span class="price">680.000đ</span><span class="rate">4,8 ★ (32)</span></span></a><a class="pc" href="#"><div class="imgbox pc-img"><img src="../shared/images/p2.jpg" alt="Hộp Trăng Rằm 4 bánh (Ảnh minh họa)" loading="lazy"><span class="ill-badge">Ảnh minh họa</span></div><span class="pc-name">Hộp Trăng Rằm 4 bánh</span><span class="pc-maker">Bánh Cổ Truyền Trăng Vàng</span><span class="pc-row"><span class="price">420.000đ</span><span class="rate">4,6 ★ (18)</span></span></a><a class="pc" href="#"><div class="imgbox pc-img"><img src="../shared/images/p3.jpg" alt="Hộp Thu Sắc 5 bánh mini (Ảnh minh họa)" loading="lazy"><span class="ill-badge">Ảnh minh họa</span></div><span class="pc-name">Hộp Thu Sắc 5 bánh mini</span><span class="pc-maker">Đại lý Thu Hương</span><span class="pc-row"><span class="price">360.000đ</span><span class="rate">4,5 ★ (9)</span></span></a><a class="pc" href="#"><div class="imgbox pc-img"><img src="../shared/images/p4.jpg" alt="Bánh dẻo hạt sen 150g (Ảnh minh họa)" loading="lazy"><span class="ill-badge">Ảnh minh họa</span></div><span class="pc-name">Bánh dẻo hạt sen 150g</span><span class="pc-maker">Bánh Cổ Truyền Trăng Vàng</span><span class="pc-row"><span class="price">65.000đ</span><span class="rate">4,7 ★ (21)</span></span></a></div>
+  </section>
+  <section class="field field--bench" aria-labelledby="m2">
+    <div class="fhead fhead--bench">
+      <div><span class="mtag mtag--bench">Lối 2</span><h2 id="m2" class="ftitle">Đặt theo yêu cầu</h2><p class="fdesc">Số lượng lớn, in logo hoặc hàng phải làm riêng, dù ít hộp.</p><ul class="cond"><li>Cần đăng nhập và xác minh danh tính bằng CCCD gắn chip</li><li>Đặt cọc khi chấp nhận báo giá; duyệt maket trước khi làm</li></ul></div>
+      <img class="ill bench-ill" src="../shared/illustrations/custom.svg" alt="Minh họa: hộp, túi và thiệp in logo">
+    </div>
+    <div class="bench-cta"><a class="btn-b" href="m6-2-1.html">Tạo yêu cầu báo giá</a><a class="btn-b btn-b--line" href="#">Chọn đơn vị cung cấp</a></div>
+    <div class="shelf-head shelf-head--bench"><h3>Nhận đặt theo yêu cầu</h3><a class="lk" href="#">Xem tất cả đơn vị cung cấp ›</a></div>
+    <ul class="wos"><li class="wo"><div class="wo-id"><b>Xưởng Bánh Nghệ Nhân</b><span class="muted">Ba Đình, Hà Nội</span></div><div class="wo-spec"><span>In logo · hộp riêng</span><span class="muted">Nhận đặt từ 20 hộp · giao toàn quốc</span></div><div class="wo-act"><a href="#" class="lk">Xem đơn vị</a><a href="#" class="btn-b btn-b--sm">Gửi yêu cầu cho Nghệ Nhân</a></div></li><li class="wo"><div class="wo-id"><b>Bánh Cổ Truyền Trăng Vàng</b><span class="muted">Hoàn Kiếm, Hà Nội</span></div><div class="wo-spec"><span>Hộp sơn mài · nhân theo yêu cầu</span><span class="muted">Nhận đặt từ 10 hộp · giao Hà Nội</span></div><div class="wo-act"><a href="#" class="lk">Xem đơn vị</a><a href="#" class="btn-b btn-b--sm">Gửi yêu cầu cho Trăng Vàng</a></div></li><li class="wo"><div class="wo-id"><b>Xưởng Minh Hòa</b> <span class="tag">Chỉ nhận đặt hàng</span><span class="muted">Đống Đa, Hà Nội</span></div><div class="wo-spec"><span>In logo · thiệp kèm</span><span class="muted">Nhận đặt từ 50 hộp · giao toàn quốc</span></div><div class="wo-act"><a href="#" class="lk">Xem đơn vị</a><a href="#" class="btn-b btn-b--sm">Gửi yêu cầu cho Minh Hòa</a></div></li></ul>
+  </section>
+</div>
+</main>
+<footer class="foot"><nav aria-label="Chân trang"><a href="#">Bán hàng trên Moonkage</a><a href="#">Chính sách mua bán</a></nav></footer>
+<script src="../shared/review.js"></script>
+</body>
+</html>

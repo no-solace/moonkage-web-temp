@@ -1,0 +1,82 @@
+[
+ {
+  "slot": "p1",
+  "grade": "studio",
+  "subject": "Hộp Hoàng Kim 4 bánh — ảnh chính",
+  "file": "p1.jpg",
+  "source": null,
+  "license": null,
+  "author": null,
+  "status": "stand-in: real photo pending (Wikimedia blocked by network policy)"
+ },
+ {
+  "slot": "p1-2",
+  "grade": "phone-good",
+  "subject": "Hộp Hoàng Kim — ảnh 2",
+  "file": "p1-2.jpg",
+  "source": null,
+  "license": null,
+  "author": null,
+  "status": "stand-in: real photo pending (Wikimedia blocked by network policy)"
+ },
+ {
+  "slot": "p1-3",
+  "grade": "phone-poor",
+  "subject": "Hộp Hoàng Kim — ảnh 3",
+  "file": "p1-3.jpg",
+  "source": null,
+  "license": null,
+  "author": null,
+  "status": "stand-in: real photo pending (Wikimedia blocked by network policy)"
+ },
+ {
+  "slot": "p1-4",
+  "grade": "studio",
+  "subject": "Hộp Hoàng Kim — ảnh 4",
+  "file": "p1-4.jpg",
+  "source": null,
+  "license": null,
+  "author": null,
+  "status": "stand-in: real photo pending (Wikimedia blocked by network policy)"
+ },
+ {
+  "slot": "p1-5",
+  "grade": "phone-good",
+  "subject": "Hộp Hoàng Kim — ảnh 5",
+  "file": "p1-5.jpg",
+  "source": null,
+  "license": null,
+  "author": null,
+  "status": "stand-in: real photo pending (Wikimedia blocked by network policy)"
+ },
+ {
+  "slot": "p2",
+  "grade": "phone-good",
+  "subject": "Hộp Trăng Rằm 4 bánh",
+  "file": "p2.jpg",
+  "source": null,
+  "license": null,
+  "author": null,
+  "status": "stand-in: real photo pending (Wikimedia blocked by network policy)"
+ },
+ {
+  "slot": "p3",
+  "grade": "phone-poor",
+  "subject": "Hộp Thu Sắc 5 bánh mini",
+  "file": "p3.jpg",
+  "source": null,
+  "license": null,
+  "author": null,
+  "status": "stand-in: real photo pending (Wikimedia blocked by network policy)"
+ },
+ {
+  "slot": "p4",
+  "grade": "phone-good",
+  "subject": "Bánh dẻo hạt sen 150g",
+  "file": "p4.jpg",
+  "source": null,
+  "license": null,
+  "author": null,
+  "status": "stand-in: real photo pending (Wikimedia blocked by network policy)"
+ }
+]
