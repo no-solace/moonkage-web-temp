@@ -78,6 +78,7 @@ Mỗi trang chỉ chứa phần thân. Khung chung do `wf.js` chèn dựa trên 
 | Mua hàng | Toàn cục | 5 | Giỏ hàng | M4.0 | Mọi người | Số món. Khách bấm thì sang đăng nhập rồi quay về; không có giỏ của khách (AC-02.3, Đ4) |
 | Mua hàng | Toàn cục | 6 | Thông báo | M6.6 | Đã đăng nhập | Chuông dùng chung hai khu, một hộp mỗi tài khoản, lọc Mua / Bán; có aria-label (Đ7) |
 | Mua hàng | Toàn cục | 7 | Tài khoản ▾ / Đăng nhập | M6.0 / M5.1 | | Khách thấy Đăng nhập |
+| Mua hàng | Toàn cục | 8 | Bán hàng trên Moonkage / Kênh người bán › | M7.0 / B1.0 | Mọi người trừ Quản trị | Mép phải thanh menu, đối xứng với "↩ Về trang mua hàng" ở khu B. Khách cũng thấy; nút khai hồ sơ ở M7.0 mới qua cổng đăng nhập và xác minh. Điện thoại: trong menu ☰ |
 | Menu Tài khoản | Menu | 1 | Tổng quan | M6.0 | Đã đăng nhập | |
 | Menu Tài khoản | Menu | 2 | Đơn hàng | M6.1 | Đã đăng nhập | |
 | Menu Tài khoản | Menu | 3 | Yêu cầu và báo giá | M6.2 | Đã đăng nhập | |
@@ -142,7 +143,7 @@ Mỗi luồng phải đi được từ đầu đến cuối chỉ bằng cách b
 | F1 | Mua hàng có sẵn | Anh Minh; chị Lan buổi tối | M1.0 → M1.1 → M2.0 → M2.1 → M5.1 (nếu là khách, rồi quay về – AC-02.3) → M4.0 → M4.1 → M4.2 → M4.3 → M6.1 → M6.1.1 | Vượt tồn kho/ngưỡng ở M4.0 → F3 (M3.4) |
 | F2 | Yêu cầu báo giá có in logo | Chị Lan | M1.0 → M3.0 → M3.1 → [M6.4 nếu chưa xác minh] → M6.2 → M6.2.1 → M6.2.2 → M4.2 → M6.1.2 (Maket, Tiến độ, Thanh toán phần còn lại → M4.2) | Phía người bán: B3.0 → B3.1 → B3.2; B2.2; B5.2. Quản trị: Q4.1 |
 | F3 | Gửi yêu cầu cho một đơn vị | Chị Thảo; anh Quân; bạn Vy | M2.0 (khối Đơn vị cung cấp khi gõ tên – AC-14.5) hoặc M3.2 (tìm theo tên – AC-14.6) hoặc M2.1 hoặc M4.0 → M3.3 → M3.4 → [M6.4] → M6.2 → M6.2.1 → nối F2 từ M6.2.2 | Không custom → bỏ tab Maket |
-| F4 | Trở thành người bán | Cô Hoa; chị Thảo; anh Quân | M7.0 → [M6.4] → M7.1 → B1.0 (Đang chờ) → Q2.0 → Q2.1 → B1.0 (Đã duyệt) → B1.1 → M4.2 → B6.2 → B4.1 và/hoặc B6.3 | Cần bổ sung → B6.1 nộp lại |
+| F4 | Trở thành người bán | Cô Hoa; chị Thảo; anh Quân | M1.0 (thanh menu: Bán hàng trên Moonkage) → M7.0 → [M6.4] → M7.1 → B1.0 (Đang chờ) → Q2.0 → Q2.1 → B1.0 (Đã duyệt) → B1.1 → M4.2 → B6.2 → B4.1 và/hoặc B6.3 | Cần bổ sung → B6.1 nộp lại |
 | F5 | Khiếu nại | Người mua; người bán; quản trị | M6.1.1/M6.1.2 (nút Báo vấn đề với đơn, còn hạn) → M6.1.3 → [giữ tiền, báo người bán] → B2.1/B2.2 (xem, phản hồi: đề xuất) → Q5.0 → Q5.1 → [hoàn VNPay nếu có] → M6.6 hai bên → M6.1.3 kết quả → Q4.2 phần còn lại | Quá hạn: nút ẩn. VNPay lỗi → tab Cần xử lý tay (Q5.0). Số hoàn > đang giữ: Q-01 |
 | F6 | Xác minh NFC | Mọi người dùng cần đặt hàng hoặc bán | (M3.1 \| M3.4 \| M7.1) → M6.4 → V1 → V2 → V3 → V4 → V5 → M6.4 tự cập nhật → quay lại trang xuất phát | Sai thẻ → V3; khóa sau 5 lần (Q-30 tạm) |
 | F7 | Quản lý sản phẩm | Anh Quân | B4.0 → B4.1 (đăng / sửa) → B4.0 (ẩn / hiện); Quản trị: Q3.0 gỡ | Bị gỡ → B4.1 chỉ xem |
@@ -240,6 +241,7 @@ Mỗi trang chỉ chứa phần thân. Khung chung do `wf.js` chèn dựa trên 
 | Mua hàng | Toàn cục | 5 | Giỏ hàng | M4.0 | Mọi người | Số món. Khách bấm thì sang đăng nhập rồi quay về; không có giỏ của khách (AC-02.3, Đ4) |
 | Mua hàng | Toàn cục | 6 | Thông báo | M6.6 | Đã đăng nhập | Chuông dùng chung hai khu, một hộp mỗi tài khoản, lọc Mua / Bán; có aria-label (Đ7) |
 | Mua hàng | Toàn cục | 7 | Tài khoản ▾ / Đăng nhập | M6.0 / M5.1 | | Khách thấy Đăng nhập |
+| Mua hàng | Toàn cục | 8 | Bán hàng trên Moonkage / Kênh người bán › | M7.0 / B1.0 | Mọi người trừ Quản trị | Mép phải thanh menu, đối xứng với "↩ Về trang mua hàng" ở khu B. Khách cũng thấy; nút khai hồ sơ ở M7.0 mới qua cổng đăng nhập và xác minh. Điện thoại: trong menu ☰ |
 | Menu Tài khoản | Menu | 1 | Tổng quan | M6.0 | Đã đăng nhập | |
 | Menu Tài khoản | Menu | 2 | Đơn hàng | M6.1 | Đã đăng nhập | |
 | Menu Tài khoản | Menu | 3 | Yêu cầu và báo giá | M6.2 | Đã đăng nhập | |
@@ -385,7 +387,7 @@ Mỗi luồng phải đi được từ đầu đến cuối chỉ bằng cách b
 | F1 | Mua hàng có sẵn | Anh Minh; chị Lan buổi tối | M1.0 → M1.1 → M2.0 → M2.1 → M5.1 (nếu là khách, rồi quay về – AC-02.3) → M4.0 → M4.1 → M4.2 → M4.3 → M6.1 → M6.1.1 | Vượt tồn kho/ngưỡng ở M4.0 → F3 (M3.4) |
 | F2 | Yêu cầu báo giá có in logo | Chị Lan | M1.0 → M3.0 → M3.1 → [M6.4 nếu chưa xác minh] → M6.2 → M6.2.1 → M6.2.2 → M4.2 → M6.1.2 (Maket, Tiến độ, Thanh toán phần còn lại → M4.2) | Phía người bán: B3.0 → B3.1 → B3.2; B2.2; B5.2. Quản trị: Q4.1 |
 | F3 | Gửi yêu cầu cho một đơn vị | Chị Thảo; anh Quân; bạn Vy | M2.0 (khối Đơn vị cung cấp khi gõ tên – AC-14.5) hoặc M3.2 (tìm theo tên – AC-14.6) hoặc M2.1 hoặc M4.0 → M3.3 → M3.4 → [M6.4] → M6.2 → M6.2.1 → nối F2 từ M6.2.2 | Không custom → bỏ tab Maket |
-| F4 | Trở thành người bán | Cô Hoa; chị Thảo; anh Quân | M7.0 → [M6.4] → M7.1 → B1.0 (Đang chờ) → Q2.0 → Q2.1 → B1.0 (Đã duyệt) → B1.1 → M4.2 → B6.2 → B4.1 và/hoặc B6.3 | Cần bổ sung → B6.1 nộp lại |
+| F4 | Trở thành người bán | Cô Hoa; chị Thảo; anh Quân | M1.0 (thanh menu: Bán hàng trên Moonkage) → M7.0 → [M6.4] → M7.1 → B1.0 (Đang chờ) → Q2.0 → Q2.1 → B1.0 (Đã duyệt) → B1.1 → M4.2 → B6.2 → B4.1 và/hoặc B6.3 | Cần bổ sung → B6.1 nộp lại |
 | F5 | Khiếu nại | Người mua; người bán; quản trị | M6.1.1/M6.1.2 (nút Báo vấn đề với đơn, còn hạn) → M6.1.3 → [giữ tiền, báo người bán] → B2.1/B2.2 (xem, phản hồi: đề xuất) → Q5.0 → Q5.1 → [hoàn VNPay nếu có] → M6.6 hai bên → M6.1.3 kết quả → Q4.2 phần còn lại | Quá hạn: nút ẩn. VNPay lỗi → tab Cần xử lý tay (Q5.0). Số hoàn > đang giữ: Q-01 |
 | F6 | Xác minh NFC | Mọi người dùng cần đặt hàng hoặc bán | (M3.1 \| M3.4 \| M7.1) → M6.4 → V1 → V2 → V3 → V4 → V5 → M6.4 tự cập nhật → quay lại trang xuất phát | Sai thẻ → V3; khóa sau 5 lần (Q-30 tạm) |
 | F7 | Quản lý sản phẩm | Anh Quân | B4.0 → B4.1 (đăng / sửa) → B4.0 (ẩn / hiện); Quản trị: Q3.0 gỡ | Bị gỡ → B4.1 chỉ xem |

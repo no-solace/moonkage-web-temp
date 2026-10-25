@@ -60,7 +60,7 @@ const FLOWS = [
   {
     "id": "F4", "name": "Trở thành người bán", "persona": "Cô Hoa; chị Thảo; anh Quân",
     "lanes": [
-      { "label": "Chính", "steps": [["M7.0", "buyer"], ["M6.4", "buyer", "opt"], ["M7.1", "buyer-nfc"], ["B1.0", "seller-pending"], ["Q2.0", "admin", "handoff"], ["Q2.1", "admin"], ["B1.0?hs=ok", "seller-pending", "handoff"], ["B1.1", "seller-pending"], ["M4.2?for=phi", "seller-pending"], ["B6.2", "seller-open"], ["B6.0", "seller-open"], ["B6.3", "seller-open"]] },
+      { "label": "Chính", "steps": [["M1.0", "guest"], ["M7.0", "guest"], ["M5.1", "guest", "opt"], ["M6.4", "buyer", "opt"], ["M7.1", "buyer-nfc"], ["B1.0", "seller-pending"], ["Q2.0", "admin", "handoff"], ["Q2.1", "admin"], ["B1.0?hs=ok", "seller-pending", "handoff"], ["B1.1", "seller-pending"], ["M4.2?for=phi", "seller-pending"], ["B6.2", "seller-open"], ["B6.0", "seller-open"], ["B6.3", "seller-open"]] },
       { "label": "Cần bổ sung", "steps": [["Q2.1", "admin"], ["B1.0?hs=more", "seller-pending", "handoff"], ["B6.1?hs=more", "seller-pending"], ["B1.0", "seller-pending"]] }
     ],
     "exceptions": "Sau khi mở bán: đăng sản phẩm (B4.1, xem F7) và/hoặc khai điều kiện nhận đặt hàng (B6.3)"

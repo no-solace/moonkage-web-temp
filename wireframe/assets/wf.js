@@ -113,6 +113,13 @@
       link('m/m3-1.html', 'Tạo yêu cầu báo giá <small>gửi nhiều nơi</small>', 'wf-dd-item', ' data-needs-login="true" data-needs-nfc="true"') +
       link('m/m3-2.html', 'Đơn vị cung cấp <small>chọn một nơi</small>', 'wf-dd-item') +
       '</div></div>';
+    // Lối vào bán hàng nằm ngay trên thanh menu, cả khách cũng thấy; đối xứng với "↩ Về trang mua hàng" ở khu B
+    if (ROLE !== 'admin') {
+      nav += '<span class="spacer"></span>';
+      nav += isSeller
+        ? link('b/b1-0.html', 'Kênh người bán ›', 'wf-nav-item')
+        : link('m/m7-0.html', 'Bán hàng trên Moonkage', 'wf-nav-item' + (starts('M7.') ? ' active' : ''));
+    }
     return nav;
   }
 
