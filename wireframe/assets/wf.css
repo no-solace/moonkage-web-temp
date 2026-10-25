@@ -575,23 +575,6 @@ body.show-fold::after { z-index: 1001; }
 .pill { border-radius: 999px; }
 .wf-header .wf-search-input { border-radius: 999px 0 0 999px !important; }
 .wf-header .wf-search-btn { border-radius: 0 999px 999px 0; }
-/* Hero tràn hết khung 1440, chữ vẫn neo lưới 12 cột */
-.hero-band { margin: calc(-1 * var(--s6)) calc(-1 * var(--pad)) 0; padding: var(--s12) var(--pad) calc(var(--s12) + 48px); background: var(--fill); }
-.hero-band { position: relative; }
-.hero-band > .wf-pin { left: var(--s4); top: var(--s4); }
-.hero-grid { align-items: center; }
-.hero-text { display: flex; flex-direction: column; gap: var(--s4); }
-.hero-title { font: 700 56px/64px system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; letter-spacing: -.02em; max-width: 16ch; text-wrap: balance; }
-.hero-text .lead { font-size: 19px; line-height: 28px; color: var(--ink-2); max-width: 46ch; }
-.hero-text .row { margin-top: var(--s4); }
-.hero-img { min-height: 420px; border-radius: var(--r-lg); background-color: var(--fill-2); }
-/* Thẻ lối vào đè mép dưới hero */
-.mode-row { margin-top: -48px; position: relative; }
-.mode-card { display: flex; flex-direction: column; gap: var(--s1); padding: var(--s6); border: 1px solid var(--ink); border-radius: var(--r-lg); background: var(--paper); color: var(--ink); text-decoration: none; }
-.mode-card > strong { font: var(--t-heading); }
-.mode-card .go { font: var(--t-label); text-decoration: underline; margin-top: var(--s2); }
-.mode-card-dark { background: var(--ink); color: var(--paper); }
-.mode-card-dark .eyebrow { color: #bbb; }
 .quick-chips { align-items: center; margin-top: var(--s8); }
 .quick-chips .chip { border-radius: 999px; }
 .quick-chips .chip-end { margin-left: auto; }
@@ -624,6 +607,27 @@ body[data-zone="M"] .wf-header .wf-nav-item { color: var(--ink-2); }
 body[data-zone="M"] .wf-header .wf-nav-item:hover, body[data-zone="M"] .wf-header .wf-nav-item.active { color: var(--ink); }
 body[data-zone="M"] .wf-nav-item.active { border-bottom-color: var(--ink); }
 body[data-zone="M"] .wf-footer { background: var(--paper); border-top: 1px solid var(--line); }
-/* Hero thoát khỏi khung #content ra hết bề ngang màn hình; chữ và ảnh vẫn thẳng lưới 12 cột */
-.hero-band { margin-left: calc(50% - 50vw); margin-right: calc(50% - 50vw); padding-left: calc(50vw - 50%); padding-right: calc(50vw - 50%); }
-body:has(.hero-band) { overflow-x: clip; }
+
+/* 22. HERO LÀ MỘT TẤM ẢNH 1920×1080 ------------------------------------------------
+   Ảnh tràn hết bề ngang màn hình, giữ tỉ lệ 16:9 (1440 → cao 810, 1920 → cao 1080).
+   Ô chữ là điểm nhấn, đặt chính giữa ảnh; ảnh thật phải chừa vùng giữa cho chữ. */
+.hero-photo { position: relative; margin: calc(-1 * var(--s6)) calc(50% - 50vw) 0; aspect-ratio: 1920 / 1080; }
+.hero-photo-img { position: absolute; inset: 0; display: flex; align-items: flex-end; justify-content: flex-end; padding: var(--s6);
+  background:
+    linear-gradient(to top right, transparent calc(50% - .5px), #c9c9c9 50%, transparent calc(50% + .5px)),
+    linear-gradient(to bottom right, transparent calc(50% - .5px), #c9c9c9 50%, transparent calc(50% + .5px)),
+    var(--fill-2); color: var(--ink-2); font: var(--t-caption); }
+.hero-photo-img span { background: var(--paper); padding: 2px 8px; border-radius: 4px; }
+.hero-photo-text { position: relative; height: 100%; max-width: var(--page); margin: 0 auto; padding: 0 var(--pad); display: flex; flex-direction: column; justify-content: center; gap: var(--s4); }
+.hero-photo-text > * { max-width: 560px; }
+.hero-photo-text .lead { font-size: 19px; line-height: 28px; color: var(--ink-2); }
+.hero-photo-text .row { margin-top: var(--s4); }
+.hero-photo > .wf-pin { left: var(--s4); top: var(--s4); }
+.hero-title { font: 700 56px/64px system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; letter-spacing: -.02em; text-wrap: balance; }
+body:has(.hero-photo) { overflow-x: clip; }
+.hero-photo + .quick-chips { margin-top: var(--s8); }
+/* Ô chữ hero ra giữa: căn giữa cả ngang lẫn dọc, chữ căn giữa */
+.hero-photo-text { align-items: center; text-align: center; }
+.hero-photo-text > * { max-width: 720px; }
+.hero-photo-text .hero-title { max-width: 16ch; }
+.hero-photo-text .row { justify-content: center; }

@@ -12,28 +12,14 @@ window.WHY = WHY;
 function B(t, a, core, q, span) { return { t: t, a: a, core: core, q: q, span: span }; }
 
 WHY['M1.0'] = {
-  goal: 'Người dùng chọn đúng một trong hai lối mua (có sẵn / theo yêu cầu). Hướng bố cục mới (tham khảo Shopcart): hero lớn tạo điểm nhấn, các khối dưới hỗ trợ việc chọn.',
+  goal: 'Người dùng chọn đúng một trong hai lối mua (có sẵn / theo yêu cầu) ngay từ hero ảnh lớn; các khối dưới giúp mua nhanh và yên tâm về tiền.',
   points: [
-    B('Hero lớn tràn ngang', 'act', true, [
-      'Thao tác + nhận diện: một thông điệp, hai nút cho hai lối. Khách chưa chọn nơi giao có thêm một dòng "Chọn khu vực giao" (AC-05.3).',
+    B('Hero: một tấm ảnh 1920×1080', 'act', true, [
+      'Thao tác + nhận diện: một thông điệp, hai nút cho hai lối mua. Khách chưa chọn nơi giao có thêm dòng "Chọn khu vực giao" (AC-05.3).',
       'Tiêu đề ≤ 2 dòng, 1 câu phụ, 2 nút. Không số liệu, không khuyến mãi (không có dữ liệu).',
-      'Mỏ neo: tiêu đề 56px · Bổ trợ: câu phụ 19px xám · Hành động: nút đặc "Xem hàng có sẵn", nút viền "Đặt theo yêu cầu", bo tròn.',
-      'Chỉ hero tràn hết bề ngang màn hình (ở mọi độ rộng); thanh tiện ích, header, footer nền trắng kẻ mảnh nên hero là dải màu duy nhất. Chữ và ảnh vẫn neo lưới 12 cột. Ảnh lớn 6/12 bên phải: Moonkage tự chụp, không dùng ảnh của một Shop.',
-      '6 + 6 cột, cao ~520px.'
-    ], 12),
-    B('Hai thẻ lối vào (đè mép dưới hero)', 'act', true, [
-      'Thao tác: giữ điều kiện thật của từng lối ngay màn đầu, vì hero chỉ có nút.',
-      'Mỗi thẻ: nhãn lối, tên, điều kiện (1 đoạn), liên kết đi tiếp. Cả thẻ bấm được.',
-      'Mỏ neo: tên lối 21px · Lối 2 nền đậm để phân biệt hai lối bằng màu.',
-      'Đè 48px lên hero để nối hai khối thành một cụm quyết định.',
-      '6 + 6 cột.'
-    ], 12),
-    B('"Việc cần bạn" (đã đăng nhập, có việc chờ)', 'act', false, [
-      'Thao tác phụ, một dòng. Không có việc thì không hiện.',
-      '2–3 liên kết + "Xem tất cả".',
-      'Mỏ neo: nhãn đậm · Hành động: nút viền nhỏ.',
-      'Viền đậm + vạch trái 4px.',
-      '12/12.'
+      'Mỏ neo: tiêu đề 56px · Bổ trợ: câu phụ 19px · Hành động: nút đặc "Xem hàng có sẵn", nút viền "Đặt theo yêu cầu", bo tròn.',
+      'Ảnh tràn hết bề ngang màn hình, tỉ lệ 16:9 (1440 → cao 810, 1920 → cao 1080). Ô chữ là điểm nhấn, đặt chính giữa ảnh (căn giữa cả ngang, dọc), rộng tối đa 720px; ảnh thật phải chừa vùng giữa cho chữ. Moonkage tự chụp, không dùng ảnh của một Shop.',
+      '12/12, tràn màn hình.'
     ], 12),
     B('Tìm nhanh', 'act', false, [
       'Thao tác tắt: vào thẳng M2.0 đã lọc. Chỉ dùng bộ lọc có thật của M2.0 (vỏ, nhân, giá).',
@@ -65,9 +51,11 @@ WHY['M1.0'] = {
     ], 12)
   ],
   rejected: [
-    'Hai thẻ lối vào làm khối đầu trang (bố cục cũ): đúng nhiệm vụ nhưng màn đầu thiếu điểm nhấn; đã thay bằng hero lớn + thẻ lối vào đè mép dưới.',
+    'Hai thẻ lối vào (Lối 1, Lối 2) kèm điều kiện: bỏ theo quyết định thiết kế; hai nút trên hero thay chỗ, điều kiện hiện ở M2.0, M3.0 và cổng đăng nhập, xác minh.',
+    '"Việc cần bạn" trên trang chủ: trùng với Thông báo (chuông trên header), nên bỏ.',
     'Banner khuyến mãi "giảm %" như trang tham khảo: không có dữ liệu khuyến mãi, trái quy tắc không bịa số.',
-    'Khối chọn khu vực riêng cho khách: chuyển lên thanh tiện ích (mọi trang) và một dòng trong hero.'
+    'Khối chọn khu vực riêng cho khách: chuyển lên thanh tiện ích (mọi trang) và một dòng trong hero.',
+    'Hero hai cột (chữ trái, ảnh khung bo góc phải): thay bằng một tấm ảnh tràn màn hình, chữ đặt trên ảnh.'
   ]
 };
 
