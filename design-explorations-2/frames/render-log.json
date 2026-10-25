@@ -145,54 +145,5 @@
   "minFont": 12,
   "page": 1276,
   "errors": []
- },
- {
-  "frame": "D",
-  "dir": "t1",
-  "screen": "m1-0",
-  "viewport": "390x844",
-  "fonts": [
-   "Plus Jakarta Sans"
-  ],
-  "hscroll": false,
-  "imgShare": 27,
-  "photosAbove": 4,
-  "areaTop": 1,
-  "minFont": 12,
-  "page": 2083,
-  "errors": []
- },
- {
-  "frame": "D",
-  "dir": "t2",
-  "screen": "m1-0",
-  "viewport": "390x844",
-  "fonts": [
-   "Manrope"
-  ],
-  "hscroll": false,
-  "imgShare": 30,
-  "photosAbove": 4,
-  "areaTop": 13,
-  "minFont": 12,
-  "page": 1822,
-  "errors": []
- },
- {
-  "frame": "D",
-  "dir": "t3",
-  "screen": "m1-0",
-  "viewport": "390x844",
-  "fonts": [
-   "Bricolage Grotesque",
-   "Lexend"
-  ],
-  "hscroll": false,
-  "imgShare": 12,
-  "photosAbove": 3,
-  "areaTop": 98,
-  "minFont": 12,
-  "page": 2096,
-  "errors": []
  }
 ]

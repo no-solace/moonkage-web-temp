@@ -1,6 +1,6 @@
-// Renders the 12 validation frames under identical conditions.
+// Renders the 9 validation frames (desktop 1440 only; mobile is out of scope for this round) under identical conditions.
 // Usage: node design-explorations-2/tools/render-frames.cjs   (uses the preinstalled Playwright + Chromium)
-// Output: frames/<dir>-<A|B|C|D>.png (first screen at the frame viewport) and frames/full/<...>.png (full page),
+// Output: frames/<dir>-<A|B|C>.png (first screen at the frame viewport) and frames/full/<...>.png (full page),
 //         and frames/render-log.json. Side-by-side sheets: python3 design-explorations-2/tools/compose.py
 const { chromium } = require('playwright');
 const path = require('path');
@@ -12,7 +12,6 @@ const FRAMES = [
   ['A', 'm1-0', 1440, 900],
   ['B', 'm2-1', 1440, 900],
   ['C', 'm6-2-1', 1440, 900],
-  ['D', 'm1-0', 390, 844],
 ];
 const DIRS = ['t1', 't2', 't3'];
 (async () => {
