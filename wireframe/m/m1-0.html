@@ -10,50 +10,22 @@
   <main id="content">
     <h1 class="sr-only">Trang chủ</h1>
 
-    <!-- Khối 1: hero lớn tràn ngang, một thông điệp, hai nút (tham khảo Shopcart) -->
-    <section class="hero-band" data-why="1">
-      <div class="g12 hero-grid">
-        <div class="span-6 hero-text">
-          <p class="hero-title">Bánh trung thu đóng hộp, giao tới Hà Nội</p>
-          <p class="lead">Chọn món, thanh toán VNPay và chờ Shop giao tới khu vực của bạn.</p>
-          <p class="sm" data-show="guest">Chưa chọn nơi giao? <a href="m1-1.html">Chọn khu vực giao</a> để giá và phí giao đúng vùng.</p>
-          <div class="row">
-            <a href="m2-0.html" class="btn btn-primary btn-lg pill">Xem hàng có sẵn</a>
-            <a href="m3-0.html" class="btn btn-lg pill">Đặt theo yêu cầu</a>
-          </div>
+    <!-- Khối 1: hero là một tấm ảnh 1920×1080 tràn hết bề ngang màn hình, chữ đặt trên ảnh -->
+    <section class="hero-photo" data-why="1">
+      <div class="hero-photo-img" aria-hidden="true"><span>Ảnh hero 1920 × 1080 · Moonkage tự chụp · chừa vùng trống bên trái cho chữ</span></div>
+      <div class="hero-photo-text">
+        <p class="hero-title">Bánh trung thu đóng hộp, giao tới Hà Nội</p>
+        <p class="lead">Chọn món, thanh toán VNPay và chờ Shop giao tới khu vực của bạn.</p>
+        <p class="sm" data-show="guest">Chưa chọn nơi giao? <a href="m1-1.html">Chọn khu vực giao</a> để giá và phí giao đúng vùng.</p>
+        <div class="row">
+          <a href="m2-0.html" class="btn btn-primary btn-lg pill">Xem hàng có sẵn</a>
+          <a href="m3-0.html" class="btn btn-lg pill">Đặt theo yêu cầu</a>
         </div>
-        <div class="span-6 wf-img hero-img"><span>Ảnh hero lớn · Moonkage tự chụp</span></div>
       </div>
     </section>
 
-    <!-- Khối 2: hai thẻ lối vào kèm điều kiện thật, đè mép dưới hero -->
-    <section class="grid-2 mode-row" data-why="2">
-      <a class="mode-card" href="m2-0.html">
-        <span class="eyebrow">Lối 1</span>
-        <strong>Mua hàng có sẵn</strong>
-        <span class="sm muted">Chỉ hiện sản phẩm giao được tới <strong>Hà Nội</strong> · Thanh toán VNPay ngay khi đặt; mỗi Shop tách một đơn</span>
-        <span class="go">Xem hàng có sẵn ›</span>
-      </a>
-      <a class="mode-card mode-card-dark" href="m3-1.html" data-needs-login="true" data-needs-nfc="true">
-        <span class="eyebrow">Lối 2</span>
-        <strong>Đặt theo yêu cầu</strong>
-        <span class="sm">Số lượng lớn, in logo hoặc hàng phải làm riêng, dù ít hộp · Cần xác minh danh tính bằng CCCD gắn chip · Đặt cọc khi chấp nhận báo giá; duyệt maket trước khi làm</span>
-        <span class="go">Tạo yêu cầu báo giá ›</span>
-      </a>
-    </section>
-
-    <!-- Khối 3: một dòng "Việc cần bạn" (đã đăng nhập, có việc chờ) -->
-    <section class="callout mt-3" data-show="buyer buyer-nfc seller-pending seller-open" data-why="3">
-      <strong>Việc cần bạn</strong>
-      <div class="grow row">
-        <a href="m6-1-2.html">1 maket chờ duyệt</a><span class="faint">·</span>
-        <a href="m6-2-1.html">2 báo giá mới</a>
-      </div>
-      <a href="m6-0.html" class="btn btn-sm">Xem tất cả</a>
-    </section>
-
-    <!-- Khối 4: tìm nhanh bằng bộ lọc M2.0 có thật -->
-    <section class="chips quick-chips" data-why="4">
+    <!-- Khối 2: tìm nhanh bằng bộ lọc M2.0 có thật -->
+    <section class="chips quick-chips" data-why="2">
       <span class="sm muted">Tìm nhanh</span>
       <a class="chip" href="m2-0.html?vo=nuong">Vỏ nướng</a>
       <a class="chip" href="m2-0.html?vo=deo">Vỏ dẻo</a>
@@ -65,8 +37,8 @@
       <a class="chip chip-end" href="m2-0.html">Tất cả bộ lọc</a>
     </section>
 
-    <!-- Khối 5: Có sẵn giao tới [tỉnh] -->
-    <section class="section" data-why="5">
+    <!-- Khối 3: Có sẵn giao tới [tỉnh] -->
+    <section class="section" data-why="3">
       <div class="section-head">
         <h2>Có sẵn giao tới Hà Nội</h2>
         <a href="m2-0.html">Xem tất cả hàng có sẵn ›</a>
@@ -99,8 +71,8 @@
       </div>
     </section>
 
-    <!-- Khối 6: Nhận đặt theo yêu cầu -->
-    <section class="section" data-why="6">
+    <!-- Khối 4: Nhận đặt theo yêu cầu -->
+    <section class="section" data-why="4">
       <div class="section-head">
         <h2>Nhận đặt theo yêu cầu</h2>
         <a href="m3-2.html">Xem tất cả đơn vị cung cấp ›</a>
@@ -136,8 +108,8 @@
       </div>
     </section>
 
-    <!-- Khối 7: tiền đi thế nào, chỉ quy tắc có trong đặc tả -->
-    <section class="section" data-why="7">
+    <!-- Khối 5: tiền đi thế nào, chỉ quy tắc có trong đặc tả -->
+    <section class="section" data-why="5">
       <div class="section-head"><h2>Tiền của bạn đi thế nào</h2></div>
       <div class="grid-3">
         <div class="card card-fill stack-sm"><span class="avatar">1</span><h3>Hàng có sẵn: trả ngay qua VNPay</h3><p class="sm muted">Mỗi Shop tách một đơn. Phí giao tính ở giỏ hàng theo nơi nhận.</p></div>
@@ -147,7 +119,7 @@
     </section>
   </main>
 
-  <aside class="wf-note" data-ref="Đ3">Bảy khối theo thứ tự: hero lớn (một thông điệp, hai nút) · hai thẻ lối vào kèm điều kiện thật · "Việc cần bạn" (đã đăng nhập) · tìm nhanh (bộ lọc M2.0) · "Có sẵn giao tới [tỉnh]" · "Nhận đặt theo yêu cầu" · "Tiền của bạn đi thế nào". Khu vực giao nằm ở thanh tiện ích trên cùng. Không có lịch mùa, hạn chót, khuyến mãi, số liệu không tính từ dữ liệu, ngưỡng chung "30 hộp".</aside>
+  <aside class="wf-note" data-ref="Đ3">Năm khối theo thứ tự: hero là một tấm ảnh 1920×1080 tràn màn hình, chữ và hai nút đặt trên ảnh · tìm nhanh (bộ lọc M2.0) · "Có sẵn giao tới [tỉnh]" · "Nhận đặt theo yêu cầu" · "Tiền của bạn đi thế nào". Bỏ hai thẻ lối vào (điều kiện đã có ở M2.0, M3.0 và cổng đăng nhập, xác minh) và "Việc cần bạn" (đã có Thông báo). Không có lịch mùa, hạn chót, khuyến mãi, số liệu không tính từ dữ liệu, ngưỡng chung "30 hộp".</aside>
   <aside class="wf-note" data-ref="Đ1">Nhãn "Mua hàng có sẵn" / "Đặt theo yêu cầu" chốt theo tree test, cây B.</aside>
 
   <script src="../assets/data.js"></script>
