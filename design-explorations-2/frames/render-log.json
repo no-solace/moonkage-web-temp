@@ -1,0 +1,149 @@
+[
+ {
+  "frame": "A",
+  "dir": "t1",
+  "screen": "m1-0",
+  "viewport": "1440x900",
+  "fonts": [
+   "Plus Jakarta Sans"
+  ],
+  "hscroll": false,
+  "imgShare": 10,
+  "photosAbove": 4,
+  "areaTop": 11,
+  "minFont": 12,
+  "page": 961,
+  "errors": []
+ },
+ {
+  "frame": "A",
+  "dir": "t2",
+  "screen": "m1-0",
+  "viewport": "1440x900",
+  "fonts": [
+   "Manrope"
+  ],
+  "hscroll": false,
+  "imgShare": 13,
+  "photosAbove": 4,
+  "areaTop": 21,
+  "minFont": 12,
+  "page": 1155,
+  "errors": []
+ },
+ {
+  "frame": "A",
+  "dir": "t3",
+  "screen": "m1-0",
+  "viewport": "1440x900",
+  "fonts": [
+   "Bricolage Grotesque",
+   "Lexend"
+  ],
+  "hscroll": false,
+  "imgShare": 10,
+  "photosAbove": 4,
+  "areaTop": 56,
+  "minFont": 12,
+  "page": 1419,
+  "errors": []
+ },
+ {
+  "frame": "B",
+  "dir": "t1",
+  "screen": "m2-1",
+  "viewport": "1440x900",
+  "fonts": [
+   "Plus Jakarta Sans"
+  ],
+  "hscroll": false,
+  "imgShare": 39,
+  "photosAbove": 5,
+  "areaTop": 11,
+  "minFont": 12,
+  "page": 1221,
+  "errors": []
+ },
+ {
+  "frame": "B",
+  "dir": "t2",
+  "screen": "m2-1",
+  "viewport": "1440x900",
+  "fonts": [
+   "Manrope"
+  ],
+  "hscroll": false,
+  "imgShare": 40,
+  "photosAbove": 5,
+  "areaTop": 21,
+  "minFont": 12,
+  "page": 1661,
+  "errors": []
+ },
+ {
+  "frame": "B",
+  "dir": "t3",
+  "screen": "m2-1",
+  "viewport": "1440x900",
+  "fonts": [
+   "Bricolage Grotesque",
+   "Lexend"
+  ],
+  "hscroll": false,
+  "imgShare": 32,
+  "photosAbove": 5,
+  "areaTop": 56,
+  "minFont": 12,
+  "page": 1239,
+  "errors": []
+ },
+ {
+  "frame": "C",
+  "dir": "t1",
+  "screen": "m6-2-1",
+  "viewport": "1440x900",
+  "fonts": [
+   "Plus Jakarta Sans"
+  ],
+  "hscroll": false,
+  "imgShare": 0,
+  "photosAbove": 0,
+  "areaTop": 11,
+  "minFont": 12,
+  "page": 1255,
+  "errors": []
+ },
+ {
+  "frame": "C",
+  "dir": "t2",
+  "screen": "m6-2-1",
+  "viewport": "1440x900",
+  "fonts": [
+   "Manrope"
+  ],
+  "hscroll": false,
+  "imgShare": 0,
+  "photosAbove": 0,
+  "areaTop": 21,
+  "minFont": 12,
+  "page": 1427,
+  "errors": []
+ },
+ {
+  "frame": "C",
+  "dir": "t3",
+  "screen": "m6-2-1",
+  "viewport": "1440x900",
+  "fonts": [
+   "Bricolage Grotesque",
+   "Lexend"
+  ],
+  "hscroll": false,
+  "imgShare": 0,
+  "photosAbove": 0,
+  "areaTop": 56,
+  "minFont": 12,
+  "page": 1276,
+  "errors": []
+ }
+]
