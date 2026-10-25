@@ -13,7 +13,7 @@ function plateColors(plate: HTMLElement) {
   const style = getComputedStyle(plate);
   return {
     dark: style.getPropertyValue('--ink').trim(),
-    light: style.getPropertyValue('--paper-raised').trim(),
+    light: style.getPropertyValue('--surface').trim(),
   };
 }
 

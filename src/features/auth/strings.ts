@@ -6,4 +6,14 @@ export const authStrings = {
   submit: 'Đăng nhập',
   submitting: 'Đang đăng nhập…',
   missingFields: 'Nhập email hoặc số điện thoại và mật khẩu.',
+  menu: {
+    account: 'Tài khoản',
+    overview: 'Tổng quan',
+    orders: 'Đơn hàng',
+    quotes: 'Yêu cầu và báo giá',
+    addresses: 'Địa chỉ giao hàng',
+    verify: 'Xác minh danh tính',
+    profile: 'Thông tin cá nhân',
+    logout: 'Đăng xuất',
+  },
 };

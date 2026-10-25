@@ -12,7 +12,12 @@ function readStoredSession(): AuthSession | null {
     if (!raw) return null;
     const parsed = JSON.parse(raw) as Partial<AuthSession>;
     return parsed.token && parsed.accountId
-      ? { token: parsed.token, accountId: parsed.accountId, displayName: parsed.displayName ?? '' }
+      ? {
+          token: parsed.token,
+          accountId: parsed.accountId,
+          displayName: parsed.displayName ?? '',
+          sellerStatus: parsed.sellerStatus ?? 'none',
+        }
       : null;
   } catch {
     return null;
@@ -50,6 +55,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       token: response.token,
       accountId: response.accountId,
       displayName: response.fullName || response.email || username,
+      sellerStatus: 'none',
     };
     storeSession(next);
     setSession(next);

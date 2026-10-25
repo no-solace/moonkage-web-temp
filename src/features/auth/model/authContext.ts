@@ -5,7 +5,14 @@ export interface AuthSession {
   accountId: string;
   /** Shown in the header; the login name when the account has no full name. */
   displayName: string;
+  /**
+   * Seller profile of the account: none, submitted and waiting, or open for sale. The login answer does not carry
+   * it yet, so it is 'none' until identity-service exposes it.
+   */
+  sellerStatus: SellerStatus;
 }
+
+export type SellerStatus = 'none' | 'pending' | 'open';
 
 export interface AuthContextValue {
   session: AuthSession | null;
