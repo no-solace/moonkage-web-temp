@@ -247,3 +247,17 @@ WHY['B6.4'] = {
   points: [B('Khung hoãn', 'read', false, ['Đọc: trang có trong IA nhưng không làm.', '1 nhãn + 1 câu + lối quay lại.', 'Nhãn viền đứt.', 'Viền đứt cả khung.', '4/12 căn giữa (cột 5–8).'], 4)],
   rejected: []
 };
+
+WHY['B7.0'] = {
+  goal: 'Hộp thông báo riêng của cửa hàng; mỗi dòng mở đúng trang trong Kênh người bán.',
+  points: [
+    B('Danh sách thông báo cửa hàng', 'act', true, [
+      'Thao tác mở trang đích.',
+      '3 điểm/dòng: tiêu đề (≤ 60 ký tự), nguồn · thời gian, nút. Chờ duyệt: chỉ thông báo hồ sơ.',
+      'Mỏ neo: tiêu đề đậm khi chưa đọc · Bổ trợ: nguồn 14px xám.',
+      'Vách ngăn dòng; dòng chưa đọc nền xám.',
+      '12/12.'
+    ], 12)
+  ],
+  rejected: []
+};
