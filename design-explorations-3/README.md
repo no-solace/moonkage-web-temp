@@ -28,7 +28,7 @@ Bảng dưới dựa trên trí nhớ, chưa đối chiếu.
 |---|---|---|---|
 | Thanh tiện ích mỏng trên cùng (hotline, khuyến mãi) | Thông tin phụ nhưng luôn đúng, không chiếm chỗ header | **Lấy.** Đặt "Giao tới Hà Nội" và "Bán hàng trên Moonkage" ở đây | Khu vực giao quyết định toàn bộ giá và hàng hiển thị, nên phải luôn thấy |
 | Header: logo, danh mục, ô tìm kiếm bo tròn, giỏ | Ô tìm kiếm là thao tác chính, đặt to giữa header | **Lấy** | Đã khớp wireframe |
-| Hero một banner khuyến mãi lớn ("giảm tới 50%") | Một thông điệp, một nút, ảnh lớn | **Lấy khung, đổi nội dung.** Hero thành hai lối vào | Quyết định đầu tiên của người mua Moonkage là *mua có sẵn hay đặt theo yêu cầu*, không phải khuyến mãi. Đặc tả cấm số liệu không tính từ dữ liệu |
+| Hero lớn tràn ngang: nền màu nhạt, tiêu đề rất to bên trái, nút pill, ảnh lớn bên phải | Một thông điệp chiếm cả màn đầu | **Lấy nguyên khung** (theo yêu cầu của bạn). Tiêu đề 60px, nền kem tràn ngang, ảnh lớn bên phải. Khác demo: hai nút thay vì một (Xem hàng có sẵn / Đặt theo yêu cầu); không có số "giảm %" | Hai lối vào là quyết định đầu tiên của người mua. Đặc tả cấm số liệu không tính từ dữ liệu. Hai thẻ lối vào kèm điều kiện thật nằm đè mép dưới hero |
 | Hàng chip lọc dưới hero | Cho người chưa biết tìm gì một điểm bắt đầu | **Lấy**, chỉ dùng bộ lọc M2.0 có thật (vỏ, nhân, giá) | Rút một bước so với vào M2.0 rồi mới lọc |
 | Thẻ sản phẩm: ảnh trên nền xám nhạt, tên và giá cùng dòng, sao, nút viền "Add to Cart" | Ảnh đồng nền nên lưới gọn dù ảnh khác chất lượng; giá dễ quét | **Lấy** | Ảnh của người bán sẽ không đều; nền khung đồng nhất che bớt chỗ đó |
 | Nút tim (yêu thích) trên ảnh | Lưu để mua sau | **Không lấy** | Đặc tả không có danh sách yêu thích |
@@ -42,7 +42,7 @@ Bảng dưới dựa trên trí nhớ, chưa đối chiếu.
 | | Wireframe | Đề xuất | Được / mất |
 |---|---|---|---|
 | Chọn khu vực | Khối thông báo riêng (chỉ khách) | Nằm trong thanh tiện ích, mọi vai đều thấy | Được: luôn thấy, không tốn một khối. Mất: kém nổi với khách lần đầu |
-| Hai lối vào | Hai thẻ viền ngang nhau | Hai khối hero: Lối 1 nền nhạt rộng 7/12, Lối 2 nền đậm 5/12 | Được: phân biệt hai lối ngay bằng màu. Đánh đổi: Lối 1 được ưu tiên về diện tích (xem Q1) |
+| Hai lối vào | Hai thẻ viền ngang nhau | Hero lớn có hai nút, rồi hai thẻ 6/6 kèm điều kiện thật nằm đè mép dưới hero | Được: màn đầu có điểm nhấn mạnh như demo. Mất: thẻ lối vào xuống sát nếp gấp, sản phẩm rơi hẳn xuống dưới màn đầu |
 | Tìm nhanh | Không có | Chip vỏ, nhân, giá | Thêm một bước tắt |
 | Sản phẩm | Ảnh, tên, đơn vị, sao, giá | Thêm nút "Thêm vào giỏ" | Mua nhanh từ trang chủ. Rủi ro: khách bấm sẽ phải đăng nhập (cổng sẵn có) |
 | Đơn vị cung cấp | Thẻ, hai nút ngang nhau | Một nút chính, "Xem đơn vị ›" là liên kết phụ | Nhãn "Gửi yêu cầu cho [tên]" dài, hai nút ngang bị vỡ hàng |
@@ -51,7 +51,7 @@ Bảng dưới dựa trên trí nhớ, chưa đối chiếu.
 
 ## 4. Câu hỏi cần bạn quyết
 
-- **Q1. Hai lối vào có ngang hàng không?** Đề xuất cho Lối 1 rộng hơn vì đa số lượt vào là mua lẻ. Nếu khách doanh nghiệp quan trọng ngang, chia 6/6. *Khuyến nghị: giữ 7/5 tới khi có số liệu lượt vào.*
+- **Q1. Ảnh hero.** Hero lớn sống nhờ một ảnh chụp đẹp (demo dùng ảnh người mẫu). Ai cung cấp: Moonkage tự chụp, hay lấy ảnh của một Shop? *Khuyến nghị: Moonkage tự chụp một bộ, không dùng ảnh Shop, để hero không quảng cáo riêng cho một người bán.*
 - **Q2. Màu thương hiệu.** Đang mượn cách Shopcart dùng: một màu đậm cùng nền nhạt cùng họ màu (xanh đậm). Token thương hiệu chưa ràng buộc. *Khuyến nghị: giữ cấu trúc "một màu đậm + một nền nhạt", màu cụ thể chờ logo.*
 - **Q3. Thêm khối "Tiền của bạn đi thế nào"** vào kế hoạch (thành 6 khối)? *Khuyến nghị: có. Nó trả lời lo ngại lớn nhất của Lối 2 mà không cần số liệu.*
 - **Q4. Nút "Thêm vào giỏ" trên thẻ sản phẩm** ở trang chủ? *Khuyến nghị: có, theo Shopcart. Bánh trung thu mua theo hộp, ít cần chọn biến thể.*

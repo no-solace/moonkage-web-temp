@@ -81,6 +81,32 @@ a { color: inherit; text-decoration: none; }
 .panel--avail .hero-art { grid-column: 2; grid-row: 1 / span 5; align-self: center; width: 200px; height: 200px; }
 .ill-tag { position: absolute; left: 12px; top: 12px; font-size: 11px; line-height: 1; padding: 6px 8px; border-radius: 6px; background: rgba(255,255,255,.85); color: #59615d; border: 1px solid var(--line); }
 
+/* 2. Hero lớn */
+.bighero { background: #f7ead9; }
+.bighero-in { display: grid; grid-template-columns: 6fr 6fr; align-items: center; min-height: 560px; }
+.bh-text h1 { font-size: 60px; line-height: 70px; font-weight: 700; letter-spacing: -.025em; color: var(--brand); text-wrap: balance; }
+.bh-text p { font-size: 19px; line-height: 30px; color: #4b4a45; margin-top: 20px; max-width: 480px; }
+.bh-cta { display: flex; gap: 14px; margin-top: 36px; }
+.pill--xl { height: 56px; padding: 0 32px; font-size: 16px; }
+.pill--outline { border-color: var(--brand); color: var(--brand); }
+.bh-art { position: relative; height: 560px; }
+.bh-art .ill-tag { left: auto; right: 0; top: 24px; }
+.moon { position: absolute; width: 440px; height: 440px; border-radius: 50%; background: #efd3a8; right: 40px; top: 60px; }
+.bh-box { position: absolute; width: 360px; height: 360px; right: 80px; top: 120px; }
+.bh-cake { position: absolute; width: 170px; height: 170px; }
+.bh-cake.c1 { right: 340px; top: 330px; }
+.bh-cake.c2 { right: 10px; top: 360px; width: 140px; height: 140px; }
+.modes { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: -48px; position: relative; }
+.mode { background: #fff; border: 1px solid var(--line); border-radius: var(--r); padding: 24px 28px; display: grid; gap: 6px; box-shadow: 0 8px 24px rgba(18,61,47,.08); }
+.mode strong { font-size: 22px; line-height: 30px; }
+.mode .eyebrow { color: var(--brand-2); }
+.mode-c { font-size: 14px; color: var(--ink-2); }
+.mode .go { font-weight: 600; color: var(--brand); margin-top: 6px; }
+.mode--dark { background: var(--brand); color: #fff; border-color: var(--brand); }
+.mode--dark .eyebrow { color: var(--gold); }
+.mode--dark .mode-c { color: #cfe0d8; }
+.mode--dark .go { color: #fff; }
+
 /* 3. Lọc nhanh dạng chip */
 .chips { display: flex; align-items: center; gap: 10px; margin-top: 32px; flex-wrap: wrap; }
 .chips .k { font-size: 14px; color: var(--ink-2); margin-right: 4px; }
@@ -160,25 +186,31 @@ a { color: inherit; text-decoration: none; }
   <div class="acts"><a class="cart" href="#">Giỏ hàng<b>2</b></a><a class="pill pill--solid" style="height:44px" href="#">Đăng nhập</a></div>
 </div></header>
 
-<main class="wrap">
-  <!-- 2. Hero: hai lối vào -->
-  <section class="hero">
-    <div class="panel panel--avail">
-      <span class="eyebrow">Lối 1 · Mua hàng có sẵn</span>
-      <h1>Bánh đã đóng hộp,<br>giao tới Hà Nội</h1>
-      <p>Chọn món, thanh toán và chờ Shop giao tới khu vực của bạn.</p>
-      <ul class="cond"><li>Chỉ hiện sản phẩm giao được tới Hà Nội</li><li>Thanh toán VNPay ngay khi đặt; mỗi Shop tách một đơn</li></ul>
-      <div class="cta"><a class="pill pill--solid" href="#">Xem hàng có sẵn</a></div>
-      <svg class="hero-art" aria-hidden="true"><use href="#box"/></svg>
-    </div>
-    <div class="panel panel--custom">
-      <span class="eyebrow">Lối 2 · Đặt theo yêu cầu</span>
-      <h2>Số lượng lớn, in logo hoặc làm riêng, dù ít hộp</h2>
-      <ul class="cond"><li>Cần đăng nhập và xác minh danh tính bằng CCCD gắn chip</li><li>Đặt cọc khi chấp nhận báo giá; duyệt maket trước khi làm</li></ul>
-      <div class="cta"><a class="pill pill--light" href="#">Tạo yêu cầu báo giá</a><a class="pill pill--ghost-light" href="#">Chọn đơn vị cung cấp</a></div>
-    </div>
-  </section>
+<!-- 2. Hero lớn tràn ngang, kiểu Shopcart: một thông điệp, nút chính, ảnh lớn bên phải -->
+<section class="bighero"><div class="wrap bighero-in">
+  <div class="bh-text">
+    <h1>Bánh trung thu đóng hộp, giao tới Hà Nội</h1>
+    <p>Chọn món, thanh toán VNPay và chờ Shop giao tới khu vực của bạn.</p>
+    <div class="bh-cta"><a class="pill pill--solid pill--xl" href="#">Xem hàng có sẵn</a><a class="pill pill--outline pill--xl" href="#">Đặt theo yêu cầu</a></div>
+  </div>
+  <div class="bh-art" aria-hidden="true">
+    <span class="ill-tag">Minh họa · chờ ảnh thật</span>
+    <div class="moon"></div>
+    <svg class="bh-box"><use href="#box"/></svg>
+    <svg class="bh-cake c1"><use href="#cake"/></svg>
+    <svg class="bh-cake c2"><use href="#cake"/></svg>
+  </div>
+</div></section>
 
+<!-- 2b. Hai lối vào kèm điều kiện thật (giữ khối 2 của kế hoạch, thu gọn dưới hero) -->
+<div class="wrap">
+  <section class="modes">
+    <a class="mode" href="#"><span class="eyebrow">Lối 1</span><strong>Mua hàng có sẵn</strong><span class="mode-c">Chỉ hiện sản phẩm giao được tới Hà Nội · Thanh toán VNPay ngay khi đặt; mỗi Shop tách một đơn</span><span class="go">Xem hàng có sẵn ›</span></a>
+    <a class="mode mode--dark" href="#"><span class="eyebrow">Lối 2</span><strong>Đặt theo yêu cầu</strong><span class="mode-c">Số lượng lớn, in logo hoặc hàng phải làm riêng, dù ít hộp · Cần xác minh CCCD gắn chip · Đặt cọc khi chấp nhận báo giá; duyệt maket trước khi làm</span><span class="go">Tạo yêu cầu báo giá ›</span></a>
+  </section>
+</div>
+
+<main class="wrap">
   <!-- 3. Lọc nhanh: đúng các bộ lọc M2.0 (vỏ, nhân, giá) -->
   <div class="chips">
     <span class="k">Tìm nhanh</span>
