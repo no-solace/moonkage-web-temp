@@ -601,3 +601,29 @@ body.show-fold::after { z-index: 1001; }
 .product-buy .name-row .price { margin-top: 0; white-space: nowrap; }
 .product-buy .btn { align-self: flex-start; margin-top: var(--s2); }
 .maker { justify-content: space-between; }
+
+/* 21. CHỈ HERO TRÀN MÀN HÌNH (khu mua hàng) -------------------------------------
+   Thanh tiện ích, header và footer thành nền trắng, chỉ kẻ mảnh, nên không còn là dải màu tràn.
+   Hero là dải màu duy nhất chạy hết bề ngang màn hình, ở mọi độ rộng. Khu B và Q giữ header tối. */
+body[data-zone="M"] .wf-util { background: var(--paper); color: var(--ink-2); border-bottom: 1px solid var(--line); }
+body[data-zone="M"] .wf-util a { color: var(--ink); }
+body[data-zone="M"] .wf-util .area strong { color: var(--ink); }
+body[data-zone="M"] .wf-header { background: var(--paper); color: var(--ink); border-bottom: 1px solid var(--line); }
+body[data-zone="M"] .wf-header a, body[data-zone="M"] .wf-header .wf-hbtn { color: var(--ink); }
+body[data-zone="M"] .wf-hbtn:hover { background: var(--fill); }
+body[data-zone="M"] .wf-header .wf-search-input { background: var(--fill); border-color: var(--fill) !important; }
+body[data-zone="M"] .wf-header .wf-search-btn { background: var(--ink); border-color: var(--ink); color: var(--paper); }
+body[data-zone="M"] .wf-header .wf-icon { color: var(--ink); border-color: var(--ink-2); }
+body[data-zone="M"] .wf-header .count { background: var(--ink); color: var(--paper); }
+body[data-zone="M"] .wf-header .avatar { background: var(--fill-2); color: var(--ink); }
+body[data-zone="M"] .wf-header .btn-primary { background: var(--ink); color: var(--paper); border-color: var(--ink); border-radius: 999px; }
+body[data-zone="M"] .wf-hbtn .k { color: var(--ink-2); }
+body[data-zone="M"] .wf-menu-btn { color: var(--ink); border-color: var(--ink-2); }
+body[data-zone="M"] .wf-nav-bar { border-top: 0; }
+body[data-zone="M"] .wf-header .wf-nav-item { color: var(--ink-2); }
+body[data-zone="M"] .wf-header .wf-nav-item:hover, body[data-zone="M"] .wf-header .wf-nav-item.active { color: var(--ink); }
+body[data-zone="M"] .wf-nav-item.active { border-bottom-color: var(--ink); }
+body[data-zone="M"] .wf-footer { background: var(--paper); border-top: 1px solid var(--line); }
+/* Hero thoát khỏi khung #content ra hết bề ngang màn hình; chữ và ảnh vẫn thẳng lưới 12 cột */
+.hero-band { margin-left: calc(50% - 50vw); margin-right: calc(50% - 50vw); padding-left: calc(50vw - 50%); padding-right: calc(50vw - 50%); }
+body:has(.hero-band) { overflow-x: clip; }
