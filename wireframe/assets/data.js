@@ -106,7 +106,7 @@ const PAGES = [
     "fr": "FR-05, FR-06, FR-14, FR-16 (lối vào)",
     "demo": "Làm trọn",
     "flows": "F1, F2, F3",
-    "note": "Năm khối theo thứ tự (Đ3): 1 chọn khu vực (khách chưa có, AC-05.3) · 2 hai thẻ lối vào kèm điều kiện thật · 3 một dòng 'Việc cần bạn' (đã đăng nhập, có việc chờ) · 4 'Có sẵn giao tới [tỉnh]' · 5 'Nhận đặt theo yêu cầu' (bảng vài đơn vị). Không có: lịch mùa, hạn chót, số liệu không tính từ dữ liệu, ngưỡng chung '30 hộp'",
+    "note": "Bảy khối theo thứ tự (Đ3, hướng bố cục mới): 1 hero lớn tràn ngang, hai nút (khách chưa chọn nơi giao có dòng Chọn khu vực giao, AC-05.3) · 2 hai thẻ lối vào kèm điều kiện thật, đè mép dưới hero · 3 'Việc cần bạn' (đã đăng nhập, có việc chờ) · 4 Tìm nhanh (chip bộ lọc M2.0) · 5 'Có sẵn giao tới [tỉnh]' (nút Thêm vào giỏ) · 6 'Nhận đặt theo yêu cầu' · 7 'Tiền của bạn đi thế nào'. Không có: lịch mùa, hạn chót, khuyến mãi, số liệu không tính từ dữ liệu, ngưỡng chung '30 hộp'",
     "parent": ""
   },
   {

@@ -12,47 +12,62 @@ window.WHY = WHY;
 function B(t, a, core, q, span) { return { t: t, a: a, core: core, q: q, span: span }; }
 
 WHY['M1.0'] = {
-  goal: 'Người dùng chọn đúng một trong hai lối mua (có sẵn / theo yêu cầu). Mọi khối khác chỉ hỗ trợ việc chọn đó.',
+  goal: 'Người dùng chọn đúng một trong hai lối mua (có sẵn / theo yêu cầu). Hướng bố cục mới (tham khảo Shopcart): hero lớn tạo điểm nhấn, các khối dưới hỗ trợ việc chọn.',
   points: [
-    B('Chọn khu vực giao (chỉ khách)', 'act', true, [
-      'Thao tác. Bỏ đi thì giá và danh sách bên dưới sai vùng (AC-05.3), nên đặt trên cùng.',
-      '1 câu hỏi + 1 nút. Không có trạng thái rỗng: ai đã chọn khu vực thì khối biến mất.',
-      'Mỏ neo: câu hỏi đậm 16px · Bổ trợ: dòng giải thích 14px xám · Hành động: nút đặc 44px ở mép phải, cuối đường đọc.',
-      'Icon, câu hỏi, giải thích sát nhau (4px); nút cách 12px. Dùng nền xám + vạch trái thay viền đủ bốn cạnh, vì khối nằm ngay trên khoảng trắng 32px.',
-      '12/12 cột, co giãn. Điện thoại: nút xuống dòng, rộng hết hàng.'
+    B('Hero lớn tràn ngang', 'act', true, [
+      'Thao tác + nhận diện: một thông điệp, hai nút cho hai lối. Khách chưa chọn nơi giao có thêm một dòng "Chọn khu vực giao" (AC-05.3).',
+      'Tiêu đề ≤ 2 dòng, 1 câu phụ, 2 nút. Không số liệu, không khuyến mãi (không có dữ liệu).',
+      'Mỏ neo: tiêu đề 56px · Bổ trợ: câu phụ 19px xám · Hành động: nút đặc "Xem hàng có sẵn", nút viền "Đặt theo yêu cầu", bo tròn.',
+      'Nền xám tràn hết khung 1440, chữ vẫn neo lưới. Ảnh lớn 6/12 bên phải: Moonkage tự chụp, không dùng ảnh của một Shop.',
+      '6 + 6 cột, cao ~520px.'
     ], 12),
-    B('Hai thẻ lối vào', 'act', true, [
-      'Thao tác: đây chính là nhiệm vụ của trang. Không thể bỏ, nên nằm trên nếp gấp ngay dưới header.',
-      'Mỗi thẻ 4 điểm: tên lối, khi nào chọn, điều kiện (2 dòng), nút. Thẻ rộng 660px nhưng chữ giới hạn 65 ký tự/dòng, nên mô tả dài nhất ~70 ký tự vẫn chỉ 2 dòng; nút luôn dính đáy thẻ nên hai nút thẳng hàng dù mô tả dài ngắn.',
-      'Mỏ neo: tên lối 21px · Bổ trợ: "khi nào chọn" 16px xám, điều kiện 14px trên nền xám · Hành động: nút đặc (chính), nút viền (phụ).',
-      'Trong thẻ: nhóm tên–mô tả cách 12px, điều kiện tách bằng nền xám. Hai thẻ đặt sát nhau trên lưới nên cần viền để thấy ranh giới.',
-      '6 + 6 cột, co giãn; chiều cao bằng nhau. <768px: xếp chồng, thẻ "có sẵn" trước.'
+    B('Hai thẻ lối vào (đè mép dưới hero)', 'act', true, [
+      'Thao tác: giữ điều kiện thật của từng lối ngay màn đầu, vì hero chỉ có nút.',
+      'Mỗi thẻ: nhãn lối, tên, điều kiện (1 đoạn), liên kết đi tiếp. Cả thẻ bấm được.',
+      'Mỏ neo: tên lối 21px · Lối 2 nền đậm để phân biệt hai lối bằng màu.',
+      'Đè 48px lên hero để nối hai khối thành một cụm quyết định.',
+      '6 + 6 cột.'
     ], 12),
     B('"Việc cần bạn" (đã đăng nhập, có việc chờ)', 'act', false, [
-      'Thao tác phụ: bỏ đi người dùng vẫn chọn được lối mua. Nên chỉ chiếm 1 dòng 64px, không đẩy thẻ lối vào xuống.',
-      '2–3 việc dạng liên kết + "Xem tất cả". Nhiều hơn 3 việc thì chỉ hiện số đếm. Không có việc thì khối không hiện.',
-      'Mỏ neo: nhãn "Việc cần bạn" đậm · Bổ trợ: liên kết việc · Hành động: nút viền nhỏ 36px.',
-      'Một dải viền đậm + vạch trái 4px: cần nổi hơn khoảng trắng vì là nhắc việc, nhưng vẫn nhỏ hơn thẻ lối vào.',
-      '12/12, co giãn. Điện thoại: liên kết xuống dòng, nút ra cuối.'
+      'Thao tác phụ, một dòng. Không có việc thì không hiện.',
+      '2–3 liên kết + "Xem tất cả".',
+      'Mỏ neo: nhãn đậm · Hành động: nút viền nhỏ.',
+      'Viền đậm + vạch trái 4px.',
+      '12/12.'
     ], 12),
-    B('Có sẵn giao tới [tỉnh]', 'read', false, [
-      'Đọc lướt, gợi ý. Bỏ đi người dùng vẫn vào được M2.0, nên đặt dưới thẻ lối vào, chấp nhận dưới nếp gấp.',
-      'Mỗi thẻ 4 điểm: ảnh, tên, Shop · đánh giá, giá. Tên dài 20–120 ký tự → kẹp 2 dòng (50px cố định) để giá thẳng hàng. Tên Shop dài → cắt "…". Không có sản phẩm thì ẩn cả khối.',
-      'Mỏ neo: ảnh 4:3 rồi tên 19px · Bổ trợ: Shop, đánh giá 14px xám · Hành động: cả thẻ là liên kết (không thêm nút để giảm nhiễu).',
-      'Ảnh–tên–phụ–giá cách nhau 4px nên đọc thành một khối; các thẻ cách nhau 24px. Không viền: khoảng trắng và ảnh đã đủ tạo ranh giới.',
-      '4 thẻ × 3 cột. 768–1023: 2 thẻ/hàng. <768: vẫn 2 thẻ/hàng (ảnh nhỏ vẫn đọc được), không xuống 1 cột để đỡ dài trang.'
+    B('Tìm nhanh', 'act', false, [
+      'Thao tác tắt: vào thẳng M2.0 đã lọc. Chỉ dùng bộ lọc có thật của M2.0 (vỏ, nhân, giá).',
+      '7 chip + "Tất cả bộ lọc".',
+      'Chip bo tròn, viền mảnh; "Tất cả bộ lọc" dạt mép phải.',
+      'Một hàng, không viền khối.',
+      '12/12.'
+    ], 12),
+    B('Có sẵn giao tới [tỉnh]', 'act', false, [
+      'Đọc lướt và mua nhanh. Ẩn cả khối khi không có sản phẩm.',
+      'Mỗi thẻ: ảnh vuông, tên + giá cùng dòng, Shop · đánh giá, nút "Thêm vào giỏ" (khách bấm → đăng nhập rồi tự thêm, AC-02.3).',
+      'Mỏ neo: ảnh rồi tên · Giá đậm bên phải tên để quét nhanh · Hành động: nút viền nhỏ bo tròn.',
+      'Không viền thẻ; ảnh nền xám đồng nhất che bớt ảnh Shop không đều.',
+      '4 thẻ × 3 cột.'
     ], 12),
     B('Nhận đặt theo yêu cầu', 'act', false, [
-      'Thao tác phụ cho nhóm ít người: bỏ đi vẫn vào được qua thẻ lối 2. Đặt cuối trang.',
-      'Mỗi thẻ 4 điểm: tên, khu vực, nhận làm gì, số hộp tối thiểu (riêng từng đơn vị, không có ngưỡng chung). Tên dài 40 ký tự vẫn 1 dòng ở 432px; dài hơn thì xuống 2 dòng.',
-      'Mỏ neo: tên đơn vị đậm · Bổ trợ: khu vực, nhận làm, tối thiểu · Hành động: "Gửi yêu cầu cho [tên]" đặc, "Xem đơn vị" viền.',
-      'Thẻ sát nhau trên lưới nên có viền. Bên trong: danh tính (avatar + tên) gần nhau 8px; nút tách 16px ở đáy.',
-      '3 thẻ × 4 cột. <768: xếp chồng 1 cột vì nút dài.'
+      'Chọn đơn vị trước, sản phẩm sau (đặt riêng).',
+      'Mỗi thẻ: avatar, tên, khu vực, nhận làm gì, 2 nhãn (tối thiểu, vùng giao), nút.',
+      'Hành động: "Gửi yêu cầu cho [tên]" đặc · "Xem đơn vị ›" thành liên kết vì hai nút ngang bị vỡ hàng.',
+      'Thẻ có viền.',
+      '3 thẻ × 4 cột.'
+    ], 12),
+    B('Tiền của bạn đi thế nào', 'read', false, [
+      'Đọc: giải tỏa lo ngại về tiền cọc trước khi đặt. Chỉ nêu quy tắc có trong đặc tả (VNPay, Moonkage giữ cọc, duyệt maket, phần còn lại trả sau khi giao).',
+      '3 thẻ: số, tiêu đề, 1–2 câu.',
+      'Mỏ neo: tiêu đề đậm · Bổ trợ: câu 14px xám.',
+      'Nền xám, không viền.',
+      '3 thẻ × 4 cột.'
     ], 12)
   ],
   rejected: [
-    'Hero lớn có khẩu hiệu và con số: chiếm cả màn hình đầu, đẩy hai thẻ lối vào (khối cốt lõi) xuống dưới nếp gấp.',
-    'Bảng đơn vị cung cấp: 5 cột trên điện thoại phải cuộn ngang.'
+    'Hai thẻ lối vào làm khối đầu trang (bố cục cũ): đúng nhiệm vụ nhưng màn đầu thiếu điểm nhấn; đã thay bằng hero lớn + thẻ lối vào đè mép dưới.',
+    'Banner khuyến mãi "giảm %" như trang tham khảo: không có dữ liệu khuyến mãi, trái quy tắc không bịa số.',
+    'Khối chọn khu vực riêng cho khách: chuyển lên thanh tiện ích (mọi trang) và một dòng trong hero.'
   ]
 };
 
