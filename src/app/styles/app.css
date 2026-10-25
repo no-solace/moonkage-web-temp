@@ -1,5 +1,5 @@
 /* App layout on "DS: Moonkage v2". Values come only from tokens.css; component looks come from components.css (mk-*).
-   Page width follows the DS: content at most 1200px with 24px margins; sections 80px apart (`space-20`).
+   Page frame 1440px with 48px margins (web 1440 only); header and footer keep the DS 1200px; sections 80px apart (`space-20`).
    Only the home hero runs across the whole screen. */
 
 /* Type helpers: font shorthand from the type scale (one family, Be Vietnam Pro) */
@@ -49,10 +49,11 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .product-head__shop:focus-visible, .site-footer a:focus-visible, .quick-filters a:focus-visible {
   outline: var(--border-thick) solid var(--focus); outline-offset: var(--border-thick); }
 
-/* Frame: content 1200px like the DS NavBar */
+/* Frame: content 1440px; header and footer stay at the DS NavBar width (1200px) */
 .shop { min-height: 100vh; display: flex; flex-direction: column; }
-.shop__inner { max-width: 1200px; margin: 0 auto; padding-inline: var(--space-6); box-sizing: border-box; width: 100%; }
+.shop__inner { max-width: 1440px; margin: 0 auto; padding-inline: var(--space-12); box-sizing: border-box; width: 100%; }
 .shop__main { flex: 1; }
+.site-footer .shop__inner { max-width: 1200px; padding-inline: var(--space-6); }
 .page { display: grid; gap: var(--space-8); padding-block: var(--space-12) var(--space-20); align-content: start; }
 .page--narrow { max-width: 880px; }
 .page-head { display: flex; align-items: flex-end; justify-content: space-between; gap: var(--space-6); }
