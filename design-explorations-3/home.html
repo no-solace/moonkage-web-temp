@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1440">
+<title>Moonkage – Trang chủ (đề xuất 1440)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* Đề xuất trang chủ M1.0 · khung 1440 · tham khảo bố cục Shopcart (Musemind).
+   Nội dung lấy đúng từ wireframe m1-0.html; không thêm số liệu, khuyến mãi hay tính năng ngoài đặc tả. */
+:root {
+  --brand: #123d2f;        /* một màu thương hiệu đậm, như Shopcart dùng một màu xanh đậm */
+  --brand-2: #1d5743;
+  --tint: #eef3ef;         /* nền nhạt cho khung ảnh và hero */
+  --stage: #f2f2ef;
+  --ink: #16191a;
+  --ink-2: #555b5d;
+  --line: #e3e5e4;
+  --gold: #c9a24a;
+  --paper: #fff;
+  --r: 16px;
+  --pill: 999px;
+  --w: 1240px;
+}
+* { box-sizing: border-box; margin: 0; }
+body { font-family: "Be Vietnam Pro", system-ui, sans-serif; color: var(--ink); background: var(--paper); font-size: 16px; line-height: 1.5; }
+a { color: inherit; text-decoration: none; }
+.wrap { width: var(--w); margin: 0 auto; }
+.pill { display: inline-flex; align-items: center; gap: 8px; height: 48px; padding: 0 24px; border-radius: var(--pill); font-weight: 600; font-size: 15px; border: 1.5px solid transparent; white-space: nowrap; }
+.pill--solid { background: var(--brand); color: #fff; }
+.pill--light { background: #fff; color: var(--brand); }
+.pill--line { border-color: var(--ink); color: var(--ink); height: 40px; padding: 0 18px; font-size: 14px; }
+.pill--line:hover { background: var(--brand); border-color: var(--brand); color: #fff; }
+.pill--ghost-light { border-color: rgba(255,255,255,.5); color: #fff; }
+.sec { padding: 56px 0 0; }
+.sec-head { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 24px; }
+.sec-head h2 { font-size: 28px; line-height: 36px; font-weight: 700; letter-spacing: -.01em; }
+.sec-head a { font-weight: 600; font-size: 15px; color: var(--brand); }
+.muted { color: var(--ink-2); }
+
+/* 0. Thanh tiện ích trên cùng */
+.util { background: var(--brand); color: #dfe9e4; font-size: 13px; }
+.util .wrap { display: flex; align-items: center; justify-content: space-between; height: 40px; }
+.util b { color: #fff; font-weight: 600; }
+.util nav { display: flex; gap: 24px; }
+
+/* 1. Header */
+.head { border-bottom: 1px solid var(--line); }
+.head .wrap { display: flex; align-items: center; gap: 32px; height: 80px; }
+.logo-off { width: 132px; height: 36px; border: 1.5px dashed #9aa19e; border-radius: 8px; display: grid; place-items: center; font-size: 12px; color: #6d7471; flex: none; }
+.mainnav { display: flex; gap: 28px; font-weight: 500; font-size: 15px; }
+.mainnav a { white-space: nowrap; }
+.search { flex: 1; display: flex; align-items: center; height: 48px; background: var(--stage); border-radius: var(--pill); padding: 0 8px 0 20px; color: #7a817e; font-size: 15px; }
+.search span { flex: 1; }
+.search i { font-style: normal; width: 36px; height: 36px; border-radius: 50%; background: var(--brand); color: #fff; display: grid; place-items: center; font-size: 14px; }
+.acts { display: flex; align-items: center; gap: 20px; font-weight: 500; font-size: 15px; }
+.cart b { display: inline-grid; place-items: center; min-width: 22px; height: 22px; border-radius: 11px; background: var(--brand); color: #fff; font-size: 12px; margin-left: 4px; }
+
+/* 2. Hero: hai lối vào thay cho banner khuyến mãi */
+.hero { display: grid; grid-template-columns: 7fr 5fr; gap: 20px; margin-top: 24px; }
+.panel { border-radius: 24px; padding: 40px 48px; position: relative; overflow: hidden; min-height: 360px; display: flex; flex-direction: column; }
+.panel--avail { background: var(--tint); }
+.panel--custom { background: var(--brand); color: #fff; }
+.eyebrow { font-size: 13px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; }
+.panel--avail .eyebrow { color: var(--brand-2); }
+.panel--custom .eyebrow { color: var(--gold); }
+.panel h1, .panel h2 { text-wrap: balance; font-size: 38px; line-height: 46px; font-weight: 700; letter-spacing: -.02em; margin-top: 12px; }
+.panel--custom h2 { font-size: 34px; line-height: 42px; }
+.panel p { margin-top: 16px; font-size: 17px; max-width: 420px; }
+.panel--avail p { color: var(--ink-2); }
+.panel--custom p { color: #cfe0d8; }
+.cond { list-style: none; padding: 0; margin-top: 20px; display: grid; gap: 8px; font-size: 14px; }
+.cond li { display: flex; gap: 10px; align-items: flex-start; }
+.cond li::before { content: ""; flex: none; width: 6px; height: 6px; border-radius: 50%; margin-top: 8px; background: currentColor; opacity: .55; }
+.panel--avail .cond { color: var(--ink-2); max-width: 400px; }
+.panel--custom .cond { color: #cfe0d8; }
+.cta { margin-top: auto; padding-top: 24px; display: flex; gap: 12px; align-items: center; }
+.panel--avail { display: grid; grid-template-columns: 1fr 200px; column-gap: 24px; }
+.panel--avail > * { grid-column: 1; }
+.panel--avail .hero-art { grid-column: 2; grid-row: 1 / span 5; align-self: center; width: 200px; height: 200px; }
+.ill-tag { position: absolute; left: 12px; top: 12px; font-size: 11px; line-height: 1; padding: 6px 8px; border-radius: 6px; background: rgba(255,255,255,.85); color: #59615d; border: 1px solid var(--line); }
+
+/* 3. Lọc nhanh dạng chip */
+.chips { display: flex; align-items: center; gap: 10px; margin-top: 32px; flex-wrap: wrap; }
+.chips .k { font-size: 14px; color: var(--ink-2); margin-right: 4px; }
+.chip { height: 40px; padding: 0 18px; border-radius: var(--pill); background: var(--stage); display: inline-flex; align-items: center; font-size: 14px; font-weight: 500; }
+.chip--all { background: transparent; border: 1.5px solid var(--line); margin-left: auto; }
+
+/* 4. Thẻ sản phẩm kiểu Shopcart: khung ảnh nền nhạt, tên + giá cùng dòng, nút viền */
+.grid4 { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; }
+.card .stage { aspect-ratio: 1 / 1; border-radius: var(--r); background: var(--stage); position: relative; display: grid; place-items: center; overflow: hidden; }
+.card .stage svg { width: 62%; height: 62%; }
+.card { display: flex; flex-direction: column; }
+.card .pill--line { align-self: flex-start; margin-top: auto !important; }
+.card .rate { margin-bottom: 16px; }
+.card .row1 { min-height: 48px; display: flex; justify-content: space-between; gap: 12px; margin-top: 16px; font-weight: 600; font-size: 17px; line-height: 24px; }
+.card .price { white-space: nowrap; }
+.card .maker { font-size: 14px; color: var(--ink-2); margin-top: 4px; }
+.card .rate { font-size: 14px; margin-top: 8px; display: flex; align-items: center; gap: 6px; }
+.card .rate .st { color: var(--brand-2); letter-spacing: 1px; }
+.card .pill--line { margin-top: 16px; }
+
+/* 5. Đơn vị nhận đặt: thẻ kiểu "Choose by brand" */
+.grid3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+.maker-card { border: 1px solid var(--line); border-radius: var(--r); padding: 24px; display: flex; flex-direction: column; gap: 16px; }
+.maker-top { display: flex; gap: 16px; align-items: center; }
+.ava { width: 64px; height: 64px; border-radius: 50%; background: var(--tint); color: var(--brand); display: grid; place-items: center; font-weight: 700; font-size: 20px; flex: none; }
+.maker-top strong { display: block; font-size: 17px; line-height: 24px; }
+.maker-top small { font-size: 14px; color: var(--ink-2); }
+.only { display: inline-block; font-size: 12px; font-weight: 600; padding: 3px 10px; border-radius: var(--pill); border: 1.5px dashed var(--brand-2); color: var(--brand-2); margin-top: 4px; }
+.does { font-size: 15px; }
+.facts { display: flex; gap: 8px; flex-wrap: wrap; }
+.facts span { font-size: 13px; padding: 6px 12px; border-radius: var(--pill); background: var(--stage); }
+.maker-card .btns { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: auto; }
+.maker-card .btns .more { font-weight: 600; font-size: 14px; color: var(--brand); white-space: nowrap; }
+.maker-card .btns .pill { height: 40px; padding: 0 18px; font-size: 14px; }
+
+/* 6. Cách mua trên Moonkage: thẻ kiểu "Services to help you shop" */
+.svc { border-radius: var(--r); background: var(--tint); padding: 28px; display: flex; flex-direction: column; gap: 10px; }
+.svc .n { width: 40px; height: 40px; border-radius: 50%; background: var(--brand); color: #fff; display: grid; place-items: center; font-weight: 700; }
+.svc h3 { font-size: 19px; line-height: 26px; margin-top: 6px; }
+.svc p { font-size: 15px; color: var(--ink-2); }
+
+/* 7. Footer */
+.foot { background: var(--brand); color: #cfe0d8; margin-top: 72px; }
+.foot .wrap { display: flex; justify-content: space-between; align-items: center; height: 96px; font-size: 14px; }
+.foot nav { display: flex; gap: 28px; }
+.foot a { color: #fff; font-weight: 500; }
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <!-- Hình vẽ minh họa thay ảnh thật (ảnh thật chưa tải được do mạng chặn) -->
+  <symbol id="cake" viewBox="0 0 200 200">
+    <circle cx="100" cy="100" r="78" fill="#d9b77a" stroke="#8c6a32" stroke-width="3"/>
+    <circle cx="100" cy="100" r="58" fill="none" stroke="#8c6a32" stroke-width="2.5" stroke-dasharray="4 6"/>
+    <path d="M100 62 C112 80 138 88 138 100 C138 112 112 120 100 138 C88 120 62 112 62 100 C62 88 88 80 100 62Z" fill="none" stroke="#8c6a32" stroke-width="2.5"/>
+    <circle cx="100" cy="100" r="10" fill="#8c6a32"/>
+  </symbol>
+  <symbol id="box" viewBox="0 0 200 200">
+    <rect x="22" y="58" width="156" height="110" rx="10" fill="#7b2d26" stroke="#4d1b16" stroke-width="3"/>
+    <rect x="22" y="58" width="156" height="30" rx="10" fill="#93372f" stroke="#4d1b16" stroke-width="3"/>
+    <rect x="92" y="58" width="16" height="110" fill="#c9a24a"/>
+    <circle cx="100" cy="128" r="22" fill="none" stroke="#c9a24a" stroke-width="3"/>
+  </symbol>
+</svg>
+
+<!-- 0. Thanh tiện ích -->
+<div class="util"><div class="wrap">
+  <span>Giao tới <b>Hà Nội ▾</b> · Sản phẩm, giá và phí giao tính theo nơi bạn chọn</span>
+  <nav><a href="#">Bán hàng trên Moonkage</a><a href="#">Chính sách mua bán</a></nav>
+</div></div>
+
+<!-- 1. Header -->
+<header class="head"><div class="wrap">
+  <div class="logo-off">Logo ẩn khi duyệt</div>
+  <nav class="mainnav"><a href="#">Mua hàng có sẵn</a><a href="#">Đặt theo yêu cầu ▾</a></nav>
+  <div class="search"><span>Tìm bánh, nhân bánh hoặc tên đơn vị…</span><i>⌕</i></div>
+  <div class="acts"><a class="cart" href="#">Giỏ hàng<b>2</b></a><a class="pill pill--solid" style="height:44px" href="#">Đăng nhập</a></div>
+</div></header>
+
+<main class="wrap">
+  <!-- 2. Hero: hai lối vào -->
+  <section class="hero">
+    <div class="panel panel--avail">
+      <span class="eyebrow">Lối 1 · Mua hàng có sẵn</span>
+      <h1>Bánh đã đóng hộp,<br>giao tới Hà Nội</h1>
+      <p>Chọn món, thanh toán và chờ Shop giao tới khu vực của bạn.</p>
+      <ul class="cond"><li>Chỉ hiện sản phẩm giao được tới Hà Nội</li><li>Thanh toán VNPay ngay khi đặt; mỗi Shop tách một đơn</li></ul>
+      <div class="cta"><a class="pill pill--solid" href="#">Xem hàng có sẵn</a></div>
+      <svg class="hero-art" aria-hidden="true"><use href="#box"/></svg>
+    </div>
+    <div class="panel panel--custom">
+      <span class="eyebrow">Lối 2 · Đặt theo yêu cầu</span>
+      <h2>Số lượng lớn, in logo hoặc làm riêng, dù ít hộp</h2>
+      <ul class="cond"><li>Cần đăng nhập và xác minh danh tính bằng CCCD gắn chip</li><li>Đặt cọc khi chấp nhận báo giá; duyệt maket trước khi làm</li></ul>
+      <div class="cta"><a class="pill pill--light" href="#">Tạo yêu cầu báo giá</a><a class="pill pill--ghost-light" href="#">Chọn đơn vị cung cấp</a></div>
+    </div>
+  </section>
+
+  <!-- 3. Lọc nhanh: đúng các bộ lọc M2.0 (vỏ, nhân, giá) -->
+  <div class="chips">
+    <span class="k">Tìm nhanh</span>
+    <a class="chip" href="#">Vỏ nướng</a><a class="chip" href="#">Vỏ dẻo</a>
+    <a class="chip" href="#">Nhân thập cẩm</a><a class="chip" href="#">Hạt sen</a><a class="chip" href="#">Đậu xanh</a><a class="chip" href="#">Trà xanh</a>
+    <a class="chip" href="#">Dưới 500.000đ</a>
+    <a class="chip chip--all" href="#">Tất cả bộ lọc</a>
+  </div>
+
+  <!-- 4. Có sẵn giao tới Hà Nội -->
+  <section class="sec">
+    <div class="sec-head"><h2>Có sẵn giao tới Hà Nội</h2><a href="#">Xem tất cả hàng có sẵn ›</a></div>
+    <div class="grid4">
+      <article class="card"><div class="stage"><span class="ill-tag">Minh họa · chờ ảnh thật</span><svg><use href="#box"/></svg></div>
+        <div class="row1"><span>Hộp Hoàng Kim 4 bánh</span><span class="price">680.000đ</span></div>
+        <div class="maker">Xưởng Bánh Nghệ Nhân · Ba Đình</div>
+        <div class="rate"><span class="st">★★★★★</span>4,8 (32)</div>
+        <a class="pill pill--line" href="#">Thêm vào giỏ</a></article>
+      <article class="card"><div class="stage"><span class="ill-tag">Minh họa · chờ ảnh thật</span><svg><use href="#box"/></svg></div>
+        <div class="row1"><span>Hộp Trăng Rằm 4 bánh</span><span class="price">420.000đ</span></div>
+        <div class="maker">Bánh Cổ Truyền Trăng Vàng · Hoàn Kiếm</div>
+        <div class="rate"><span class="st">★★★★★</span>4,6 (18)</div>
+        <a class="pill pill--line" href="#">Thêm vào giỏ</a></article>
+      <article class="card"><div class="stage"><span class="ill-tag">Minh họa · chờ ảnh thật</span><svg><use href="#box"/></svg></div>
+        <div class="row1"><span>Hộp Thu Sắc 5 bánh mini</span><span class="price">360.000đ</span></div>
+        <div class="maker">Đại lý Thu Hương</div>
+        <div class="rate"><span class="st">★★★★★</span>4,5 (9)</div>
+        <a class="pill pill--line" href="#">Thêm vào giỏ</a></article>
+      <article class="card"><div class="stage"><span class="ill-tag">Minh họa · chờ ảnh thật</span><svg><use href="#cake"/></svg></div>
+        <div class="row1"><span>Bánh dẻo hạt sen 150g</span><span class="price">65.000đ</span></div>
+        <div class="maker">Bánh Cổ Truyền Trăng Vàng · Hoàn Kiếm</div>
+        <div class="rate"><span class="st">★★★★★</span>4,7 (21)</div>
+        <a class="pill pill--line" href="#">Thêm vào giỏ</a></article>
+    </div>
+  </section>
+
+  <!-- 5. Nhận đặt theo yêu cầu -->
+  <section class="sec">
+    <div class="sec-head"><h2>Nhận đặt theo yêu cầu</h2><a href="#">Xem tất cả đơn vị cung cấp ›</a></div>
+    <div class="grid3">
+      <article class="maker-card">
+        <div class="maker-top"><span class="ava">NN</span><div><strong>Xưởng Bánh Nghệ Nhân</strong><small>Ba Đình, Hà Nội</small></div></div>
+        <div class="does">In logo · hộp riêng</div>
+        <div class="facts"><span>Nhận từ 20 hộp</span><span>Giao toàn quốc</span></div>
+        <div class="btns"><a class="pill pill--solid" href="#">Gửi yêu cầu cho Nghệ Nhân</a><a class="more" href="#">Xem đơn vị ›</a></div>
+      </article>
+      <article class="maker-card">
+        <div class="maker-top"><span class="ava">TV</span><div><strong>Bánh Cổ Truyền Trăng Vàng</strong><small>Hoàn Kiếm, Hà Nội</small></div></div>
+        <div class="does">Hộp sơn mài · nhân theo yêu cầu</div>
+        <div class="facts"><span>Nhận từ 10 hộp</span><span>Giao Hà Nội</span></div>
+        <div class="btns"><a class="pill pill--solid" href="#">Gửi yêu cầu cho Trăng Vàng</a><a class="more" href="#">Xem đơn vị ›</a></div>
+      </article>
+      <article class="maker-card">
+        <div class="maker-top"><span class="ava">MH</span><div><strong>Xưởng Minh Hòa</strong><small>Đống Đa, Hà Nội</small><br><span class="only">Chỉ nhận đặt hàng</span></div></div>
+        <div class="does">In logo · thiệp kèm</div>
+        <div class="facts"><span>Nhận từ 50 hộp</span><span>Giao toàn quốc</span></div>
+        <div class="btns"><a class="pill pill--solid" href="#">Gửi yêu cầu cho Minh Hòa</a><a class="more" href="#">Xem đơn vị ›</a></div>
+      </article>
+    </div>
+  </section>
+
+  <!-- 6. Mua trên Moonkage thế nào: chỉ quy tắc có trong đặc tả -->
+  <section class="sec">
+    <div class="sec-head"><h2>Tiền của bạn đi thế nào</h2></div>
+    <div class="grid3">
+      <div class="svc"><span class="n">1</span><h3>Hàng có sẵn: trả ngay qua VNPay</h3><p>Mỗi Shop tách một đơn. Phí giao tính ở giỏ hàng theo nơi nhận.</p></div>
+      <div class="svc"><span class="n">2</span><h3>Đặt theo yêu cầu: Moonkage giữ tiền cọc</h3><p>Trả cọc khi chấp nhận báo giá. Moonkage chỉ chuyển cho đơn vị từng phần khi quản trị duyệt giải ngân.</p></div>
+      <div class="svc"><span class="n">3</span><h3>Duyệt maket trước khi làm</h3><p>Đơn vị làm theo maket bạn đã duyệt. Phần còn lại trả sau khi giao hàng.</p></div>
+    </div>
+  </section>
+</main>
+
+<footer class="foot"><div class="wrap">
+  <div class="logo-off" style="border-color:#7fa392;color:#cfe0d8">Logo ẩn khi duyệt</div>
+  <nav><a href="#">Bán hàng trên Moonkage</a><a href="#">Chính sách mua bán</a></nav>
+</div></footer>
+</body>
+</html>
