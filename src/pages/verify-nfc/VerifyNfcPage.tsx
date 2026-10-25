@@ -38,7 +38,7 @@ export function VerifyNfcPage() {
   const locked = lockedMessage !== null;
 
   return (
-    <div className="page">
+    <div className="shop__inner page page--narrow">
       <header className="page__head">
         <h1 className="title-text">{nfcStrings.title}</h1>
         <p className="muted">{nfcStrings.intro}</p>
