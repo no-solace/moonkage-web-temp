@@ -3,7 +3,7 @@ import { routes } from '../../../shared/config/routes';
 import { useNotifications } from '../model/useNotifications';
 import { notificationStrings } from '../strings';
 
-/** Bell of the buying area (DS NavBar action): buyer notifications only; shop ones are in the seller channel. */
+/** Bell of the buying area (DS NavBar action, icon only, read out by its label): buyer notifications only. */
 export function NotificationBell() {
   const state = useNotifications();
   const unread = state.kind === 'loaded' ? state.data.filter((n) => n.unread).length : 0;
@@ -18,7 +18,6 @@ export function NotificationBell() {
           {unread}
         </span>
       )}
-      {notificationStrings.title}
     </Link>
   );
 }

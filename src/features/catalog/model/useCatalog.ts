@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { useAsync } from '../../../shared/ui';
-import { fetchFeaturedProducts, fetchProduct, fetchProducts } from '../api/catalogApi';
+import { fetchFeaturedProducts, fetchProduct, fetchProducts, fetchProductsByIds, fetchShopProducts } from '../api/catalogApi';
 import { applyFilters, parseFilters, toSearchParams, type ProductFilters } from './filters';
 
 export function useFeaturedProducts(area: string) {
@@ -22,4 +22,13 @@ export function useProductSearch(area: string) {
   const results = all.kind === 'loaded' ? applyFilters(all.data, filters) : [];
 
   return { all, filters, setFilters, results };
+}
+
+export function useProductsByIds(ids: string[]) {
+  const key = [...ids].sort().join(',');
+  return useAsync(() => fetchProductsByIds(key ? key.split(',') : []), [key]);
+}
+
+export function useShopProducts(shopId: string) {
+  return useAsync(() => fetchShopProducts(shopId), [shopId]);
 }

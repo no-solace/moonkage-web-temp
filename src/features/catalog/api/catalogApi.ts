@@ -32,3 +32,13 @@ export function fetchFeaturedProducts(area: string): Promise<ProductSummary[]> {
 export function fetchProduct(productId: string): Promise<ProductDetail | null> {
   return mockResponse(mockProducts.find((p) => p.id === productId) ?? null);
 }
+
+/** Details of several products (cart, checkout); unknown ids are left out. */
+export function fetchProductsByIds(ids: string[]): Promise<ProductDetail[]> {
+  return mockResponse(mockProducts.filter((p) => ids.includes(p.id)));
+}
+
+/** Every product of one shop delivered to `area` (supplier page). */
+export function fetchShopProducts(shopId: string): Promise<ProductSummary[]> {
+  return mockResponse(mockProducts.filter((p) => p.shopId === shopId).map(summary));
+}

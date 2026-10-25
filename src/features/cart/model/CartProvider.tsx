@@ -22,6 +22,23 @@ export function CartProvider({ children }: { children: ReactNode }) {
     });
   }, []);
 
-  const value = useMemo(() => ({ lines, count: lines.reduce((n, l) => n + l.quantity, 0), add }), [lines, add]);
+  const write = useCallback((change: (current: CartLine[]) => CartLine[]) => {
+    setLines((current) => {
+      const next = change(current);
+      writeJson(STORAGE_KEY, next);
+      return next;
+    });
+  }, []);
+  const setQuantity = useCallback(
+    (productId: string, quantity: number) => write((c) => c.map((l) => (l.productId === productId ? { ...l, quantity } : l))),
+    [write],
+  );
+  const remove = useCallback((productId: string) => write((c) => c.filter((l) => l.productId !== productId)), [write]);
+  const clear = useCallback(() => write(() => []), [write]);
+
+  const value = useMemo(
+    () => ({ lines, count: lines.reduce((n, l) => n + l.quantity, 0), add, setQuantity, remove, clear }),
+    [lines, add, setQuantity, remove, clear],
+  );
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>;
 }
