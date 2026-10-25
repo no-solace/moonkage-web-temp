@@ -3,6 +3,7 @@ import { createBrowserRouter, Navigate } from 'react-router-dom';
 import { RequireAuth } from '../features/auth';
 import { legacyRoutes, routes } from '../shared/config/routes';
 import { AccountLayout } from './layouts/AccountLayout';
+import { AdminLayout } from './layouts/AdminLayout';
 import { SellerLayout } from './layouts/SellerLayout';
 import { ShopLayout } from './layouts/ShopLayout';
 import { page } from './lazyPage';
@@ -63,7 +64,23 @@ const SellerTermsPage = page(seller, 'SellerTermsPage');
 const SellerCapacityPage = page(seller, 'SellerCapacityPage');
 const SellerNotificationsPage = page(seller, 'SellerNotificationsPage');
 
-const ComingSoonPage = page(() => import('../pages/coming-soon/ComingSoonPage'), 'ComingSoonPage');
+/* Quản trị (Q): one module, one lazy chunk */
+const admin = () => import('../pages/admin/AdminPages');
+const AdminOverviewPage = page(admin, 'AdminOverviewPage');
+const AdminSellersPage = page(admin, 'AdminSellersPage');
+const AdminSellerPage = page(admin, 'AdminSellerPage');
+const AdminProductsPage = page(admin, 'AdminProductsPage');
+const AdminMoneyPage = page(admin, 'AdminMoneyPage');
+const AdminDisbursementsPage = page(admin, 'AdminDisbursementsPage');
+const AdminPayoutsPage = page(admin, 'AdminPayoutsPage');
+const AdminReconciliationPage = page(admin, 'AdminReconciliationPage');
+const AdminDisputesPage = page(admin, 'AdminDisputesPage');
+const AdminDisputePage = page(admin, 'AdminDisputePage');
+const AdminConfigPage = page(admin, 'AdminConfigPage');
+const AdminProvinceFeesPage = page(admin, 'AdminProvinceFeesPage');
+const AdminSellerFeePage = page(admin, 'AdminSellerFeePage');
+const AdminVouchersPage = page(admin, 'AdminVouchersPage');
+const AdminTaxonomyPage = page(admin, 'AdminTaxonomyPage');
 const NotFoundPage = page(() => import('../pages/not-found/NotFoundPage'), 'NotFoundPage');
 
 export const router = createBrowserRouter([
@@ -97,6 +114,28 @@ export const router = createBrowserRouter([
       { path: 'cai-dat/nhan-dat-hang', element: SellerTermsPage },
       { path: 'cai-dat/cong-suat', element: SellerCapacityPage },
       { path: 'thong-bao', element: SellerNotificationsPage },
+      { path: '*', element: NotFoundPage },
+    ],
+  },
+  {
+    path: routes.admin,
+    element: guarded(<AdminLayout />),
+    children: [
+      { index: true, element: AdminOverviewPage },
+      { path: 'nguoi-ban', element: AdminSellersPage },
+      { path: 'nguoi-ban/:applicationId', element: AdminSellerPage },
+      { path: 'san-pham', element: AdminProductsPage },
+      { path: 'tien', element: AdminMoneyPage },
+      { path: 'tien/giai-ngan', element: AdminDisbursementsPage },
+      { path: 'tien/chuyen-tien', element: AdminPayoutsPage },
+      { path: 'tien/doi-soat', element: AdminReconciliationPage },
+      { path: 'khieu-nai', element: AdminDisputesPage },
+      { path: 'khieu-nai/:disputeId', element: AdminDisputePage },
+      { path: 'cau-hinh', element: AdminConfigPage },
+      { path: 'cau-hinh/phi-lien-tinh', element: AdminProvinceFeesPage },
+      { path: 'cau-hinh/phi-mo-ban', element: AdminSellerFeePage },
+      { path: 'cau-hinh/voucher', element: AdminVouchersPage },
+      { path: 'cau-hinh/vo-nhan', element: AdminTaxonomyPage },
       { path: '*', element: NotFoundPage },
     ],
   },
@@ -135,7 +174,6 @@ export const router = createBrowserRouter([
           { path: 'thong-tin', element: ProfilePage },
         ],
       },
-      { path: '/quan-tri/*', element: ComingSoonPage },
       { path: '*', element: NotFoundPage },
     ],
   },

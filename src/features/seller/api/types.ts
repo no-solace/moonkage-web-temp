@@ -1,5 +1,5 @@
 /** Seller profile state: submitted → approved (fee due) → open; or sent back for more documents. */
-export type SellerState = 'pending' | 'needs-more' | 'approved' | 'open';
+export type SellerState = 'pending' | 'needs-more' | 'approved' | 'open' | 'rejected';
 
 export interface SellerProfile {
   state: SellerState;
@@ -11,7 +11,7 @@ export interface SellerProfile {
   ownerId: string;
   submittedAt: string;
   approvedAt?: string;
-  /** What the admin asked for when sending it back. */
+  /** What the admin asked for when sending it back, or why it was refused. */
   moreNeeded?: string;
   ways: { shop: boolean; custom: boolean };
 }

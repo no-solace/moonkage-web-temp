@@ -51,6 +51,21 @@ export const routes = {
   sellerCapacity: '/kenh-ban/cai-dat/cong-suat',
   sellerNotifications: '/kenh-ban/thong-bao',
   policy: '/chinh-sach',
+  admin: '/quan-tri',
+  adminSellers: '/quan-tri/nguoi-ban',
+  adminSeller: (id: string) => `/quan-tri/nguoi-ban/${id}`,
+  adminProducts: '/quan-tri/san-pham',
+  adminMoney: '/quan-tri/tien',
+  adminDisbursements: '/quan-tri/tien/giai-ngan',
+  adminPayouts: '/quan-tri/tien/chuyen-tien',
+  adminReconciliation: '/quan-tri/tien/doi-soat',
+  adminDisputes: '/quan-tri/khieu-nai',
+  adminDispute: (id: string) => `/quan-tri/khieu-nai/${id}`,
+  adminConfig: '/quan-tri/cau-hinh',
+  adminProvinceFees: '/quan-tri/cau-hinh/phi-lien-tinh',
+  adminSellerFee: '/quan-tri/cau-hinh/phi-mo-ban',
+  adminVouchers: '/quan-tri/cau-hinh/voucher',
+  adminTaxonomy: '/quan-tri/cau-hinh/vo-nhan',
 };
 
 /** Paths used before the IA paths; they redirect so old bookmarks keep working. */

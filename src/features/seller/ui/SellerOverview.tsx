@@ -58,6 +58,15 @@ export function SellerOverview({
               </div>
             </>
           )}
+          {profile.state === 'rejected' && (
+            <>
+              <h2 id="state-heading" className="detail-heading">
+                Hồ sơ bị từ chối
+              </h2>
+              <p className="notice">Lý do: {profile.moreNeeded}</p>
+              <p className="muted">Liên hệ đội vận hành Moonkage nếu bạn cần giải thích thêm.</p>
+            </>
+          )}
           {profile.state === 'approved' && (
             <>
               <h2 id="state-heading" className="detail-heading">

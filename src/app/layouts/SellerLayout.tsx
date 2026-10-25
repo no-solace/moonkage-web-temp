@@ -5,7 +5,7 @@ import logoMark from '../../shared/assets/moonkage-mark.png';
 import { routes } from '../../shared/config/routes';
 import { LoadingState, StatusBadge } from '../../shared/ui';
 
-const stateLabel = { pending: 'Hồ sơ chờ duyệt', 'needs-more': 'Hồ sơ cần bổ sung', approved: 'Đã duyệt · chưa đóng phí', open: 'Đang mở bán' } as const;
+const stateLabel = { pending: 'Hồ sơ chờ duyệt', 'needs-more': 'Hồ sơ cần bổ sung', approved: 'Đã duyệt · chưa đóng phí', open: 'Đang mở bán', rejected: 'Hồ sơ bị từ chối' } as const;
 
 /**
  * Kênh người bán: its own bar (logo + zone name + shop state) and menu. Orders, requests, products and money only
