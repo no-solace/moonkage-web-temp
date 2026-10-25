@@ -8,28 +8,15 @@
 </head>
 <body data-zone="M" data-page="M6.6">
   <main id="content">
-    <div class="page-head"><div><h1>Thông báo</h1></div><button type="button" class="btn btn-ghost btn-sm">Đánh dấu đã đọc hết</button></div>
-    <div class="tabs" data-why="1">
-      <a href="m6-6.html" class="tab" id="t-all">Tất cả <span class="count">3</span></a>
-      <a href="m6-6.html?loc=mua" class="tab" id="t-mua">Mua</a>
-      <a href="m6-6.html?loc=ban" class="tab" id="t-ban" data-show="seller-pending seller-open">Bán</a>
-    </div>
-    <ul class="list" data-why="2">
-      <li class="unread" data-k="mua"><span class="badge">Mua</span><div class="grow"><strong>Maket lần 2 đã có</strong> · Đơn MK-C088<br><small class="muted">Xưởng Bánh Nghệ Nhân · 2 giờ trước</small></div><a href="m6-1-2.html" class="btn btn-sm">Mở</a></li>
-      <li class="unread" data-k="ban" data-show="seller-pending seller-open"><span class="badge badge-solid">Bán</span><div class="grow"><strong>Đơn mới MK-9930</strong> · 2 hộp Hoàng Kim<br><small class="muted">Kênh người bán · 3 giờ trước</small></div><a href="../b/b2-1.html" class="btn btn-sm">Mở</a></li>
-      <li class="unread" data-k="mua"><span class="badge">Mua</span><div class="grow"><strong>2 báo giá mới</strong> · Yêu cầu YC-104<br><small class="muted">Hôm qua</small></div><a href="m6-2-1.html" class="btn btn-sm">Mở</a></li>
-      <li data-k="mua"><span class="badge">Mua</span><div class="grow">Khiếu nại đơn MK-8810 đã có quyết định<br><small class="muted">23/10/2026</small></div><a href="m6-1-3.html?state=done" class="btn btn-sm">Mở</a></li>
+    <div class="page-head"><div><h1>Thông báo</h1><p class="lead">Đơn mua, yêu cầu và báo giá của bạn.</p></div><button type="button" class="btn btn-ghost btn-sm">Đánh dấu đã đọc hết</button></div>
+    <ul class="list" data-why="1">
+      <li class="unread"><div class="grow"><strong>Maket lần 2 đã có</strong> · Đơn MK-C088<br><small class="muted">Xưởng Bánh Nghệ Nhân · 2 giờ trước</small></div><a href="m6-1-2.html" class="btn btn-sm">Mở</a></li>
+      <li class="unread"><div class="grow"><strong>2 báo giá mới</strong> · Yêu cầu YC-104<br><small class="muted">Hôm qua</small></div><a href="m6-2-1.html" class="btn btn-sm">Mở</a></li>
+      <li><div class="grow">Khiếu nại đơn MK-8810 đã có quyết định<br><small class="muted">23/10/2026</small></div><a href="m6-1-3.html?state=done" class="btn btn-sm">Mở</a></li>
     </ul>
   </main>
 
-  <aside class="wf-note" data-ref="Đ7">Một hộp mỗi tài khoản, chuông ở cả khu Mua hàng và Kênh người bán (mở sẵn lọc Bán), lọc Mua / Bán; mỗi thông báo mở đúng trang ở đúng khu.</aside>
-  <script>
-    (function () {
-      var loc = new URLSearchParams(location.search).get('loc') || 'all';
-      document.getElementById('t-' + loc).classList.add('active');
-      if (loc !== 'all') document.querySelectorAll('[data-k]').forEach(function (li) { if (li.dataset.k !== loc) li.remove(); });
-    })();
-  </script>
+  <aside class="wf-note" data-ref="Đ7">Chỉ thông báo của tài khoản mua: đơn, maket, báo giá, khiếu nại. Thông báo của cửa hàng ở Kênh người bán (B7.0), không trộn vào đây.</aside>
   <script src="../assets/data.js"></script>
   <script src="../assets/why-m.js"></script>
   <script src="../assets/wf.js"></script>

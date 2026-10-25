@@ -68,7 +68,7 @@ const FLOWS = [
   {
     "id": "F5", "name": "Khiếu nại", "persona": "Người mua; người bán; quản trị",
     "lanes": [
-      { "label": "Chính", "steps": [["M6.1", "buyer"], ["M6.1.1", "buyer"], ["M6.1.3", "buyer"], ["B2.0", "seller-open", "handoff"], ["B2.1", "seller-open"], ["Q5.0", "admin", "handoff"], ["Q5.1", "admin"], ["M6.6", "buyer", "handoff"], ["M6.1.3?state=done", "buyer"], ["Q4.2", "admin", "handoff"]] },
+      { "label": "Chính", "steps": [["M6.1", "buyer"], ["M6.1.1", "buyer"], ["M6.1.3", "buyer"], ["B2.0", "seller-open", "handoff"], ["B2.1", "seller-open"], ["Q5.0", "admin", "handoff"], ["Q5.1", "admin"], ["M6.6", "buyer", "handoff"], ["B7.0", "seller-open"], ["M6.1.3?state=done", "buyer"], ["Q4.2", "admin", "handoff"]] },
       { "label": "Đơn đặt hàng", "steps": [["M6.1.2", "buyer"], ["M6.1.3", "buyer"], ["B2.2", "seller-open", "handoff"]] }
     ],
     "exceptions": "Quá hạn: nút ẩn. VNPay lỗi → tab Cần xử lý tay (Q5.0). Số hoàn > đang giữ: Q-01"
@@ -571,7 +571,7 @@ const PAGES = [
     "fr": "NFR-10, AC-10.2, AC-21.2",
     "demo": "Đơn giản",
     "flows": "F1–F5",
-    "note": "Dùng chung hai khu (Đ7): một hộp mỗi tài khoản, chuông ở thanh trên của khu mua hàng và Kênh người bán, lọc Mua / Bán; mỗi thông báo mở đúng trang ở đúng khu. Giữ mã M6.6 dù không còn nằm dưới Tài khoản",
+    "note": "Chỉ thông báo mua hàng (Đ7, tách hai hộp): chuông ở thanh trên khu mua hàng. Thông báo cửa hàng ở B7.0. Giữ mã M6.6 dù không nằm dưới Tài khoản",
     "parent": ""
   },
   {
@@ -888,6 +888,21 @@ const PAGES = [
     "flows": "—",
     "note": "",
     "parent": "B6.0"
+  },
+  {
+    "id": "B7.0",
+    "zone": "B",
+    "file": "b/b7-0.html",
+    "name": "Thông báo cửa hàng",
+    "template": "T1 Danh sách",
+    "path": "/kenh-ban/thong-bao",
+    "who": "Chủ người bán",
+    "cond": "",
+    "fr": "NFR-10, AC-10.2, AC-21.2",
+    "demo": "Đơn giản",
+    "flows": "F4, F5",
+    "note": "Hộp thông báo riêng của cửa hàng (Đ7, tách hai hộp): đơn, yêu cầu báo giá, maket, tiền, hồ sơ. Mục Thông báo trên thanh menu Kênh người bán",
+    "parent": ""
   },
   {
     "id": "Q1.0",

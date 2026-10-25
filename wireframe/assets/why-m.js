@@ -886,24 +886,19 @@ WHY['M6.5'] = {
 };
 
 WHY['M6.6'] = {
-  goal: 'Một hộp thông báo cho cả mua và bán; mỗi dòng mở đúng trang ở đúng khu.',
+  goal: 'Thông báo mua hàng của tài khoản; mỗi dòng mở đúng trang. Thông báo cửa hàng ở hộp riêng (B7.0).',
   points: [
-    B('Tab Tất cả / Mua / Bán', 'act', true, [
-      'Thao tác lọc theo khu.',
-      '2–3 tab (tab Bán chỉ khi có hồ sơ người bán). Từ Kênh người bán, chuông mở sẵn tab Bán.',
-      'Tab đang mở gạch dưới đậm; số chưa đọc trên tab Tất cả.',
-      'Đường kẻ mảnh dưới hàng tab.',
-      '12/12 (trang này không có cột menu vì dùng chung hai khu).'
-    ], 12),
     B('Danh sách thông báo', 'act', true, [
       'Thao tác mở trang đích.',
-      '4 điểm/dòng: nhãn khu, tiêu đề (≤ 60 ký tự), nguồn · thời gian, nút. Rỗng → "Chưa có thông báo".',
-      'Mỏ neo: tiêu đề đậm khi chưa đọc · Bổ trợ: nguồn 14px xám · nhãn "Bán" đặc vì mở sang khu khác.',
+      '3 điểm/dòng: tiêu đề (≤ 60 ký tự), nguồn · thời gian, nút. Rỗng → "Chưa có thông báo".',
+      'Mỏ neo: tiêu đề đậm khi chưa đọc · Bổ trợ: nguồn 14px xám.',
       'Vách ngăn dòng; dòng chưa đọc nền xám.',
-      '12/12. <768: nút xuống dòng.'
+      '12/12 (trang này không có cột menu Tài khoản).'
     ], 12)
   ],
-  rejected: []
+  rejected: [
+    'Một hộp chung có lọc Mua / Bán: thông báo cửa hàng lẫn vào việc mua của chủ cửa hàng. Tách hai hộp, mỗi khu một chuông.'
+  ]
 };
 
 WHY['M7.0'] = {

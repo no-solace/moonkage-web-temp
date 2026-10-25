@@ -69,6 +69,12 @@
 
   // 3. Header theo khu (mục 4 – Điều hướng) ----------------------------------
   var LOGO_MARK = '<span class="mark" aria-hidden="true"></span>';
+  // Lối sang khu bán: một nhãn đổi theo trạng thái (mục 5). Đã mở bán = đã có cửa hàng
+  function sellEntry(cls, active) {
+    if (ROLE === 'seller-open') return link('b/b1-0.html', 'Cửa hàng của bạn ›', cls);
+    if (ROLE === 'seller-pending') return link('b/b1-0.html', 'Kênh người bán ›', cls);
+    return link('m/m7-0.html', 'Bán hàng trên Moonkage', cls + (active ? ' active' : ''));
+  }
 
   function headerM() {
     var top = link('m/m1-0.html', LOGO_MARK + 'MOONKAGE', 'wf-logo');
@@ -86,7 +92,7 @@
     if (ROLE === 'guest') {
       top += link('m/m5-1.html', 'Đăng nhập', 'btn btn-primary btn-sm');
     } else {
-      top += link('m/m6-6.html', '<span class="wf-icon" aria-hidden="true">TB</span> <span class="count">3</span>', 'wf-hbtn', ' aria-label="Thông báo, 3 chưa đọc"');
+      top += link('m/m6-6.html', '<span class="wf-icon" aria-hidden="true">TB</span> <span class="count">2</span>', 'wf-hbtn', ' aria-label="Thông báo mua hàng, 2 chưa đọc"');
       top += '<div class="wf-dd">' + link('m/m6-0.html', '<span class="avatar" style="width:28px;height:28px">' + USER.ini + '</span><span class="lbl">Tài khoản ▾</span>', 'wf-hbtn', ' aria-haspopup="true"') +
         '<div class="wf-dd-menu right">' +
         link('m/m6-0.html', 'Tổng quan', 'wf-dd-item') +
@@ -95,8 +101,6 @@
         link('m/m6-3.html', 'Địa chỉ giao hàng', 'wf-dd-item') +
         link('m/m6-4.html', 'Xác minh danh tính <small>' + (isNfc ? 'Đã xác minh' : 'Chưa xác minh') + '</small>', 'wf-dd-item') +
         link('m/m6-5.html', 'Thông tin cá nhân', 'wf-dd-item') +
-        '<div class="wf-dd-sep"></div>' +
-        (isSeller ? link('b/b1-0.html', 'Kênh người bán ›', 'wf-dd-item') : link('m/m7-0.html', 'Bán hàng trên Moonkage', 'wf-dd-item')) +
         '<div class="wf-dd-sep"></div>' +
         link('m/m5-1.html', 'Đăng xuất', 'wf-dd-item', ' data-logout="true"') +
         '</div></div>';
@@ -116,9 +120,7 @@
     // Lối vào bán hàng nằm ngay trên thanh menu, cả khách cũng thấy; đối xứng với "↩ Về trang mua hàng" ở khu B
     if (ROLE !== 'admin') {
       nav += '<span class="spacer"></span>';
-      nav += isSeller
-        ? link('b/b1-0.html', 'Kênh người bán ›', 'wf-nav-item')
-        : link('m/m7-0.html', 'Bán hàng trên Moonkage', 'wf-nav-item' + (starts('M7.') ? ' active' : ''));
+      nav += sellEntry('wf-nav-item', starts('M7.'));
     }
     return nav;
   }
@@ -138,7 +140,7 @@
     }
     nav += link('b/b6-0.html', 'Cài đặt bán hàng', 'wf-nav-item' + (starts('B6.') ? ' active' : ''));
     nav += '<span class="spacer"></span>';
-    nav += link('m/m6-6.html?loc=ban', '<span class="wf-icon" aria-hidden="true">TB</span> Thông báo <span class="count">1</span>', 'wf-nav-item', ' aria-label="Thông báo, 1 chưa đọc"');
+    nav += link('b/b7-0.html', '<span class="wf-icon" aria-hidden="true">TB</span> Thông báo <span class="count">' + (open ? 2 : 1) + '</span>', 'wf-nav-item' + (starts('B7.') ? ' active' : ''), ' aria-label="Thông báo cửa hàng, ' + (open ? 2 : 1) + ' chưa đọc"');
     nav += link('m/m1-0.html', '↩ Về trang mua hàng', 'wf-nav-item');
     return { top: top, nav: nav };
   }
@@ -170,7 +172,7 @@
     return '<footer class="wf-footer"><div class="wf-footer-in">' +
       '<div><strong>MOONKAGE</strong> · Wireframe low-fi, không phải giao diện cuối</div>' +
       '<div class="wf-footer-links">' +
-      (isSeller ? link('b/b1-0.html', 'Kênh người bán') : link('m/m7-0.html', 'Bán hàng trên Moonkage')) +
+      sellEntry('', false) +
       link('m/m8-0.html', 'Chính sách mua bán') +
       link('index.html', 'Mục lục wireframe') +
       '</div></div></footer>';
@@ -221,7 +223,7 @@
     }
     if ((p === 'M7.0' || p === 'M7.1') && isSeller) return {
       allow: ['guest', 'buyer', 'buyer-nfc'], suggest: 'buyer',
-      reason: 'Tài khoản đã là chủ người bán nên lối "Bán hàng trên Moonkage" được thay bằng "Kênh người bán". Hồ sơ đã nộp xem và nộp lại ở Thông tin pháp lý (B6.1).',
+      reason: 'Tài khoản đã là chủ người bán nên lối "Bán hàng trên Moonkage" được thay bằng "Cửa hàng của bạn" (hoặc "Kênh người bán" khi hồ sơ còn chờ duyệt). Hồ sơ đã nộp xem và nộp lại ở Thông tin pháp lý (B6.1).',
       back: 'b/b1-0.html', backText: 'Vào Kênh người bán'
     };
     if (p === 'M7.0' && ROLE === 'admin') return {
@@ -282,7 +284,7 @@
       item('m/m6-4.html', 'Xác minh danh tính', PAGE_ID === 'M6.4', isNfc ? '✓' : 'chưa') +
       item('m/m6-5.html', 'Thông tin cá nhân', PAGE_ID === 'M6.5') +
       '<div class="wf-dd-sep"></div>' +
-      (isSeller ? item('b/b1-0.html', 'Kênh người bán ›') : item('m/m7-0.html', 'Bán hàng trên Moonkage')) +
+      sellEntry('wf-account-nav-link', false) +
       link('m/m5-1.html', 'Đăng xuất', 'wf-account-nav-link', ' data-logout="true"') +
       '</nav>';
     var layout = document.createElement('div');
