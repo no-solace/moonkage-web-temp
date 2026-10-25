@@ -610,7 +610,7 @@ body[data-zone="M"] .wf-footer { background: var(--paper); border-top: 1px solid
 
 /* 22. HERO LÀ MỘT TẤM ẢNH 1920×1080 ------------------------------------------------
    Ảnh tràn hết bề ngang màn hình, giữ tỉ lệ 16:9 (1440 → cao 810, 1920 → cao 1080).
-   Chữ đặt trên ảnh, neo cột trái của lưới 12 cột; ảnh thật phải chừa vùng trống bên trái. */
+   Ô chữ là điểm nhấn, đặt chính giữa ảnh; ảnh thật phải chừa vùng giữa cho chữ. */
 .hero-photo { position: relative; margin: calc(-1 * var(--s6)) calc(50% - 50vw) 0; aspect-ratio: 1920 / 1080; }
 .hero-photo-img { position: absolute; inset: 0; display: flex; align-items: flex-end; justify-content: flex-end; padding: var(--s6);
   background:
@@ -626,3 +626,8 @@ body[data-zone="M"] .wf-footer { background: var(--paper); border-top: 1px solid
 .hero-title { font: 700 56px/64px system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; letter-spacing: -.02em; text-wrap: balance; }
 body:has(.hero-photo) { overflow-x: clip; }
 .hero-photo + .quick-chips { margin-top: var(--s8); }
+/* Ô chữ hero ra giữa: căn giữa cả ngang lẫn dọc, chữ căn giữa */
+.hero-photo-text { align-items: center; text-align: center; }
+.hero-photo-text > * { max-width: 720px; }
+.hero-photo-text .hero-title { max-width: 16ch; }
+.hero-photo-text .row { justify-content: center; }

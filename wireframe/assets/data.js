@@ -106,7 +106,7 @@ const PAGES = [
     "fr": "FR-05, FR-06, FR-14, FR-16 (lối vào)",
     "demo": "Làm trọn",
     "flows": "F1, F2, F3",
-    "note": "Năm khối theo thứ tự (Đ3): 1 hero là một tấm ảnh 1920×1080 tràn màn hình, chữ và hai nút trên ảnh (khách chưa chọn nơi giao có dòng Chọn khu vực giao, AC-05.3) · 2 Tìm nhanh (chip bộ lọc M2.0) · 3 'Có sẵn giao tới [tỉnh]' (nút Thêm vào giỏ) · 4 'Nhận đặt theo yêu cầu' · 5 'Tiền của bạn đi thế nào'. Bỏ hai thẻ lối vào và 'Việc cần bạn' (đã có Thông báo). Không có: lịch mùa, hạn chót, khuyến mãi, số liệu không tính từ dữ liệu, ngưỡng chung '30 hộp'",
+    "note": "Năm khối theo thứ tự (Đ3): 1 hero là một tấm ảnh 1920×1080 tràn màn hình, ô chữ và hai nút giữa ảnh (khách chưa chọn nơi giao có dòng Chọn khu vực giao, AC-05.3) · 2 Tìm nhanh (chip bộ lọc M2.0) · 3 'Có sẵn giao tới [tỉnh]' (nút Thêm vào giỏ) · 4 'Nhận đặt theo yêu cầu' · 5 'Tiền của bạn đi thế nào'. Bỏ hai thẻ lối vào và 'Việc cần bạn' (đã có Thông báo). Không có: lịch mùa, hạn chót, khuyến mãi, số liệu không tính từ dữ liệu, ngưỡng chung '30 hộp'",
     "parent": ""
   },
   {

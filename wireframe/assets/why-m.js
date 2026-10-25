@@ -18,7 +18,7 @@ WHY['M1.0'] = {
       'Thao tác + nhận diện: một thông điệp, hai nút cho hai lối mua. Khách chưa chọn nơi giao có thêm dòng "Chọn khu vực giao" (AC-05.3).',
       'Tiêu đề ≤ 2 dòng, 1 câu phụ, 2 nút. Không số liệu, không khuyến mãi (không có dữ liệu).',
       'Mỏ neo: tiêu đề 56px · Bổ trợ: câu phụ 19px · Hành động: nút đặc "Xem hàng có sẵn", nút viền "Đặt theo yêu cầu", bo tròn.',
-      'Ảnh tràn hết bề ngang màn hình, tỉ lệ 16:9 (1440 → cao 810, 1920 → cao 1080). Chữ đặt trên ảnh, neo cột trái lưới 12 cột, rộng tối đa 560px; ảnh thật phải chừa vùng trống bên trái cho chữ. Moonkage tự chụp, không dùng ảnh của một Shop.',
+      'Ảnh tràn hết bề ngang màn hình, tỉ lệ 16:9 (1440 → cao 810, 1920 → cao 1080). Ô chữ là điểm nhấn, đặt chính giữa ảnh (căn giữa cả ngang, dọc), rộng tối đa 720px; ảnh thật phải chừa vùng giữa cho chữ. Moonkage tự chụp, không dùng ảnh của một Shop.',
       '12/12, tràn màn hình.'
     ], 12),
     B('Tìm nhanh', 'act', false, [
