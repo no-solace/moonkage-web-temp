@@ -3,6 +3,7 @@ import { createBrowserRouter, Navigate } from 'react-router-dom';
 import { RequireAuth } from '../features/auth';
 import { legacyRoutes, routes } from '../shared/config/routes';
 import { AccountLayout } from './layouts/AccountLayout';
+import { SellerLayout } from './layouts/SellerLayout';
 import { ShopLayout } from './layouts/ShopLayout';
 import { page } from './lazyPage';
 
@@ -41,6 +42,27 @@ const NotificationsPage = page(() => import('../pages/notifications/Notification
 const SellIntroPage = page(() => import('../pages/sell-intro/SellIntroPage'), 'SellIntroPage');
 const SellApplyPage = page(() => import('../pages/sell-apply/SellApplyPage'), 'SellApplyPage');
 const PolicyPage = page(() => import('../pages/policy/PolicyPage'), 'PolicyPage');
+/* Kênh người bán (B): one module, one lazy chunk */
+const seller = () => import('../pages/seller/SellerPages');
+const SellerOverviewPage = page(seller, 'SellerOverviewPage');
+const SellerFeePage = page(seller, 'SellerFeePage');
+const SellerOrdersPage = page(seller, 'SellerOrdersPage');
+const SellerOrderPage = page(seller, 'SellerOrderPage');
+const SellerRequestsPage = page(seller, 'SellerRequestsPage');
+const SellerRequestPage = page(seller, 'SellerRequestPage');
+const SellerQuotePage = page(seller, 'SellerQuotePage');
+const SellerProductsPage = page(seller, 'SellerProductsPage');
+const SellerProductPage = page(seller, 'SellerProductPage');
+const SellerMoneyPage = page(seller, 'SellerMoneyPage');
+const SellerSettlementsPage = page(seller, 'SellerSettlementsPage');
+const SellerDisbursementsPage = page(seller, 'SellerDisbursementsPage');
+const SellerSettingsPage = page(seller, 'SellerSettingsPage');
+const SellerLegalPage = page(seller, 'SellerLegalPage');
+const SellerZonesPage = page(seller, 'SellerZonesPage');
+const SellerTermsPage = page(seller, 'SellerTermsPage');
+const SellerCapacityPage = page(seller, 'SellerCapacityPage');
+const SellerNotificationsPage = page(seller, 'SellerNotificationsPage');
+
 const ComingSoonPage = page(() => import('../pages/coming-soon/ComingSoonPage'), 'ComingSoonPage');
 const NotFoundPage = page(() => import('../pages/not-found/NotFoundPage'), 'NotFoundPage');
 
@@ -53,6 +75,31 @@ export const router = createBrowserRouter([
   { path: '/vnpay/:paymentId', element: guarded(VnpayPage) },
   { path: legacyRoutes.login, element: <Navigate to={routes.login} replace /> },
   { path: legacyRoutes.verifyNfc, element: <Navigate to={routes.verifyNfc} replace /> },
+  {
+    path: routes.sellerChannel,
+    element: guarded(<SellerLayout />),
+    children: [
+      { index: true, element: SellerOverviewPage },
+      { path: 'phi-mo-ban', element: SellerFeePage },
+      { path: 'don-hang', element: SellerOrdersPage },
+      { path: 'don-hang/:orderId', element: SellerOrderPage },
+      { path: 'yeu-cau', element: SellerRequestsPage },
+      { path: 'yeu-cau/:requestId', element: SellerRequestPage },
+      { path: 'yeu-cau/:requestId/bao-gia', element: SellerQuotePage },
+      { path: 'san-pham', element: SellerProductsPage },
+      { path: 'san-pham/:productId', element: SellerProductPage },
+      { path: 'tien', element: SellerMoneyPage },
+      { path: 'tien/doi-soat', element: SellerSettlementsPage },
+      { path: 'tien/giai-ngan', element: SellerDisbursementsPage },
+      { path: 'cai-dat', element: SellerSettingsPage },
+      { path: 'cai-dat/phap-ly', element: SellerLegalPage },
+      { path: 'cai-dat/vung-giao', element: SellerZonesPage },
+      { path: 'cai-dat/nhan-dat-hang', element: SellerTermsPage },
+      { path: 'cai-dat/cong-suat', element: SellerCapacityPage },
+      { path: 'thong-bao', element: SellerNotificationsPage },
+      { path: '*', element: NotFoundPage },
+    ],
+  },
   {
     element: <ShopLayout />,
     children: [
@@ -88,7 +135,7 @@ export const router = createBrowserRouter([
           { path: 'thong-tin', element: ProfilePage },
         ],
       },
-      { path: `${routes.sellerChannel}/*`, element: ComingSoonPage },
+      { path: '/quan-tri/*', element: ComingSoonPage },
       { path: '*', element: NotFoundPage },
     ],
   },

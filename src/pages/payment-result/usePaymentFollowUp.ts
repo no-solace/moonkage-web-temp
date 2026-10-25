@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useCart } from '../../features/cart';
 import { createCustomOrder, createReadyOrders, markRemainingPaid, type OrderLine, type ReadyOrder } from '../../features/orders';
 import { fetchPayment, updatePaymentContext, type Payment } from '../../features/payments';
+import { markFeePaid } from '../../features/seller';
 
 interface CheckoutContext {
   groups: { shop: string; shippingFee: number; lines: OrderLine[] }[];
@@ -34,7 +35,8 @@ export function usePaymentFollowUp(paymentId: string) {
         } else if (p.purpose === 'remaining') {
           await markRemainingPaid(p.context.orderId as string);
           p.context = { ...p.context, done: true };
-        } else {
+        } else if (p.purpose === 'seller-fee') {
+          await markFeePaid();
           p.context = { ...p.context, done: true };
         }
         updatePaymentContext(p.id, p.context);

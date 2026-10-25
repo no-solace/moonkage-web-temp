@@ -415,3 +415,24 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .demo-accounts__item:focus-visible { outline: var(--border-thick) solid var(--focus); outline-offset: var(--border-thick); }
 .demo-accounts__label { font: var(--text-label); color: var(--ink); }
 .mk-field select { height: var(--control-h); }
+
+/* Kênh người bán */
+.seller-bar .mk-nav__in:first-child { justify-content: space-between; }
+.seller-bar__zone { font: var(--text-label); color: var(--ink-muted); padding-left: var(--space-3); margin-left: var(--space-1); border-left: var(--border-thin) solid var(--line); }
+.seller-bar__shop { font: var(--text-label); display: inline-flex; gap: var(--space-2); align-items: center; }
+.seller-nav { min-height: 48px; gap: var(--space-6); border-top: var(--border-thin) solid var(--line); }
+.seller-nav__link { font: var(--text-label); color: var(--ink-muted); text-decoration: none; padding: var(--space-3) 0; border-bottom: var(--border-thick) solid transparent; }
+.seller-nav__link:hover { color: var(--ink); }
+.seller-nav__link[aria-current="page"] { color: var(--brand); border-bottom-color: var(--brand); }
+.seller-nav__link:focus-visible { outline: var(--border-thick) solid var(--focus); outline-offset: var(--border-thick); }
+.seller-nav__spacer { flex: 1; }
+.stat-grid--4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.complaint-photo { width: 200px; }
+.photo-slots { display: grid; grid-template-columns: repeat(3, 140px); gap: var(--space-3); }
+.photo-slots__add { cursor: pointer; border: var(--border-thin) dashed var(--line-strong); background: var(--surface); }
+.thumb-sm { width: 40px; height: 40px; }
+.cell-input { width: 100%; box-sizing: border-box; font: var(--text-body-sm); border: var(--border-thin) solid var(--line-strong); border-radius: var(--radius-sm); padding: var(--space-2) var(--space-3); }
+.cell-input:focus-visible { outline: var(--border-thick) solid var(--focus); outline-offset: 1px; }
+.field-narrow { max-width: 240px; }
+.grow { flex: 1; }
+fieldset:disabled { opacity: 0.7; }
