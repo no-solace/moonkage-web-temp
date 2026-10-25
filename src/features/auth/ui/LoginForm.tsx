@@ -3,6 +3,7 @@ import { ApiError } from '../../../shared/api/client';
 import { strings } from '../../../shared/config/strings';
 import { useAuth } from '../model/useAuth';
 import { authStrings } from '../strings';
+import { DemoAccounts } from './DemoAccounts';
 
 /** E-mail or phone number and password (FR-02); `onLoggedIn` runs once the session is stored. */
 export function LoginForm({ onLoggedIn }: { onLoggedIn: () => void }) {
@@ -77,6 +78,14 @@ export function LoginForm({ onLoggedIn }: { onLoggedIn: () => void }) {
       >
         {submitting ? authStrings.submitting : authStrings.submit}
       </button>
+
+      <DemoAccounts
+        onPick={(user, pass) => {
+          setUsername(user);
+          setPassword(pass);
+          setError(null);
+        }}
+      />
     </form>
   );
 }

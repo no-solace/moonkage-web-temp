@@ -1,5 +1,7 @@
 import { apiClient, type ApiResponse } from '../../../shared/api/client';
 import { identityApi } from '../../../shared/api/gateway';
+import { config } from '../../../shared/config/env';
+import { demoCreateSession, demoGetSession, demoStatus } from './nfcDemo';
 
 /** FR-04 resources of identity-service (`NfcController`). */
 const endpoints = {
@@ -62,17 +64,20 @@ export const NfcErrorCode = {
 
 /** 409 NFC_001 when already verified, 429 NFC_002 while locked. */
 export async function createNfcSession(): Promise<NfcSession> {
+  if (config.demoMode) return demoCreateSession();
   const response = await apiClient.post<ApiResponse<NfcSession>>(endpoints.sessions);
   return response.data.data;
 }
 
 /** 410 when expired, 403 when the session belongs to another account. */
 export async function getNfcSession(sessionId: string): Promise<NfcSessionState> {
+  if (config.demoMode) return demoGetSession(sessionId);
   const response = await apiClient.get<ApiResponse<NfcSessionState>>(endpoints.session(sessionId));
   return response.data.data;
 }
 
 export async function getMyNfcStatus(): Promise<NfcStatusInfo> {
+  if (config.demoMode) return demoStatus();
   const response = await apiClient.get<ApiResponse<NfcStatusInfo>>(endpoints.status);
   return response.data.data;
 }

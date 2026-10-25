@@ -1,5 +1,6 @@
 import { useCallback, useLayoutEffect, useMemo, useState, type ReactNode } from 'react';
 import { configureAuth } from '../../../shared/api/client';
+import { demoAccount } from '../api/demoAccounts';
 import { login as loginRequest } from '../api/login';
 import { AuthContext, type AuthSession } from './authContext';
 
@@ -17,6 +18,7 @@ function readStoredSession(): AuthSession | null {
           accountId: parsed.accountId,
           displayName: parsed.displayName ?? '',
           sellerStatus: parsed.sellerStatus ?? 'none',
+          isAdmin: parsed.isAdmin ?? false,
         }
       : null;
   } catch {
@@ -55,7 +57,9 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       token: response.token,
       accountId: response.accountId,
       displayName: response.fullName || response.email || username,
-      sellerStatus: 'none',
+      // identity-service does not return the seller profile yet; demo accounts carry it
+      sellerStatus: demoAccount(username)?.sellerStatus ?? 'none',
+      isAdmin: response.role.toUpperCase().includes('ADMIN'),
     };
     storeSession(next);
     setSession(next);

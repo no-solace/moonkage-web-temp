@@ -12,6 +12,8 @@ const DEFAULT_NFC_POLL_INTERVAL_CONNECTED_MS = 15000;
 
 export const config = {
   apiBaseUrl: (import.meta.env.VITE_API_BASE_URL ?? '').trim(),
+  /** `npm run dev:demo` (.env.demo): every screen runs on seed data and demo accounts, nothing calls the backend. */
+  demoMode: import.meta.env.VITE_DEMO_MODE === 'true',
   nfcPollIntervalMs: readPositiveInt(import.meta.env.VITE_NFC_POLL_INTERVAL_MS, DEFAULT_NFC_POLL_INTERVAL_MS),
   nfcPollIntervalConnectedMs: readPositiveInt(
     import.meta.env.VITE_NFC_POLL_INTERVAL_CONNECTED_MS,
@@ -21,6 +23,7 @@ export const config = {
 
 /** False when VITE_API_BASE_URL is missing or not an http(s) URL: the app shows a configuration error. */
 export function isConfigValid(): boolean {
+  if (config.demoMode) return true;
   try {
     const url = new URL(config.apiBaseUrl);
     return url.protocol === 'http:' || url.protocol === 'https:';

@@ -10,6 +10,8 @@ export interface AuthSession {
    * it yet, so it is 'none' until identity-service exposes it.
    */
   sellerStatus: SellerStatus;
+  /** Admin accounts are internal: they see the public pages and the admin area, never a cart or account. */
+  isAdmin: boolean;
 }
 
 export type SellerStatus = 'none' | 'pending' | 'open';

@@ -5,13 +5,13 @@ import { CartProvider } from '../features/cart';
 import { DeliveryAreaProvider } from '../features/delivery-area';
 import { ConfigErrorPage } from '../pages/config-error/ConfigErrorPage';
 import { RealtimeProvider } from '../shared/api/realtime/RealtimeProvider';
-import { isConfigValid } from '../shared/config/env';
+import { config, isConfigValid } from '../shared/config/env';
 import { router } from './routes';
 
-/** One STOMP connection for the logged-in account; none for a guest. */
+/** One STOMP connection for the logged-in account; none for a guest, and none in demo mode (no server). */
 function SessionRealtime({ children }: { children: ReactNode }) {
   const { session } = useAuth();
-  return <RealtimeProvider token={session?.token ?? null}>{children}</RealtimeProvider>;
+  return <RealtimeProvider token={config.demoMode ? null : (session?.token ?? null)}>{children}</RealtimeProvider>;
 }
 
 /** Providers of the whole app, outermost first: session, its realtime connection, delivery area, cart. */
